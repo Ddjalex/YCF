@@ -5,10 +5,14 @@ RewriteBase /
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
 RewriteRule ^index\.php$ / [R=301,L]
 
-# Handle /admin specifically
-RewriteRule ^admin/?$ admin.php [L,QSA,NC]
+# Redirect /admin.php to /admin
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin\.php\ HTTP/
+RewriteRule ^admin\.php$ /admin [R=301,L]
 
 # Hide .php extension for existing files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Explicit rule for /admin
+RewriteRule ^admin/?$ admin.php [L,NC,QSA]
