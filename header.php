@@ -129,7 +129,6 @@
             <a href="/videos">Videos</a>
             <a href="/photos">Photos</a>
             <a href="/information">Information</a>
-            <a href="/admin" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700;">Admin</a>
             <div class="header-tools">
                 <span class="search-icon">🔍</span>
                 <span class="lang-switch">EN</span>
