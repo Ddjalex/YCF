@@ -11,7 +11,7 @@ include 'header.php';
         <h1 style="font-size: 4.5rem; margin-bottom: 1rem; font-weight: 800; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Youth Crypto Forum Germany 2026</h1>
         <p style="font-size: 1.6rem; margin-bottom: 4rem; font-weight: 400; opacity: 0.9; max-width: 700px; line-height: 1.4;">Empowering the next generation of digital leaders through blockchain innovation and decentralization.</p>
         
-        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 12px; padding: 0.8rem; display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.3); width: 90%; max-width: 1000px;">
+        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 12px; padding: 0.5rem; display: flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.3); width: 100%; max-width: 100%; box-sizing: border-box;">
             <div style="background: #00aeef; padding: 1.2rem 1.8rem; border-radius: 10px; margin-right: 2rem; flex-shrink: 0;">
                 <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Left until the Forum starts:</span>
             </div>
