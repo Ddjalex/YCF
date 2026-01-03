@@ -9,3 +9,6 @@ RewriteRule ^index\.php$ / [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Fallback for /admin specifically if the above fails
+RewriteRule ^admin$ admin.php [L]
