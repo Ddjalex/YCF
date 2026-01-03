@@ -24,8 +24,8 @@
             background-color: #fcfcfc;
         }
         header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(245, 250, 255, 0.98) 100%);
+            backdrop-filter: blur(15px);
             position: absolute;
             top: 0;
             left: 0;
@@ -35,22 +35,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            height: 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            height: 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
         }
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         .logo-main-img {
-            height: 50px;
+            height: 55px;
+            width: auto;
         }
         .logo-divider {
             width: 1px;
-            height: 40px;
-            background-color: #eee;
-            margin: 0 0.5rem;
+            height: 45px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0;
         }
         .logo-text {
             display: flex;
