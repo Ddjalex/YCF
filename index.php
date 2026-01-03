@@ -3,7 +3,7 @@ require_once 'functions.php';
 include 'header.php';
 ?>
 
-<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; text-align: left; padding: 0 10%;">
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('attached_assets/image_1767436778420.png'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; text-align: left; padding: 0 10%;">
     <div style="max-width: 800px; margin-top: 80px;">
         <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); display: inline-block; padding: 0.5rem 1.5rem; border-radius: 30px; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.3);">
             <span style="font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Berlin Blockchain Week 2026</span>
