@@ -112,13 +112,11 @@
 <body>
     <header>
         <div class="logo-container">
-            <a href="index.php" class="logo">
-                <div class="logo-text">
-                    <span class="logo-main">YOUTH CRYPTO</span>
-                    <span class="logo-sub">Forum Germany 2026</span>
-                </div>
-            </a>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/UN_emblem_blue.svg/1200px-UN_emblem_blue.svg.png" alt="Emblem" style="height: 40px; opacity: 0.8;">
+            <div class="logo-text">
+                <span class="logo-main">YOUTH CRYPTO</span>
+                <span class="logo-sub">Forum Germany 2026</span>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/UN_emblem_blue.svg/1200px-UN_emblem_blue.svg.png" alt="Emblem" style="height: 40px; opacity: 1;">
         </div>
         <nav>
             <a href="#">About</a>
