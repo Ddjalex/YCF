@@ -1,18 +1,18 @@
 RewriteEngine On
 RewriteBase /
 
-# Redirect /index.php to /
+# 1. Handle /admin explicitly and first to avoid it being caught by other rules
+RewriteRule ^admin/?$ admin.php [L,NC,QSA]
+
+# 2. Redirect /index.php to /
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
 RewriteRule ^index\.php$ / [R=301,L]
 
-# Redirect /admin.php to /admin
+# 3. Redirect /admin.php to /admin
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin\.php\ HTTP/
 RewriteRule ^admin\.php$ /admin [R=301,L]
 
-# Hide .php extension for existing files
+# 4. Hide .php extension for existing files (excluding directories)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
-# Explicit rule for /admin
-RewriteRule ^admin/?$ admin.php [L,NC,QSA]
