@@ -6,6 +6,8 @@ require_once 'functions.php';
 if (!isset($_SESSION['authenticated'])) {
     if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
+        header("Location: /admin");
+        exit;
     } else {
         ?>
         <!DOCTYPE html>
