@@ -8,6 +8,9 @@ function get_db_connection() {
     }
     try {
         $dbopts = parse_url($database_url);
+        if (!$dbopts || !isset($dbopts['host'], $dbopts['port'], $dbopts['path'], $dbopts['user'], $dbopts['pass'])) {
+             return null;
+        }
         $dsn = "pgsql:host={$dbopts['host']};port={$dbopts['port']};dbname=" . ltrim($dbopts['path'], '/');
         return new PDO($dsn, $dbopts['user'], $dbopts['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     } catch (PDOException $e) {
@@ -16,62 +19,76 @@ function get_db_connection() {
 }
 
 /**
- * Formats a date for the countdown timer
+ * Get hotel listings
  */
-function get_target_date() {
-    $pdo = get_db_connection();
-    if ($pdo) {
-        $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) return $result['value'];
+if (!function_exists('get_hotels')) {
+    function get_hotels() {
+        $pdo = get_db_connection();
+        if ($pdo) {
+            try {
+                $stmt = $pdo->query("SELECT * FROM hotels ORDER BY id DESC");
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                return [];
+            }
+        }
+        return [];
     }
-    return "June 15, 2026 09:00:00";
 }
 
 /**
- * Get hotel listings
+ * Formats a date for the countdown timer
  */
-function get_hotels() {
-    $pdo = get_db_connection();
-    if ($pdo) {
-        $stmt = $pdo->query("SELECT * FROM hotels ORDER BY id DESC");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!function_exists('get_target_date')) {
+    function get_target_date() {
+        $pdo = get_db_connection();
+        if ($pdo) {
+            try {
+                $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
+                $stmt->execute();
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($result) return $result['value'];
+            } catch (PDOException $e) {
+                // Fallback
+            }
+        }
+        return "June 15, 2026 09:00:00";
     }
-    return [];
 }
 
 /**
  * Mock data for news items
  */
-function get_latest_news() {
-    $news_file = 'news_data.json';
-    if (file_exists($news_file)) {
-        return json_decode(file_get_contents($news_file), true);
+if (!function_exists('get_latest_news')) {
+    function get_latest_news() {
+        $news_file = 'news_data.json';
+        if (file_exists($news_file)) {
+            return json_decode(file_get_contents($news_file), true);
+        }
+        
+        return [
+            [
+                'title' => 'Youth Crypto Forum 2026: The Future of Digital Economy in Berlin',
+                'summary' => 'Join thousands of young innovators in Berlin to discuss blockchain and the global economy.',
+                'date' => 'January 10, 2026',
+                'category' => 'Press Release',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_a66cf05b.jpg'
+            ],
+            [
+                'title' => 'Berlin to Host Major Blockchain Summit at Brandenburg Gate',
+                'summary' => 'Germany\'s capital preparing for the largest youth-focused crypto event in Europe.',
+                'date' => 'January 05, 2026',
+                'category' => 'Update',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_a86cab3a.jpg'
+            ],
+            [
+                'title' => 'Registration for Early Bird Tickets Now Open for Forum 2026',
+                'summary' => 'Secure your spot at the Youth Crypto Forum with special early bird pricing available now.',
+                'date' => 'January 02, 2026',
+                'category' => 'Announcement',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_d84d2c76.jpg'
+            ]
+        ];
     }
-    
-    return [
-        [
-            'title' => 'Youth Crypto Forum 2026: The Future of Digital Economy in Berlin',
-            'summary' => 'Join thousands of young innovators in Berlin to discuss blockchain and the global economy.',
-            'date' => 'January 10, 2026',
-            'category' => 'Press Release',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_a66cf05b.jpg'
-        ],
-        [
-            'title' => 'Berlin to Host Major Blockchain Summit at Brandenburg Gate',
-            'summary' => 'Germany\'s capital preparing for the largest youth-focused crypto event in Europe.',
-            'date' => 'January 05, 2026',
-            'category' => 'Update',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_a86cab3a.jpg'
-        ],
-        [
-            'title' => 'Registration for Early Bird Tickets Now Open for Forum 2026',
-            'summary' => 'Secure your spot at the Youth Crypto Forum with special early bird pricing available now.',
-            'date' => 'January 02, 2026',
-            'category' => 'Announcement',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_d84d2c76.jpg'
-        ]
-    ];
 }
 ?>
