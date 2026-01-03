@@ -1,0 +1,30 @@
+using only PHP that mimics the design and functionality of the UNPSF 2025 website, you need a description that emphasizes a clean, professional, and institutional aesthetic.
+
+The UNPSF 2025 site is characterized by a "Corporate/International Organization" style: high-contrast blue and white color palettes, hero sections with countdown timers, clear navigation grids for "News" and "Agenda," and mobile-responsive layouts.
+
+The Project Description
+"A professional, institutional-grade event management platform inspired by the UNPSF 2025 design. This project is built using a pure PHP procedural model, focusing on a clean, high-performance architecture without heavy frameworks. It features a hero section with a dynamic countdown timer, a responsive grid for 'Latest News' updates, a modular 'Agenda' timeline, and an integrated registration system. The UI follows a professional blue-and-white color scheme, utilizing semantic HTML5 and custom CSS to replicate the authoritative and accessible feel of official United Nations digital portals."
+
+Key Technical Breakdown for Replit (PHP Model)
+To match the look of that specific website while sticking to a PHP model, you should structure your Replit project as follows:
+
+1. Structural Logic (The "PHP Model")
+Instead of a complex framework, use a Modular Procedural approach. This makes it easy to manage in Replit:
+
+index.php: The main landing page.
+
+header.php / footer.php: Global components to keep the design consistent across all pages (About, Agenda, News).
+
+functions.php: To handle the countdown logic and data fetching for news items.
+
+2. UI/UX Elements to Replicate
+Hero Section: A large background image (Samarkand/Institutional theme) with an overlaying "Days/Hours/Minutes" countdown.
+
+Navigation: A sticky top-bar with a simple logo on the left and a "Register" button highlighted in a primary action color (often blue or green).
+
+Data Grids: PHP foreach loops to display news cards from an array or a simple SQLite database.
+
+Typography: Use clean sans-serif fonts like Inter or Roboto to maintain the professional look.
+
+3. Example Snippet (Simplified PHP Hero)
+Place this in your index.php to start the design:
