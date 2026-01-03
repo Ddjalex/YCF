@@ -165,6 +165,156 @@ include 'header.php';
     </div>
 </section>
 
+</section>
+
+<section class="weather" style="padding: 4rem 10%; background: #f0f7ff;">
+    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">WEATHER IN BERLIN</h2>
+    <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;">
+        <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 2rem; border-radius: 12px; min-width: 280px; box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);">
+            <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Saturday, 03 January 2026 · Berlin</div>
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <div style="font-size: 3rem;">☀️</div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: 700;">2.4° C</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">Clear Sky</div>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: 11:00 ↻</div>
+        </div>
+        <?php 
+        $forecast = [
+            ['time' => '12:00', 'temp' => '2.40°', 'icon' => '☀️'],
+            ['time' => '15:00', 'temp' => '3.15°', 'icon' => '🌤️'],
+            ['time' => '18:00', 'temp' => '1.20°', 'icon' => '🌙'],
+            ['time' => '21:00', 'temp' => '-0.5°', 'icon' => '☁️'],
+            ['time' => '00:00', 'temp' => '-1.8°', 'icon' => '☁️'],
+            ['time' => '03:00', 'temp' => '-2.5°', 'icon' => '❄️'],
+        ];
+        foreach ($forecast as $f): ?>
+        <div style="background: white; padding: 1.5rem; border-radius: 12px; min-width: 120px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><?php echo $f['icon']; ?></div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: var(--dark-blue);"><?php echo $f['temp']; ?></div>
+            <div style="font-size: 0.8rem; color: #888; margin-top: 0.3rem;"><?php echo $f['time']; ?></div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="videos" style="padding: 4rem 10%;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+        <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700;">VIDEOS</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
+        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
+            <img src="https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
+                <h3 style="font-size: 1.1rem; margin: 0;">Blockchain Revolution in Germany</h3>
+            </div>
+        </div>
+        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
+            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
+                <h3 style="font-size: 1.1rem; margin: 0;">Youth Crypto Forum: Highlights 2025</h3>
+            </div>
+        </div>
+        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
+                <h3 style="font-size: 1.1rem; margin: 0;">Future of Digital Economy in Europe</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="photos" style="padding: 4rem 10%; background: #fff;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+        <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700;">PHOTOS</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 200px); gap: 1rem;">
+        <div style="grid-column: span 2; grid-row: span 2; border-radius: 12px; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1585241936939-be4099591252?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="border-radius: 12px; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="border-radius: 12px; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1591115765373-520b7a020120?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="grid-column: span 2; border-radius: 12px; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1505373633569-42861a388b39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </div>
+</section>
+
+<section class="organizers" style="padding: 4rem 10%; background: #fcfcfc;">
+    <h2 style="color: var(--dark-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 1px;">Organizers</h2>
+    <div style="display: flex; gap: 2rem; align-items: center; overflow-x: auto; padding-bottom: 2rem;">
+        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
+            <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 40px;">
+            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
+                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">United Nations</div>
+                <div style="font-size: 0.7rem; color: #777;">Dept. of Economic & Social Affairs</div>
+            </div>
+        </div>
+        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
+            <div style="font-weight: 800; font-size: 1.2rem; color: var(--primary-blue);">GERMANY</div>
+            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
+                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">Ministry of Digital Affairs</div>
+                <div style="font-size: 0.7rem; color: #777;">Federal Republic of Germany</div>
+            </div>
+        </div>
+        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
+            <div style="font-size: 1.5rem;">🌐</div>
+            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
+                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">European Blockchain Agency</div>
+                <div style="font-size: 0.7rem; color: #777;">Digital Future Initiative</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer style="background: #000; color: white; padding: 5rem 10% 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4rem;">
+        <div style="max-width: 400px;">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 50px; filter: brightness(0) invert(1);">
+                <div style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 1rem;">
+                    <div style="font-weight: 700; font-size: 1.1rem;">United Nations</div>
+                    <div style="font-size: 0.8rem; opacity: 0.6;">Dept. of Economic & Social Affairs</div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 4rem;">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">About</a>
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">News</a>
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Agenda</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Speakers</a>
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Videos</a>
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Photos</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Information</a>
+                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Media Bank</a>
+            </div>
+        </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 0.8rem; opacity: 0.5;">Copyright © 2026. All Rights Reserved.</div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 0.8rem; opacity: 0.5;">Powered by</div>
+            <div style="font-weight: 800; letter-spacing: 1px; font-size: 1rem;">UZINFOCOM</div>
+        </div>
+    </div>
+</footer>
+
 <section class="agenda" style="padding: 4rem 10%;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">AGENDA</h2>

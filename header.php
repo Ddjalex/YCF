@@ -132,7 +132,6 @@
             <div class="header-tools">
                 <span class="search-icon">🔍</span>
                 <span class="lang-switch">EN</span>
-                <a href="admin.php" style="font-size: 0.6rem; color: #ccc; margin-left: 0.5rem; text-decoration: none;">Admin</a>
             </div>
         </nav>
     </header>

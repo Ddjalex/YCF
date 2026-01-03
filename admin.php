@@ -1,4 +1,36 @@
 <?php
+session_start();
+
+// Simple secure session check
+if (!isset($_SESSION['authenticated'])) {
+    if (isset($_POST['password']) && $_POST['password'] === 'admin2026') { // In production, use hashing
+        $_SESSION['authenticated'] = true;
+    } else {
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Admin Login - UNPSF 2026</title>
+            <style>
+                body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f7ff; margin: 0; }
+                form { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 300px; }
+                input { width: 100%; padding: 0.8rem; margin: 1rem 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+                button { width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+            </style>
+        </head>
+        <body>
+            <form method="POST">
+                <h2 style="margin: 0; color: #003366;">Admin Access</h2>
+                <input type="password" name="password" placeholder="Enter security key" required autofocus>
+                <button type="submit">Unlock System</button>
+            </form>
+        </body>
+        </html>
+        <?php
+        exit;
+    }
+}
+
 // admin.php - Simple admin panel
 require_once 'functions.php';
 
