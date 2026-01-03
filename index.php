@@ -4,7 +4,7 @@ include 'header.php';
 ?>
 
 <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('attached_assets/image_1767436778420.png'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; text-align: left; padding: 0 10%;">
-    <div style="max-width: 900px; margin-top: 80px;">
+    <div style="max-width: 900px; margin-top: 110px;">
         <h1 style="font-size: 4rem; margin-bottom: 0.5rem; font-weight: 800; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Youth Crypto Forum Germany 2026</h1>
         <p style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; opacity: 0.9;">Shaping the Future of Digital Economy & Blockchain Technology</p>
         <p style="font-size: 1.2rem; margin-bottom: 4rem; font-weight: 400; opacity: 0.8; max-width: 800px;">June 15–17, 2026<br>Berlin, Germany</p>

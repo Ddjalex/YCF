@@ -24,20 +24,21 @@
             background-color: #fcfcfc;
         }
         header {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(245, 250, 255, 0.98) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.92));
             backdrop-filter: blur(15px);
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 15px;
+            left: 20px;
+            right: 20px;
             z-index: 1000;
-            padding: 0 5%;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             height: 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         .logo-container {
             display: flex;
