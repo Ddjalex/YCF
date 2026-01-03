@@ -3,44 +3,47 @@ require_once 'functions.php';
 include 'header.php';
 ?>
 
-<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; text-align: left; padding: 0 10%;">
-    <div style="max-width: 800px;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 700; line-height: 1.1;">Youth Crypto Forum Germany 2026</h1>
-        <p style="font-size: 1.4rem; margin-bottom: 3rem; font-weight: 300; opacity: 0.9;">Shaping the Future of Digital Economy & Blockchain Technology</p>
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; text-align: left; padding: 0 10%;">
+    <div style="max-width: 800px; margin-top: 80px;">
+        <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); display: inline-block; padding: 0.5rem 1.5rem; border-radius: 30px; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.3);">
+            <span style="font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Berlin Blockchain Week 2026</span>
+        </div>
+        <h1 style="font-size: 4.5rem; margin-bottom: 1rem; font-weight: 800; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Youth Crypto Forum Germany 2026</h1>
+        <p style="font-size: 1.6rem; margin-bottom: 4rem; font-weight: 400; opacity: 0.9; max-width: 700px; line-height: 1.4;">Empowering the next generation of digital leaders through blockchain innovation and decentralization.</p>
         
-        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 12px; padding: 1.5rem 2rem; display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
-            <div style="background: var(--primary-blue); padding: 1rem 1.5rem; border-radius: 8px; margin-right: 2rem;">
-                <span style="font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Left until the Forum starts:</span>
+        <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border-radius: 20px; padding: 1rem; display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+            <div style="background: #00aeef; padding: 1.2rem 2rem; border-radius: 15px; margin-right: 2.5rem; box-shadow: inset 0 0 20px rgba(255,255,255,0.2);">
+                <span style="font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap;">Left until the Forum starts:</span>
             </div>
             
-            <div id="countdown" style="display: flex; gap: 1.5rem; align-items: baseline;">
-                <div class="time-block" style="text-align: center;">
-                    <span id="days" style="display: block; font-size: 2.2rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.7rem; opacity: 0.8;">Days</span>
+            <div id="countdown" style="display: flex; gap: 2rem; align-items: center; padding-right: 2rem;">
+                <div class="time-block" style="text-align: center; min-width: 80px;">
+                    <span id="days" style="display: block; font-size: 3rem; font-weight: 800; line-height: 1; letter-spacing: -1px;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; opacity: 0.7; letter-spacing: 1px;">Days</span>
                 </div>
-                <div style="font-size: 1.5rem; font-weight: 300; opacity: 0.5;">:</div>
-                <div class="time-block" style="text-align: center;">
-                    <span id="hours" style="display: block; font-size: 2.2rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.7rem; opacity: 0.8;">Hours</span>
+                <div style="font-size: 2rem; font-weight: 300; opacity: 0.4;">:</div>
+                <div class="time-block" style="text-align: center; min-width: 80px;">
+                    <span id="hours" style="display: block; font-size: 3rem; font-weight: 800; line-height: 1; letter-spacing: -1px;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; opacity: 0.7; letter-spacing: 1px;">Hours</span>
                 </div>
-                <div style="font-size: 1.5rem; font-weight: 300; opacity: 0.5;">:</div>
-                <div class="time-block" style="text-align: center;">
-                    <span id="minutes" style="display: block; font-size: 2.2rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.7rem; opacity: 0.8;">Minutes</span>
+                <div style="font-size: 2rem; font-weight: 300; opacity: 0.4;">:</div>
+                <div class="time-block" style="text-align: center; min-width: 80px;">
+                    <span id="minutes" style="display: block; font-size: 3rem; font-weight: 800; line-height: 1; letter-spacing: -1px;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; opacity: 0.7; letter-spacing: 1px;">Minutes</span>
                 </div>
-                <div style="font-size: 1.5rem; font-weight: 300; opacity: 0.5;">:</div>
-                <div class="time-block" style="text-align: center;">
-                    <span id="seconds" style="display: block; font-size: 2.2rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.7rem; opacity: 0.8;">Seconds</span>
+                <div style="font-size: 2rem; font-weight: 300; opacity: 0.4;">:</div>
+                <div class="time-block" style="text-align: center; min-width: 80px;">
+                    <span id="seconds" style="display: block; font-size: 3rem; font-weight: 800; line-height: 1; letter-spacing: -1px;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; opacity: 0.7; letter-spacing: 1px;">Seconds</span>
                 </div>
             </div>
             
-            <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 1.2rem 2.5rem; border-radius: 8px; margin-left: 2rem; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0, 174, 239, 0.4); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Register</a>
+            <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 1.5rem 3.5rem; border-radius: 15px; font-weight: 800; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(0, 174, 239, 0.5); transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px rgba(0, 174, 239, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(0, 174, 239, 0.5)'">Register</a>
         </div>
         
-        <div style="margin-top: 2rem; display: flex; gap: 2rem; font-size: 1.1rem; opacity: 0.9;">
-            <div style="display: flex; align-items: center;"><span style="margin-right: 0.5rem;">📅</span> June 15-17, 2026</div>
-            <div style="display: flex; align-items: center;"><span style="margin-right: 0.5rem;">📍</span> Berlin, Germany</div>
+        <div style="margin-top: 3rem; display: flex; gap: 4rem; font-size: 1.3rem; font-weight: 500; opacity: 0.9;">
+            <div style="display: flex; align-items: center;"><span style="margin-right: 0.8rem; font-size: 1.6rem;">📅</span> June 15-17, 2026</div>
+            <div style="display: flex; align-items: center;"><span style="margin-right: 0.8rem; font-size: 1.6rem;">📍</span> Berlin, Germany</div>
         </div>
     </div>
 </section>
