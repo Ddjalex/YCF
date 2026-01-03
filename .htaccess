@@ -1,10 +1,12 @@
 RewriteEngine On
 RewriteBase /
 
-# 1. Force /admin route to admin.php and STOP (L flag)
+# 1. Force /admin route to admin.php and STOP
+# This ensures that /admin always hits admin.php without redirection loops
 RewriteRule ^admin/?$ admin.php [L,NC,QSA]
 
 # 2. Redirect physical admin.php access to clean /admin
+# Only if it's a direct request for the .php file
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin\.php\ HTTP/
 RewriteRule ^admin\.php$ /admin [R=301,L]
 

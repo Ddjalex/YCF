@@ -6,6 +6,7 @@ require_once 'functions.php';
 if (!isset($_SESSION['authenticated'])) {
     if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
+        // Redirect to /admin instead of admin.php to ensure clean URL after login
         header("Location: /admin");
         exit;
     } else {
