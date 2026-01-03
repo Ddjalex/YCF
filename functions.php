@@ -1,13 +1,44 @@
 <?php
 // functions.php - Global utility functions
 
+function get_db_connection() {
+    $database_url = getenv('DATABASE_URL');
+    if (!$database_url) {
+        return null;
+    }
+    try {
+        $dbopts = parse_url($database_url);
+        $dsn = "pgsql:host={$dbopts['host']};port={$dbopts['port']};dbname=" . ltrim($dbopts['path'], '/');
+        return new PDO($dsn, $dbopts['user'], $dbopts['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    } catch (PDOException $e) {
+        return null;
+    }
+}
+
 /**
  * Formats a date for the countdown timer
  */
 function get_target_date() {
-    // Check for a saved countdown date, or use default
-    $saved_date = @file_get_contents('countdown_date.txt');
-    return $saved_date ?: "December 15, 2026 09:00:00";
+    $pdo = get_db_connection();
+    if ($pdo) {
+        $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) return $result['value'];
+    }
+    return "June 15, 2026 09:00:00";
+}
+
+/**
+ * Get hotel listings
+ */
+function get_hotels() {
+    $pdo = get_db_connection();
+    if ($pdo) {
+        $stmt = $pdo->query("SELECT * FROM hotels ORDER BY id DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return [];
 }
 
 /**

@@ -1,9 +1,10 @@
 <?php
 session_start();
+require_once 'functions.php';
 
 // Simple secure session check
 if (!isset($_SESSION['authenticated'])) {
-    if (isset($_POST['password']) && $_POST['password'] === 'admin2026') { // In production, use hashing
+    if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
     } else {
         ?>
@@ -12,17 +13,21 @@ if (!isset($_SESSION['authenticated'])) {
         <head>
             <title>Admin Login - UNPSF 2026</title>
             <style>
-                body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f7ff; margin: 0; }
-                form { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 300px; }
-                input { width: 100%; padding: 0.8rem; margin: 1rem 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-                button { width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+                body { font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f7ff; margin: 0; }
+                form { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+                input { width: 100%; padding: 1rem; margin: 1.5rem 0; border: 2px solid #edf2f7; border-radius: 8px; box-sizing: border-box; font-size: 1rem; transition: border-color 0.2s; }
+                input:focus { outline: none; border-color: #009edb; }
+                button { width: 100%; padding: 1rem; background: #009edb; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+                button:hover { background: #007bb5; }
             </style>
         </head>
         <body>
             <form method="POST">
-                <h2 style="margin: 0; color: #003366;">Admin Access</h2>
-                <input type="password" name="password" placeholder="Enter security key" required autofocus>
-                <button type="submit">Unlock System</button>
+                <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 60px; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #003366; font-size: 1.5rem;">Admin Terminal</h2>
+                <p style="color: #718096; font-size: 0.9rem; margin-top: 0.5rem;">Secure access required</p>
+                <input type="password" name="password" placeholder="Access Key" required autofocus>
+                <button type="submit">Initialize Dashboard</button>
             </form>
         </body>
         </html>
@@ -31,56 +36,110 @@ if (!isset($_SESSION['authenticated'])) {
     }
 }
 
-// admin.php - Simple admin panel
-require_once 'functions.php';
-
+$pdo = get_db_connection();
 $message = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['countdown_date'])) {
-        file_put_contents('countdown_date.txt', $_POST['countdown_date']);
-        $message = "Countdown date updated!";
-    }
-    
-    if (isset($_POST['news_json'])) {
-        $news_data = json_decode($_POST['news_json'], true);
-        if (json_last_error() === JSON_ERROR_NONE) {
-            file_put_contents('news_data.json', $_POST['news_json']);
-            $message = "News items updated!";
-        } else {
-            $message = "Invalid JSON for news items.";
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    if ($_POST['action'] === 'update_countdown') {
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('countdown_date', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
+        $stmt->execute([$_POST['countdown_date']]);
+        $message = "Countdown updated successfully!";
+    } elseif ($_POST['action'] === 'add_hotel') {
+        $stmt = $pdo->prepare("INSERT INTO hotels (name, description, location, video_url, photo_url, stars, map_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$_POST['name'], $_POST['description'], $_POST['location'], $_POST['video_url'], $_POST['photo_url'], $_POST['stars'], $_POST['map_url']]);
+        $message = "Hotel added successfully!";
+    } elseif ($_POST['action'] === 'delete_hotel') {
+        $stmt = $pdo->prepare("DELETE FROM hotels WHERE id = ?");
+        $stmt->execute([$_POST['id']]);
+        $message = "Hotel removed.";
     }
 }
 
+$hotels = get_hotels();
 $current_date = get_target_date();
-$current_news = json_encode(get_latest_news(), JSON_PRETTY_PRINT);
 
 include 'header.php';
 ?>
 
-<section style="padding: 4rem 5%; max-width: 800px; margin: 0 auto;">
-    <h2 style="color: var(--dark-blue);">Admin Dashboard</h2>
-    
+<div style="padding: 2rem 5%; max-width: 1200px; margin: 0 auto; font-family: 'Inter', sans-serif;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+        <h1 style="color: #003366; margin: 0;">System Control Center</h1>
+        <a href="index.php" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
+    </div>
+
     <?php if ($message): ?>
-        <p style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 4px;"><?php echo $message; ?></p>
+        <div style="background: #e6fffa; color: #2c7a7b; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #b2f5ea;"><?php echo $message; ?></div>
     <?php endif; ?>
 
-    <form method="POST" style="background: #f8f9fa; padding: 2rem; border-radius: 8px; border: 1px solid #eee; margin-bottom: 2rem;">
-        <h3>Update Event Countdown</h3>
-        <p style="font-size: 0.9rem; color: #666;">Format: Month Day, Year HH:MM:SS (e.g., December 15, 2026 09:00:00)</p>
-        <input type="text" name="countdown_date" value="<?php echo $current_date; ?>" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
-        <button type="submit" style="background: var(--primary-blue); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer;">Update Countdown</button>
-    </form>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+        <div>
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
+                <h3 style="margin-top: 0; color: #2d3748;">Global Countdown</h3>
+                <form method="POST">
+                    <input type="hidden" name="action" value="update_countdown">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Event Date</label>
+                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Sync Countdown</button>
+                </form>
+            </div>
 
-    <form method="POST" style="background: #f8f9fa; padding: 2rem; border-radius: 8px; border: 1px solid #eee;">
-        <h3>Manage News Items (JSON)</h3>
-        <p style="font-size: 0.9rem; color: #666;">Edit the news items in JSON format below:</p>
-        <textarea name="news_json" rows="15" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px; font-family: monospace; font-size: 0.85rem;"><?php echo $current_news; ?></textarea>
-        <button type="submit" style="background: var(--primary-blue); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer;">Update News Items</button>
-    </form>
-    
-    <p style="margin-top: 2rem;"><a href="index.php">&larr; Back to Website</a></p>
-</section>
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
+                <h3 style="margin-top: 0; color: #2d3748;">New Hotel Entry</h3>
+                <form method="POST">
+                    <input type="hidden" name="action" value="add_hotel">
+                    <input type="text" name="name" placeholder="Hotel Name" required style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <input type="text" name="location" placeholder="Location String" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <textarea name="description" placeholder="Short Description" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;"></textarea>
+                    <input type="text" name="video_url" placeholder="Video URL (YouTube/MP4)" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <input type="text" name="photo_url" placeholder="Photo Path/URL" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="number" name="stars" value="5" min="1" max="5" style="width: 50%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        <input type="text" name="map_url" placeholder="Map Link" style="width: 50%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; cursor: pointer;">Deploy Entry</button>
+                </form>
+            </div>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
+            <h3 style="margin-top: 0; color: #2d3748;">Active Hotel Database</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="text-align: left; border-bottom: 2px solid #edf2f7;">
+                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Name/Location</th>
+                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Visuals</th>
+                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($hotels as $hotel): ?>
+                            <tr style="border-bottom: 1px solid #edf2f7;">
+                                <td style="padding: 1rem 0.5rem;">
+                                    <div style="font-weight: 600; color: #2d3748;"><?php echo htmlspecialchars($hotel['name']); ?></div>
+                                    <div style="font-size: 0.8rem; color: #a0aec0;"><?php echo htmlspecialchars($hotel['location']); ?></div>
+                                </td>
+                                <td style="padding: 1rem 0.5rem;">
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <?php if ($hotel['photo_url']): ?><span title="Photo">🖼️</span><?php endif; ?>
+                                        <?php if ($hotel['video_url']): ?><span title="Video">🎥</span><?php endif; ?>
+                                        <span style="color: #ecc94b;"><?php echo str_repeat('★', $hotel['stars']); ?></span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem 0.5rem;">
+                                    <form method="POST" onsubmit="return confirm('Are you sure?')">
+                                        <input type="hidden" name="action" value="delete_hotel">
+                                        <input type="hidden" name="id" value="<?php echo $hotel['id']; ?>">
+                                        <button type="submit" style="background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include 'footer.php'; ?>

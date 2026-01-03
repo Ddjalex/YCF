@@ -76,50 +76,39 @@ include 'header.php';
 
 <section class="hotels" style="padding: 4rem 10%; background: #fff;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">HOTELS</h2>
+        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">List of hotels located near UNPSF 2026 event</h2>
         <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_3678f2dc.jpg'); background-size: cover;"></div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <?php 
+        $hotels = get_hotels();
+        if (empty($hotels)) {
+            echo "<p style='color: #666;'>No hotels listed yet.</p>";
+        }
+        foreach ($hotels as $hotel): ?>
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+            <div style="height: 200px; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center; position: relative;">
+                <?php if ($hotel['video_url']): ?>
+                <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; display: flex; align-items: center; gap: 5px; cursor: pointer;" onclick="window.open('<?php echo $hotel['video_url']; ?>', '_blank')">
+                    <span>▶</span> Video Tour
+                </div>
+                <?php endif; ?>
+            </div>
             <div style="padding: 1.5rem;">
-                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
-                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">The Ritz-Carlton, Berlin</h3>
-                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 1rem;">📍</span> See on Google Maps
-                </a>
+                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    <?php echo str_repeat('★', $hotel['stars']); ?>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--dark-blue); margin: 0 0 0.5rem; height: 1.4rem; overflow: hidden;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; height: 2.5rem; overflow: hidden;"><?php echo htmlspecialchars($hotel['description']); ?></p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #00aeef; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: #f0faff; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600;">
+                        <span>📍</span> See on map
+                    </a>
+                    <a href="#" style="color: #333; font-size: 0.85rem; text-decoration: none; font-weight: 600;">View Detail</a>
+                </div>
             </div>
         </div>
-        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_c47aad9b.jpg'); background-size: cover;"></div>
-            <div style="padding: 1.5rem;">
-                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
-                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Hotel Adlon Kempinski</h3>
-                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 1rem;">📍</span> See on Google Maps
-                </a>
-            </div>
-        </div>
-        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_b68ea702.jpg'); background-size: cover;"></div>
-            <div style="padding: 1.5rem;">
-                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★</div>
-                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Waldorf Astoria Berlin</h3>
-                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 1rem;">📍</span> See on Google Maps
-                </a>
-            </div>
-        </div>
-        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_07610799.jpg'); background-size: cover;"></div>
-            <div style="padding: 1.5rem;">
-                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
-                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Grand Hyatt Berlin</h3>
-                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 1rem;">📍</span> See on Google Maps
-                </a>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>
 
