@@ -1,2 +1,11 @@
 RewriteEngine On
-RewriteRule ^admin$ admin.php [L]
+
+# Redirect /index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Hide .php extension for index.php (handled by rule above)
+# Hide .php extension for other files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

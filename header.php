@@ -121,14 +121,15 @@
             </div>
         </div>
         <nav>
-            <a href="#">About</a>
-            <a href="#">News</a>
-            <a href="#">Agenda</a>
-            <a href="#">Speakers</a>
-            <a href="#">Videos</a>
-            <a href="#">Photos</a>
-            <a href="#">Information</a>
-            <a href="#">Media Bank</a>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/news">News</a>
+            <a href="/agenda">Agenda</a>
+            <a href="/speakers">Speakers</a>
+            <a href="/videos">Videos</a>
+            <a href="/photos">Photos</a>
+            <a href="/information">Information</a>
+            <a href="/admin" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700;">Admin</a>
             <div class="header-tools">
                 <span class="search-icon">🔍</span>
                 <span class="lang-switch">EN</span>
