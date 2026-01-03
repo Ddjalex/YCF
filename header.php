@@ -26,7 +26,7 @@
         header {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
