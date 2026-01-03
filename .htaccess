@@ -2,8 +2,8 @@ RewriteEngine On
 RewriteBase /
 
 # Force admin.php for the /admin route explicitly
-RewriteRule ^admin$ admin.php [L,NC,QSA]
-RewriteRule ^admin/$ admin.php [L,NC,QSA]
+# We use [L] to stop processing other rules if this matches
+RewriteRule ^admin/?$ admin.php [L,NC,QSA]
 
 # Redirect /admin.php to /admin for clean URLs
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin\.php\ HTTP/
