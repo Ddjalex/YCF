@@ -60,11 +60,12 @@
 </head>
 <body>
     <header>
-        <a href="index.php" class="logo">UNPSF 2025</a>
+        <a href="index.php" class="logo">YCF 2026</a>
         <nav>
             <a href="#">About</a>
             <a href="#">Agenda</a>
             <a href="#">News</a>
+            <a href="admin.php" style="font-size: 0.8rem; color: #999;">Admin</a>
             <a href="#" class="btn-register">Register</a>
         </nav>
     </header>

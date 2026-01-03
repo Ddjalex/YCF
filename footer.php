@@ -1,9 +1,9 @@
     </main>
-    <footer style="background: var(--dark-blue); color: white; padding: 3rem 5%; margin-top: 3rem;">
+    <footer style="background: #000; color: white; padding: 3rem 5%; margin-top: 3rem;">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 250px;">
-                <h3>UNPSF 2025</h3>
-                <p>Official portal for the United Nations Peace & Security Framework Summit.</p>
+                <h3 style="color: var(--primary-blue);">YCF 2026</h3>
+                <p>Official portal for the Youth Crypto Forum Germany.</p>
             </div>
             <div style="flex: 1; min-width: 150px;">
                 <h4>Quick Links</h4>
