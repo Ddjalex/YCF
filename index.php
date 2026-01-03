@@ -59,7 +59,7 @@ include 'header.php';
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
         <?php foreach (get_latest_news() as $item): ?>
             <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-                <div style="height: 200px; background: #eee; background-image: url('https://images.unsplash.com/photo-1621761191319-c6fb62004009?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'); background-size: cover;"></div>
+                <div style="height: 200px; background: #eee; background-image: url('<?php echo $item['image']; ?>'); background-size: cover;"></div>
                 <div style="padding: 2rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                         <span style="background: var(--primary-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; margin-right: 1rem;"><?php echo $item['category']; ?></span>
@@ -71,6 +71,97 @@ include 'header.php';
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="hotels" style="padding: 4rem 10%; background: #fff;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">HOTELS</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_3678f2dc.jpg'); background-size: cover;"></div>
+            <div style="padding: 1.5rem;">
+                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
+                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">The Ritz-Carlton, Berlin</h3>
+                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1rem;">📍</span> See on Google Maps
+                </a>
+            </div>
+        </div>
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_c47aad9b.jpg'); background-size: cover;"></div>
+            <div style="padding: 1.5rem;">
+                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
+                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Hotel Adlon Kempinski</h3>
+                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1rem;">📍</span> See on Google Maps
+                </a>
+            </div>
+        </div>
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_b68ea702.jpg'); background-size: cover;"></div>
+            <div style="padding: 1.5rem;">
+                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★</div>
+                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Waldorf Astoria Berlin</h3>
+                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1rem;">📍</span> See on Google Maps
+                </a>
+            </div>
+        </div>
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="height: 180px; background-image: url('attached_assets/stock_images/modern_hotel_buildin_07610799.jpg'); background-size: cover;"></div>
+            <div style="padding: 1.5rem;">
+                <div style="color: #ffb400; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
+                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0 0 1rem;">Grand Hyatt Berlin</h3>
+                <a href="#" style="color: var(--primary-blue); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1rem;">📍</span> See on Google Maps
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="visa" style="padding: 4rem 10%; background: #f8fbff; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; pointer-events: none; display: flex; justify-content: center; align-items: center;">
+        <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="width: 80%; transform: rotate(-15deg);">
+    </div>
+    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">VISA REQUIREMENTS</h2>
+    <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); position: relative; z-index: 1;">
+        <p style="font-size: 1rem; color: #444; margin-bottom: 1.5rem; line-height: 1.8;">
+            Obtaining a visa is the responsibility of the participant. Please check the visa requirements for your nationality at the official website: <a href="https://www.auswaertiges-amt.de/en/visa-service" style="color: var(--primary-blue); font-weight: 600;">Germany Federal Foreign Office</a>.
+        </p>
+        <p style="font-size: 1rem; color: #444; margin-bottom: 1.5rem; line-height: 1.8;">
+            You can apply for a Schengen visa for Germany through the official portal. The application process includes completing the online form in <strong>English or German</strong>, uploading a passport-style photo and a scanned copy of your passport, and paying a <strong>consular fee</strong>. The visa is typically valid for 90 days.
+        </p>
+    </div>
+</section>
+
+<section class="emergency" style="padding: 4rem 10%;">
+    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">EMERGENCY PHONE NUMBERS</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Police / Fire / Emergency</h3>
+                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">112</div>
+            </div>
+            <div style="font-size: 2rem;">🛡️</div>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Medical Emergency</h3>
+                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">116 117</div>
+            </div>
+            <div style="font-size: 2rem;">🏥</div>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Forum Support Team</h3>
+                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">+49 30 12345678</div>
+            </div>
+            <div style="font-size: 2rem;">🎧</div>
+        </div>
     </div>
 </section>
 
