@@ -2,7 +2,7 @@ RewriteEngine On
 RewriteBase /
 
 # 1. Force /admin route to admin.php and STOP
-# This ensures that /admin always hits admin.php without redirection loops
+# We use [L] to stop processing other rules if this matches
 RewriteRule ^admin/?$ admin.php [L,NC,QSA]
 
 # 2. Redirect physical admin.php access to clean /admin
