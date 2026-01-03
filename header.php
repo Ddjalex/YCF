@@ -27,16 +27,15 @@
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             position: fixed;
-            top: 15px;
-            left: 20px;
-            right: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 0 2rem;
+            padding: 0 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             height: 70px;
         }
         .logo-container {
