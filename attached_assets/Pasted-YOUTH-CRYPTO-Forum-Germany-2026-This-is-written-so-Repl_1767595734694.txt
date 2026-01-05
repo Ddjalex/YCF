@@ -1,0 +1,115 @@
+YOUTH CRYPTO
+Forum Germany 2026
+
+This is written so Replit AI or a developer can recreate the header like the first image (text filled with images).
+
+Header Image Design Description (for Replit)
+Objective
+
+Create a modern hero/header design where the main headline text is filled with images, inspired by the Youth Development Forum 2026 style from thecgdl.org/ydf2026.
+
+Header Text (Exact Content)
+YOUTH CRYPTO
+Forum Germany 2026
+
+Visual Concept
+
+Minimal, clean, high-end conference website style
+
+White or very light background
+
+Focus on youth, crypto, blockchain, innovation, and Germany
+
+Professional, global, trustworthy look
+
+Text Mask / Image-Filled Text Effect
+
+The headline text must be:
+
+Very large
+
+Bold
+
+Uppercase for YOUTH CRYPTO
+
+Slightly smaller for Forum Germany 2026
+
+Image masking effect:
+
+Letters are transparent
+
+High-quality images visible inside the text
+
+Images inside text should include:
+
+Blockchain visuals
+
+Crypto symbols (abstract, not logos-heavy)
+
+Youth, technology, laptops, collaboration
+
+Modern city skyline (Germany / Europe style)
+
+Typography
+
+Modern sans-serif font:
+
+Montserrat / Poppins / Inter / similar
+
+Strong font weight (700–900)
+
+Clean spacing, no decorative fonts
+
+Layout
+
+Center-aligned text
+
+Two-line layout:
+
+Line 1 (dominant): YOUTH CRYPTO
+
+Line 2 (supporting): Forum Germany 2026
+
+Generous white space
+
+Fully responsive for mobile & tablet
+
+Technical Implementation (Important for Replit)
+
+Use CSS background-clip: text
+
+Include:
+
+background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+
+
+Background image:
+
+High resolution
+
+background-size: cover
+
+background-position: center
+
+Optional Animations (Nice to Have)
+
+Subtle background movement inside text on hover
+
+Smooth fade-in or slide-up animation on page load
+
+No heavy JS frameworks required
+
+Performance & Compatibility
+
+Optimized images
+
+Works in Chrome, Edge, Safari, Firefox
+
+Mobile-first approach
+
+Inspiration Reference
+
+Design inspired by:
+Youth Development Forum 2026 – thecgdl.org
