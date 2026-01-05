@@ -225,9 +225,10 @@
         <div class="logo-container">
             <img src="attached_assets/logo/Gemini_Generated_Image_zfd7g2zfd7g2zfd7.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
             <div class="logo-divider" style="height: 50px;"></div>
-            <div class="logo-text">
-                <span class="logo-main" style="font-size: 2.4rem; letter-spacing: 1px; font-weight: 800; color: #2D236E; line-height: 1;">YCF</span>
-                <span class="logo-sub" style="font-size: 0.85rem; margin-top: 2px; font-weight: 600; color: #2D236E; white-space: nowrap;">YOUTH CRYPTO Forum Germany 2026</span>
+            <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; text-transform: uppercase; color: #2D236E; font-weight: 700; line-height: 1.1; font-size: 0.9rem;">
+                <span>Youth</span>
+                <span>Crypto</span>
+                <span>Forum 2026</span>
             </div>
         </div>
         <nav>
