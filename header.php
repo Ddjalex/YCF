@@ -223,7 +223,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="attached_assets/logo/Gemini_Generated_Image_zfd7g2zfd7g2zfd7.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
+            <img src="attached_assets/logo/Gemini_Generated_Image_ol8lm2ol8lm2ol8l-removebg-preview.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
             <div class="logo-divider" style="height: 50px;"></div>
             <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; text-transform: uppercase; color: #2D236E; font-weight: 700; line-height: 1.1; font-size: 0.9rem;">
                 <span>Youth</span>

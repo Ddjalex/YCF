@@ -8,31 +8,38 @@ include 'header.php';
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
-    <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee;">
-        <div style="background: #00aeef; padding: 0 1.5rem; height: 100%; display: flex; align-items: center; border-radius: 8px;">
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
+    <div style="display: flex; gap: 3rem; align-items: center; margin-bottom: 40px; justify-content: center; width: 100%;">
+        <div style="width: 300px; height: 168px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; flex-shrink: 0; position: relative;">
+            <video src="attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+            <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Reference</div>
         </div>
-        
-        <div id="countdown" style="display: flex; gap: 1.5rem; align-items: center; padding: 0 2rem; color: #333; font-family: Inter, Arial, sans-serif;">
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                <span id="days" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">d</span>
+
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee; flex-shrink: 0;">
+            <div style="background: #00aeef; padding: 0 1.5rem; height: 100%; display: flex; align-items: center; border-radius: 8px;">
+                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
             </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                <span id="hours" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">h</span>
+            
+            <div id="countdown" style="display: flex; gap: 1.5rem; align-items: center; padding: 0 2rem; color: #333; font-family: Inter, Arial, sans-serif;">
+                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
+                    <span id="days" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">d</span>
+                </div>
+                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
+                    <span id="hours" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">h</span>
+                </div>
+                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
+                    <span id="minutes" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">m</span>
+                </div>
+                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
+                    <span id="seconds" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
+                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">s</span>
+                </div>
             </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                <span id="minutes" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">m</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                <span id="seconds" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">s</span>
-            </div>
+            
+            <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.background='#009edb'" onmouseout="this.style.background='#00aeef'">Register Now</a>
         </div>
-        
-        <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.background='#009edb'" onmouseout="this.style.background='#00aeef'">Register Now</a>
     </div>
 </section>
         
