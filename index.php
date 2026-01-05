@@ -79,36 +79,30 @@ include 'header.php';
 </section>
 
 <section class="hotels" style="padding: 4rem 10%; background: #fff;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">List of hotels located near UNPSF 2026 event</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 style="color: var(--dark-blue); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">HOTELS</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; font-size: 0.9rem;">View all &rsaquo;</a>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
         <?php 
         $hotels = get_hotels();
         if (empty($hotels)) {
             echo "<p style='color: #666;'>No hotels listed yet.</p>";
         }
         foreach ($hotels as $hotel): ?>
-        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; transition: transform 0.3s; width: 100%;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="height: 320px; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'; ?>'); background-size: cover; background-position: center; position: relative;">
-                <?php if ($hotel['video_url']): ?>
-                <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;" onclick="window.open('<?php echo $hotel['video_url']; ?>', '_blank')">
-                    <span>▶</span> Video Tour
-                </div>
-                <?php endif; ?>
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="height: 200px; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center;">
             </div>
-            <div style="padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
-                <div style="color: #ffb400; font-size: 0.9rem; letter-spacing: 2px;">
+            <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="color: #ffb400; font-size: 0.8rem; letter-spacing: 1px;">
                     <?php echo str_repeat('★', $hotel['stars']); ?>
                 </div>
-                <h3 style="font-size: 1.8rem; color: var(--dark-blue); margin: 0; font-weight: 700;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
+                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0; font-weight: 700; height: 1.4rem; overflow: hidden;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
                 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
-                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #00aeef; font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; background: #f0faff; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='#e1f5ff'" onmouseout="this.style.background='#f0faff'">
-                        <span style="font-size: 1.2rem;">📍</span> See on map
+                <div style="margin-top: 0.5rem;">
+                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #00aeef; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+                        <span style="font-size: 1.1rem;">📍</span> See on Google Maps
                     </a>
-                    <a href="#" style="color: #333; font-size: 0.95rem; text-decoration: none; font-weight: 700; letter-spacing: 0.5px; border-bottom: 2px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#333'" onmouseout="this.style.borderColor='transparent'">View Detail</a>
                 </div>
             </div>
         </div>
