@@ -135,6 +135,75 @@ function get_homepage_videos() {
 }
 
 /**
+ * Get live weather data for Berlin
+ */
+function get_weather_data() {
+    $url = "https://api.open-meteo.com/v1/forecast?latitude=52.5244&longitude=13.4019&current_weather=true&hourly=temperature_2m,weathercode&timezone=Europe%2FBerlin";
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    if (!$response) return null;
+    
+    $data = json_decode($response, true);
+    if (!isset($data['current_weather'])) return null;
+
+    $current = $data['current_weather'];
+    
+    // Map weather codes to emojis
+    $code_map = [
+        0 => '☀️', // Clear sky
+        1 => '🌤️', 2 => '🌤️', 3 => '☁️', // Mainly clear, partly cloudy, and overcast
+        45 => '🌫️', 48 => '🌫️', // Fog
+        51 => '🌦️', 53 => '🌦️', 55 => '🌦️', // Drizzle
+        61 => '🌧️', 63 => '🌧️', 65 => '🌧️', // Rain
+        71 => '❄️', 73 => '❄️', 75 => '❄️', // Snow fall
+        77 => '❄️', // Snow grains
+        80 => '🌦️', 81 => '🌦️', 82 => '🌦️', // Rain showers
+        85 => '❄️', 86 => '❄️', // Snow showers
+        95 => '⛈️', 96 => '⛈️', 99 => '⛈️', // Thunderstorm
+    ];
+
+    $icon = $code_map[$current['weathercode']] ?? '☀️';
+    
+    // Format forecast for next few hours
+    $forecast = [];
+    if (isset($data['hourly']['time'])) {
+        $now_idx = 0;
+        $now_time = time();
+        foreach ($data['hourly']['time'] as $idx => $time_str) {
+            if (strtotime($time_str) >= $now_time) {
+                $now_idx = $idx;
+                break;
+            }
+        }
+        
+        for ($i = 1; $i <= 6; $i++) {
+            if (isset($data['hourly']['time'][$now_idx + $i])) {
+                $t = strtotime($data['hourly']['time'][$now_idx + $i]);
+                $forecast[] = [
+                    'time' => date('H:00', $t),
+                    'temp' => round($data['hourly']['temperature_2m'][$now_idx + $i]) . '°',
+                    'icon' => $code_map[$data['hourly']['weathercode'][$now_idx + $i]] ?? '☀️'
+                ];
+            }
+        }
+    }
+
+    return [
+        'temp' => round($current['temperature_2m']) . '° C',
+        'icon' => $icon,
+        'description' => $current['weathercode'], // Could map to text if needed
+        'last_updated' => date('H:i'),
+        'forecast' => $forecast
+    ];
+}
+
+/**
  * Get global search results
  */
 function get_search_results($search) {

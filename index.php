@@ -263,33 +263,31 @@ if ($search):
 <section class="weather" style="padding: 4rem 10%; background: #f0f7ff;">
     <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">WEATHER IN BERLIN</h2>
     <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;">
+        <?php 
+        $weather = get_weather_data();
+        if ($weather): 
+        ?>
         <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 2rem; border-radius: 12px; min-width: 280px; box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);">
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Saturday, 03 January 2026 · Berlin</div>
+            <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;"><?php echo date('l, d F Y'); ?> · Berlin</div>
             <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <div style="font-size: 3rem;">☀️</div>
+                <div style="font-size: 3rem;"><?php echo $weather['icon']; ?></div>
                 <div>
-                    <div style="font-size: 2.5rem; font-weight: 700;">2.4° C</div>
-                    <div style="font-size: 1rem; opacity: 0.9;">Clear Sky</div>
+                    <div style="font-size: 2.5rem; font-weight: 700;"><?php echo $weather['temp']; ?></div>
+                    <div style="font-size: 1rem; opacity: 0.9;">Current Conditions</div>
                 </div>
             </div>
-            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: 11:00 ↻</div>
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: <?php echo $weather['last_updated']; ?> ↻</div>
         </div>
-        <?php 
-        $forecast = [
-            ['time' => '12:00', 'temp' => '2.40°', 'icon' => '☀️'],
-            ['time' => '15:00', 'temp' => '3.15°', 'icon' => '🌤️'],
-            ['time' => '18:00', 'temp' => '1.20°', 'icon' => '🌙'],
-            ['time' => '21:00', 'temp' => '-0.5°', 'icon' => '☁️'],
-            ['time' => '00:00', 'temp' => '-1.8°', 'icon' => '☁️'],
-            ['time' => '03:00', 'temp' => '-2.5°', 'icon' => '❄️'],
-        ];
-        foreach ($forecast as $f): ?>
+        <?php foreach ($weather['forecast'] as $f): ?>
         <div style="background: white; padding: 1.5rem; border-radius: 12px; min-width: 120px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
             <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><?php echo $f['icon']; ?></div>
             <div style="font-size: 1.1rem; font-weight: 700; color: var(--dark-blue);"><?php echo $f['temp']; ?></div>
             <div style="font-size: 0.8rem; color: #888; margin-top: 0.3rem;"><?php echo $f['time']; ?></div>
         </div>
         <?php endforeach; ?>
+        <?php else: ?>
+            <p style="color: #666;">Weather data currently unavailable.</p>
+        <?php endif; ?>
     </div>
 </section>
 
