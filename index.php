@@ -85,9 +85,10 @@ include 'header.php';
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
         <?php 
-        $hotels = get_hotels();
+        $search = $_GET['search'] ?? null;
+        $hotels = get_hotels($search);
         if (empty($hotels)) {
-            echo "<p style='color: #666;'>No hotels listed yet.</p>";
+            echo "<p style='color: #666;'>No hotels found matching your search.</p>";
         }
         foreach ($hotels as $hotel): ?>
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">

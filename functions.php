@@ -42,11 +42,16 @@ function get_db_connection() {
 /**
  * Get hotel listings
  */
-function get_hotels() {
+function get_hotels($search = null) {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->query("SELECT * FROM hotels ORDER BY id DESC");
+            if ($search) {
+                $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name ILIKE ? OR location ILIKE ? OR description ILIKE ? ORDER BY stars DESC, name ASC");
+                $stmt->execute(['%' . $search . '%', '%' . $search . '%', '%' . $search . '%']);
+            } else {
+                $stmt = $pdo->query("SELECT * FROM hotels ORDER BY stars DESC, name ASC");
+            }
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return [];

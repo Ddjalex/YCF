@@ -135,6 +135,29 @@
             padding-left: 1.5rem;
             margin-left: 0.5rem;
         }
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            width: 0;
+            opacity: 0;
+            border: 1px solid #ddd;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            outline: none;
+            position: absolute;
+            right: 100%;
+            margin-right: 10px;
+            background: white;
+        }
+        .search-input.active {
+            width: 180px;
+            opacity: 1;
+        }
         .search-icon {
             font-size: 1.1rem;
             color: #2D236E;
@@ -142,6 +165,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: color 0.2s;
+        }
+        .search-icon:hover {
+            color: var(--primary-blue);
         }
         .lang-switch {
             border: 1.5px solid #009edb;
@@ -276,9 +303,41 @@
                 <a href="/contact">Contact</a>
             </div>
             <div class="header-tools">
-                <span class="search-icon">🔍</span>
+                <div class="search-container">
+                    <form action="/" method="GET" style="margin: 0; display: flex; align-items: center;">
+                        <input type="text" name="search" class="search-input" id="searchInput" placeholder="Search hotels...">
+                        <span class="search-icon" id="searchIcon">🔍</span>
+                    </form>
+                </div>
                 <span class="lang-switch">EN</span>
             </div>
         </nav>
     </header>
+    <script>
+        const searchIcon = document.getElementById('searchIcon');
+        const searchInput = document.getElementById('searchInput');
+
+        searchIcon.addEventListener('click', () => {
+            searchInput.classList.toggle('active');
+            if (searchInput.classList.contains('active')) {
+                searchInput.focus();
+            } else if (searchInput.value.trim() !== '') {
+                searchInput.closest('form').submit();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchIcon.contains(e.target)) {
+                searchInput.classList.remove('active');
+            }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchInput.closest('form').submit();
+            }
+        });
+    </script>
     <main>
