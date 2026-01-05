@@ -3,6 +3,70 @@ require_once 'functions.php';
 include 'header.php';
 ?>
 
+<?php 
+$search = $_GET['search'] ?? null;
+if ($search): 
+    $searchResults = get_search_results($search);
+?>
+<section class="search-results" style="padding: 4rem 10%; background: #fff;">
+    <h2 style="color: var(--dark-blue); font-size: 2rem; margin-bottom: 2rem;">Search Results for "<?php echo htmlspecialchars($search); ?>"</h2>
+
+    <?php if (empty($searchResults['hotels']) && empty($searchResults['news']) && empty($searchResults['videos'])): ?>
+        <p style="color: #666; font-size: 1.2rem;">No results found across hotels, news, or videos.</p>
+    <?php endif; ?>
+
+    <?php if (!empty($searchResults['hotels'])): ?>
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Hotels</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <?php foreach ($searchResults['hotels'] as $hotel): ?>
+                <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <div style="height: 180px; background-image: url('<?php echo $hotel['photo_url']; ?>'); background-size: cover; background-position: center;"></div>
+                    <div style="padding: 1.2rem;">
+                        <h4 style="margin: 0 0 0.5rem; color: var(--dark-blue);"><?php echo htmlspecialchars($hotel['name']); ?></h4>
+                        <a href="<?php echo $hotel['map_url']; ?>" target="_blank" style="color: #00aeef; font-size: 0.85rem; text-decoration: none;">📍 See on Map</a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($searchResults['news'])): ?>
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">News & Updates</h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                <?php foreach ($searchResults['news'] as $news): ?>
+                <div style="padding: 1.5rem; background: #f8fbff; border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                    <h4 style="margin: 0 0 0.5rem; color: var(--dark-blue);"><?php echo htmlspecialchars($news['title']); ?></h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #666;"><?php echo htmlspecialchars($news['summary']); ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($searchResults['videos'])): ?>
+        <div>
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Videos</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <?php foreach ($searchResults['videos'] as $vid): ?>
+                <div style="border-radius: 12px; overflow: hidden; position: relative; height: 120px; background: #000;">
+                    <video src="<?php echo $vid['video_url']; ?>" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;"></video>
+                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 10px; font-size: 0.8rem; background: rgba(0,0,0,0.3);">
+                        <?php echo htmlspecialchars($vid['title']); ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/" style="display: inline-block; padding: 1rem 2.5rem; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 30px; font-weight: 600;">Back to Home</a>
+    </div>
+</section>
+<?php else: ?>
 <section class="hero-container">
     <h1 class="hero-title image-text-mask">YOUTH CRYPTO</h1>
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
@@ -365,5 +429,7 @@ include 'header.php';
         }
     }, 1000);
 </script>
+
+<?php endif; // End search check ?>
 
 <?php include 'footer.php'; ?>

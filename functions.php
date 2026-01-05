@@ -135,8 +135,40 @@ function get_homepage_videos() {
 }
 
 /**
- * Mock data for news items
+ * Get global search results
  */
+function get_search_results($search) {
+    $pdo = get_db_connection();
+    $results = ['hotels' => [], 'news' => [], 'videos' => []];
+    
+    if (!$pdo || empty($search)) return $results;
+
+    $term = '%' . $search . '%';
+
+    try {
+        // Search Hotels
+        $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name ILIKE ? OR location ILIKE ? OR description ILIKE ? ORDER BY stars DESC");
+        $stmt->execute([$term, $term, $term]);
+        $results['hotels'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Search Videos
+        $stmt = $pdo->prepare("SELECT * FROM videos WHERE title ILIKE ? ORDER BY id DESC");
+        $stmt->execute([$term]);
+        $results['videos'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Search News
+        $all_news = get_latest_news();
+        $results['news'] = array_filter($all_news, function($item) use ($search) {
+            return stripos($item['title'], $search) !== false || stripos($item['summary'], $search) !== false;
+        });
+
+    } catch (PDOException $e) {
+        error_log("Search failed: " . $e->getMessage());
+    }
+
+    return $results;
+}
+
 function get_latest_news() {
     $news_file = 'news_data.json';
     if (file_exists($news_file)) {
