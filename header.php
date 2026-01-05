@@ -116,8 +116,8 @@
             <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" alt="UN Logo" class="logo-main-img">
             <div class="logo-divider"></div>
             <div class="logo-text">
-                <span class="logo-main">YOUTH CRYPTO</span>
-                <span class="logo-sub">Forum Germany 2026</span>
+                <span class="logo-main">YOUNG PEACEBUILDERS</span>
+                <span class="logo-sub">Program Germany 2026</span>
             </div>
         </div>
         <nav>

@@ -80,8 +80,8 @@ include '../header.php';
                 <h3 style="margin-top: 0; color: #2d3748;">Global Countdown</h3>
                 <form method="POST">
                     <input type="hidden" name="action" value="update_countdown">
-                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Event Date</label>
-                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Program Start Date</label>
+                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;" placeholder="e.g. June 15, 2026 09:00:00">
                     <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Sync Countdown</button>
                 </form>
             </div>
