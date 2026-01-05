@@ -83,16 +83,18 @@ function get_hero_video() {
             $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'hero_video'");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result && !empty($result['value'])) return $result['value'];
+            if ($result && !empty($result['value'])) {
+                $val = $result['value'];
+                // Clean up any double slashes and ensure local paths don't start with / for logic consistency
+                if (strpos($val, '//') === 0) $val = ltrim($val, '/');
+                return $val;
+            }
         } catch (PDOException $e) {
         }
     }
     
-    $hero_video = 'attached_assets/hero_video.mp4';
-    if (!file_exists($hero_video)) {
-        $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
-    }
-    return $hero_video;
+    // Default fallback
+    return 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
 }
 
 /**

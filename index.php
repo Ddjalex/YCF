@@ -12,7 +12,8 @@ include 'header.php';
         <?php 
         $hero_video = get_hero_video(); 
         // Ensure the path is correctly formatted for the browser
-        if (strpos($hero_video, 'http') !== 0 && strpos($hero_video, '/') !== 0 && strpos($hero_video, 'attached_assets') !== 0) {
+        // Admin uploads go to 'uploads/' directory. We ensure the browser sees it correctly.
+        if (strpos($hero_video, 'http') !== 0 && strpos($hero_video, '/') !== 0 && strpos($hero_video, 'attached_assets') !== 0 && strpos($hero_video, 'uploads/') !== 0) {
             $hero_video = '/' . $hero_video;
         }
         ?>
