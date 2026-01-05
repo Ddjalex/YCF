@@ -3,48 +3,54 @@ require_once 'functions.php';
 include 'header.php';
 ?>
 
-<section class="hero-container">
-    <h1 class="hero-title image-text-mask">YOUTH CRYPTO</h1>
-    <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
-    <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
-    
-    <div style="display: flex; gap: 3rem; align-items: center; margin-bottom: 40px; justify-content: center; width: 100%;">
-        <div style="width: 300px; height: 168px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; flex-shrink: 0; position: relative;">
-            <?php 
-            $hero_video = 'attached_assets/hero_video.mp4';
-            if (!file_exists($hero_video)) {
-                $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
-            }
-            ?>
-            <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-            <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Reference</div>
+<section class="hero-container" style="background: #2D236E; color: white; padding: 100px 10% 60px;">
+    <div style="display: flex; gap: 4rem; align-items: flex-start; justify-content: space-between; margin-bottom: 60px;">
+        <div style="flex: 1; text-align: left;">
+            <h1 class="hero-title image-text-mask" style="font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; margin-bottom: 10px;">Youth Development</h1>
+            <h1 class="hero-title image-text-mask" style="font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; margin-bottom: 20px;">Forum 2026</h1>
+            <h2 style="font-size: 2.5rem; font-weight: 400; font-style: italic; opacity: 0.9;">Berlin, Germany</h2>
+            
+            <div style="margin-top: 40px; font-size: 1.1rem; line-height: 1.6; opacity: 0.8; max-width: 500px;">
+                <p>The Youth Cryptocurrency Forum 2026 is a global gathering of emerging leaders, professionals, and innovators from around the world. Organized to uplift the next generation of digital finance advocates.</p>
+            </div>
         </div>
 
-        <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee; flex-shrink: 0;">
-            <div style="background: #00aeef; padding: 0 1.5rem; height: 100%; display: flex; align-items: center; border-radius: 8px;">
-                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 20px; align-items: flex-end;">
+            <div style="width: 100%; max-width: 600px; aspect-ratio: 16/9; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: #000; position: relative;">
+                <?php 
+                $hero_video = 'attached_assets/hero_video.mp4';
+                if (!file_exists($hero_video)) {
+                    $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
+                }
+                ?>
+                <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
             </div>
             
-            <div id="countdown" style="display: flex; gap: 1.5rem; align-items: center; padding: 0 2rem; color: #333; font-family: Inter, Arial, sans-serif;">
-                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                    <span id="days" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">d</span>
-                </div>
-                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                    <span id="hours" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">h</span>
-                </div>
-                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                    <span id="minutes" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">m</span>
-                </div>
-                <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
-                    <span id="seconds" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
-                    <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">s</span>
-                </div>
+            <div style="width: 100%; max-width: 500px; aspect-ratio: 16/9; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: #000; position: relative; align-self: flex-start; margin-top: -60px; z-index: 2; border: 4px solid #2D236E;">
+                <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
-            
-            <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.background='#009edb'" onmouseout="this.style.background='#00aeef'">Register Now</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; background: #1a1442; padding: 40px; border-radius: 40px; border: 2px solid rgba(255, 215, 0, 0.3);">
+        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; color: white;">Time To Application Deadline</h3>
+        <div style="display: flex; justify-content: center; gap: 40px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; background: #FFD700; color: #1a1442; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; font-weight: 900; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); border: 4px solid #1a1442;" id="days">00</div>
+                <span style="font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #FFD700;">Days</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; background: #FFD700; color: #1a1442; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; font-weight: 900; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); border: 4px solid #1a1442;" id="hours">00</div>
+                <span style="font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #FFD700;">Hours</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; background: #FFD700; color: #1a1442; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; font-weight: 900; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); border: 4px solid #1a1442;" id="minutes">00</div>
+                <span style="font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #FFD700;">Minutes</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; background: #FFD700; color: #1a1442; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; font-weight: 900; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); border: 4px solid #1a1442;" id="seconds">00</div>
+                <span style="font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #FFD700;">Seconds</span>
+            </div>
         </div>
     </div>
 </section>
