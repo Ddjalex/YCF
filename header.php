@@ -130,23 +130,35 @@
         .header-tools {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            border-left: 1px solid #eee;
+            gap: 1.5rem;
+            border-left: 1px solid rgba(0,0,0,0.06);
             padding-left: 1.5rem;
             margin-left: 0.5rem;
         }
         .search-icon {
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.1rem;
+            color: #2D236E;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .lang-switch {
-            border: 1.5px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 0.3rem 0.7rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            border: 1.5px solid #009edb;
+            color: #009edb;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
             font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            height: 32px;
+            min-width: 44px;
+            box-sizing: border-box;
         }
 
         /* Image-Filled Text Header Effect */
