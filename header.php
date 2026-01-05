@@ -118,6 +118,7 @@
             background: #fff;
             min-height: 80vh;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-container::before {
@@ -125,21 +126,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 15%;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .hero-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 15%;
-            height: 100%;
-            background: linear-gradient(to left, rgba(15, 23, 42, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(255, 255, 255, 0) 60%);
             pointer-events: none;
             z-index: 1;
         }
