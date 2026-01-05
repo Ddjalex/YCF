@@ -183,7 +183,7 @@ if ($search):
     </div>
 </section>
 
-<section class="hotels" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 26, 51, 0.85), rgba(0, 26, 51, 0.85)), url('attached_assets/germany-0_1767638104816.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
+<section class="hotels" style="padding: 6rem 10%; background: var(--dark-blue); color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
         <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
