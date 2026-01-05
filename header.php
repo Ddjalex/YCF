@@ -75,15 +75,57 @@
             align-items: center;
             gap: 2rem;
         }
+        nav .nav-item {
+            position: relative;
+            padding: 10px 0;
+        }
         nav a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
             font-size: 0.9rem;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
         nav a:hover {
             color: var(--primary-blue);
+        }
+        nav .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2D236E;
+            border-radius: 12px;
+            width: 200px;
+            padding: 10px 0;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1100;
+        }
+        nav .nav-item:hover .dropdown {
+            display: block;
+        }
+        nav .dropdown a {
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        nav .dropdown a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        nav .dropdown .badge {
+            background: #008000;
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
         }
         .header-tools {
             display: flex;
@@ -181,7 +223,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" alt="UN Logo" class="logo-main-img">
+            <img src="https://thecgdl.org/ydf2026/wp-content/uploads/2024/05/Asset-1-8.png" alt="YDF Logo" class="logo-main-img">
             <div class="logo-divider"></div>
             <div class="logo-text">
                 <span class="logo-main">YOUTH CRYPTO</span>
@@ -189,14 +231,37 @@
             </div>
         </div>
         <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/news">News</a>
-            <a href="/agenda">Agenda</a>
-            <a href="/speakers">Speakers</a>
-            <a href="/videos">Videos</a>
-            <a href="/photos">Photos</a>
-            <a href="/information">Information</a>
+            <div class="nav-item">
+                <a href="/">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="/about" style="color: #D4AF37;">About Us <span>⌄</span></a>
+                <div class="dropdown">
+                    <a href="#">Who We Are?</a>
+                    <a href="#">Board of Advisory</a>
+                    <a href="#">Board of Expert</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="/agenda">Upcoming Events <span>⌄</span></a>
+                <div class="dropdown">
+                    <a href="#">🇩🇪 YDF 2026 <span class="badge">NEW</span></a>
+                    <a href="#">🇪🇸 YGF 2026</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="/news">Previous Events <span>⌄</span></a>
+                <div class="dropdown">
+                    <a href="#">🇹🇷 YIF 2025</a>
+                    <a href="#">🇨🇭 YEF 2025</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="/blog">Blog</a>
+            </div>
+            <div class="nav-item">
+                <a href="/contact">Contact</a>
+            </div>
             <div class="header-tools">
                 <span class="search-icon">🔍</span>
                 <span class="lang-switch">EN</span>
