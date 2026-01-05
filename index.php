@@ -10,7 +10,13 @@ include 'header.php';
     
     <div style="display: flex; gap: 3rem; align-items: center; margin-bottom: 40px; justify-content: center; width: 100%;">
         <div style="width: 300px; height: 168px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; flex-shrink: 0; position: relative;">
-            <video src="attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+            <?php 
+            $hero_video = 'attached_assets/hero_video.mp4';
+            if (!file_exists($hero_video)) {
+                $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
+            }
+            ?>
+            <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
             <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Reference</div>
         </div>
 
