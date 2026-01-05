@@ -7,38 +7,38 @@ require_once '../functions.php';
 if (!isset($_SESSION['authenticated'])) {
     if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
-        // Ensure we stay on /admin/ after login
         header("Location: /admin/");
         exit;
     } else {
-        ?>
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Admin Login - UNPSF 2026</title>
-            <style>
-                body { font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f7ff; margin: 0; }
-                form { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 350px; text-align: center; }
-                input { width: 100%; padding: 1rem; margin: 1.5rem 0; border: 2px solid #edf2f7; border-radius: 8px; box-sizing: border-box; font-size: 1rem; transition: border-color 0.2s; }
-                input:focus { outline: none; border-color: #009edb; }
-                button { width: 100%; padding: 1rem; background: #009edb; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
-                button:hover { background: #007bb5; }
-            </style>
-        </head>
-        <body>
-            <form method="POST">
-                <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 60px; margin-bottom: 1.5rem;">
-                <h2 style="margin: 0; color: #003366; font-size: 1.5rem;">Admin Terminal</h2>
-                <p style="color: #718096; font-size: 0.9rem; margin-top: 0.5rem;">Secure access required</p>
-                <input type="password" name="password" placeholder="Access Key" required autofocus>
-                <button type="submit">Initialize Dashboard</button>
-            </form>
-        </body>
-        </html>
-        <?php
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login - UNPSF 2026</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f7ff; margin: 0; }
+        form { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+        input { width: 100%; padding: 1rem; margin: 1.5rem 0; border: 2px solid #edf2f7; border-radius: 8px; box-sizing: border-box; font-size: 1rem; transition: border-color 0.2s; }
+        input:focus { outline: none; border-color: #009edb; }
+        button { width: 100%; padding: 1rem; background: #009edb; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+        button:hover { background: #007bb5; }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 60px; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0; color: #003366; font-size: 1.5rem;">Admin Terminal</h2>
+        <p style="color: #718096; font-size: 0.9rem; margin-top: 0.5rem;">Secure access required</p>
+        <input type="password" name="password" placeholder="Access Key" required autofocus>
+        <button type="submit">Initialize Dashboard</button>
+    </form>
+</body>
+</html>
+<?php
         exit;
     }
 }
+ob_end_clean(); // Ensure no output from login logic leaks
 
 $pdo = get_db_connection();
 if (!$pdo) {
