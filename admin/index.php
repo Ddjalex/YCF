@@ -1,13 +1,13 @@
 <?php
 session_start();
-require_once 'functions.php';
+require_once '../functions.php';
 
 // Simple secure session check
 if (!isset($_SESSION['authenticated'])) {
     if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
-        // Ensure we stay on /admin after login
-        header("Location: /admin");
+        // Ensure we stay on /admin/ after login
+        header("Location: /admin/");
         exit;
     } else {
         ?>
@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 $hotels = get_hotels();
 $current_date = get_target_date();
 
-include 'header.php';
+include '../header.php';
 ?>
 
 <div style="padding: 2rem 5%; max-width: 1200px; margin: 0 auto; font-family: 'Inter', sans-serif;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h1 style="color: #003366; margin: 0;">System Control Center</h1>
-        <a href="index.php" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
+        <a href="/" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
     </div>
 
     <?php if ($message): ?>
@@ -145,4 +145,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include '../footer.php'; ?>

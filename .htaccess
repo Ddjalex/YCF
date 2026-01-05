@@ -1,20 +1,16 @@
 RewriteEngine On
 RewriteBase /
 
-# 1. Force /admin route to admin.php and STOP
-# We use [L] to stop processing other rules if this matches
-RewriteRule ^admin/?$ admin.php [L,NC,QSA]
+# 1. Handle /admin/ specifically
+# admin area is now a physical folder /admin/
+# Visiting /admin (without slash) will be handled by directory redirect or our rules
+RewriteRule ^admin$ /admin/ [L,R=301]
 
-# 2. Redirect physical admin.php access to clean /admin
-# Only if it's a direct request for the .php file
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin\.php\ HTTP/
-RewriteRule ^admin\.php$ /admin [R=301,L]
+# 2. Redirect /index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
 
-# 3. Handle other pages (remove .php)
+# 3. Hide .php extension for other existing files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
-# 4. Redirect /index.php to /
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-RewriteRule ^index\.php$ / [R=301,L]
