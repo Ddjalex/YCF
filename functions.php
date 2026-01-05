@@ -4,16 +4,29 @@
 function get_db_connection() {
     $database_url = getenv('DATABASE_URL');
     if (!$database_url) {
+        error_log("DATABASE_URL not set");
         return null;
     }
     try {
+        // Simple DSN for PostgreSQL
+        $dsn = str_replace('postgres://', 'pgsql:host=', $database_url);
+        $dsn = str_replace('postgresql://', 'pgsql:host=', $dsn);
+        
+        // Extract components manually if needed, but PDO can often handle URL-like DSNs with some tweaking
+        // For Neon/Replit, it's usually better to parse it properly
         $dbopts = parse_url($database_url);
-        if (!$dbopts || !isset($dbopts['host'], $dbopts['port'], $dbopts['path'], $dbopts['user'], $dbopts['pass'])) {
-             return null;
-        }
-        $dsn = "pgsql:host={$dbopts['host']};port={$dbopts['port']};dbname=" . ltrim($dbopts['path'], '/');
-        return new PDO($dsn, $dbopts['user'], $dbopts['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        if (!$dbopts) return null;
+
+        $host = $dbopts['host'];
+        $port = $dbopts['port'] ?? 5432;
+        $user = $dbopts['user'];
+        $pass = $dbopts['pass'];
+        $dbname = ltrim($dbopts['path'], '/');
+
+        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require";
+        return new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     } catch (PDOException $e) {
+        error_log("Connection failed: " . $e->getMessage());
         return null;
     }
 }

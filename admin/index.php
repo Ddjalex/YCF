@@ -40,6 +40,9 @@ if (!isset($_SESSION['authenticated'])) {
 }
 
 $pdo = get_db_connection();
+if (!$pdo) {
+    die("Database connection failed. Please check your configuration.");
+}
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
