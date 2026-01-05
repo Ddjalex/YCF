@@ -1,13 +1,13 @@
 <?php
 session_start();
-require_once '../functions.php';
+require_once 'functions.php';
 
 // Simple secure session check
 if (!isset($_SESSION['authenticated'])) {
     if (isset($_POST['password']) && $_POST['password'] === 'admin2026') {
         $_SESSION['authenticated'] = true;
-        // Ensure we stay on /admin/ after login
-        header("Location: /admin/");
+        // Ensure we stay on /admin after login
+        header("Location: /admin");
         exit;
     } else {
         ?>
@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 $hotels = get_hotels();
 $current_date = get_target_date();
 
-include '../header.php';
+include 'header.php';
 ?>
 
 <div style="padding: 2rem 5%; max-width: 1200px; margin: 0 auto; font-family: 'Inter', sans-serif;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h1 style="color: #003366; margin: 0;">System Control Center</h1>
-        <a href="/" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
+        <a href="index.php" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
     </div>
 
     <?php if ($message): ?>
@@ -80,8 +80,8 @@ include '../header.php';
                 <h3 style="margin-top: 0; color: #2d3748;">Global Countdown</h3>
                 <form method="POST">
                     <input type="hidden" name="action" value="update_countdown">
-                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Program Start Date</label>
-                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;" placeholder="e.g. June 15, 2026 09:00:00">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Event Date</label>
+                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
                     <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Sync Countdown</button>
                 </form>
             </div>
@@ -145,4 +145,4 @@ include '../header.php';
     </div>
 </div>
 
-<?php include '../footer.php'; ?>
+<?php include 'footer.php'; ?>
