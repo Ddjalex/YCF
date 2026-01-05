@@ -170,9 +170,10 @@ include '../header.php';
                     </table>
                 </div>
             </div>
+        </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
-                <h3 style="margin-top: 0; color: #2d3748;">Active Hotel Database</h3>
+        <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
+            <h3 style="margin-top: 0; color: #2d3748;">Active Hotel Database</h3>
             <div style="overflow-x: auto;">
                 <table style="width: 100%; border-collapse: collapse;">
                     <thead>

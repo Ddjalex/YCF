@@ -35,6 +35,24 @@ function get_hotels() {
 }
 
 /**
+ * Formats a date for the countdown timer
+ */
+function get_target_date() {
+    $pdo = get_db_connection();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) return $result['value'];
+        } catch (PDOException $e) {
+            // Fallback
+        }
+    }
+    return "June 15, 2026 09:00:00";
+}
+
+/**
  * Get hero video
  */
 function get_hero_video() {
