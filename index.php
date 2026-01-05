@@ -8,7 +8,7 @@ include 'header.php';
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
-    <div style="width: 100%; max-width: 900px; height: 350px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; margin-bottom: 40px; position: relative;">
+    <div style="width: 100%; max-width: 1100px; height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 50px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $hero_video = get_hero_video(); 
         // Ensure the path is correctly formatted for the browser
@@ -18,7 +18,6 @@ include 'header.php';
         }
         ?>
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
-        <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; pointer-events: none;"></div>
     </div>
 
     <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee;">
