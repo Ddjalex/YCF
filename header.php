@@ -125,14 +125,14 @@
         }
 
         .image-text-mask {
-            background: linear-gradient(to right, rgba(0, 51, 102, 0.25) 0%, rgba(0, 51, 102, 0) 50%), url('attached_assets/image_1767436778420.png');
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0) 60%), url('attached_assets/image_1767436778420.png');
             background-size: 200% auto;
             background-repeat: repeat-x;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
-            animation: backgroundMove 30s linear infinite;
+            animation: backgroundMove 35s linear infinite;
             display: block;
         }
 
