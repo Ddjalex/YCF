@@ -183,32 +183,32 @@ if ($search):
     </div>
 </section>
 
-<section class="hotels" style="padding: 4rem 10%; background: #fff;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-        <h2 style="color: var(--dark-blue); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">HOTELS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; font-size: 0.9rem;">View all &rsaquo;</a>
+<section class="hotels" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 26, 51, 0.85), rgba(0, 26, 51, 0.85)), url('attached_assets/germany-0_1767638104816.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+        <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
         <?php 
         $search = $_GET['search'] ?? null;
         $hotels = get_hotels($search);
         if (empty($hotels)) {
-            echo "<p style='color: #666;'>No hotels found matching your search.</p>";
+            echo "<p style='color: rgba(255,255,255,0.7);'>No hotels found matching your search.</p>";
         }
         foreach ($hotels as $hotel): ?>
-        <div style="background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="height: 220px; padding: 15px;">
+        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 30px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="height: 240px; padding: 15px;">
                 <div style="width: 100%; height: 100%; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center; border-radius: 25px;"></div>
             </div>
-            <div style="padding: 0 2rem 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                <div style="color: #ffb400; font-size: 0.9rem; letter-spacing: 1px; font-weight: bold;">
+            <div style="padding: 0 2rem 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div style="color: #ffb400; font-size: 1rem; letter-spacing: 2px; font-weight: bold;">
                     <?php echo str_repeat('★', $hotel['stars']); ?>
                 </div>
-                <h3 style="font-size: 1.4rem; color: #001a33; margin: 0; font-weight: 700; height: 1.8rem; overflow: hidden; font-family: 'Inter', sans-serif;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
+                <h3 style="font-size: 1.6rem; color: white; margin: 0; font-weight: 700; height: 1.9rem; overflow: hidden; font-family: 'Inter', sans-serif;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
                 
                 <div style="margin-top: 1rem;">
-                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #444; font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-family: 'Inter', sans-serif;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00aeef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: rgba(255,255,255,0.9); font-size: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-family: 'Inter', sans-serif;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00aeef" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         See on Google Maps
                     </a>
                 </div>
