@@ -223,11 +223,11 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="https://thecgdl.org/ydf2026/wp-content/uploads/2024/05/Asset-1-8.png" alt="YDF Logo" class="logo-main-img">
+            <img src="https://thecgdl.org/ydf2026/wp-content/uploads/2024/05/Asset-1-8.png" alt="YCF Logo" class="logo-main-img">
             <div class="logo-divider"></div>
             <div class="logo-text">
-                <span class="logo-main">YOUTH CRYPTO</span>
-                <span class="logo-sub">Forum Germany 2026</span>
+                <span class="logo-main" style="font-size: 2.2rem; letter-spacing: 2px; font-weight: 800; color: #2D236E;">YCF</span>
+                <span class="logo-sub" style="font-size: 0.85rem; margin-top: -2px; font-weight: 600; color: #2D236E;">YOUTH CRYPTO Forum Germany 2026</span>
             </div>
         </div>
         <nav>
