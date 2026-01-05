@@ -223,7 +223,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="https://thecgdl.org/ydf2026/wp-content/uploads/2024/05/Asset-1-8.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; object-fit: contain;">
+            <img src="https://thecgdl.org/ydf2026/wp-content/uploads/2024/05/Asset-1-8.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
             <div class="logo-divider" style="height: 50px;"></div>
             <div class="logo-text">
                 <span class="logo-main" style="font-size: 2.4rem; letter-spacing: 1px; font-weight: 800; color: #2D236E; line-height: 1;">YCF</span>
