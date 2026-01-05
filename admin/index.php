@@ -40,6 +40,52 @@ if (!isset($_SESSION['authenticated'])) {
         <input type="password" name="password" placeholder="Access Key" required autofocus>
         <button type="submit">Initialize Dashboard</button>
     </form>
+    <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center;">
+        <div class="card" style="width:500px; max-height:90vh; overflow-y:auto; margin:0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <h3 style="margin:0;">Edit Hotel Entry</h3>
+                <button onclick="closeModal()" style="width:auto; background:none; color:#666; font-size:1.5rem; padding:0;">&times;</button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="edit_hotel">
+                <input type="hidden" name="id" id="edit_id">
+                <input type="hidden" name="current_photo" id="edit_current_photo">
+                
+                <input type="text" name="name" id="edit_name" placeholder="Hotel Name" required>
+                <input type="text" name="location" id="edit_location" placeholder="Location String">
+                <textarea name="description" id="edit_description" placeholder="Short Description" rows="3"></textarea>
+                <input type="text" name="video_url" id="edit_video_url" placeholder="Video URL (YouTube/MP4)">
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Update Photo (Current will be kept if empty)</label>
+                    <input type="file" name="hotel_photo_file" accept="image/*" style="background: #f9f9f9; padding: 0.5rem;">
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="number" name="stars" id="edit_stars" value="5" min="1" max="5" style="width: 50%;">
+                    <input type="text" name="map_url" id="edit_map_url" placeholder="Map Link" style="width: 50%;">
+                </div>
+                <button type="submit">Update Hotel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function editHotel(hotel) {
+            document.getElementById('edit_id').value = hotel.id;
+            document.getElementById('edit_name').value = hotel.name;
+            document.getElementById('edit_location').value = hotel.location;
+            document.getElementById('edit_description').value = hotel.description;
+            document.getElementById('edit_video_url').value = hotel.video_url;
+            document.getElementById('edit_current_photo').value = hotel.photo_url;
+            document.getElementById('edit_stars').value = hotel.stars;
+            document.getElementById('edit_map_url').value = hotel.map_url;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
 <?php
@@ -60,6 +106,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('countdown_date', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
         $stmt->execute([$_POST['countdown_date']]);
         $message = "Countdown updated successfully!";
+    } elseif ($_POST['action'] === 'edit_hotel') {
+        $id = $_POST['id'];
+        $photo_url = $_POST['current_photo'];
+        
+        if (isset($_FILES['hotel_photo_file']) && $_FILES['hotel_photo_file']['error'] === UPLOAD_ERR_OK) {
+            $upload_dir = '../uploads/';
+            if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+            $filename = time() . '_hotel_' . basename($_FILES['hotel_photo_file']['name']);
+            $target_path = $upload_dir . $filename;
+            
+            if (move_uploaded_file($_FILES['hotel_photo_file']['tmp_name'], $target_path)) {
+                $photo_url = 'uploads/' . $filename;
+            }
+        }
+
+        $stmt = $pdo->prepare("UPDATE hotels SET name = ?, description = ?, location = ?, video_url = ?, photo_url = ?, stars = ?, map_url = ? WHERE id = ?");
+        $stmt->execute([$_POST['name'], $_POST['description'], $_POST['location'], $_POST['video_url'], $photo_url, $_POST['stars'], $_POST['map_url'], $id]);
+        $message = "Hotel updated successfully!";
     } elseif ($_POST['action'] === 'add_hotel') {
         $photo_url = $_POST['photo_url'];
         
@@ -271,11 +335,14 @@ $homepage_videos = get_homepage_videos();
                                         </div>
                                     </td>
                                     <td>
-                                        <form method="POST" onsubmit="return confirm('Are you sure?')">
-                                            <input type="hidden" name="action" value="delete_hotel">
-                                            <input type="hidden" name="id" value="<?php echo $hotel['id']; ?>">
-                                            <button type="submit" class="badge-delete">Delete</button>
-                                        </form>
+                                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                            <button onclick="editHotel(<?php echo htmlspecialchars(json_encode($hotel)); ?>)" style="background: #edf2f7; color: #4a5568; border: none; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; width: auto;">Edit</button>
+                                            <form method="POST" onsubmit="return confirm('Are you sure?')" style="display:inline; margin:0;">
+                                                <input type="hidden" name="action" value="delete_hotel">
+                                                <input type="hidden" name="id" value="<?php echo $hotel['id']; ?>">
+                                                <button type="submit" class="badge-delete" style="width: auto;">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -287,5 +354,51 @@ $homepage_videos = get_homepage_videos();
     </div>
 </div>
 
+    <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center;">
+        <div class="card" style="width:500px; max-height:90vh; overflow-y:auto; margin:0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <h3 style="margin:0;">Edit Hotel Entry</h3>
+                <button onclick="closeModal()" style="width:auto; background:none; color:#666; font-size:1.5rem; padding:0;">&times;</button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="edit_hotel">
+                <input type="hidden" name="id" id="edit_id">
+                <input type="hidden" name="current_photo" id="edit_current_photo">
+                
+                <input type="text" name="name" id="edit_name" placeholder="Hotel Name" required>
+                <input type="text" name="location" id="edit_location" placeholder="Location String">
+                <textarea name="description" id="edit_description" placeholder="Short Description" rows="3"></textarea>
+                <input type="text" name="video_url" id="edit_video_url" placeholder="Video URL (YouTube/MP4)">
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Update Photo (Current will be kept if empty)</label>
+                    <input type="file" name="hotel_photo_file" accept="image/*" style="background: #f9f9f9; padding: 0.5rem;">
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="number" name="stars" id="edit_stars" value="5" min="1" max="5" style="width: 50%;">
+                    <input type="text" name="map_url" id="edit_map_url" placeholder="Map Link" style="width: 50%;">
+                </div>
+                <button type="submit">Update Hotel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function editHotel(hotel) {
+            document.getElementById('edit_id').value = hotel.id;
+            document.getElementById('edit_name').value = hotel.name;
+            document.getElementById('edit_location').value = hotel.location;
+            document.getElementById('edit_description').value = hotel.description;
+            document.getElementById('edit_video_url').value = hotel.video_url;
+            document.getElementById('edit_current_photo').value = hotel.photo_url;
+            document.getElementById('edit_stars').value = hotel.stars;
+            document.getElementById('edit_map_url').value = hotel.map_url;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
