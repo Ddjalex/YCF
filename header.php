@@ -108,6 +108,35 @@
             font-size: 0.8rem;
             font-weight: 700;
         }
+
+        /* Image Background Text Effect */
+        .hero-title-effect {
+            font-size: 8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 0;
+            background: url('attached_assets/image_1767436778420.png');
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+        
+        .hero-subtitle-effect {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+            line-height: 1;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            display: block;
+        }
     </style>
 </head>
 <body>
