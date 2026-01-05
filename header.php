@@ -6,7 +6,7 @@
     <title>UNPSF 2025 - Official Event Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #009edb;
@@ -14,6 +14,7 @@
             --light-blue: #e6f4fa;
             --white: #ffffff;
             --text-gray: #4a4a4a;
+            --deep-navy: #0a1128;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -23,6 +24,7 @@
             line-height: 1.6;
             background-color: #fcfcfc;
         }
+        .montserrat { font-family: 'Montserrat', sans-serif; }
         header {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);

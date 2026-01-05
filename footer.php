@@ -1,47 +1,47 @@
     </main>
-    <footer style="background: #0a1128; color: white; padding: 4rem 10% 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+    <footer style="background: var(--deep-navy); color: white; padding: 5rem 10% 2.5rem; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
             <!-- Column 1: Brand -->
             <div>
-                <img src="/attached_assets/logo/Gemini_Generated_Image_ol8lm2ol8lm2ol8l-removebg-preview.png" style="height: 50px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
-                <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.8; margin-bottom: 1.5rem;">
+                <img src="/attached_assets/logo/Gemini_Generated_Image_ol8lm2ol8lm2ol8l-removebg-preview.png" style="height: 65px; margin-bottom: 2rem; filter: brightness(0) invert(1);">
+                <p style="font-size: 1.05rem; line-height: 1.8; opacity: 0.85; margin-bottom: 2rem; font-weight: 300;">
                     Bridging Ideas Shaping Futures. The premier platform for youth innovation in the digital economy.
                 </p>
             </div>
 
             <!-- Column 2: Links -->
             <div>
-                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Policies, Terms and Conditions</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem;">
-                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.8; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">› Terms & Conditions</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.8; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">› Privacy Policies</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.8; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">› Refund Policies</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.8; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">› GDPR Compliance Policy</a></li>
+                <h3 class="montserrat" style="font-size: 1.3rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-blue);">Policies & Terms</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.2rem;">
+                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> GDPR Compliance</a></li>
                 </ul>
             </div>
 
             <!-- Column 3: Contact -->
             <div>
-                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Contact Us</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem;">
-                    <li style="display: flex; align-items: center; gap: 12px; font-size: 0.9rem; opacity: 0.8;">
-                        <span>📞</span> +49 (30) 1234-5678
+                <h3 class="montserrat" style="font-size: 1.3rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-blue);">Contact Us</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <li style="display: flex; align-items: center; gap: 15px; font-size: 1rem; opacity: 0.85;">
+                        <span style="font-size: 1.2rem;">📞</span> +49 (30) 1234-5678
                     </li>
-                    <li style="display: flex; align-items: center; gap: 12px; font-size: 0.9rem; opacity: 0.8;">
-                        <span>✉️</span> info@youthcryptoforum.de
+                    <li style="display: flex; align-items: center; gap: 15px; font-size: 1rem; opacity: 0.85;">
+                        <span style="font-size: 1.2rem;">✉️</span> info@youthcryptoforum.de
                     </li>
-                    <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">
-                        <span>📍</span> Germany: Pariser Platz 1, 10117 Berlin, Germany
+                    <li style="display: flex; align-items: flex-start; gap: 15px; font-size: 1rem; opacity: 0.85; line-height: 1.6;">
+                        <span style="font-size: 1.2rem;">📍</span> Pariser Platz 1, 10117 Berlin, Germany
                     </li>
                 </ul>
-                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <a href="#" style="width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">f</a>
-                    <a href="#" style="width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ig</a>
-                    <a href="#" style="width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>
+                <div style="display: flex; gap: 1.2rem; margin-top: 2.5rem;">
+                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">f</a>
+                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">ig</a>
+                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">in</a>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6;">
+        <div style="text-align: center; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; opacity: 0.6; font-weight: 300; letter-spacing: 0.5px;">
             Copyright © 2026 Youth Crypto Forum Germany
         </div>
     </footer>
