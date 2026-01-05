@@ -9,8 +9,14 @@ include 'header.php';
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
     <div style="width: 100%; max-width: 900px; height: 350px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; margin-bottom: 40px; position: relative;">
-        <?php $hero_video = get_hero_video(); ?>
-        <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline controls style="width: 100%; height: 100%; object-fit: cover;"></video>
+        <?php 
+        $hero_video = get_hero_video(); 
+        // Ensure the path is correctly formatted for the browser
+        if (strpos($hero_video, 'http') !== 0 && strpos($hero_video, '/') !== 0 && strpos($hero_video, 'attached_assets') !== 0) {
+            $hero_video = '/' . $hero_video;
+        }
+        ?>
+        <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline controls style="width: 100%; height: 100%; object-fit: cover;"></video>
         <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; pointer-events: none;">Live Reference</div>
     </div>
 

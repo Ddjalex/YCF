@@ -17,17 +17,18 @@ function get_db_connection() {
         $pass = $dbopts['pass'];
         $dbname = ltrim($dbopts['path'], '/');
 
-        // Try connection with SSL first, then fallback to without SSL if it fails
         $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;connect_timeout=5";
+        
+        // Try without SSL first as requested by the logs
         try {
-            $pdo = new PDO($dsn . ";sslmode=require", $user, $pass, [
+            $pdo = new PDO($dsn . ";sslmode=disable", $user, $pass, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_TIMEOUT => 5
             ]);
             return $pdo;
         } catch (PDOException $e) {
-            // Fallback to non-SSL if the server explicitly rejects SSL
-            return new PDO($dsn . ";sslmode=disable", $user, $pass, [
+            // Fallback to SSL if needed
+            return new PDO($dsn . ";sslmode=require", $user, $pass, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_TIMEOUT => 5
             ]);
