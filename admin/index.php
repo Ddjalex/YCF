@@ -1,4 +1,10 @@
 <?php
+// Increase limits at the absolute top of the file
+@ini_set('upload_max_filesize', '128M');
+@ini_set('post_max_size', '128M');
+@ini_set('memory_limit', '512M');
+@ini_set('max_execution_time', '600');
+
 ob_start();
 session_start();
 require_once '../functions.php';
@@ -10,6 +16,8 @@ if (!isset($_SESSION['authenticated'])) {
         header("Location: /admin/");
         exit;
     } else {
+        // Clear anything that might have leaked (like upload error warnings)
+        if (ob_get_length()) ob_clean();
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +46,8 @@ if (!isset($_SESSION['authenticated'])) {
         exit;
     }
 }
-ob_end_clean(); // Ensure no output from login logic leaks
+// Clean login output and potential warnings before rendering dashboard
+if (ob_get_length()) ob_clean();
 
 $pdo = get_db_connection();
 if (!$pdo) {
