@@ -17,13 +17,21 @@ function get_db_connection() {
         $pass = $dbopts['pass'];
         $dbname = ltrim($dbopts['path'], '/');
 
-        // Added connect_timeout and options to help with stability
-        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require;connect_timeout=5";
-        $pdo = new PDO($dsn, $user, $pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_TIMEOUT => 5
-        ]);
-        return $pdo;
+        // Try connection with SSL first, then fallback to without SSL if it fails
+        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;connect_timeout=5";
+        try {
+            $pdo = new PDO($dsn . ";sslmode=require", $user, $pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_TIMEOUT => 5
+            ]);
+            return $pdo;
+        } catch (PDOException $e) {
+            // Fallback to non-SSL if the server explicitly rejects SSL
+            return new PDO($dsn . ";sslmode=disable", $user, $pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_TIMEOUT => 5
+            ]);
+        }
     } catch (PDOException $e) {
         error_log("Connection failed: " . $e->getMessage());
         return null;
