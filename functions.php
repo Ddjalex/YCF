@@ -185,17 +185,20 @@ function get_weather_data() {
         for ($i = 1; $i <= 6; $i++) {
             if (isset($data['hourly']['time'][$now_idx + $i])) {
                 $t = strtotime($data['hourly']['time'][$now_idx + $i]);
+                $temp = isset($data['hourly']['temperature_2m'][$now_idx + $i]) ? $data['hourly']['temperature_2m'][$now_idx + $i] : 0;
+                $wcode = isset($data['hourly']['weathercode'][$now_idx + $i]) ? $data['hourly']['weathercode'][$now_idx + $i] : 0;
                 $forecast[] = [
                     'time' => date('H:00', $t),
-                    'temp' => round($data['hourly']['temperature_2m'][$now_idx + $i]) . '°',
-                    'icon' => $code_map[$data['hourly']['weathercode'][$now_idx + $i]] ?? '☀️'
+                    'temp' => round($temp) . '°',
+                    'icon' => $code_map[$wcode] ?? '☀️'
                 ];
             }
         }
     }
 
+    $curr_temp = isset($current['temperature_2m']) ? $current['temperature_2m'] : 0;
     return [
-        'temp' => round($current['temperature_2m']) . '° C',
+        'temp' => round($curr_temp) . '° C',
         'icon' => $icon,
         'description' => $current['weathercode'], // Could map to text if needed
         'last_updated' => date('H:i'),
