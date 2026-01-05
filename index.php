@@ -8,7 +8,7 @@ include 'header.php';
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
-    <div style="width: 100%; max-width: 1100px; height: 420px; border-radius: 60px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 50px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
+    <div style="width: 100%; max-width: 1100px; height: 420px; border-radius: 80px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 50px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $hero_video = get_hero_video(); 
         // Ensure the path is correctly formatted for the browser
