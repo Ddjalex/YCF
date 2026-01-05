@@ -119,32 +119,35 @@
             min-height: 80vh;
         }
 
+        @keyframes backgroundMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
         .image-text-mask {
+            background: url('attached_assets/image_1767436778420.png');
+            background-size: 200% auto;
+            background-repeat: repeat-x;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: backgroundMove 30s linear infinite;
+            display: block;
+        }
+
+        .hero-title {
             font-size: clamp(4rem, 15vw, 12rem);
             font-weight: 900;
             text-transform: uppercase;
             line-height: 0.85;
             margin: 0;
-            background: url('attached_assets/image_1767436778420.png');
-            background-size: cover;
-            background-position: center;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            display: block;
             letter-spacing: -0.02em;
-            transition: background-position 0.5s ease;
-        }
-        
-        .image-text-mask:hover {
-            background-position: bottom;
         }
 
         .hero-subtitle {
             font-size: clamp(1.5rem, 5vw, 4rem);
             font-weight: 700;
-            color: #111;
             margin-top: 10px;
             letter-spacing: -0.01em;
             line-height: 1.1;

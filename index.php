@@ -4,8 +4,8 @@ include 'header.php';
 ?>
 
 <section class="hero-container">
-    <h1 class="image-text-mask">YOUTH CRYPTO</h1>
-    <h2 class="hero-subtitle">Forum Germany 2026</h2>
+    <h1 class="hero-title image-text-mask">YOUTH CRYPTO</h1>
+    <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
     <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee;">
