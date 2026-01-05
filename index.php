@@ -75,8 +75,6 @@ if ($search):
     <div style="width: 100%; max-width: 1100px; height: 420px; border-radius: 80px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 50px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $hero_video = get_hero_video(); 
-        // Ensure the path is correctly formatted for the browser
-        // Admin uploads go to 'uploads/' directory. We ensure the browser sees it correctly.
         if (strpos($hero_video, 'http') !== 0 && strpos($hero_video, '/') !== 0 && strpos($hero_video, 'attached_assets') !== 0 && strpos($hero_video, 'uploads/') !== 0) {
             $hero_video = '/' . $hero_video;
         }
@@ -111,31 +109,8 @@ if ($search):
         <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.background='#009edb'" onmouseout="this.style.background='#00aeef'">Register Now</a>
     </div>
 </section>
-        
-        </div>
-</section>
 
 <section class="news" style="padding: 4rem 10%; background: #fcfcfc;">
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-        
-        if (distance < 0) {
-            clearInterval(updateCountdown);
-            document.getElementById("countdown").innerHTML = "EVENT STARTED";
-        }
-    }, 1000);
-</script>
-
-<?php endif; // End search check ?>
-
-<?php include 'footer.php'; ?>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">LATEST NEWS</h2>
         <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
@@ -156,6 +131,55 @@ if ($search):
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="agenda" style="padding: 4rem 10%;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">AGENDA</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 2rem;">
+            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                <span style="background: var(--primary-blue); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; margin-right: 1rem;">Day 1</span>
+                <span style="font-weight: 600; color: #666;">2026-06-15</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">09:00 - 10:10</div>
+                    <div style="color: #666; font-size: 0.95rem;">Opening Keynote: The Crypto Landscape in 2026</div>
+                </div>
+                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:10 - 10:30</div>
+                    <div style="color: #666; font-size: 0.95rem;">Coffee Break & Networking</div>
+                </div>
+                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:30 - 12:30</div>
+                    <div style="color: #666; font-size: 0.95rem;">Panel: Regulation vs Innovation in Germany</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #f8f9fa; border-radius: 12px; padding: 2rem;">
+            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                <span style="background: var(--primary-blue); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; margin-right: 1rem;">Day 2</span>
+                <span style="font-weight: 600; color: #666;">2026-06-16</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">09:00 - 10:00</div>
+                    <div style="color: #666; font-size: 0.95rem;">Workshop: Building Web3 Apps for the Masses</div>
+                </div>
+                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:00 - 13:00</div>
+                    <div style="color: #666; font-size: 0.95rem;">Hackathon: Sustainable Blockchain Solutions</div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -234,8 +258,6 @@ if ($search):
             <div style="font-size: 2rem;">🎧</div>
         </div>
     </div>
-</section>
-
 </section>
 
 <section class="weather" style="padding: 4rem 10%; background: #f0f7ff;">
@@ -374,19 +396,24 @@ if ($search):
     </div>
 </footer>
 
+<script>
+    const targetDate = new Date("<?php echo get_target_date(); ?>").getTime();
+    const updateCountdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-        
+        if (document.getElementById("days")) {
+            document.getElementById("days").innerText = days.toString().padStart(2, "0");
+            document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+        }
         if (distance < 0) {
             clearInterval(updateCountdown);
-            document.getElementById("countdown").innerHTML = "EVENT STARTED";
+            if (document.getElementById("countdown")) document.getElementById("countdown").innerHTML = "EVENT STARTED";
         }
     }, 1000);
 </script>
