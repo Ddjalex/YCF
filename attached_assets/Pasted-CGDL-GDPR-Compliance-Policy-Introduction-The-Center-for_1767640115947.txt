@@ -1,0 +1,71 @@
+CGDL GDPR Compliance Policy
+Introduction
+The Center for Global Development and Leadership (CGDL) is dedicated to safeguarding the privacy and personal data of all individuals, including event participants, partners, employees, and stakeholders. This GDPR Compliance Policy outlines how CGDL processes, stores, and protects personal data in accordance with the General Data Protection Regulation (GDPR) (EU) 2016/679.
+
+Scope
+This policy applies to:
+
+Participants registering for events or conferences organized by CGDL.
+Employees, contractors, and volunteers involved in event management and operations.
+Partners, sponsors, and vendors supporting CGDL events.
+Visitors and users interacting with CGDL through our website or digital platforms.
+This policy governs all personal data collected, processed, or stored by CGDL, regardless of location or source.
+
+What Data We Collect
+CGDL collects and processes the following categories of personal data:
+
+Personal Identification Data: Name, address, email, phone number, and passport details.
+Event-Related Information: Registration details, ticket purchases, session preferences, and event participation data.
+Financial Data: Payment information for event registrations and ticket sales.
+Media and Marketing Data: Photographs, videos, and testimonials for promotional purposes.
+Technical Data: IP addresses, cookies, and browsing activity on CGDL’s website.
+How We Use Personal Data
+CGDL processes personal data for the following purposes:
+
+Event Registration and Management: Facilitating event participation, ticket sales, and communication with attendees.
+Communication and Marketing: Sending event updates, newsletters, and promotional offers with explicit consent.
+Payment Processing: Securely processing ticket purchases and managing refunds where applicable.
+Compliance with Legal Obligations: Meeting legal requirements, including tax regulations and government reporting.
+Media Usage: Using photographs and videos captured during events for promotional purposes across CGDL’s platforms.
+Legal Basis for Processing
+CGDL processes personal data under the following legal bases:
+
+Consent: Explicit consent for specific purposes, such as receiving newsletters or marketing communications.
+Contractual Necessity: Processing required to fulfill contractual obligations (e.g., event registration and participation).
+Legal Obligation: Compliance with applicable laws and regulations.
+Legitimate Interest: Processing necessary for legitimate interests, such as improving event operations and participant engagement.
+How We Protect Personal Data
+CGDL implements robust technical and organizational measures to protect personal data from unauthorized access, loss, alteration, or misuse, including:
+
+Encryption: Sensitive data is encrypted both in transit and at rest.
+Access Control: Personal data is accessible only to authorized personnel.
+Regular Audits: Conducting regular data protection audits and assessments to ensure compliance.
+Data Retention Policy: Retaining personal data only as long as necessary for the purposes outlined in this policy or as required by law.
+Data Subject Rights
+Under the GDPR, data subjects have the following rights:
+
+Right to Access: Request access to personal data we hold.
+Right to Rectification: Request corrections to inaccurate or incomplete data.
+Right to Erasure: Request deletion of personal data, subject to legal requirements.
+Right to Restriction of Processing: Request restricted processing under certain circumstances.
+Right to Data Portability: Receive personal data in a structured, commonly used format.
+Right to Object: Object to data processing based on legitimate interests or direct marketing.
+Right to Withdraw Consent: Withdraw consent to data processing at any time.
+To exercise these rights, please contact us at [Insert Contact Email].
+
+Third-Party Sharing and Transfers
+CGDL may share personal data with third parties under the following circumstances:
+
+Event Partners and Vendors: Sharing data with event venues, sponsors, and vendors to facilitate operations.
+Payment Processors: Securely sharing payment information with Stripe and other payment gateways.
+Legal Obligations: Disclosing data to regulatory authorities as required by law.
+International Transfers: Ensuring appropriate safeguards, such as Standard Contractual Clauses (SCCs), for data transfers outside the European Economic Area (EEA).
+Cookies and Website Tracking
+Our website uses cookies and tracking technologies to enhance user experience and analyze website traffic. You can manage your cookie preferences through your browser settings.
+
+Data Breach Notification
+In the event of a data breach, CGDL will notify affected individuals and relevant authorities within 72 hours of becoming aware of the breach, as required by GDPR.
+
+Updates to this Policy
+We may periodically update this GDPR Compliance Policy to reflect changes in legal requirements or business operations. Updates will be posted on our website, and significant changes will be communicated directly to participants or partners.
+

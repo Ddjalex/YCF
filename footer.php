@@ -16,7 +16,7 @@
                     <li><a href="/terms.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
                     <li><a href="/privacy.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
                     <li><a href="/refund.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> GDPR Compliance</a></li>
+                    <li><a href="/gdpr.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> GDPR Compliance</a></li>
                 </ul>
             </div>
 
