@@ -117,6 +117,31 @@
             padding: 160px 20px 100px;
             background: #fff;
             min-height: 80vh;
+            position: relative;
+        }
+
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(15, 23, 42, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         @keyframes backgroundMove {
@@ -134,6 +159,8 @@
             color: transparent;
             animation: backgroundMove 35s linear infinite;
             display: block;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-title {
