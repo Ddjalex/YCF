@@ -112,10 +112,7 @@ if ($search):
     </div>
 </section>
         
-        <div style="margin-top: 3rem; display: flex; gap: 4rem; font-size: 1.3rem; font-weight: 500; opacity: 0.9;">
-        <div style="display: flex; align-items: center;"><span style="margin-right: 0.8rem; font-size: 1.6rem;">📅</span> June 15-17, 2026</div>
-        <div style="display: flex; align-items: center;"><span style="margin-right: 0.8rem; font-size: 1.6rem;">📍</span> Berlin, Germany</div>
-    </div>
+        </div>
 </section>
 
 <section class="news" style="padding: 4rem 10%; background: #fcfcfc;">
