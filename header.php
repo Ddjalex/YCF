@@ -125,7 +125,7 @@
         }
 
         .image-text-mask {
-            background: url('attached_assets/image_1767436778420.png');
+            background: linear-gradient(to right, rgba(0, 51, 102, 0.25) 0%, rgba(0, 51, 102, 0) 50%), url('attached_assets/image_1767436778420.png');
             background-size: 200% auto;
             background-repeat: repeat-x;
             -webkit-background-clip: text;
