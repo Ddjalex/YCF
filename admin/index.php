@@ -59,8 +59,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmt->execute([$_POST['id']]);
         $message = "Hotel removed.";
     } elseif ($_POST['action'] === 'update_hero_video') {
+        $video_path = $_POST['hero_video'];
+        
+        // Handle file upload
+        if (isset($_FILES['hero_video_file']) && $_FILES['hero_video_file']['error'] === UPLOAD_ERR_OK) {
+            $upload_dir = '../uploads/';
+            $filename = time() . '_' . basename($_FILES['hero_video_file']['name']);
+            $target_path = $upload_dir . $filename;
+            
+            if (move_uploaded_file($_FILES['hero_video_file']['tmp_name'], $target_path)) {
+                $video_path = 'uploads/' . $filename;
+            }
+        }
+
         $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('hero_video', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
-        $stmt->execute([$_POST['hero_video']]);
+        $stmt->execute([$video_path]);
         $message = "Hero video updated!";
     } elseif ($_POST['action'] === 'add_video') {
         $stmt = $pdo->prepare("INSERT INTO videos (title, video_url, thumbnail_url) VALUES (?, ?, ?)");
@@ -95,10 +108,19 @@ include '../header.php';
         <div>
             <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
                 <h3 style="margin-top: 0; color: #2d3748;">Hero Video</h3>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="update_hero_video">
-                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Hero Video URL (MP4)</label>
-                    <input type="text" name="hero_video" value="<?php echo htmlspecialchars($hero_video); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Current Video Path/URL</label>
+                        <input type="text" name="hero_video" value="<?php echo htmlspecialchars($hero_video); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Or Upload New Video</label>
+                        <input type="file" name="hero_video_file" accept="video/mp4" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; background: #f9f9f9;">
+                    </div>
+
                     <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Update Hero Video</button>
                 </form>
             </div>

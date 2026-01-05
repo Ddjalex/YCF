@@ -8,12 +8,6 @@ function get_db_connection() {
         return null;
     }
     try {
-        // Simple DSN for PostgreSQL
-        $dsn = str_replace('postgres://', 'pgsql:host=', $database_url);
-        $dsn = str_replace('postgresql://', 'pgsql:host=', $dsn);
-        
-        // Extract components manually if needed, but PDO can often handle URL-like DSNs with some tweaking
-        // For Neon/Replit, it's usually better to parse it properly
         $dbopts = parse_url($database_url);
         if (!$dbopts) return null;
 
@@ -23,8 +17,13 @@ function get_db_connection() {
         $pass = $dbopts['pass'];
         $dbname = ltrim($dbopts['path'], '/');
 
-        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require";
-        return new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        // Added connect_timeout and options to help with stability
+        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require;connect_timeout=5";
+        $pdo = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_TIMEOUT => 5
+        ]);
+        return $pdo;
     } catch (PDOException $e) {
         error_log("Connection failed: " . $e->getMessage());
         return null;
