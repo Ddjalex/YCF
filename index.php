@@ -152,18 +152,20 @@ if ($search):
             echo "<p style='color: #666;'>No hotels found matching your search.</p>";
         }
         foreach ($hotels as $hotel): ?>
-        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="height: 200px; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center;">
+        <div style="background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="height: 220px; padding: 15px;">
+                <div style="width: 100%; height: 100%; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center; border-radius: 25px;"></div>
             </div>
-            <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                <div style="color: #ffb400; font-size: 0.8rem; letter-spacing: 1px;">
+            <div style="padding: 0 2rem 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                <div style="color: #ffb400; font-size: 0.9rem; letter-spacing: 1px;">
                     <?php echo str_repeat('★', $hotel['stars']); ?>
                 </div>
-                <h3 style="font-size: 1.1rem; color: var(--dark-blue); margin: 0; font-weight: 700; height: 1.4rem; overflow: hidden;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
+                <h3 style="font-size: 1.4rem; color: #001a33; margin: 0; font-weight: 700; height: 1.8rem; overflow: hidden; font-family: 'Inter', sans-serif;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
                 
-                <div style="margin-top: 0.5rem;">
-                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #00aeef; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
-                        <span style="font-size: 1.1rem;">📍</span> See on Google Maps
+                <div style="margin-top: 1rem;">
+                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: #444; font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-family: 'Inter', sans-serif;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00aeef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        See on Google Maps
                     </a>
                 </div>
             </div>
