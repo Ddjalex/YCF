@@ -9,122 +9,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #009edb;
-            --dark-blue: #003366;
-            --light-blue: #e6f4fa;
+            --primary-blue: #00d2ff;
+            --neon-gold: #ffd700;
+            --dark-bg: #0a0e17;
+            --card-bg: #161b22;
+            --text-light: #e6edf3;
             --white: #ffffff;
-            --text-gray: #4a4a4a;
+            --text-gray: #8b949e;
         }
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--text-gray);
+            color: var(--text-light);
             line-height: 1.6;
-            background-color: #fcfcfc;
+            background-color: var(--dark-bg);
         }
         header {
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.92));
+            background: rgba(10, 14, 23, 0.8);
             backdrop-filter: blur(15px);
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            right: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             height: 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        .logo-main-img {
-            height: 55px;
-            width: auto;
-        }
-        .logo-divider {
-            width: 1px;
-            height: 45px;
-            background-color: rgba(0, 0, 0, 0.1);
-            margin: 0;
-        }
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
         }
         .logo-main {
             font-weight: 700;
-            font-size: 1rem;
-            color: var(--dark-blue);
-            line-height: 1.1;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
         .logo-sub {
-            font-size: 0.75rem;
-            color: #777;
-            font-weight: 400;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+            color: var(--neon-gold);
+            font-weight: 600;
         }
         nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
         nav a:hover {
             color: var(--primary-blue);
-        }
-        .header-tools {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            border-left: 1px solid #eee;
-            padding-left: 1.5rem;
-            margin-left: 0.5rem;
-        }
-        .search-icon {
-            font-size: 1.2rem;
-            color: #666;
-            cursor: pointer;
-        }
-        .lang-switch {
-            border: 1.5px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 0.3rem 0.7rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" alt="UN Logo" class="logo-main-img">
-            <div class="logo-divider"></div>
             <div class="logo-text">
                 <span class="logo-main">YOUTH CRYPTO</span>
-                <span class="logo-sub">Forum Germany 2026</span>
+                <span class="logo-sub">FORUM 2026</span>
             </div>
         </div>
         <nav>
             <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/apply">Apply</a>
-            <a href="/news">News</a>
+            <a href="/roadmap">Roadmap</a>
+            <a href="/tiers">Tiers</a>
+            <a href="/speakers">Speakers</a>
+            <a href="/apply">Mint Your Seat</a>
             <a href="/agenda">Agenda</a>
             <a href="/speakers">Speakers</a>
             <a href="/videos">Videos</a>
