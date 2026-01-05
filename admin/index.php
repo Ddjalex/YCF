@@ -7,7 +7,7 @@
 
 ob_start();
 session_start();
-require_once '../functions.php';
+include '../functions.php';
 
 // Simple secure session check
 if (!isset($_SESSION['authenticated'])) {
@@ -101,101 +101,122 @@ $current_date = get_target_date();
 $hero_video = get_hero_video();
 $homepage_videos = get_homepage_videos();
 
-include '../header.php';
+// Do not include public header in admin panel
+// include '../header.php';
 ?>
-
-<div style="padding: 2rem 5%; max-width: 1200px; margin: 0 auto; font-family: 'Inter', sans-serif;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h1 style="color: #003366; margin: 0;">System Control Center</h1>
-        <a href="/" style="text-decoration: none; color: #009edb; font-weight: 600;">&larr; Public View</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - UNPSF 2026</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+        .admin-nav { background: #003366; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .admin-logo { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .admin-content { padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem; }
+        input, textarea, select { width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem; box-sizing: border-box; }
+        button { width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        button:hover { background: #007bb5; }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem; border-bottom: 2px solid #edf2f7; }
+        td { padding: 1rem 0.5rem; border-bottom: 1px solid #edf2f7; }
+        .badge-delete { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="admin-nav">
+        <div class="admin-logo">Admin Terminal</div>
+        <a href="/" style="color: white; text-decoration: none; font-weight: 600;">Public Site &rarr;</a>
     </div>
 
-    <?php if ($message): ?>
-        <div style="background: #e6fffa; color: #2c7a7b; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #b2f5ea;"><?php echo $message; ?></div>
-    <?php endif; ?>
+    <div class="admin-content">
+        <?php if ($message): ?>
+            <div style="background: #e6fffa; color: #2c7a7b; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #b2f5ea;"><?php echo $message; ?></div>
+        <?php endif; ?>
 
     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
         <div>
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
+            <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">Hero Video</h3>
                 <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="update_hero_video">
                     
                     <div style="margin-bottom: 1rem;">
                         <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Current Video Path/URL</label>
-                        <input type="text" name="hero_video" value="<?php echo htmlspecialchars($hero_video); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        <input type="text" name="hero_video" value="<?php echo htmlspecialchars($hero_video); ?>">
                     </div>
 
                     <div style="margin-bottom: 1rem;">
                         <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Or Upload New Video</label>
-                        <input type="file" name="hero_video_file" accept="video/mp4" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; background: #f9f9f9;">
+                        <input type="file" name="hero_video_file" accept="video/mp4" style="background: #f9f9f9;">
                     </div>
 
-                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Update Hero Video</button>
+                    <button type="submit">Update Hero Video</button>
                 </form>
             </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
+            <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">Global Countdown</h3>
                 <form method="POST">
                     <input type="hidden" name="action" value="update_countdown">
                     <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Event Date</label>
-                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #2d3748; color: white; border: none; border-radius: 6px; cursor: pointer;">Sync Countdown</button>
+                    <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>">
+                    <button type="submit" style="background: #2d3748;">Sync Countdown</button>
                 </form>
             </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
+            <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">New Hotel Entry</h3>
                 <form method="POST">
                     <input type="hidden" name="action" value="add_hotel">
-                    <input type="text" name="name" placeholder="Hotel Name" required style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <input type="text" name="location" placeholder="Location String" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <textarea name="description" placeholder="Short Description" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;"></textarea>
-                    <input type="text" name="video_url" placeholder="Video URL (YouTube/MP4)" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <input type="text" name="photo_url" placeholder="Photo Path/URL" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                    <input type="text" name="name" placeholder="Hotel Name" required>
+                    <input type="text" name="location" placeholder="Location String">
+                    <textarea name="description" placeholder="Short Description" rows="3"></textarea>
+                    <input type="text" name="video_url" placeholder="Video URL (YouTube/MP4)">
+                    <input type="text" name="photo_url" placeholder="Photo Path/URL">
                     <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                        <input type="number" name="stars" value="5" min="1" max="5" style="width: 50%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
-                        <input type="text" name="map_url" placeholder="Map Link" style="width: 50%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        <input type="number" name="stars" value="5" min="1" max="5" style="width: 50%;">
+                        <input type="text" name="map_url" placeholder="Map Link" style="width: 50%;">
                     </div>
-                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; cursor: pointer;">Deploy Entry</button>
+                    <button type="submit">Deploy Entry</button>
                 </form>
             </div>
         </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
+        <div>
+            <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">Add New Video</h3>
                 <form method="POST">
                     <input type="hidden" name="action" value="add_video">
-                    <input type="text" name="title" placeholder="Video Title" required style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <input type="text" name="video_url" placeholder="Video URL" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <input type="text" name="thumbnail_url" placeholder="Thumbnail Image URL" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
-                    <button type="submit" style="width: 100%; padding: 0.8rem; background: #009edb; color: white; border: none; border-radius: 6px; cursor: pointer;">Add Video</button>
+                    <input type="text" name="title" placeholder="Video Title" required>
+                    <input type="text" name="video_url" placeholder="Video URL">
+                    <input type="text" name="thumbnail_url" placeholder="Thumbnail Image URL">
+                    <button type="submit">Add Video</button>
                 </form>
             </div>
 
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 2rem;">
+            <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">Manage Videos</h3>
                 <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse;">
+                    <table>
                         <thead>
-                            <tr style="text-align: left; border-bottom: 2px solid #edf2f7;">
-                                <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Title</th>
-                                <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Action</th>
+                            <tr>
+                                <th>Title</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($homepage_videos as $video): ?>
                                 <?php if (isset($video['id'])): ?>
-                                <tr style="border-bottom: 1px solid #edf2f7;">
-                                    <td style="padding: 1rem 0.5rem;">
+                                <tr>
+                                    <td>
                                         <div style="font-weight: 600; color: #2d3748;"><?php echo htmlspecialchars($video['title']); ?></div>
                                     </td>
-                                    <td style="padding: 1rem 0.5rem;">
+                                    <td>
                                         <form method="POST" onsubmit="return confirm('Are you sure?')">
                                             <input type="hidden" name="action" value="delete_video">
                                             <input type="hidden" name="id" value="<?php echo $video['id']; ?>">
-                                            <button type="submit" style="background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Delete</button>
+                                            <button type="submit" class="badge-delete">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -205,47 +226,48 @@ include '../header.php';
                     </table>
                 </div>
             </div>
-        </div>
 
-        <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #edf2f7;">
-            <h3 style="margin-top: 0; color: #2d3748;">Active Hotel Database</h3>
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="text-align: left; border-bottom: 2px solid #edf2f7;">
-                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Name/Location</th>
-                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Visuals</th>
-                            <th style="padding: 1rem 0.5rem; color: #718096; font-size: 0.8rem;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($hotels as $hotel): ?>
-                            <tr style="border-bottom: 1px solid #edf2f7;">
-                                <td style="padding: 1rem 0.5rem;">
-                                    <div style="font-weight: 600; color: #2d3748;"><?php echo htmlspecialchars($hotel['name']); ?></div>
-                                    <div style="font-size: 0.8rem; color: #a0aec0;"><?php echo htmlspecialchars($hotel['location']); ?></div>
-                                </td>
-                                <td style="padding: 1rem 0.5rem;">
-                                    <div style="display: flex; gap: 0.5rem;">
-                                        <?php if ($hotel['photo_url']): ?><span title="Photo">🖼️</span><?php endif; ?>
-                                        <?php if ($hotel['video_url']): ?><span title="Video">🎥</span><?php endif; ?>
-                                        <span style="color: #ecc94b;"><?php echo str_repeat('★', $hotel['stars']); ?></span>
-                                    </div>
-                                </td>
-                                <td style="padding: 1rem 0.5rem;">
-                                    <form method="POST" onsubmit="return confirm('Are you sure?')">
-                                        <input type="hidden" name="action" value="delete_hotel">
-                                        <input type="hidden" name="id" value="<?php echo $hotel['id']; ?>">
-                                        <button type="submit" style="background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Delete</button>
-                                    </form>
-                                </td>
+            <div class="card">
+                <h3 style="margin-top: 0; color: #2d3748;">Active Hotel Database</h3>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name/Location</th>
+                                <th>Visuals</th>
+                                <th>Action</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($hotels as $hotel): ?>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight: 600; color: #2d3748;"><?php echo htmlspecialchars($hotel['name']); ?></div>
+                                        <div style="font-size: 0.8rem; color: #a0aec0;"><?php echo htmlspecialchars($hotel['location']); ?></div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <?php if ($hotel['photo_url']): ?><span title="Photo">🖼️</span><?php endif; ?>
+                                            <?php if ($hotel['video_url']): ?><span title="Video">🎥</span><?php endif; ?>
+                                            <span style="color: #ecc94b;"><?php echo str_repeat('★', $hotel['stars']); ?></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form method="POST" onsubmit="return confirm('Are you sure?')">
+                                            <input type="hidden" name="action" value="delete_hotel">
+                                            <input type="hidden" name="id" value="<?php echo $hotel['id']; ?>">
+                                            <button type="submit" class="badge-delete">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<?php include '../footer.php'; ?>
+</body>
+</html>
