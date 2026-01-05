@@ -157,7 +157,7 @@ if ($search):
                 <div style="width: 100%; height: 100%; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center; border-radius: 25px;"></div>
             </div>
             <div style="padding: 0 2rem 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                <div style="color: #ffb400; font-size: 0.9rem; letter-spacing: 1px;">
+                <div style="color: #ffb400; font-size: 0.9rem; letter-spacing: 1px; font-weight: bold;">
                     <?php echo str_repeat('★', $hotel['stars']); ?>
                 </div>
                 <h3 style="font-size: 1.4rem; color: #001a33; margin: 0; font-weight: 700; height: 1.8rem; overflow: hidden; font-family: 'Inter', sans-serif;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
