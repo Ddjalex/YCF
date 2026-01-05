@@ -134,49 +134,49 @@ if ($search):
     </div>
 </section>
 
-<section class="agenda" style="padding: 4rem 10%;">
+<section class="agenda" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('attached_assets/1_Rs5tF_ifkt8I99W5BZyBKw_1767637840250.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">AGENDA</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
+        <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px;">AGENDA</h2>
+        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-        <div style="background: #f8f9fa; border-radius: 12px; padding: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
             <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                <span style="background: var(--primary-blue); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; margin-right: 1rem;">Day 1</span>
-                <span style="font-weight: 600; color: #666;">2026-06-15</span>
+                <span style="background: var(--primary-blue); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 700; margin-right: 1.2rem; font-size: 0.9rem;">Day 1</span>
+                <span style="font-weight: 600; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">2026-06-15</span>
             </div>
             
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">09:00 - 10:10</div>
-                    <div style="color: #666; font-size: 0.95rem;">Opening Keynote: The Crypto Landscape in 2026</div>
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">09:00 - 10:10</div>
+                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Opening Keynote: The Crypto Landscape in 2026</div>
                 </div>
-                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:10 - 10:30</div>
-                    <div style="color: #666; font-size: 0.95rem;">Coffee Break & Networking</div>
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:10 - 10:30</div>
+                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Coffee Break & Networking</div>
                 </div>
-                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:30 - 12:30</div>
-                    <div style="color: #666; font-size: 0.95rem;">Panel: Regulation vs Innovation in Germany</div>
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:30 - 12:30</div>
+                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Panel: Regulation vs Innovation in Germany</div>
                 </div>
             </div>
         </div>
 
-        <div style="background: #f8f9fa; border-radius: 12px; padding: 2rem;">
+        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
             <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                <span style="background: var(--primary-blue); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; margin-right: 1rem;">Day 2</span>
-                <span style="font-weight: 600; color: #666;">2026-06-16</span>
+                <span style="background: var(--primary-blue); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 700; margin-right: 1.2rem; font-size: 0.9rem;">Day 2</span>
+                <span style="font-weight: 600; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">2026-06-16</span>
             </div>
             
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">09:00 - 10:00</div>
-                    <div style="color: #666; font-size: 0.95rem;">Workshop: Building Web3 Apps for the Masses</div>
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">09:00 - 10:00</div>
+                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Workshop: Building Web3 Apps for the Masses</div>
                 </div>
-                <div style="background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="font-size: 0.9rem; font-weight: 700; color: #333; margin-bottom: 0.3rem;">10:00 - 13:00</div>
-                    <div style="color: #666; font-size: 0.95rem;">Hackathon: Sustainable Blockchain Solutions</div>
+                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:00 - 13:00</div>
+                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Hackathon: Sustainable Blockchain Solutions</div>
                 </div>
             </div>
         </div>
