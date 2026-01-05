@@ -359,65 +359,6 @@ if ($search):
     </div>
 </section>
 
-<footer style="background: #000; color: white; padding: 5rem 10% 2rem;">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4rem;">
-        <div style="max-width: 400px;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-                <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 50px; filter: brightness(0) invert(1);">
-                <div style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 1rem;">
-                    <div style="font-weight: 700; font-size: 1.1rem;">United Nations</div>
-                    <div style="font-size: 0.8rem; opacity: 0.6;">Dept. of Economic & Social Affairs</div>
-                </div>
-            </div>
-        </div>
-        <div style="display: flex; gap: 4rem;">
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">About</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">News</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Agenda</a>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Speakers</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Videos</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Photos</a>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Information</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem; opacity: 0.7;">Media Bank</a>
-            </div>
-        </div>
-    </div>
-    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-size: 0.8rem; opacity: 0.5;">Copyright © 2026. All Rights Reserved.</div>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="font-size: 0.8rem; opacity: 0.5;">Powered by</div>
-            <div style="font-weight: 800; letter-spacing: 1px; font-size: 1rem;">UZINFOCOM</div>
-        </div>
-    </div>
-</footer>
-
-<script>
-    const targetDate = new Date("<?php echo get_target_date(); ?>").getTime();
-    const updateCountdown = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        if (document.getElementById("days")) {
-            document.getElementById("days").innerText = days.toString().padStart(2, "0");
-            document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
-        }
-        if (distance < 0) {
-            clearInterval(updateCountdown);
-            if (document.getElementById("countdown")) document.getElementById("countdown").innerHTML = "EVENT STARTED";
-        }
-    }, 1000);
-</script>
-
 <?php endif; // End search check ?>
 
 <?php include 'footer.php'; ?>

@@ -1,22 +1,24 @@
     </main>
-    <footer style="background: #000; color: white; padding: 3rem 5%; margin-top: 3rem;">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px;">
-                <h3 style="color: var(--primary-blue);">YCF 2026</h3>
-                <p>Official portal for the Youth Crypto Forum Germany.</p>
-            </div>
-            <div style="flex: 1; min-width: 150px;">
-                <h4>Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
-                    <li><a href="#" style="color: white; text-decoration: none;">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 2rem;">
-            &copy; 2026 United Nations. All rights reserved.
-        </div>
-    </footer>
+    <script>
+        const targetDate = new Date("<?php echo get_target_date(); ?>").getTime();
+        const updateCountdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = days.toString().padStart(2, "0");
+                document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+            }
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                if (document.getElementById("countdown")) document.getElementById("countdown").innerHTML = "EVENT STARTED";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
