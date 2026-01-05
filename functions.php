@@ -35,21 +35,57 @@ function get_hotels() {
 }
 
 /**
- * Formats a date for the countdown timer
+ * Get hero video
  */
-function get_target_date() {
+function get_hero_video() {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'hero_video'");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result) return $result['value'];
+            if ($result && !empty($result['value'])) return $result['value'];
         } catch (PDOException $e) {
-            // Fallback
         }
     }
-    return "June 15, 2026 09:00:00";
+    
+    $hero_video = 'attached_assets/hero_video.mp4';
+    if (!file_exists($hero_video)) {
+        $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
+    }
+    return $hero_video;
+}
+
+/**
+ * Get homepage videos
+ */
+function get_homepage_videos() {
+    $pdo = get_db_connection();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->query("SELECT * FROM videos ORDER BY id DESC");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+        }
+    }
+    
+    return [
+        [
+            'title' => 'Blockchain Revolution in Germany',
+            'video_url' => '',
+            'thumbnail_url' => 'https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+        ],
+        [
+            'title' => 'Youth Crypto Forum: Highlights 2025',
+            'video_url' => '',
+            'thumbnail_url' => 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+        ],
+        [
+            'title' => 'Future of Digital Economy in Europe',
+            'video_url' => '',
+            'thumbnail_url' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+        ]
+    ];
 }
 
 /**

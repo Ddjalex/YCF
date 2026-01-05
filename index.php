@@ -9,12 +9,7 @@ include 'header.php';
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
     <div style="width: 100%; max-width: 900px; height: 350px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; margin-bottom: 40px; position: relative;">
-        <?php 
-        $hero_video = 'attached_assets/hero_video.mp4';
-        if (!file_exists($hero_video)) {
-            $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
-        }
-        ?>
+        <?php $hero_video = get_hero_video(); ?>
         <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline controls style="width: 100%; height: 100%; object-fit: cover;"></video>
         <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; pointer-events: none;">Live Reference</div>
     </div>
@@ -199,27 +194,15 @@ include 'header.php';
         <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
+        <?php foreach (get_homepage_videos() as $video): ?>
         <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
-            <img src="https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
+            <img src="<?php echo $video['thumbnail_url'] ?: 'https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'; ?>" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;" onclick="<?php echo $video['video_url'] ? "window.open('{$video['video_url']}', '_blank')" : ""; ?>">▶</div>
             <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
-                <h3 style="font-size: 1.1rem; margin: 0;">Blockchain Revolution in Germany</h3>
+                <h3 style="font-size: 1.1rem; margin: 0;"><?php echo htmlspecialchars($video['title']); ?></h3>
             </div>
         </div>
-        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
-            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
-                <h3 style="font-size: 1.1rem; margin: 0;">Youth Crypto Forum: Highlights 2025</h3>
-            </div>
-        </div>
-        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;">▶</div>
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
-                <h3 style="font-size: 1.1rem; margin: 0;">Future of Digital Economy in Europe</h3>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>
 
