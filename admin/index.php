@@ -61,8 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmt->execute([$_POST['countdown_date']]);
         $message = "Countdown updated successfully!";
     } elseif ($_POST['action'] === 'add_hotel') {
+        $photo_url = $_POST['photo_url'];
+        
+        // Handle hotel photo upload
+        if (isset($_FILES['hotel_photo_file']) && $_FILES['hotel_photo_file']['error'] === UPLOAD_ERR_OK) {
+            $upload_dir = '../uploads/';
+            if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+            $filename = time() . '_hotel_' . basename($_FILES['hotel_photo_file']['name']);
+            $target_path = $upload_dir . $filename;
+            
+            if (move_uploaded_file($_FILES['hotel_photo_file']['tmp_name'], $target_path)) {
+                $photo_url = 'uploads/' . $filename;
+            }
+        }
+
         $stmt = $pdo->prepare("INSERT INTO hotels (name, description, location, video_url, photo_url, stars, map_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$_POST['name'], $_POST['description'], $_POST['location'], $_POST['video_url'], $_POST['photo_url'], $_POST['stars'], $_POST['map_url']]);
+        $stmt->execute([$_POST['name'], $_POST['description'], $_POST['location'], $_POST['video_url'], $photo_url, $_POST['stars'], $_POST['map_url']]);
         $message = "Hotel added successfully!";
     } elseif ($_POST['action'] === 'delete_hotel') {
         $stmt = $pdo->prepare("DELETE FROM hotels WHERE id = ?");
@@ -167,13 +181,17 @@ $homepage_videos = get_homepage_videos();
 
             <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">New Hotel Entry</h3>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="add_hotel">
                     <input type="text" name="name" placeholder="Hotel Name" required>
                     <input type="text" name="location" placeholder="Location String">
                     <textarea name="description" placeholder="Short Description" rows="3"></textarea>
                     <input type="text" name="video_url" placeholder="Video URL (YouTube/MP4)">
-                    <input type="text" name="photo_url" placeholder="Photo Path/URL">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Hotel Photo (URL or Upload)</label>
+                        <input type="text" name="photo_url" placeholder="Photo Path/URL">
+                        <input type="file" name="hotel_photo_file" accept="image/*" style="background: #f9f9f9; padding: 0.5rem;">
+                    </div>
                     <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
                         <input type="number" name="stars" value="5" min="1" max="5" style="width: 50%;">
                         <input type="text" name="map_url" placeholder="Map Link" style="width: 50%;">
