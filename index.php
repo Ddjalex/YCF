@@ -8,15 +8,15 @@ include 'header.php';
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
     <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
-    <div style="width: 300px; height: 168px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; margin-bottom: 40px; position: relative;">
+    <div style="width: 100%; max-width: 900px; height: 350px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000; margin-bottom: 40px; position: relative;">
         <?php 
         $hero_video = 'attached_assets/hero_video.mp4';
         if (!file_exists($hero_video)) {
             $hero_video = 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
         }
         ?>
-        <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-        <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Reference</div>
+        <video src="<?php echo $hero_video; ?>" autoplay loop muted playsinline controls style="width: 100%; height: 100%; object-fit: cover;"></video>
+        <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; pointer-events: none;">Live Reference</div>
     </div>
 
     <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee;">
