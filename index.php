@@ -212,31 +212,31 @@ if ($search):
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">💬</div>
-                <div style="font-size: 1rem; font-weight: 600;">Expert-led Workshops & Interactive Masterclasses</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; align-items: center; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">💬</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">Expert-led Workshops & Interactive Masterclasses</div>
             </div>
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">📜</div>
-                <div style="font-size: 1rem; font-weight: 600;">Youth Diplomacy Sessions & Policy Dialogues</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; align-items: center; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">📜</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">Youth Diplomacy Sessions & Policy Dialogues</div>
             </div>
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">🤝</div>
-                <div style="font-size: 1rem; font-weight: 600;">Networking with global leaders, changemakers & institutions</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; align-items: center; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">🤝</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">Networking with global leaders, changemakers & institutions</div>
             </div>
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">🌍</div>
-                <div style="font-size: 1rem; font-weight: 600;">Country presentations, cultural exchange & collaborative activities</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; align-items: center; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">🌍</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">Country presentations, cultural exchange & collaborative activities</div>
             </div>
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">🏢</div>
-                <div style="font-size: 1rem; font-weight: 600;">Visit to the Federal Parliament of Germany (The Bundestag)</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.2rem 1.8rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; align-items: center; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">🏢</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">Visit to the Federal Parliament of Germany (The Bundestag)</div>
             </div>
-            <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; gap: 1.2rem;">
-                <div style="font-size: 1.5rem; opacity: 0.9;">🗺️</div>
+            <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); padding: 1.5rem; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none; display: flex; gap: 1.2rem; margin-left: auto; width: 100%;">
+                <div style="font-size: 1.8rem; opacity: 0.9; width: 40px; text-align: center;">🗺️</div>
                 <div>
-                    <div style="font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Guided City Tour of Berlin, highlighting:</div>
-                    <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.9rem; opacity: 0.85; line-height: 1.4;">
+                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;">Guided City Tour of Berlin, highlighting:</div>
+                    <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.95rem; opacity: 0.85; line-height: 1.4;">
                         <li>World War history</li>
                         <li>Diplomatic evolution in Europe</li>
                         <li>Lessons for future generations</li>
