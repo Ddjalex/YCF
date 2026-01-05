@@ -183,6 +183,26 @@ if ($search):
     </div>
 </section>
 
+<section class="vision" style="padding: 6rem 10%; background: #fff; text-align: center;">
+    <h2 class="montserrat" style="font-size: 3rem; color: #000; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1;">Aligned with Europe's Youth Vision &<br>Global Priorities</h2>
+    <p style="font-size: 1.1rem; color: #333; max-width: 800px; margin: 0 auto 4rem; line-height: 1.6;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">EU Youth Strategy 2019–2027</h3>
+            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+        </div>
+        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">EU Digital Decade & AI governance goals</h3>
+            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Empowering young people in emerging technologies.</p>
+        </div>
+        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">Council of Europe's Youth Sector Priorities</h3>
+            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+        </div>
+    </div>
+</section>
+
 <section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
