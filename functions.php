@@ -168,7 +168,8 @@ function get_weather_data() {
         95 => '⛈️', 96 => '⛈️', 99 => '⛈️', // Thunderstorm
     ];
 
-    $icon = $code_map[$current['weathercode']] ?? '☀️';
+    $weathercode = isset($current['weathercode']) ? $current['weathercode'] : 0;
+    $icon = $code_map[$weathercode] ?? '☀️';
     
     // Format forecast for next few hours
     $forecast = [];
@@ -200,7 +201,7 @@ function get_weather_data() {
     return [
         'temp' => round($curr_temp) . '° C',
         'icon' => $icon,
-        'description' => $current['weathercode'], // Could map to text if needed
+        'description' => $weathercode, 
         'last_updated' => date('H:i'),
         'forecast' => $forecast
     ];

@@ -276,7 +276,7 @@ if ($search):
                     <div style="font-size: 1rem; opacity: 0.9;">Current Conditions</div>
                 </div>
             </div>
-            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: <?php echo $weather['last_updated']; ?> ↻</div>
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: <?php echo $weather['last_updated']; ?> <a href="javascript:location.reload()" style="color: white; text-decoration: none;">↻</a></div>
         </div>
         <?php foreach ($weather['forecast'] as $f): ?>
         <div style="background: white; padding: 1.5rem; border-radius: 12px; min-width: 120px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
