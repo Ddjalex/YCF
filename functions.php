@@ -244,32 +244,50 @@ function get_search_results($search) {
 
 function get_latest_news() {
     $news_file = 'news_data.json';
+    $news = [];
     if (file_exists($news_file)) {
-        return json_decode(file_get_contents($news_file), true);
+        $news = json_decode(file_get_contents($news_file), true);
+    } else {
+        $news = [
+            [
+                'id' => 1,
+                'title' => 'Youth Crypto Forum 2026: The Future of Digital Economy in Berlin',
+                'summary' => 'Join thousands of young innovators in Berlin to discuss blockchain and the global economy.',
+                'content' => 'The Youth Crypto Forum 2026 is set to be the landmark event of the year for digital finance in Europe. Hosted in the heart of Berlin, this forum will bring together top minds from the blockchain industry, regulatory bodies, and young tech enthusiasts. Attendees can expect deep dives into DeFi, the future of NFTs, and how CBDCs are reshaping the European monetary landscape.',
+                'date' => 'January 10, 2026',
+                'category' => 'Press Release',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_a66cf05b.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Berlin to Host Major Blockchain Summit at Brandenburg Gate',
+                'summary' => 'Germany\'s capital preparing for the largest youth-focused crypto event in Europe.',
+                'content' => 'Preparation is in full swing at the historic Brandenburg Gate for the upcoming Blockchain Summit. This iconic location will serve as the backdrop for thousands of participants. The summit will focus on sustainable blockchain solutions and the role of youth in democratic technological governance. Key speakers include leading researchers from the Max Planck Institute and tech pioneers from Berlin\'s Silicon Allee.',
+                'date' => 'January 05, 2026',
+                'category' => 'Update',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_a86cab3a.jpg'
+            ],
+            [
+                'id' => 3,
+                'title' => 'Registration for Early Bird Tickets Now Open for Forum 2026',
+                'summary' => 'Secure your spot at the Youth Crypto Forum with special early bird pricing available now.',
+                'content' => 'Don\'t miss out on the most anticipated youth crypto event in Europe! Early bird registration is officially open. These tickets offer full access to all keynote sessions, workshops, and networking events at a significant discount. Early bird registrants will also receive exclusive access to the pre-forum mixer and a digital delegate bag filled with resources and partner perks.',
+                'date' => 'January 02, 2026',
+                'category' => 'Announcement',
+                'image' => 'attached_assets/stock_images/cryptocurrency_block_d84d2c76.jpg'
+            ]
+        ];
     }
-    
-    return [
-        [
-            'title' => 'Youth Crypto Forum 2026: The Future of Digital Economy in Berlin',
-            'summary' => 'Join thousands of young innovators in Berlin to discuss blockchain and the global economy.',
-            'date' => 'January 10, 2026',
-            'category' => 'Press Release',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_a66cf05b.jpg'
-        ],
-        [
-            'title' => 'Berlin to Host Major Blockchain Summit at Brandenburg Gate',
-            'summary' => 'Germany\'s capital preparing for the largest youth-focused crypto event in Europe.',
-            'date' => 'January 05, 2026',
-            'category' => 'Update',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_a86cab3a.jpg'
-        ],
-        [
-            'title' => 'Registration for Early Bird Tickets Now Open for Forum 2026',
-            'summary' => 'Secure your spot at the Youth Crypto Forum with special early bird pricing available now.',
-            'date' => 'January 02, 2026',
-            'category' => 'Announcement',
-            'image' => 'attached_assets/stock_images/cryptocurrency_block_d84d2c76.jpg'
-        ]
-    ];
+    return $news;
+}
+
+function get_news_by_id($id) {
+    $all_news = get_latest_news();
+    foreach ($all_news as $item) {
+        if ($item['id'] == $id) {
+            return $item;
+        }
+    }
+    return null;
 }
 ?>

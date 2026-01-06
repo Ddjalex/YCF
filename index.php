@@ -127,7 +127,7 @@ if ($search):
                     </div>
                     <h3 style="color: var(--dark-blue); margin: 0 0 1rem; font-size: 1.25rem; line-height: 1.3; height: 3.3rem; overflow: hidden;"><?php echo $item['title']; ?></h3>
                     <p style="font-size: 0.95rem; color: #666; margin-bottom: 1.5rem; height: 4.5rem; overflow: hidden;"><?php echo $item['summary']; ?></p>
-                    <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">Read More &rarr;</a>
+                    <a href="news_detail.php?id=<?php echo $item['id']; ?>" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">Read More &rarr;</a>
                 </div>
             </div>
         <?php endforeach; ?>
