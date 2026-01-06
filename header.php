@@ -68,7 +68,7 @@
             padding: 15px 35px !important;
             width: 100% !important;
             max-width: 600px !important;
-            background-color: #222 !important;
+            background-color: #2D236E !important; /* Matches site theme */
             color: #fff !important;
             border: none !important;
             font-weight: bold !important;
@@ -89,7 +89,7 @@
             left: -110% !important;
             width: 120% !important;
             height: 100% !important;
-            background-color: #ff9d00 !important;
+            background-color: #FFD700 !important; /* The yellow color from site */
             transform: skewX(-30deg) !important;
             transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
             z-index: -1 !important;
@@ -100,7 +100,7 @@
         }
         
         .btn-apply-special:hover {
-            color: #000 !important;
+            color: #2D236E !important; /* Text color on yellow hover */
         }
         
         body {
