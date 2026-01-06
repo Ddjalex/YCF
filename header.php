@@ -24,7 +24,7 @@
             z-index: 1 !important;
             border-radius: 50px !important;
             padding: 14px 40px !important;
-            transition: color 0.3s ease !important;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -41,23 +41,41 @@
             content: '' !important;
             position: absolute !important;
             top: 0 !important;
-            left: -110% !important;
-            width: 120% !important;
+            left: -100% !important;
+            width: 100% !important;
             height: 100% !important;
-            background-color: #FFD700 !important;
-            transform: skewX(-25deg) !important;
-            transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent) !important;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
             z-index: -1 !important;
         }
         
-        .btn-custom-animate:hover::before {
-            left: -10% !important;
+        .btn-custom-animate::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: #FFD700 !important;
+            transform: scaleX(0) !important;
+            transform-origin: right !important;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
+            z-index: -2 !important;
+        }
+        
+        .btn-custom-animate:hover::after {
+            transform: scaleX(1) !important;
+            transform-origin: left !important;
         }
         
         .btn-custom-animate:hover {
             color: #2D236E !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3) !important;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4) !important;
+        }
+        
+        .btn-custom-animate:hover::before {
+            left: 100% !important;
         }
         
         body {

@@ -368,7 +368,7 @@ if ($search):
         </div>
 
         <div style="margin-top: 50px; text-align: center;">
-            <a href="#" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; font-size: 1.2rem; padding: 18px 60px; border-radius: 50px; font-weight: 800; border: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-transform: uppercase;">APPLY NOW!</a>
+            <a href="#" class="btn-custom-animate" style="font-size: 1.2rem; padding: 18px 60px; border-radius: 50px;">APPLY NOW!</a>
         </div>
     </div>
 </section>
