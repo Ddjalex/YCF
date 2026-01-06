@@ -19,15 +19,24 @@
         }
         
         .btn-custom-animate {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border-radius: 50px !important;
+            padding: 12px 35px !important;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-decoration: none !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
         }
         
         .btn-custom-animate:hover {
-            background-color: var(--btn-yellow) !important;
+            background-color: #FFD700 !important;
             color: #2D236E !important;
-            border-color: var(--btn-yellow) !important;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3) !important;
+            border-color: #FFD700 !important;
+            transform: translateY(-5px) scale(1.08) !important;
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.6) !important;
         }
         
         body {

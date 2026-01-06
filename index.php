@@ -106,7 +106,10 @@ if ($search):
             </div>
         </div>
         
-        <a href="#" class="btn-custom-animate" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; text-transform: uppercase;">Register Now</a>
+        <a href="#" class="btn-custom-animate" 
+           onmouseover="this.style.backgroundColor='#FFD700'; this.style.color='#2D236E'; this.style.transform='translateY(-5px) scale(1.08)';" 
+           onmouseout="this.style.backgroundColor='#00aeef'; this.style.color='white'; this.style.transform='translateY(0) scale(1)';"
+           style="background: #00aeef; color: white; border: none; font-size: 1rem; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Register Now</a>
     </div>
 </section>
 
@@ -208,7 +211,10 @@ if ($search):
         <div style="max-width: 400px;">
             <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
             <p style="font-size: 1rem; line-height: 1.4; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
-            <a href="#" class="btn-custom-animate" style="background: #2D236E; color: white; text-decoration: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; display: inline-block; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Register Now</a>
+            <a href="#" class="btn-custom-animate" 
+               onmouseover="this.style.backgroundColor='#FFD700'; this.style.color='#2D236E'; this.style.transform='translateY(-5px) scale(1.08)';" 
+               onmouseout="this.style.backgroundColor='#2D236E'; this.style.color='white'; this.style.transform='translateY(0) scale(1)';"
+               style="background: #2D236E; color: white; border: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; padding: 12px 35px; border-radius: 50px; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease; text-decoration: none; display: inline-block;">Register Now</a>
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 0.4rem;">
