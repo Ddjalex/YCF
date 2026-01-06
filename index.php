@@ -63,7 +63,7 @@ if ($search):
     <?php endif; ?>
     
     <div style="margin-top: 3rem; text-align: center;">
-        <a href="/" class="btn-custom-animate" style="display: inline-block; padding: 1rem 2.5rem; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 30px; font-weight: 600;">Back to Home</a>
+        <a href="/" class="btn-custom-animate">Back to Home</a>
     </div>
 </section>
 <?php else: ?>
@@ -106,10 +106,7 @@ if ($search):
             </div>
         </div>
         
-        <a href="#" class="btn-custom-animate" 
-           onmouseover="this.style.backgroundColor='#FFD700'; this.style.color='#2D236E'; this.style.transform='translateY(-5px) scale(1.08)';" 
-           onmouseout="this.style.backgroundColor='#00aeef'; this.style.color='white'; this.style.transform='translateY(0) scale(1)';"
-           style="background: #00aeef; color: white; border: none; font-size: 1rem; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Register Now</a>
+        <a href="#" class="btn-custom-animate" style="background: #00aeef; color: white;">Register Now</a>
     </div>
 </section>
 
@@ -130,7 +127,7 @@ if ($search):
                     </div>
                     <h3 style="color: var(--dark-blue); margin: 0 0 1rem; font-size: 1.25rem; line-height: 1.3; height: 3.3rem; overflow: hidden;"><?php echo $item['title']; ?></h3>
                     <p style="font-size: 0.95rem; color: #666; margin-bottom: 1.5rem; height: 4.5rem; overflow: hidden;"><?php echo $item['summary']; ?></p>
-                    <a href="#" class="btn-custom-animate" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; padding: 5px 10px; border-radius: 5px; display: inline-block;">Read More &rarr;</a>
+                    <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">Read More &rarr;</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -140,7 +137,7 @@ if ($search):
 <section class="agenda" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('attached_assets/1_Rs5tF_ifkt8I99W5BZyBKw_1767637840250.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px;">AGENDA</h2>
-        <a href="#" class="btn-custom-animate" style="color: var(--dark-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
+        <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">View all &rsaquo;</a>
     </div>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
@@ -211,10 +208,7 @@ if ($search):
         <div style="max-width: 400px;">
             <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
             <p style="font-size: 1rem; line-height: 1.4; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
-            <a href="#" class="btn-custom-animate" 
-               onmouseover="this.style.backgroundColor='#FFD700'; this.style.color='#2D236E'; this.style.transform='translateY(-5px) scale(1.08)';" 
-               onmouseout="this.style.backgroundColor='#2D236E'; this.style.color='white'; this.style.transform='translateY(0) scale(1)';"
-               style="background: #2D236E; color: white; border: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; padding: 12px 35px; border-radius: 50px; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease; text-decoration: none; display: inline-block;">Register Now</a>
+            <a href="#" class="btn-custom-animate">Register Now</a>
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 0.4rem;">
@@ -259,7 +253,7 @@ if ($search):
 <section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
-        <a href="#" class="btn-custom-animate" style="color: var(--dark-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
+        <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">View all &rsaquo;</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
         <?php 
