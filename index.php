@@ -251,8 +251,8 @@ if ($search):
 </section>
 
 <section class="participation-seats" style="padding: 6rem 10%; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: clamp(2.5rem, 8vw, 4.5rem); color: #000; font-weight: 900; margin-bottom: 1rem; letter-spacing: -2px; text-transform: none;">Total Participation Seats: 200</h2>
-    <p style="font-size: 1.2rem; color: #555; margin-bottom: 5rem; font-weight: 600; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">CGDL is offering <span style="color: #2D236E; font-weight: 800; border-bottom: 3px solid #FFD700;">200 seats</span> for the Youth Development Forum 2026:</p>
+    <h2 class="montserrat" style="font-size: 1.2rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8;">Total Participation Seats: 200</h2>
+    <p style="font-size: 0.9rem; color: #777; margin-bottom: 3rem; font-weight: 500;">CGDL is offering <strong style="color: #2D236E;">200 seats</strong> for the Youth Development Forum 2026:</p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; max-width: 1300px; margin: 0 auto; perspective: 1000px;">
         <!-- Card 1 -->
@@ -281,6 +281,94 @@ if ($search):
             <h3 class="montserrat" style="color: white; font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">Self Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1.4rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">80 Seats</div>
             <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Guaranteed Selection</p>
+        </div>
+    </div>
+</section>
+
+<section class="scholarship-categories" style="padding: 0; position: relative; background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed;">
+    <div style="background: rgba(0, 0, 0, 0.4); padding: 80px 10%;">
+        <div style="max-width: 800px; margin: 0 auto 50px; background: #2D236E; padding: 30px; border-radius: 15px; color: white; text-align: center; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.3);">
+            <h2 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; line-height: 1.1;">Scholarship Categories<br>(Competitive Selection)</h2>
+            <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9; font-weight: 400;">
+                These are <em>funded</em> categories offered to outstanding applicants based on merit, motivation, and global representation. 
+                The <strong>Fully Funded</strong> and <strong>Partially Funded</strong> categories share one unified application form.
+            </p>
+            <div style="position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 15px solid #2D236E;"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;">
+            <!-- Fully Funded Category Card -->
+            <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #FFD700;">$16.99</div>
+                    <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Fully Funded Category</h3>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">What's Included</span>
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px; text-align: center; opacity: 0.9; font-weight: 500;">
+                    Participants selected under the Fully Funded category receive a complete scholarship package that covers:
+                </div>
+
+                <ul style="list-style: none; padding: 0; margin: 0 0 30px; flex-grow: 1; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✈</span> Round-trip airfare to Berlin, Germany</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🍱</span> Daily meals & breakfast</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✓</span> Full access to all conference sessions, workshops, and activities</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">●</span> Certificate of Participation issued by CGDL</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">💼</span> Delegate kit including conference materials</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏛</span> Guided city tour of Berlin, covering historical sites</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✉</span> Comprehensive visa support, including invitation letter</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🤝</span> Participation in cultural exchange & networking events</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🎙</span> Opportunity to engage with global speakers & experts</li>
+                </ul>
+            </div>
+
+            <!-- Partially Funded Category Card -->
+            <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #FFD700;">$16.99</div>
+                    <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Partially Funded Category</h3>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">What's Included</span>
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px; text-align: center; opacity: 0.9; font-weight: 500;">
+                    Participants selected for the Partially Funded category receive significant subsidization and will be provided:
+                </div>
+
+                <ul style="list-style: none; padding: 0; margin: 0 0 20px; flex-grow: 1; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✓</span> Full access to all conference sessions, workshops, and activities</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🍱</span> Meals & breakfast throughout the forum</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">●</span> Certificate of Participation from CGDL</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">💼</span> Delegate kit including conference materials</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏛</span> Guided city tour of Berlin focusing on history</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✉</span> Comprehensive visa support, including invitation letter</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🤝</span> Participation in cultural & networking activities</li>
+                </ul>
+
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Not Included</span>
+                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span style="color: #ff5252; font-size: 1.2rem;">✈</span> Airfare
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+            <a href="#" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; font-size: 1.2rem; padding: 18px 60px; border-radius: 50px; font-weight: 800; border: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-transform: uppercase;">APPLY NOW!</a>
         </div>
     </div>
 </section>
