@@ -106,7 +106,7 @@ if ($search):
             </div>
         </div>
         
-        <a href="#" class="btn-custom-animate" style="background: #00aeef; color: white;">Register Now</a>
+        <a href="#" class="btn-custom-animate">Register Now</a>
     </div>
 </section>
 
