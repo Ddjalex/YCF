@@ -98,8 +98,8 @@ function get_hero_video() {
         }
     }
     
-    // Default fallback
-    return 'attached_assets/generated_videos/cinematic_blockchain_and_technology_highlights.mp4';
+    // Default fallback - Using a reliable external video
+    return 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-4451-large.mp4';
 }
 
 /**

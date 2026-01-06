@@ -32,6 +32,7 @@ Preferred communication style: Simple, everyday language.
 - **Color Palette**: High-contrast blue and white (institutional/corporate style)
 - **Typography**: Clean sans-serif fonts (Inter or Roboto)
 - **Layout**: Sticky navigation bar with logo and action buttons, card-based content grids
+- **Animations**: Diagonal sliding background effect on buttons using CSS pseudo-elements with `skewX(-25deg)` and custom `cubic-bezier` timing.
 
 ### Data Storage
 - **Approach**: PHP arrays or simple SQLite database
