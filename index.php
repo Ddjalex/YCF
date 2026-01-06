@@ -250,6 +250,41 @@ if ($search):
     </div>
 </section>
 
+<section class="participation-seats" style="padding: 6rem 10%; background: #fcfcfc; text-align: center;">
+    <h2 class="montserrat" style="font-size: clamp(2.5rem, 8vw, 4.5rem); color: #000; font-weight: 900; margin-bottom: 1rem; letter-spacing: -2px; text-transform: none;">Total Participation Seats: 200</h2>
+    <p style="font-size: 1.2rem; color: #555; margin-bottom: 5rem; font-weight: 600; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">CGDL is offering <span style="color: #2D236E; font-weight: 800; border-bottom: 3px solid #FFD700;">200 seats</span> for the Youth Development Forum 2026:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; max-width: 1300px; margin: 0 auto; perspective: 1000px;">
+        <!-- Card 1 -->
+        <div style="background: #2D236E; border-radius: 24px; padding: 3rem 1.5rem; position: relative; border-bottom: 12px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-15px) rotateX(5deg)'; this.style.boxShadow='0 25px 50px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
+            <h3 class="montserrat" style="color: white; font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px;">Fully Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1.4rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">30 Seats</div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Competitive Selection</p>
+        </div>
+        
+        <!-- Card 2 -->
+        <div style="background: #2D236E; border-radius: 24px; padding: 3rem 1.5rem; position: relative; border-bottom: 12px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-15px) rotateX(5deg)'; this.style.boxShadow='0 25px 50px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
+            <h3 class="montserrat" style="color: white; font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px;">Partially Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1.4rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">50 Seats</div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Competitive Selection</p>
+        </div>
+        
+        <!-- Card 3 -->
+        <div style="background: #2D236E; border-radius: 24px; padding: 3rem 1.5rem; position: relative; border-bottom: 12px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-15px) rotateX(5deg)'; this.style.boxShadow='0 25px 50px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
+            <h3 class="montserrat" style="color: white; font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px;">Forum Admission</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1.4rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">40 Seats</div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Guaranteed Selection</p>
+        </div>
+        
+        <!-- Card 4 -->
+        <div style="background: #2D236E; border-radius: 24px; padding: 3rem 1.5rem; position: relative; border-bottom: 12px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-15px) rotateX(5deg)'; this.style.boxShadow='0 25px 50px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
+            <h3 class="montserrat" style="color: white; font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">Self Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 12px; font-weight: 900; font-size: 1.4rem; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">80 Seats</div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Guaranteed Selection</p>
+        </div>
+    </div>
+</section>
+
 <section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>

@@ -290,4 +290,3 @@ function get_news_by_id($id) {
     }
     return null;
 }
-?>

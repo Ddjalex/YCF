@@ -18,6 +18,7 @@ Preferred communication style: Simple, everyday language.
 - **Components**:
   - `header.php` / `footer.php`: Global layout components for consistent design
   - Hero sections with countdown timers
+  - Participation Seats: A dynamic section highlighting forum capacity with color-coded funding categories and hover animations.
   - Navigation grids and data cards using PHP loops
 
 ### Backend Architecture
