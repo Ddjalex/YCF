@@ -64,9 +64,11 @@
             position: relative !important;
             overflow: hidden !important;
             z-index: 1 !important;
-            border-radius: 50px !important;
-            padding: 18px 60px !important;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+            border-radius: 8px !important;
+            padding: 12px 0 !important;
+            width: 100% !important;
+            max-width: 600px !important;
+            transition: all 0.3s ease !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -74,9 +76,11 @@
             font-weight: 800 !important;
             text-transform: uppercase !important;
             cursor: pointer !important;
-            background: #2D236E !important;
-            color: white !important;
+            background: #FFD700 !important;
+            color: #2D236E !important;
             border: none !important;
+            font-size: 1.2rem !important;
+            letter-spacing: 1px !important;
         }
         
         .btn-apply-special::before {
@@ -86,34 +90,15 @@
             left: -100% !important;
             width: 100% !important;
             height: 100% !important;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent) !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent) !important;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            z-index: -1 !important;
-        }
-        
-        .btn-apply-special::after {
-            content: '' !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            background: #FFD700 !important;
-            transform: scaleX(0) !important;
-            transform-origin: right !important;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            z-index: -2 !important;
-        }
-        
-        .btn-apply-special:hover::after {
-            transform: scaleX(1) !important;
-            transform-origin: left !important;
+            z-index: 1 !important;
         }
         
         .btn-apply-special:hover {
-            color: #2D236E !important;
-            transform: translateY(-3px) !important;
+            transform: scale(1.02) !important;
             box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4) !important;
+            background: #ffdb1a !important;
         }
         
         .btn-apply-special:hover::before {
