@@ -250,9 +250,9 @@ if ($search):
     </div>
 </section>
 
-<section class="participation-seats" style="padding: 6rem 10%; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: 1.2rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8;">Total Participation Seats: 200</h2>
-    <p style="font-size: 0.9rem; color: #777; margin-bottom: 3rem; font-weight: 500;">CGDL is offering <strong style="color: #2D236E;">200 seats</strong> for the Youth Development Forum 2026:</p>
+<section class="participation-seats" style="padding: 4rem 10% 2rem; background: #fcfcfc; text-align: center;">
+    <h2 class="montserrat" style="font-size: 1.8rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; text-transform: uppercase;">Total Participation Seats: 200</h2>
+    <p style="font-size: 0.95rem; color: #333; margin-bottom: 2rem; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Development Forum 2026:</p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; perspective: 1000px;">
         <!-- Card 1 -->
