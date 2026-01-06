@@ -13,10 +13,10 @@
             <div>
                 <h3 class="montserrat" style="font-size: 1.3rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-blue);">Policies & Terms</h3>
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.2rem;">
-                    <li><a href="/terms.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
-                    <li><a href="/privacy.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
-                    <li><a href="/refund.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
-                    <li><a href="/gdpr.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75"><span style="color: var(--primary-blue);">›</span> GDPR Compliance</a></li>
+                    <li><a href="/terms.php" class="btn-custom-animate" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; padding: 5px 10px; border-radius: 8px;"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
+                    <li><a href="/privacy.php" class="btn-custom-animate" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; padding: 5px 10px; border-radius: 8px;"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
+                    <li><a href="/refund.php" class="btn-custom-animate" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; padding: 5px 10px; border-radius: 8px;"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
+                    <li><a href="/gdpr.php" class="btn-custom-animate" style="color: white; text-decoration: none; opacity: 0.75; font-size: 1rem; display: flex; align-items: center; gap: 12px; padding: 5px 10px; border-radius: 8px;"><span style="color: var(--primary-blue);">›</span> GDPR Compliance</a></li>
                 </ul>
             </div>
 
@@ -35,9 +35,9 @@
                     </li>
                 </ul>
                 <div style="display: flex; gap: 1.2rem; margin-top: 2.5rem;">
-                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">f</a>
-                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">ig</a>
-                    <a href="#" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">in</a>
+                    <a href="#" class="btn-custom-animate" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">f</a>
+                    <a href="#" class="btn-custom-animate" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ig</a>
+                    <a href="#" class="btn-custom-animate" style="width: 42px; height: 42px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>
                 </div>
             </div>
         </div>

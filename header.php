@@ -15,7 +15,21 @@
             --white: #ffffff;
             --text-gray: #4a4a4a;
             --deep-navy: #0a1128;
+            --btn-yellow: #FFD700;
         }
+        
+        .btn-custom-animate {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        
+        .btn-custom-animate:hover {
+            background-color: var(--btn-yellow) !important;
+            color: #2D236E !important;
+            border-color: var(--btn-yellow) !important;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3) !important;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;

@@ -106,7 +106,7 @@ if ($search):
             </div>
         </div>
         
-        <a href="#" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; transition: all 0.3s; text-transform: uppercase;" onmouseover="this.style.background='#009edb'" onmouseout="this.style.background='#00aeef'">Register Now</a>
+        <a href="#" class="btn-custom-animate" style="background: #00aeef; color: white; text-decoration: none; padding: 0 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; height: 100%; display: flex; align-items: center; text-transform: uppercase;">Register Now</a>
     </div>
 </section>
 
@@ -127,7 +127,7 @@ if ($search):
                     </div>
                     <h3 style="color: var(--dark-blue); margin: 0 0 1rem; font-size: 1.25rem; line-height: 1.3; height: 3.3rem; overflow: hidden;"><?php echo $item['title']; ?></h3>
                     <p style="font-size: 0.95rem; color: #666; margin-bottom: 1.5rem; height: 4.5rem; overflow: hidden;"><?php echo $item['summary']; ?></p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Read More &rarr;</a>
+                    <a href="#" class="btn-custom-animate" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; padding: 5px 10px; border-radius: 5px; display: inline-block;">Read More &rarr;</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -137,7 +137,7 @@ if ($search):
 <section class="agenda" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('attached_assets/1_Rs5tF_ifkt8I99W5BZyBKw_1767637840250.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px;">AGENDA</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
+        <a href="#" class="btn-custom-animate" style="color: var(--dark-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
     </div>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
@@ -208,7 +208,7 @@ if ($search):
         <div style="max-width: 400px;">
             <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
             <p style="font-size: 1rem; line-height: 1.4; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
-            <a href="#" style="background: #2D236E; color: white; text-decoration: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transition: all 0.3s; display: inline-block; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.background='#3d3090'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#2D236E'; this.style.transform='translateY(0)'">Register Now</a>
+            <a href="#" class="btn-custom-animate" style="background: #2D236E; color: white; text-decoration: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; display: inline-block; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Register Now</a>
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 0.4rem;">
@@ -253,7 +253,7 @@ if ($search):
 <section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
+        <a href="#" class="btn-custom-animate" style="color: var(--dark-blue); font-weight: 600; text-decoration: none; background: white; padding: 0.5rem 1.2rem; border-radius: 20px;">View all &rsaquo;</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
         <?php 
