@@ -1,0 +1,53 @@
+Based on the styling of the website and the image you provided, the "Apply Now" button uses a Diagonal Slide-In (or "Sweep to Right") hover effect.
+
+This specific style uses a hidden background layer that is slanted at an angle and slides across the button when you hover over it.
+
+CSS Code for Replit
+To apply this smooth, slanted animation to your buttons in Replit, you can use the following CSS. This uses the ::before pseudo-element to create the sliding color block.
+
+CSS
+
+/* Apply this to your button class (e.g., .apply-btn) */
+.btn {
+  position: relative;
+  overflow: hidden; /* Important: keeps the slant inside the button */
+  padding: 15px 35px;
+  background-color: #222; /* Initial dark background */
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+/* The sliding diagonal background */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -110%; /* Starts completely hidden on the left */
+  width: 120%;  /* Extra width for the slant */
+  height: 100%;
+  background-color: #ff9d00; /* The yellow/orange color from the site */
+  transform: skewX(-30deg);  /* Creates the diagonal angle */
+  transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Makes it smooth */
+  z-index: -1; /* Keeps the color behind the button text */
+}
+
+/* Hover effect: Slide the color into view */
+.btn:hover::before {
+  left: -10%; 
+}
+
+/* Change text color on hover if needed */
+.btn:hover {
+  color: #000;
+}
+Why this style works for the YDF 2026 site:
+Angle: The transform: skewX(-30deg) gives it a dynamic, forward-moving look that matches the "youth development" theme.
+
+Smoothing: The cubic-bezier transition makes the movement feel "snappy"—it starts fast and slows down right as it fills the button, which feels more professional than a simple linear slide.
+
+Contrast: Using a bright accent color (like the yellow seen on the site) against a dark background makes the "Apply Now" action stand out immediately to users.

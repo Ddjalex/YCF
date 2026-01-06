@@ -65,44 +65,42 @@
             overflow: hidden !important;
             z-index: 1 !important;
             border-radius: 8px !important;
-            padding: 12px 0 !important;
+            padding: 15px 35px !important;
             width: 100% !important;
             max-width: 600px !important;
-            transition: all 0.3s ease !important;
+            background-color: #222 !important;
+            color: #fff !important;
+            border: none !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            transition: color 0.4s ease !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             text-decoration: none !important;
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            cursor: pointer !important;
-            background: #FFD700 !important;
-            color: #2D236E !important;
-            border: none !important;
             font-size: 1.2rem !important;
-            letter-spacing: 1px !important;
         }
         
         .btn-apply-special::before {
             content: '' !important;
             position: absolute !important;
             top: 0 !important;
-            left: -100% !important;
-            width: 100% !important;
+            left: -110% !important;
+            width: 120% !important;
             height: 100% !important;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent) !important;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            z-index: 1 !important;
-        }
-        
-        .btn-apply-special:hover {
-            transform: scale(1.02) !important;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4) !important;
-            background: #ffdb1a !important;
+            background-color: #ff9d00 !important;
+            transform: skewX(-30deg) !important;
+            transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            z-index: -1 !important;
         }
         
         .btn-apply-special:hover::before {
-            left: 100% !important;
+            left: -10% !important;
+        }
+        
+        .btn-apply-special:hover {
+            color: #000 !important;
         }
         
         body {
