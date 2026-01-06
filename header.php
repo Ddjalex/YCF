@@ -325,7 +325,7 @@
                         <span class="search-icon" id="searchIcon">🔍</span>
                     </form>
                 </div>
-                <span class="lang-switch">EN</span>
+                <span class="lang-switch btn-custom-animate">EN</span>
             </div>
         </nav>
     </header>

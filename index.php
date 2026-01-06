@@ -63,7 +63,7 @@ if ($search):
     <?php endif; ?>
     
     <div style="margin-top: 3rem; text-align: center;">
-        <a href="/" style="display: inline-block; padding: 1rem 2.5rem; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 30px; font-weight: 600;">Back to Home</a>
+        <a href="/" class="btn-custom-animate" style="display: inline-block; padding: 1rem 2.5rem; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 30px; font-weight: 600;">Back to Home</a>
     </div>
 </section>
 <?php else: ?>
