@@ -367,9 +367,6 @@ if ($search):
             </div>
         </div>
 
-        <div style="margin-top: 50px; text-align: center; background: #2D236E; padding: 40px 20px; border-radius: 0 0 25px 25px;">
-            <a href="#" class="btn-apply-special">APPLY NOW!</a>
-        </div>
     </div>
 </section>
 
