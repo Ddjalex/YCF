@@ -238,6 +238,11 @@ function nextStep(step) {
     } else {
         document.getElementById('intro-section').style.display = 'flex';
     }
+    
+    // Ensure intro section is shown when going back to step 1
+    if (step === 1) {
+        document.getElementById('intro-section').style.display = 'flex';
+    }
 }
 </script>
 
