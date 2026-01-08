@@ -258,16 +258,16 @@ include 'header.php';
             <form>
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">Credit Card / Debit Card <span style="color: red;">(Required)</span></label>
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        <div style="flex: 1;">
-                            <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Email</label>
-                            <input type="email" id="stripe_email" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <div style="display: flex; flex-direction: column; gap: 0;">
+                        <div style="border: 1px solid #ddd; border-radius: 8px 8px 0 0; border-bottom: none; background: #f9f9fb;">
+                            <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Email</label>
+                            <input type="email" id="stripe_email" placeholder="Email" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
                         </div>
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                            <div style="flex: 2; min-width: 250px; position: relative;">
-                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Card number</label>
+                        <div style="display: flex; border: 1px solid #ddd; border-bottom: none; background: #f9f9fb;">
+                            <div style="flex: 2; border-right: 1px solid #ddd;">
+                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Card number</label>
                                 <div style="position: relative;">
-                                    <input type="text" id="card_number" placeholder="Card number" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                    <input type="text" id="card_number" placeholder="1234 1234 1234 1234" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
                                     <div id="card_icons" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
                                         <img id="icon_visa" src="https://js.stripe.com/v3/fingerprinted/img/visa-7ad57775a8c4ad024b92c0e2a2100a07.svg" style="height: 20px; transition: opacity 0.3s;">
                                         <img id="icon_mastercard" src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d884a4c4340784918e388d1d867c2df.svg" style="height: 20px; transition: opacity 0.3s;">
@@ -275,21 +275,24 @@ include 'header.php';
                                     </div>
                                 </div>
                             </div>
-                            <div style="flex: 1; min-width: 120px;">
-                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Expiry date</label>
-                                <input type="text" placeholder="MM / YY" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                            <div style="flex: 1; border-right: 1px solid #ddd;">
+                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Expiry date</label>
+                                <input type="text" placeholder="MM / YY" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
                             </div>
-                            <div style="flex: 1; min-width: 100px;">
-                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Security code</label>
+                            <div style="flex: 1;">
+                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Security code</label>
                                 <div style="position: relative;">
-                                    <input type="text" placeholder="CVC" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                    <input type="text" placeholder="CVC" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
                                     <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888;">💳</span>
                                 </div>
                             </div>
                         </div>
-                        <div style="flex: 1;">
-                            <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Country</label>
-                            <input type="text" id="stripe_country" readonly style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f3f3f3; cursor: not-allowed;">
+                        <div style="border: 1px solid #ddd; border-radius: 0 0 8px 8px; background: #f9f9fb; position: relative;">
+                            <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Country</label>
+                            <input type="text" id="stripe_country" readonly style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem; cursor: not-allowed;">
+                            <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
