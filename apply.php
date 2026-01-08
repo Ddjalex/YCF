@@ -75,22 +75,22 @@ include 'header.php';
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">First Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" placeholder="First" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_first_name" placeholder="First" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Last Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" placeholder="Last" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_last_name" placeholder="Last" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Nationality <span style="color: red;">(Required)</span></label>
-                    <input type="text" placeholder="e.g USA, UK, UAE" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_nationality" placeholder="e.g USA, UK, UAE" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Email <span style="color: red;">(Required)</span></label>
-                    <input type="email" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="email" id="reg_email" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start;">
@@ -144,7 +144,7 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Country of Residence <span style="color: red;">(Required)</span></label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_country" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
@@ -261,17 +261,17 @@ include 'header.php';
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div style="flex: 1;">
                             <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Email</label>
-                            <input type="email" placeholder="almesagadw@gmail.com" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                            <input type="email" id="stripe_email" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                         </div>
                         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                             <div style="flex: 2; min-width: 250px; position: relative;">
                                 <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Card number</label>
                                 <div style="position: relative;">
-                                    <input type="text" placeholder="Card number" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                                    <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
-                                        <img src="https://js.stripe.com/v3/fingerprinted/img/visa-7ad57775a8c4ad024b92c0e2a2100a07.svg" style="height: 20px;">
-                                        <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d884a4c4340784918e388d1d867c2df.svg" style="height: 20px;">
-                                        <img src="https://js.stripe.com/v3/fingerprinted/img/amex-a24912fa0999079973e65893a776c99c.svg" style="height: 20px;">
+                                    <input type="text" id="card_number" placeholder="Card number" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                    <div id="card_icons" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
+                                        <img id="icon_visa" src="https://js.stripe.com/v3/fingerprinted/img/visa-7ad57775a8c4ad024b92c0e2a2100a07.svg" style="height: 20px; transition: opacity 0.3s;">
+                                        <img id="icon_mastercard" src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d884a4c4340784918e388d1d867c2df.svg" style="height: 20px; transition: opacity 0.3s;">
+                                        <img id="icon_amex" src="https://js.stripe.com/v3/fingerprinted/img/amex-a24912fa0999079973e65893a776c99c.svg" style="height: 20px; transition: opacity 0.3s;">
                                     </div>
                                 </div>
                             </div>
@@ -289,12 +289,7 @@ include 'header.php';
                         </div>
                         <div style="flex: 1;">
                             <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Country</label>
-                            <select style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                                <option value="Ethiopia">Ethiopia</option>
-                                <option value="USA">USA</option>
-                                <option value="UK">UK</option>
-                                <option value="Germany">Germany</option>
-                            </select>
+                            <input type="text" id="stripe_country" readonly style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f3f3f3; cursor: not-allowed;">
                         </div>
                     </div>
                 </div>
@@ -327,6 +322,18 @@ include 'header.php';
 
 <script>
 function nextStep(step) {
+    if (step === 2) {
+        // Carry over email from step 1
+        const email = document.getElementById('reg_email').value;
+        // Step 2 doesn't have email field in the image but if it was needed we'd put it there.
+    }
+    
+    if (step === 3) {
+        // Auto-fill Stripe fields from registration form
+        document.getElementById('stripe_email').value = document.getElementById('reg_email').value;
+        document.getElementById('stripe_country').value = document.getElementById('reg_country').value;
+    }
+
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'none';
@@ -351,6 +358,31 @@ function nextStep(step) {
         document.getElementById('intro-section').style.display = 'flex';
     }
 }
+
+// Card detection logic
+document.getElementById('card_number').addEventListener('input', function(e) {
+    let num = e.target.value.replace(/\D/g, '');
+    const visa = document.getElementById('icon_visa');
+    const master = document.getElementById('icon_mastercard');
+    const amex = document.getElementById('icon_amex');
+    
+    // Reset opacities
+    visa.style.opacity = '0.3';
+    master.style.opacity = '0.3';
+    amex.style.opacity = '0.3';
+    
+    if (num.startsWith('4')) {
+        visa.style.opacity = '1';
+    } else if (num.startsWith('5')) {
+        master.style.opacity = '1';
+    } else if (num.startsWith('3')) {
+        amex.style.opacity = '1';
+    } else if (num === '') {
+        visa.style.opacity = '1';
+        master.style.opacity = '1';
+        amex.style.opacity = '1';
+    }
+});
 </script>
 
 <?php include 'footer.php'; ?>
