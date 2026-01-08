@@ -360,13 +360,9 @@ if ($search):
                         <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Not Included</span>
                         <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
                     </div>
-                    <div style="margin-top: 10px; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                        <span style="color: #ff5252; font-size: 1.2rem;">✈</span> Airfare
-                    </div>
-                </div>
-            </div>
+            <div style="margin-top: 50px; text-align: center; background: #2D236E; padding: 40px 20px; border-radius: 0 0 25px 25px;">
+            <a href="apply.php" class="btn-apply-special">APPLY NOW!</a>
         </div>
-
     </div>
 </section>
 
