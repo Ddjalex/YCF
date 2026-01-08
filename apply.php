@@ -209,11 +209,118 @@ include 'header.php';
             </form>
         </div>
 
-        <!-- Step 3 placeholder -->
+        <!-- Step 3 View -->
         <div id="step3" style="display: none;">
-             <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Application Fee</h3>
-             <p>Step 3 content goes here...</p>
-             <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
+            <div style="margin-bottom: 40px;">
+                <div style="font-size: 0.9rem; color: #888; margin-bottom: 10px;">Step 3 of 3</div>
+                <div style="height: 6px; background: #eee; border-radius: 3px; overflow: hidden;">
+                    <div style="width: 100%; height: 100%; background: #FFD700;"></div>
+                </div>
+            </div>
+
+            <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Application Fee</h3>
+            
+            <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 30px;">
+                Complete your application by submitting the application fee to secure your spot at the Youth Development Forum 2026. We process payments through Stripe, a globally trusted and highly secure platform, ensuring your personal and payment details are fully protected under General Data Protection Regulation (GDPR) standards. Have questions? We're here to help! Reach out to us at <a href="mailto:info@thecgdl.org" style="color: #2D236E; font-weight: 600;">info@thecgdl.org</a>. Let's make it happen!
+            </p>
+
+            <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">Billing Information</h4>
+            
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <tr style="border-bottom: 1px solid #ddd; background: #f9f9fb;">
+                        <td style="padding: 15px; font-weight: 500;">Application Fee for Fully/Partially Funded Category x 1</td>
+                        <td style="padding: 15px; text-align: right;">$16.99</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 15px; font-weight: 500;">Subtotal</td>
+                        <td style="padding: 15px; text-align: right;">$16.99</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 15px; font-weight: 500;">Service Charges, VAT & Processing Fee</td>
+                        <td style="padding: 15px; text-align: right;">$3.00</td>
+                    </tr>
+                    <tr style="background: #f9f9fb; font-weight: 800; font-size: 1.1rem; color: #2D236E;">
+                        <td style="padding: 15px;">Total (Nineteen dollars ninety nine cents)</td>
+                        <td style="padding: 15px; text-align: right;">$19.99</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="border: 1px solid #ddd; border-radius: 50px; padding: 10px 30px; display: inline-block; margin-bottom: 20px; color: #6772e5; font-weight: 600;">
+                Powered by <span style="font-size: 1.2rem; font-weight: 900; letter-spacing: -0.5px;">stripe</span>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px; line-height: 1.5;">
+                After clicking the Submit button, please wait a few seconds for your application to process. Submissions sometimes takes longer. However, if you encounter any issues, feel free to email us at <a href="mailto:info@thecgdl.org" style="color: #2D236E;">info@thecgdl.org</a> or drop a text on WhatsApp at +1(437)3241474 for assistance.
+            </p>
+
+            <form>
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">Credit Card / Debit Card <span style="color: red;">(Required)</span></label>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Email</label>
+                            <input type="email" placeholder="almesagadw@gmail.com" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        </div>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div style="flex: 2; min-width: 250px; position: relative;">
+                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Card number</label>
+                                <div style="position: relative;">
+                                    <input type="text" placeholder="Card number" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                    <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
+                                        <img src="https://js.stripe.com/v3/fingerprinted/img/visa-7ad57775a8c4ad024b92c0e2a2100a07.svg" style="height: 20px;">
+                                        <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d884a4c4340784918e388d1d867c2df.svg" style="height: 20px;">
+                                        <img src="https://js.stripe.com/v3/fingerprinted/img/amex-a24912fa0999079973e65893a776c99c.svg" style="height: 20px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1; min-width: 120px;">
+                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Expiry date</label>
+                                <input type="text" placeholder="MM / YY" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                            </div>
+                            <div style="flex: 1; min-width: 100px;">
+                                <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Security code</label>
+                                <div style="position: relative;">
+                                    <input type="text" placeholder="CVC" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                    <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888;">💳</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Country</label>
+                            <select style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                <option value="Ethiopia">Ethiopia</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Germany">Germany</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Application Processing Fee <span style="color: red;">(Required)</span></label>
+                    <div style="color: #666; margin-bottom: 10px; font-size: 0.9rem;">Price:</div>
+                    <div style="font-weight: 700; font-size: 1.1rem; color: #2D236E;">$19.99</div>
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">Declaration <span style="color: red;">(Required)</span></label>
+                    <div style="display: flex; gap: 15px; align-items: flex-start; background: #f9f9fb; padding: 20px; border-radius: 12px; border: 1px solid #ddd;">
+                        <input type="checkbox" style="width: 20px; height: 20px; margin-top: 3px; cursor: pointer;">
+                        <div style="font-size: 0.95rem; line-height: 1.6; color: #444;">
+                            <div style="background: #0088cc; color: white; display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 5px;">I agree to the Terms and Conditions</div>
+                            <br>I affirm that all information provided in this application is accurate and truthful to the best of my knowledge. I agree to adhere to Terms and Conditions and Refund Policy outlined on CGDL's website. I understand that providing false information may lead to disqualification from the scholarship program or event participation in YDF-26.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-start; gap: 20px;">
+                    <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
+                    <button type="submit" class="btn-apply-special" style="width: 200px; padding: 15px;">SUBMIT</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
