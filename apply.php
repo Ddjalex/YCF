@@ -269,9 +269,9 @@ include 'header.php';
                                 <div style="position: relative;">
                                     <input type="text" id="card_number" placeholder="1234 1234 1234 1234" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
                                     <div id="card_icons" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
-                                        <img id="icon_visa" src="https://js.stripe.com/v3/fingerprinted/img/visa-7ad57775a8c4ad024b92c0e2a2100a07.svg" style="height: 20px; transition: opacity 0.3s;">
-                                        <img id="icon_mastercard" src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d884a4c4340784918e388d1d867c2df.svg" style="height: 20px; transition: opacity 0.3s;">
-                                        <img id="icon_amex" src="https://js.stripe.com/v3/fingerprinted/img/amex-a24912fa0999079973e65893a776c99c.svg" style="height: 20px; transition: opacity 0.3s;">
+                                        <img id="icon_visa" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
+                                        <img id="icon_mastercard" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
+                                        <img id="icon_amex" src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
                                     </div>
                                 </div>
                             </div>
