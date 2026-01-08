@@ -268,7 +268,7 @@
             font-weight: 700;
             cursor: pointer;
             text-decoration: none;
-            display: inline-flex;
+            display: none !important; /* Removed as requested */
             align-items: center;
             justify-content: center;
             line-height: 1;
@@ -391,13 +391,7 @@
             <div class="nav-item">
                 <a href="/contact">Contact</a>
             </div>
-            <div class="header-tools">
-                <div class="search-container">
-                    <form action="/" method="GET" style="margin: 0; display: flex; align-items: center;">
-                        <input type="text" name="search" class="search-input" id="searchInput" placeholder="Search hotels...">
-                        <span class="search-icon" id="searchIcon">🔍</span>
-                    </form>
-                </div>
+            <div class="header-tools" style="display: none;">
                 <span class="lang-switch btn-custom-animate">EN</span>
             </div>
         </nav>
