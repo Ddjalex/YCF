@@ -169,6 +169,12 @@ function render_registration_form($package_id, $package_name, $price) {
                     <span style="font-size: 0.75rem; color: #888;">Accepted file types: jpg, jpeg, png, webp, heic, Max. file size: 3 MB.</span>
                 </div>
 
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Upload Your Passport Photo <span style="color: #d9534f;">(Required)</span></label>
+                    <input type="file" name="passport_photo" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #f9f9fb;" required>
+                    <span style="font-size: 0.75rem; color: #888;">Accepted file types: jpg, jpeg, png, webp, heic, Max. file size: 3 MB.</span>
+                </div>
+
                 <div style="display: flex; gap: 10px;">
                     <button type="button" onclick="nextStep(1)" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Previous</button>
                     <button type="button" onclick="nextStep(3)" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Next</button>
