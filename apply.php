@@ -230,6 +230,11 @@ include 'header.php';
                                 <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC)</span>
                                 <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
                             </div>
+                            <div style="display: flex; gap: 8px; margin-left: auto;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" style="height: 24px;" alt="Bitcoin">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tether_Logo.svg" style="height: 24px;" alt="Tether">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Ethereum_logo_2014.svg" style="height: 24px;" alt="Ethereum">
+                            </div>
                         </label>
                         <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
                             <div style="text-align: center; margin-bottom: 20px;">
@@ -254,6 +259,10 @@ include 'header.php';
                                 <span style="font-weight: 600; color: #2D236E;">Mastercard / Visa</span>
                                 <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
                             </div>
+                            <div style="display: flex; gap: 8px; margin-left: auto;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 24px; opacity: 0.6;" alt="Mastercard">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 18px; opacity: 0.6;" alt="Visa">
+                            </div>
                         </label>
                     </div>
 
@@ -263,6 +272,9 @@ include 'header.php';
                             <div style="display: flex; flex-direction: column;">
                                 <span style="font-weight: 600; color: #2D236E;">PayPal</span>
                                 <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
+                            </div>
+                            <div style="display: flex; margin-left: auto;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" style="height: 24px; opacity: 0.6;" alt="PayPal">
                             </div>
                         </label>
                     </div>
