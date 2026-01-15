@@ -24,7 +24,34 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <!-- News & Updates Section (2nd element vertically) -->
+    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto 30px; min-height: 50px; border: 1px solid #eee; gap: 8px;">
+        <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
+            <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
+        </div>
+        
+        <div id="countdown" style="display: flex; gap: 0.8rem; align-items: center; padding: 8px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="days" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">d</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="hours" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">h</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="minutes" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">m</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="seconds" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">s</span>
+            </div>
+        </div>
+        
+        <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
+    </div>
+
+    <!-- News & Updates Section (Now after countdown) -->
     <section style="padding: 20px 20px 60px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
@@ -58,33 +85,6 @@ if (isset($_GET['page'])) {
             </div>
         </div>
     </section>
-
-    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto; min-height: 50px; border: 1px solid #eee; gap: 8px;">
-        <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
-            <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
-        </div>
-        
-        <div id="countdown" style="display: flex; gap: 0.8rem; align-items: center; padding: 8px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="days" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">d</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="hours" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">h</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="minutes" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">m</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="seconds" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">s</span>
-            </div>
-        </div>
-        
-        <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
-    </div>
 </section>
 
 <section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
@@ -212,7 +212,7 @@ if (isset($_GET['page'])) {
                     <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🛂</span> Comprehensive visa support & letter</li>
                 </ul>
                 <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); margin: 15px 0; padding-top: 10px;">
-                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; text-align: center; color: rgba(255, 255, 255, 0.7);">Not Included</h4>
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">Not Included</h4>
                     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.75rem; line-height: 1.6;">
                         <li style="display: flex; gap: 10px;"><span style="color: #FFD700;">✈️</span> Airfare</li>
                         <li style="display: flex; gap: 10px;"><span style="color: #FFD700;">🏨</span> Accommodation</li>
