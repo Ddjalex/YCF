@@ -106,7 +106,7 @@ if ($search):
             </div>
         </div>
         
-        <a href="#" class="btn-custom-animate">Register Now</a>
+        <a href="#participation-seats" class="btn-custom-animate">Register Now</a>
     </div>
 </section>
 
@@ -134,409 +134,86 @@ if ($search):
     </div>
 </section>
 
-<section class="agenda" style="padding: 6rem 10%; background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('attached_assets/1_Rs5tF_ifkt8I99W5BZyBKw_1767637840250.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px;">AGENDA</h2>
-        <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">View all &rsaquo;</a>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                <span style="background: var(--primary-blue); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 700; margin-right: 1.2rem; font-size: 0.9rem;">Day 1</span>
-                <span style="font-weight: 600; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">2026-06-15</span>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">09:00 - 10:10</div>
-                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Opening Keynote: The Crypto Landscape in 2026</div>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:10 - 10:30</div>
-                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Coffee Break & Networking</div>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:30 - 12:30</div>
-                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Panel: Regulation vs Innovation in Germany</div>
-                </div>
-            </div>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                <span style="background: var(--primary-blue); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 700; margin-right: 1.2rem; font-size: 0.9rem;">Day 2</span>
-                <span style="font-weight: 600; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">2026-06-16</span>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">09:00 - 10:00</div>
-                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Workshop: Building Web3 Apps for the Masses</div>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 0.5rem;">10:00 - 13:00</div>
-                    <div style="color: #333; font-size: 1.1rem; font-weight: 600; line-height: 1.4;">Hackathon: Sustainable Blockchain Solutions</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="vision" style="padding: 6rem 10%; background: #fff; text-align: center;">
-    <h2 class="montserrat" style="font-size: 3rem; color: #000; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1;">Aligned with Europe's Youth Vision &<br>Global Priorities</h2>
-    <p style="font-size: 1.1rem; color: #333; max-width: 800px; margin: 0 auto 4rem; line-height: 1.6;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">EU Youth Strategy 2019–2027</h3>
-            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
-        </div>
-        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">EU Digital Decade & AI governance goals</h3>
-            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Empowering young people in emerging technologies.</p>
-        </div>
-        <div style="background: #2D236E; color: white; padding: 3rem 2rem; border-radius: 30px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 class="montserrat" style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.3;">Council of Europe's Youth Sector Priorities</h3>
-            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
-        </div>
-    </div>
-</section>
-
-<section class="forum-highlights" style="padding: 3rem 10%; background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8)), url('attached_assets/germany-0_1767641199459.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1100px; margin: 0 auto;">
-        <div style="max-width: 400px;">
-            <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
-            <p style="font-size: 1rem; line-height: 1.4; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
-            <a href="#" class="btn-custom-animate">Register Now</a>
-        </div>
-        
-        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-            <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">💬</div>
-                <div style="font-size: 0.9rem; font-weight: 600;">Expert-led Workshops & Interactive Masterclasses</div>
-            </div>
-            <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">📜</div>
-                <div style="font-size: 0.9rem; font-weight: 600;">Youth Diplomacy Sessions & Policy Dialogues</div>
-            </div>
-            <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">🤝</div>
-                <div style="font-size: 0.9rem; font-weight: 600;">Networking with global leaders, changemakers & institutions</div>
-            </div>
-            <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">🌍</div>
-                <div style="font-size: 0.9rem; font-weight: 600;">Country presentations, cultural exchange & collaborative activities</div>
-            </div>
-            <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">🏢</div>
-                <div style="font-size: 0.9rem; font-weight: 600;">Visit to the Federal Parliament of Germany (The Bundestag)</div>
-            </div>
-            <div style="background: #2D236E; padding: 1rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
-                <div style="font-size: 1.2rem; width: 35px; text-align: center;">🗺️</div>
-                <div>
-                    <div style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">Guided City Tour of Berlin, highlighting:</div>
-                    <ul style="margin: 0; padding-left: 1rem; font-size: 0.85rem; opacity: 0.9; line-height: 1.3; font-weight: 500;">
-                        <li>World War history</li>
-                        <li>Diplomatic evolution in Europe</li>
-                        <li>Lessons for future generations</li>
-                        <li>The city's transformation into a hub of innovation, democracy & culture</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    </div>
-</section>
-
-<section class="participation-seats" style="padding: 4rem 10% 2rem; background: #fcfcfc; text-align: center;">
+<section class="participation-seats" id="participation-seats" style="padding: 4rem 10% 2rem; background: #fcfcfc; text-align: center;">
     <h2 class="montserrat" style="font-size: 1.8rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; text-transform: uppercase;">Total Participation Seats: 200</h2>
     <p style="font-size: 0.95rem; color: #333; margin-bottom: 2rem; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Development Forum 2026:</p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; perspective: 1000px;">
-        <!-- Card 1 -->
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-10px) rotateX(5deg)'; this.style.boxShadow='0 15px 30px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
-            <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Fully Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">30 Seats</div>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Competitive Selection</p>
+        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
+            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Fully Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">30 Seats</div>
+            <p style="font-size: 0.85rem; font-weight: 700;">Competitive Selection</p>
+            <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
         </div>
         
-        <!-- Card 2 -->
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-10px) rotateX(5deg)'; this.style.boxShadow='0 15px 30px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
-            <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Partially Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">50 Seats</div>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Competitive Selection</p>
+        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
+            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Partially Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">50 Seats</div>
+            <p style="font-size: 0.85rem; font-weight: 700;">Competitive Selection</p>
+            <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
         </div>
         
-        <!-- Card 3 -->
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-10px) rotateX(5deg)'; this.style.boxShadow='0 15px 30px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
-            <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Forum Admission</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">40 Seats</div>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Guaranteed Selection</p>
+        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
+            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Forum Admission</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">40 Seats</div>
+            <p style="font-size: 0.85rem; font-weight: 700;">Guaranteed Selection</p>
+            <a href="apply.php?package=forum-admission" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
         </div>
         
-        <!-- Card 4 -->
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-10px) rotateX(5deg)'; this.style.boxShadow='0 15px 30px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
-            <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Self Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">80 Seats</div>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Guaranteed Selection</p>
+        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
+            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Self Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">80 Seats</div>
+            <p style="font-size: 0.85rem; font-weight: 700;">Guaranteed Selection</p>
+            <a href="apply.php?package=self-funded" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
         </div>
     </div>
 </section>
 
-<section class="scholarship-categories" style="padding: 0; position: relative; background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed;">
-    <div style="background: rgba(0, 0, 0, 0.4); padding: 80px 10%;">
-        <div style="max-width: 800px; margin: 0 auto 50px; background: #2D236E; padding: 30px; border-radius: 15px; color: white; text-align: center; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.3);">
-            <h2 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; line-height: 1.1;">Scholarship Categories<br>(Competitive Selection)</h2>
-            <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9; font-weight: 400;">
-                These are <em>funded</em> categories offered to outstanding applicants based on merit, motivation, and global representation. 
-                The <strong>Fully Funded</strong> and <strong>Partially Funded</strong> categories share one unified application form.
-            </p>
-            <div style="position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 15px solid #2D236E;"></div>
+<section class="guaranteed-categories" style="padding: 4rem 10%; background: white;">
+    <h2 class="montserrat" style="text-align: center; font-size: 2.5rem; color: #2D236E; margin-bottom: 40px;">Guaranteed Categories (Confirmed Seats)</h2>
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; flex: 1; min-width: 300px; position: relative; border-bottom: 8px solid #FFD700;">
+            <div style="text-decoration: line-through; opacity: 0.6; font-size: 1.2rem;">$799.99</div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700; margin-bottom: 20px;">$499.00</div>
+            <h3 class="montserrat" style="font-size: 1.8rem; margin-bottom: 20px;">Forum Admission Category</h3>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
+                <li style="margin-bottom: 10px;">✓ Guaranteed participation</li>
+                <li style="margin-bottom: 10px;">✓ Access to all sessions & workshops</li>
+                <li style="margin-bottom: 10px;">✓ Certificate of Participation</li>
+            </ul>
+            <a href="apply.php?package=forum-admission" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
         </div>
+        
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; flex: 1; min-width: 300px; position: relative; border-bottom: 8px solid #FFD700;">
+            <div style="text-decoration: line-through; opacity: 0.6; font-size: 1.2rem;">$999.99</div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700; margin-bottom: 20px;">$799.00</div>
+            <h3 class="montserrat" style="font-size: 1.8rem; margin-bottom: 20px;">Self-Funded Category</h3>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
+                <li style="margin-bottom: 10px;">✓ 4-star hotel (3 nights)</li>
+                <li style="margin-bottom: 10px;">✓ All meals & breakfast included</li>
+                <li style="margin-bottom: 10px;">✓ Priority confirmation</li>
+            </ul>
+            <a href="apply.php?package=self-funded" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
+        </div>
+    </div>
 
-    <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3); grid-column: 1 / -1; max-width: 1100px; margin: 0 auto; width: 100%;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
-            <!-- Fully Funded Info -->
-            <div>
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #FFD700;">$16.99</div>
-                    <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Fully Funded Category</h3>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">What's Included</span>
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                    </div>
-                </div>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✈</span> Round-trip airfare to Berlin, Germany</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🍱</span> Daily meals & breakfast</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✓</span> Full access to all conference sessions, workshops, and activities</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">●</span> Certificate of Participation issued by CGDL</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">💼</span> Delegate kit including conference materials</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏛</span> Guided city tour of Berlin, covering historical sites</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✉</span> Comprehensive visa support, including invitation letter</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🤝</span> Participation in cultural exchange & networking events</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🎙</span> Opportunity to engage with global speakers & experts</li>
-                </ul>
+    <div style="max-width: 800px; margin: 40px auto; background: #2D236E; padding: 40px; border-radius: 24px; color: white; display: flex; flex-wrap: wrap; gap: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-bottom: 8px solid #FFD700;">
+        <div style="flex: 1; min-width: 300px;">
+            <h3 class="montserrat" style="font-size: 2rem; margin-bottom: 10px;">Visa Invitation Letter</h3>
+            <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px;">
+                <span style="text-decoration: line-through; opacity: 0.6; font-size: 1.1rem;">$299.99</span>
+                <span style="font-size: 2rem; font-weight: 800; color: #FFD700;">$99.00</span>
             </div>
-
-            <!-- Partially Funded Info -->
-            <div>
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #FFD700;">$16.99</div>
-                    <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Partially Funded Category</h3>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">What's Included</span>
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                    </div>
-                </div>
-                <ul style="list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✓</span> Full access to all conference sessions, workshops, and activities</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🍱</span> Meals & breakfast throughout the forum</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">●</span> Certificate of Participation from CGDL</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">💼</span> Delegate kit including conference materials</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🏛</span> Guided city tour of Berlin focusing on history</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">✉</span> Comprehensive visa support, including invitation letter</li>
-                    <li style="display: flex; gap: 10px; align-items: center;"><span style="color: #FFD700; font-size: 1.1rem;">🤝</span> Participation in cultural & networking activities</li>
-                </ul>
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Not Included</span>
-                        <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.2);"></span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                        <span style="color: #ff5252; font-size: 1.2rem;">✈</span> Airfare
-                    </div>
-                </div>
-            </div>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.9rem; line-height: 1.6;">
+                <li style="margin-bottom: 8px;">✓ Official Visa Invitation Letter</li>
+                <li style="margin-bottom: 8px;">✓ Visa Documents Checklist</li>
+                <li style="margin-bottom: 8px;">✓ Embassy Coordination Assistance</li>
+            </ul>
+            <a href="apply.php?package=visa-invitation" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
         </div>
-
-        <div style="margin-top: 40px; text-align: center; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 15px;">
-            <a href="apply.php" class="btn-apply-special">APPLY NOW!</a>
-        </div>
+        <div style="flex: 1; min-width: 300px; border-radius: 16px; overflow: hidden; background: url('https://images.unsplash.com/photo-1599946347341-671151699d21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;"></div>
     </div>
 </section>
-
-<section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
-        <a href="#" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">View all &rsaquo;</a>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
-        <?php 
-        $search = $_GET['search'] ?? null;
-        $hotels = get_hotels($search);
-        if (empty($hotels)) {
-            echo "<p style='color: rgba(255,255,255,0.7);'>No hotels found matching your search.</p>";
-        }
-        foreach ($hotels as $hotel): ?>
-        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 30px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-            <div style="height: 240px; padding: 15px;">
-                <div style="width: 100%; height: 100%; background-image: url('<?php echo $hotel['photo_url'] ?: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'; ?>'); background-size: cover; background-position: center; border-radius: 25px;"></div>
-            </div>
-            <div style="padding: 0 2rem 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
-                <div style="color: #ffb400; font-size: 1rem; letter-spacing: 2px; font-weight: bold;">
-                    <?php echo str_repeat('★', $hotel['stars']); ?>
-                </div>
-                <h3 style="font-size: 1.6rem; color: white; margin: 0; font-weight: 700; height: 1.9rem; overflow: hidden; font-family: 'Inter', sans-serif;"><?php echo htmlspecialchars($hotel['name']); ?></h3>
-                
-                <div style="margin-top: 1rem;">
-                    <a href="<?php echo $hotel['map_url'] ?: '#'; ?>" target="_blank" style="color: rgba(255,255,255,0.9); font-size: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-family: 'Inter', sans-serif;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00aeef" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        See on Google Maps
-                    </a>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; ?>
-    </div>
-</section>
-
-<section class="visa" style="padding: 4rem 10%; background: #f8fbff; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; pointer-events: none; display: flex; justify-content: center; align-items: center;">
-        <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="width: 80%; transform: rotate(-15deg);">
-    </div>
-    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">VISA REQUIREMENTS</h2>
-    <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); position: relative; z-index: 1;">
-        <p style="font-size: 1rem; color: #444; margin-bottom: 1.5rem; line-height: 1.8;">
-            Obtaining a visa is the responsibility of the participant. Please check the visa requirements for your nationality at the official website: <a href="https://www.auswaertiges-amt.de/en/visa-service" style="color: var(--primary-blue); font-weight: 600;">Germany Federal Foreign Office</a>.
-        </p>
-        <p style="font-size: 1rem; color: #444; margin-bottom: 1.5rem; line-height: 1.8;">
-            You can apply for a Schengen visa for Germany through the official portal. The application process includes completing the online form in <strong>English or German</strong>, uploading a passport-style photo and a scanned copy of your passport, and paying a <strong>consular fee</strong>. The visa is typically valid for 90 days.
-        </p>
-    </div>
-</section>
-
-<section class="emergency" style="padding: 4rem 10%;">
-    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">EMERGENCY PHONE NUMBERS</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Police / Fire / Emergency</h3>
-                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">112</div>
-            </div>
-            <div style="font-size: 2rem;">🛡️</div>
-        </div>
-        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Medical Emergency</h3>
-                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">116 117</div>
-            </div>
-            <div style="font-size: 2rem;">🏥</div>
-        </div>
-        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <h3 style="font-size: 1rem; color: var(--dark-blue); margin: 0 0 0.5rem;">Forum Support Team</h3>
-                <div style="font-size: 2.2rem; font-weight: 700; color: var(--primary-blue);">+49 30 12345678</div>
-            </div>
-            <div style="font-size: 2rem;">🎧</div>
-        </div>
-    </div>
-</section>
-
-<section class="weather" style="padding: 4rem 10%; background: #f0f7ff;">
-    <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">WEATHER IN BERLIN</h2>
-    <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;">
-        <?php 
-        $weather = get_weather_data();
-        if ($weather): 
-        ?>
-        <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 2rem; border-radius: 12px; min-width: 280px; box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);">
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;"><?php echo date('l, d F Y'); ?> · Berlin</div>
-            <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <div style="font-size: 3rem;"><?php echo $weather['icon']; ?></div>
-                <div>
-                    <div style="font-size: 2.5rem; font-weight: 700;"><?php echo $weather['temp']; ?></div>
-                    <div style="font-size: 1rem; opacity: 0.9;">Current Conditions</div>
-                </div>
-            </div>
-            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">Last updated: <?php echo $weather['last_updated']; ?> <a href="javascript:location.reload()" style="color: white; text-decoration: none;">↻</a></div>
-        </div>
-        <?php foreach ($weather['forecast'] as $f): ?>
-        <div style="background: white; padding: 1.5rem; border-radius: 12px; min-width: 120px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;"><?php echo $f['icon']; ?></div>
-            <div style="font-size: 1.1rem; font-weight: 700; color: var(--dark-blue);"><?php echo $f['temp']; ?></div>
-            <div style="font-size: 0.8rem; color: #888; margin-top: 0.3rem;"><?php echo $f['time']; ?></div>
-        </div>
-        <?php endforeach; ?>
-        <?php else: ?>
-            <p style="color: #666;">Weather data currently unavailable.</p>
-        <?php endif; ?>
-    </div>
-</section>
-
-<section class="videos" style="padding: 4rem 10%;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
-        <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700;">VIDEOS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
-        <?php foreach (get_homepage_videos() as $video): ?>
-        <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
-            <img src="<?php echo $video['thumbnail_url'] ?: 'https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'; ?>" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer;" onclick="<?php echo $video['video_url'] ? "window.open('{$video['video_url']}', '_blank')" : ""; ?>">▶</div>
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white;">
-                <h3 style="font-size: 1.1rem; margin: 0;"><?php echo htmlspecialchars($video['title']); ?></h3>
-            </div>
-        </div>
-        <?php endforeach; ?>
-    </div>
-</section>
-
-<section class="photos" style="padding: 4rem 10%; background: #fff;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
-        <h2 style="color: var(--dark-blue); font-size: 1.8rem; font-weight: 700;">PHOTOS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 200px); gap: 1rem;">
-        <div style="grid-column: span 2; grid-row: span 2; border-radius: 12px; overflow: hidden;">
-            <img src="https://images.unsplash.com/photo-1585241936939-be4099591252?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="border-radius: 12px; overflow: hidden;">
-            <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="border-radius: 12px; overflow: hidden;">
-            <img src="https://images.unsplash.com/photo-1591115765373-520b7a020120?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="grid-column: span 2; border-radius: 12px; overflow: hidden;">
-            <img src="https://images.unsplash.com/photo-1505373633569-42861a388b39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-    </div>
-</section>
-
-<section class="organizers" style="padding: 4rem 10%; background: #fcfcfc;">
-    <h2 style="color: var(--dark-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 1px;">Organizers</h2>
-    <div style="display: flex; gap: 2rem; align-items: center; overflow-x: auto; padding-bottom: 2rem;">
-        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
-            <img src="https://www.unpsf2025.org/assets/banner-logo-9fqzApTB.svg" style="height: 40px;">
-            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
-                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">United Nations</div>
-                <div style="font-size: 0.7rem; color: #777;">Dept. of Economic & Social Affairs</div>
-            </div>
-        </div>
-        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
-            <div style="font-weight: 800; font-size: 1.2rem; color: var(--primary-blue);">GERMANY</div>
-            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
-                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">Ministry of Digital Affairs</div>
-                <div style="font-size: 0.7rem; color: #777;">Federal Republic of Germany</div>
-            </div>
-        </div>
-        <div style="background: white; padding: 1.5rem 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 1rem; min-width: 300px;">
-            <div style="font-size: 1.5rem;">🌐</div>
-            <div style="border-left: 1px solid #eee; padding-left: 1rem;">
-                <div style="font-weight: 700; font-size: 0.9rem; color: #333;">European Blockchain Agency</div>
-                <div style="font-size: 0.7rem; color: #777;">Digital Future Initiative</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<?php endif; // End search check ?>
+<?php endif; ?>
 
 <?php include 'footer.php'; ?>

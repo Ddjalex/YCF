@@ -1,13 +1,44 @@
 <?php
 include 'header.php';
+
+// Define packages
+$packages = [
+    'scholarship' => [
+        'title' => 'Fully/Partially Funded Application',
+        'price' => 19.99,
+        'description' => 'Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.'
+    ],
+    'forum-admission' => [
+        'title' => 'Forum Admission Category',
+        'price' => 499.00,
+        'description' => 'Guaranteed participation at the Youth Development Forum 2026. Includes access to all sessions, certificate, and city tour.'
+    ],
+    'self-funded' => [
+        'title' => 'Self-Funded Category',
+        'price' => 799.00,
+        'description' => 'Upgraded guaranteed option including premium hotel accommodation, meals, and priority confirmation.'
+    ],
+    'visa-invitation' => [
+        'title' => 'Visa Invitation Package',
+        'price' => 99.00,
+        'description' => 'Official invitation letter, documents checklist, and embassy coordination assistance.'
+    ]
+];
+
+// Detect package from URL (e.g., apply.php?package=forum-admission)
+$package_id = $_GET['package'] ?? 'scholarship';
+$current_package = $packages[$package_id] ?? $packages['scholarship'];
 ?>
 
 <div class="hero-container" style="padding-top: 100px; min-height: auto; background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed;">
     <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 60px 20px; color: white; text-align: center;">
-        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Development Forum 2026<br>Fully/Partially Funded Application</h1>
+        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Development Forum 2026<br><?php echo $current_package['title']; ?></h1>
         <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 15px 30px; border-radius: 10px; font-weight: 800; font-size: 1.1rem; max-width: 800px;">
-            Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.
+            <?php echo $current_package['description']; ?>
         </div>
+        <?php if ($current_package['price'] > 19.99): ?>
+        <div style="margin-top: 20px; font-size: 2rem; font-weight: 800; color: #FFD700;">$<?php echo number_format($current_package['price'], 2); ?></div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -214,8 +245,8 @@ include 'header.php';
             <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left;">
                     <tr style="background: #f9f9fb; font-weight: 800; font-size: 1.1rem; color: #2D236E;">
-                        <td style="padding: 15px;">Total</td>
-                        <td style="padding: 15px; text-align: right;">$19.99</td>
+                        <td style="padding: 15px;"><?php echo $current_package['title']; ?></td>
+                        <td style="padding: 15px; text-align: right;">$<?php echo number_format($current_package['price'], 2); ?></td>
                     </tr>
                 </table>
             </div>
