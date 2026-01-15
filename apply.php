@@ -199,8 +199,8 @@ include 'header.php';
                 </div>
 
                 <div style="margin-bottom: 40px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Profile Photo</label>
-                    <input type="file" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Profile Photo <span style="color: red;">(Required)</span></label>
+                    <input type="file" name="profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     <small style="color: #888; display: block; margin-top: 5px;">Accepted file types: jpg, jpeg, png, webp, heic, Max. file size: 3 MB.</small>
                 </div>
 
@@ -347,14 +347,25 @@ function nextStep(step) {
         let isValid = true;
         let currentView = document.getElementById('step' + currentStepNum);
         
-        // Validate required inputs
+        // Validate required inputs (including selects, textareas, and files)
         let inputs = currentView.querySelectorAll('input[required], select[required], textarea[required]');
         inputs.forEach(input => {
-            if (!input.value.trim()) {
+            if (input.type === 'file') {
+                if (!input.files || !input.files.length) {
+                    isValid = false;
+                    input.style.borderColor = 'red';
+                    input.style.borderWidth = '2px';
+                } else {
+                    input.style.borderColor = '#ddd';
+                    input.style.borderWidth = '1px';
+                }
+            } else if (!input.value.trim()) {
                 isValid = false;
                 input.style.borderColor = 'red';
+                input.style.borderWidth = '2px';
             } else {
                 input.style.borderColor = '#ddd';
+                input.style.borderWidth = '1px';
             }
         });
 
@@ -369,16 +380,14 @@ function nextStep(step) {
                 }
             }
             
+            let sourceContainer = document.querySelector('.source-options-container');
             if (!radioChecked) {
                 isValid = false;
-                // Highlight the source section
-                let sourceContainer = document.querySelector('.source-options-container');
                 if (sourceContainer) {
-                    sourceContainer.style.border = '1px solid red';
+                    sourceContainer.style.border = '2px solid red';
                     sourceContainer.style.background = '#fff5f5';
                 }
             } else {
-                let sourceContainer = document.querySelector('.source-options-container');
                 if (sourceContainer) {
                     sourceContainer.style.border = 'none';
                     sourceContainer.style.background = 'transparent';
@@ -386,21 +395,35 @@ function nextStep(step) {
             }
         }
 
-        // Step 3 specific validation (Payment Screenshot)
-        if (currentStepNum === 3) {
-            let paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value;
-            if (paymentMethod === 'crypto') {
+        // Step 3 specific validation (Payment Method and Screenshot)
+        if (currentStepNum === 3 && step > 3) {
+            let paymentMethodInput = document.querySelector('input[name="payment_method"]:checked');
+            if (!paymentMethodInput) {
+                isValid = false;
+                alert('Please select a payment method.');
+                return;
+            }
+
+            if (paymentMethodInput.value === 'crypto') {
                 let screenshotInput = document.querySelector('input[name="crypto_screenshot"]');
                 if (!screenshotInput || !screenshotInput.files.length) {
                     isValid = false;
-                    if (screenshotInput) screenshotInput.style.borderColor = 'red';
-                } else {
-                    if (screenshotInput) screenshotInput.style.borderColor = '#ddd';
+                    if (screenshotInput) {
+                        screenshotInput.style.borderColor = 'red';
+                        screenshotInput.style.borderWidth = '2px';
+                    }
                 }
             }
         }
 
         if (!isValid) {
+            // Smooth scroll to first error
+            const firstError = currentView.querySelector('[style*="border-color: red"], [style*="border: 2px solid red"]');
+            if (firstError) {
+                const yOffset = -150;
+                const y = firstError.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
             return;
         }
     }
@@ -411,13 +434,11 @@ function nextStep(step) {
     
     document.getElementById('step' + step).style.display = 'block';
     
-    // Smooth scroll to form top
     const formElement = document.getElementById('step' + step);
     const yOffset = -150; 
     const y = formElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({top: y, behavior: 'smooth'});
 
-    // Show/Hide intro section
     if (step > 1) {
         document.getElementById('intro-section').style.display = 'none';
     } else {
