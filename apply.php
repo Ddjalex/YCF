@@ -184,11 +184,10 @@ include 'header.php';
                     </div>
                 </div>
 
-                <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; display: block;">Motivational Questions:</h3>
-
                 <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Motivational Questions:</label>
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Tell us about your journey so far. <span style="color: red;">(Required)</span></label>
-                    <textarea required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
+                    <textarea required name="journey" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
                     <small style="color: #888; display: block; margin-top: 5px;">Briefly describe your experiences, initiatives, or achievements in areas such as social impact, public policy, volunteerism, leadership, technology, entrepreneurship, or any other field you are engaged in. What inspires your work, and why are you interested in being part of the Youth Development Forum 2026?</small>
                 </div>
 
@@ -340,7 +339,7 @@ include 'header.php';
 
 <script>
 function nextStep(step) {
-    const currentStepNum = parseInt(document.querySelector('#step1, #step2, #step3:not([style*="display: none"])')?.id?.replace('step', '') || '1');
+    const currentStepNum = parseInt(document.querySelector('#step1:not([style*="display: none"]), #step2:not([style*="display: none"]), #step3:not([style*="display: none"])')?.id?.replace('step', '') || '1');
     
     // Validation logic for moving forward
     if (step > currentStepNum) {
@@ -348,7 +347,6 @@ function nextStep(step) {
         let currentView = document.getElementById('step' + currentStepNum);
         
         // Validate all required inputs within the CURRENT step's view
-        // This ensures protection works for Step 1, Step 2, and Step 3 individually
         let inputs = currentView.querySelectorAll('input[required], select[required], textarea[required]');
         
         inputs.forEach(input => {
@@ -356,6 +354,10 @@ function nextStep(step) {
             
             if (input.type === 'file') {
                 if (!input.files || !input.files.length) {
+                    isFieldValid = false;
+                }
+            } else if (input.tagName.toLowerCase() === 'select') {
+                if (!input.value || input.value === "") {
                     isFieldValid = false;
                 }
             } else if (!input.value.trim()) {
@@ -398,13 +400,29 @@ function nextStep(step) {
             }
         }
 
-        // Step 3 specific validation for payment method
+        // Step 3 specific validation (Payment Method and Screenshot)
         if (currentStepNum === 3 && step > 3) {
             let paymentMethodInput = currentView.querySelector('input[name="payment_method"]:checked');
             if (!paymentMethodInput) {
                 isValid = false;
                 alert('Please select a payment method.');
                 return;
+            }
+
+            if (paymentMethodInput.value === 'crypto') {
+                let screenshotInput = currentView.querySelector('input[name="crypto_screenshot"]');
+                if (!screenshotInput || !screenshotInput.files.length) {
+                    isValid = false;
+                    if (screenshotInput) {
+                        screenshotInput.style.borderColor = 'red';
+                        screenshotInput.style.borderWidth = '2px';
+                    }
+                } else {
+                    if (screenshotInput) {
+                        screenshotInput.style.borderColor = '#ddd';
+                        screenshotInput.style.borderWidth = '1px';
+                    }
+                }
             }
         }
 
@@ -420,6 +438,7 @@ function nextStep(step) {
         }
     }
 
+    // Process step transition
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'none';
