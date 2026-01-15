@@ -52,67 +52,7 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- News & Updates Section -->
-    <section class="news" style="padding: 3rem 5%; background: #fcfcfc;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;">
-            <h2 style="color: var(--dark-blue); font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 700; margin: 0; font-family: Montserrat, sans-serif;">LATEST NEWS</h2>
-            <a href="news.php" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; font-size: 0.9rem;">View all &rsaquo;</a>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
-            <?php foreach ($news as $item): ?>
-                <div class="news-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                    <div style="height: 180px; background: #eee; background-image: url('<?php echo $item['image']; ?>'); background-size: cover; background-position: center;"></div>
-                    <div style="padding: 1.2rem;">
-                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 8px;">
-                            <span style="background: var(--primary-blue); color: white; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 15px; text-transform: uppercase;"><?php echo htmlspecialchars($item['category']); ?></span>
-                            <span style="font-size: 0.75rem; color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
-                        </div>
-                        <h3 style="color: var(--dark-blue); margin: 0 0 0.8rem; font-size: 1rem; line-height: 1.3; height: 2.6rem; overflow: hidden;"><?php echo htmlspecialchars($item['title']); ?></h3>
-                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.2rem; height: 3.4rem; overflow: hidden;"><?php echo htmlspecialchars($item['summary']); ?></p>
-                        <a href="news_detail.php?id=<?php echo $item['id']; ?>" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 16px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 5px; display: inline-block;">Read More &rarr;</a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
-</section>
-
-<!-- News & Updates Section -->
-<section style="padding: 60px 20px; background: #fff;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
-            <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #000; text-transform: uppercase; margin: 0;">Latest News</h2>
-            <a href="news.php" style="color: #00aeef; font-weight: 700; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">View All Posts <span style="font-size: 1.2rem;">→</span></a>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <?php foreach($news as $item): ?>
-            <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
-                <div style="width: 100%; height: 200px; overflow: hidden;">
-                    <img src="<?php echo htmlspecialchars($item['image']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        <span style="color: #00aeef;"><?php echo htmlspecialchars($item['category']); ?></span>
-                        <span style="color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
-                    </div>
-                    <h3 class="montserrat" style="font-size: 1.25rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: #000;">
-                        <?php echo htmlspecialchars($item['title']); ?>
-                    </h3>
-                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
-                        <?php echo htmlspecialchars($item['summary']); ?>
-                    </p>
-                    <a href="news_detail.php?id=<?php echo $item['id']; ?>" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
-                        Read Full Story <span style="font-size: 1.1rem;">+</span>
-                    </a>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
-<section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
+    <section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
     <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
         <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); color: #000; font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
         <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
