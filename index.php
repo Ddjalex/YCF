@@ -402,7 +402,7 @@ if ($search):
                     <div><span style="font-size: 1.1rem;">🏨</span> Accommodation</div>
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="apply.php?package=gf_22" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
@@ -440,8 +440,42 @@ if ($search):
                     <span style="font-size: 1.1rem;">✈</span> Airfare
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="apply.php?package=gf_23" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="visa-invitation" style="padding: 60px 10%; background: #fff;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; width: 100%;">
+        <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3); text-align: left;">
+            <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; text-transform: none;">Visa Invitation Letter</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9; margin-bottom: 25px;">Applicants who want to apply early for their visa can request a <strong>Visa Invitation Letter Package</strong> from CGDL.</p>
+            
+            <div style="margin-bottom: 30px;">
+                <div style="font-size: 1.2rem; text-decoration: line-through; opacity: 0.7; color: white; margin-bottom: 2px;">$299.99</div>
+                <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: white;">$99.00</div>
+            </div>
+
+            <ul style="list-style: none; padding: 0; margin: 0 0 30px; display: flex; flex-direction: column; gap: 15px; font-size: 0.95rem;">
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">📜</span> Official Visa Invitation Letter</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">📋</span> Visa Documents Checklist</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">📑</span> Confirmation of Event Participation</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🏢</span> Embassy Coordination Assistance</li>
+            </ul>
+
+            <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 30px;">This option is available to all categories of applicants. Applicants can later upgrade to either forum admission or self funded and the cost of their visa package will be fully adjusted towards the upgrade.</p>
+
+            <div style="margin-top: auto;">
+                <a href="apply.php?package=gf_24" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box; text-align: center;">REGISTER NOW!</a>
+            </div>
+        </div>
+        
+        <div style="border-radius: 25px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05); position: relative;">
+            <img src="attached_assets/image_1767436778420.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Berlin Brandenburg Gate">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(45, 35, 110, 0.9)); padding: 40px; color: white;">
+                <div style="font-size: 3rem; font-weight: 900; line-height: 1.1; text-transform: uppercase;">BERLIN<br>WAITING FOR YOU</div>
             </div>
         </div>
     </div>
