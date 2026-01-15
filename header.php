@@ -1,3 +1,6 @@
+<?php
+require_once 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -400,27 +403,29 @@
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
 
-        searchIcon.addEventListener('click', () => {
-            searchInput.classList.toggle('active');
-            if (searchInput.classList.contains('active')) {
-                searchInput.focus();
-            } else if (searchInput.value.trim() !== '') {
-                searchInput.closest('form').submit();
-            }
-        });
+        if (searchIcon && searchInput) {
+            searchIcon.addEventListener('click', () => {
+                searchInput.classList.toggle('active');
+                if (searchInput.classList.contains('active')) {
+                    searchInput.focus();
+                } else if (searchInput.value.trim() !== '') {
+                    searchInput.closest('form').submit();
+                }
+            });
 
-        // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchIcon.contains(e.target)) {
-                searchInput.classList.remove('active');
-            }
-        });
+            // Close search when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchIcon.contains(e.target)) {
+                    searchInput.classList.remove('active');
+                }
+            });
 
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                searchInput.closest('form').submit();
-            }
-        });
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    searchInput.closest('form').submit();
+                }
+            });
+        }
     </script>
     <main>
