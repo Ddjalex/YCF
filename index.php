@@ -408,7 +408,7 @@ if ($search):
                     <div><span style="font-size: 1.1rem;">🏨</span> Accommodation</div>
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="apply.php?package=gf_22" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="apply.php?package=forum_admission" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
@@ -446,7 +446,7 @@ if ($search):
                     <span style="font-size: 1.1rem;">✈</span> Airfare
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="apply.php?package=gf_23" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="apply.php?package=self_funded" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>

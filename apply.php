@@ -2,6 +2,16 @@
 include 'header.php';
 
 $package = $_GET['package'] ?? 'funded';
+
+// Map legacy or mismatched package names to standard keys
+if ($package === 'gf_22' || $package === 'forum_admission') {
+    $package = 'forum_admission';
+} elseif ($package === 'gf_23' || $package === 'self_funded') {
+    $package = 'self_funded';
+} elseif ($package === 'gf_24') {
+    $package = 'funded';
+}
+
 $package_names = [
     'fully_funded' => 'YDF Fully Funded Category Registration',
     'partially_funded' => 'YDF Partially Funded Category Registration',
@@ -14,7 +24,7 @@ $package_prices = [
     'fully_funded' => 19.99,
     'partially_funded' => 19.99,
     'forum_admission' => 499.00,
-    'self_funded' => 0.00,
+    'self_funded' => 799.00,
     'funded' => 19.99
 ];
 
