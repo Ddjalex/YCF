@@ -268,11 +268,6 @@ include 'header.php';
                                 <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Card number</label>
                                 <div style="position: relative;">
                                     <input type="text" id="card_number" placeholder="1234 1234 1234 1234" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                                    <div id="card_icons" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; gap: 5px;">
-                                        <img id="icon_visa" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
-                                        <img id="icon_mastercard" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
-                                        <img id="icon_amex" src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" style="height: 15px; width: auto; transition: opacity 0.3s;">
-                                    </div>
                                 </div>
                             </div>
                             <div style="flex: 1; border-right: 1px solid #ddd;">
