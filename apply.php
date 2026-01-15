@@ -250,15 +250,45 @@ include 'header.php';
             <div style="margin-bottom: 40px;">
                 <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">How would you like to pay?</h4>
                 <div style="display: flex; flex-direction: column; gap: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 20px; background: #f9f9fb;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                            <input type="radio" name="payment_method" value="crypto" style="width: 20px; height: 20px;">
-                            <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC, ETH, USDT)</span>
-                        </label>
-                        <div style="display: flex; gap: 8px;">
-                            <span style="font-size: 1.5rem;">₿</span>
-                            <span style="font-size: 1.5rem;">◈</span>
-                            <span style="font-size: 1.5rem;">₮</span>
+                    <div style="border-bottom: 1px solid #eee;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
+                            <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
+                                <input type="radio" name="payment_method" value="crypto" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(this.checked)">
+                                <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC, ETH, USDT)</span>
+                            </label>
+                            <div style="display: flex; gap: 8px;">
+                                <span style="font-size: 1.5rem;">₿</span>
+                                <span style="font-size: 1.5rem;">◈</span>
+                                <span style="font-size: 1.5rem;">₮</span>
+                            </div>
+                        </div>
+                        <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center;">
+                                <div style="text-align: center;">
+                                    <?php 
+                                    $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
+                                    $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
+                                    ?>
+                                    <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 4px;">
+                                    <div style="margin-top: 10px; font-size: 0.8rem; font-weight: 700; color: #f7931a;">BITCOIN (BTC)</div>
+                                </div>
+                                <div style="flex: 1; min-width: 250px;">
+                                    <div style="margin-bottom: 15px;">
+                                        <label style="display: block; font-size: 0.8rem; color: #888; margin-bottom: 5px;">BTC Wallet Address:</label>
+                                        <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; font-size: 0.9rem; word-break: break-all; position: relative;">
+                                            <span id="btc_addr_text"><?php echo $btc_address; ?></span>
+                                            <button type="button" onclick="copyToClipboard('btc_addr_text')" style="background: none; border: none; color: #2D236E; cursor: pointer; float: right; font-size: 1rem;">📋</button>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+                                        <strong>Instructions:</strong> Please send exactly <strong>$19.99</strong> equivalent in BTC to the address above. After payment, upload your transaction screenshot below.
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Transaction Screenshot <span style="color: red;">(Required)</span></label>
+                                <input type="file" name="crypto_screenshot" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                            </div>
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
@@ -316,6 +346,17 @@ function nextStep(step) {
     if (step === 1) {
         document.getElementById('intro-section').style.display = 'flex';
     }
+}
+
+function toggleCryptoDetails(show) {
+    document.getElementById('crypto_details').style.display = show ? 'block' : 'none';
+}
+
+function copyToClipboard(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Address copied to clipboard!');
+    });
 }
 </script>
 

@@ -290,3 +290,12 @@ function get_news_by_id($id) {
     }
     return null;
 }
+
+function get_admin_setting($key, $default = '') {
+    // This would typically pull from a database table
+    // For now we use the provided default or can hardcode
+    $settings = [
+        'btc_address' => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
+    ];
+    return $settings[$key] ?? $default;
+}
