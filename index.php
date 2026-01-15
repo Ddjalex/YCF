@@ -358,7 +358,7 @@ if ($search):
         </div>
 
         <div style="grid-column: 1 / -1; margin-top: 40px; text-align: center; background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <a href="apply.php" class="btn-apply-special" style="display: block; width: 100%; max-width: 600px; margin: 0 auto;">APPLY NOW!</a>
+            <a href="apply.php" class="btn-apply-now-floating">APPLY NOW!</a>
         </div>
     </div>
 </section>

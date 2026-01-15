@@ -20,6 +20,42 @@ require_once 'functions.php';
             --deep-navy: #0a1128;
             --btn-yellow: #FFD700;
         }
+
+        .btn-apply-now-floating {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #F1D302;
+            color: #332370;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse-floating 3s infinite ease-in-out;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .btn-apply-now-floating:hover {
+            transform: scale(1.1);
+            background: #fff;
+            color: #332370;
+            box-shadow: 0 15px 30px rgba(241, 211, 2, 0.4);
+        }
+
+        @keyframes pulse-floating {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         
         .btn-custom-animate {
             position: relative !important;
