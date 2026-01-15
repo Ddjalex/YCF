@@ -23,7 +23,7 @@ $is_guaranteed = true;
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
         
         <!-- Info Card -->
-        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.3);" id="package-details-grid">
             <h1 class="montserrat" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Visa Invitation Letter</h1>
             <p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6; margin-bottom: 25px;">
                 Applicants who want to apply early for their visa can request a <strong>Visa Invitation Letter Package</strong> from CGDL.
