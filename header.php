@@ -21,6 +21,35 @@ require_once 'functions.php';
             --btn-yellow: #FFD700;
         }
 
+        /* Mobile First Responsive Utilities */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 15px !important;
+                height: 70px !important;
+            }
+            .logo-main-img {
+                height: 40px !important;
+            }
+            .logo-divider {
+                height: 30px !important;
+            }
+            .logo-text {
+                font-size: 0.7rem !important;
+            }
+            nav {
+                display: none !important; /* Will need a mobile menu toggle later if requested */
+            }
+            .mobile-menu-toggle {
+                display: block !important;
+            }
+        }
+
         .btn-apply-now-floating {
             display: inline-flex;
             align-items: center;

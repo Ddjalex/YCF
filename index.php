@@ -67,12 +67,12 @@ if ($search):
     </div>
 </section>
 <?php else: ?>
-<section class="hero-container">
+<section class="hero-container" style="padding: 120px 20px 60px;">
     <h1 class="hero-title image-text-mask">YOUTH CRYPTO</h1>
     <h2 class="hero-subtitle image-text-mask">Forum Germany 2026</h2>
-    <p class="hero-description">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
+    <p class="hero-description" style="margin: 20px auto;">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
     
-    <div style="width: 100%; max-width: 1100px; height: 420px; border-radius: 80px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 50px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
+    <div style="width: 100%; max-width: 1100px; aspect-ratio: 16/9; height: auto; border-radius: clamp(20px, 5vw, 80px); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #000; margin-bottom: 40px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $hero_video = get_hero_video(); 
         if (strpos($hero_video, 'http') !== 0 && strpos($hero_video, '/') !== 0 && strpos($hero_video, 'attached_assets') !== 0 && strpos($hero_video, 'uploads/') !== 0) {
@@ -82,12 +82,12 @@ if ($search):
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; align-items: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; overflow: hidden; height: 60px; border: 1px solid #eee;">
-        <div style="background: #00aeef; padding: 0 1.5rem; height: 100%; display: flex; align-items: center; border-radius: 8px;">
+    <div style="background: #f8f9fa; border-radius: 12px; padding: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto; height: auto; min-height: 60px; border: 1px solid #eee; gap: 10px;">
+        <div style="background: #00aeef; padding: 10px 1.5rem; height: auto; display: flex; align-items: center; border-radius: 8px;">
             <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
         </div>
         
-        <div id="countdown" style="display: flex; gap: 1.5rem; align-items: center; padding: 0 2rem; color: #333; font-family: Inter, Arial, sans-serif;">
+        <div id="countdown" style="display: flex; gap: 1rem; align-items: center; padding: 10px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
             <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 4px;">
                 <span id="days" style="display: block; font-size: 1.5rem; font-weight: 700; line-height: 1;">00</span>
                 <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 600; color: #999;">d</span>
@@ -203,15 +203,15 @@ if ($search):
     </div>
 </section>
 
-<section class="forum-highlights" style="padding: 3rem 10%; background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8)), url('attached_assets/germany-0_1767641199459.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1100px; margin: 0 auto;">
-        <div style="max-width: 400px;">
-            <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
-            <p style="font-size: 1rem; line-height: 1.4; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
+<section class="forum-highlights" style="padding: 5rem 5%; background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8)), url('attached_assets/germany-0_1767641199459.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center; max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin: 0 auto;">
+            <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -1px;">FORUM<br>HIGHLIGHTS</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; font-weight: 500;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
             <a href="#" class="btn-custom-animate">Register Now</a>
         </div>
         
-        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
             <div style="background: #2D236E; padding: 0.8rem 1.5rem; border-top-left-radius: 20px; border-bottom-left-radius: 20px; display: flex; align-items: center; gap: 1rem; width: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;">
                 <div style="font-size: 1.2rem; width: 35px; text-align: center;">💬</div>
                 <div style="font-size: 0.9rem; font-weight: 600;">Expert-led Workshops & Interactive Masterclasses</div>
@@ -250,11 +250,11 @@ if ($search):
     </div>
 </section>
 
-<section class="participation-seats" style="padding: 4rem 10% 2rem; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: 1.8rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; text-transform: uppercase;">Total Participation Seats: 200</h2>
-    <p style="font-size: 0.95rem; color: #333; margin-bottom: 2rem; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Development Forum 2026:</p>
+<section class="participation-seats" style="padding: 5rem 5%; background: #fcfcfc; text-align: center;">
+    <h2 class="montserrat" style="font-size: clamp(1.5rem, 4vw, 2.2rem); color: #000; font-weight: 800; margin-bottom: 1rem; letter-spacing: 0.5px; text-transform: uppercase;">Total Participation Seats: 200</h2>
+    <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; perspective: 1000px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; perspective: 1000px;">
         <!-- Card 1 -->
         <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default;" onmouseover="this.style.transform='translateY(-10px) rotateX(5deg)'; this.style.boxShadow='0 15px 30px rgba(45, 35, 110, 0.2)';" onmouseout="this.style.transform='translateY(0) rotateX(0)'; this.style.boxShadow='none';">
             <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Fully Funded</h3>
