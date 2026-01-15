@@ -267,7 +267,13 @@ include 'header.php';
                                 <div style="text-align: center;">
                                     <?php 
                                     $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
-                                    $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
+                                    $btc_qr_custom = get_admin_setting('btc_qr');
+                                    
+                                    if ($btc_qr_custom) {
+                                        $qr_url = $btc_qr_custom;
+                                    } else {
+                                        $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
+                                    }
                                     ?>
                                     <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 4px;">
                                     <div style="margin-top: 10px; font-size: 0.8rem; font-weight: 700; color: #f7931a;">BITCOIN (BTC)</div>

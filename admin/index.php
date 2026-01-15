@@ -172,9 +172,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmt->execute([$_POST['id']]);
         $message = "Video removed.";
     } elseif ($_POST['action'] === 'update_crypto_address') {
+        $btc_address = $_POST['btc_address'];
+        $qr_path = $_POST['current_qr'];
+
+        if (isset($_FILES['btc_qr_file']) && $_FILES['btc_qr_file']['error'] === UPLOAD_ERR_OK) {
+            $upload_dir = '../uploads/';
+            if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+            $filename = time() . '_qr_' . basename($_FILES['btc_qr_file']['name']);
+            $target_path = $upload_dir . $filename;
+            
+            if (move_uploaded_file($_FILES['btc_qr_file']['tmp_name'], $target_path)) {
+                $qr_path = 'uploads/' . $filename;
+            }
+        }
+
         $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('btc_address', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
-        $stmt->execute([$_POST['btc_address']]);
-        $message = "Crypto address updated!";
+        $stmt->execute([$btc_address]);
+
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('btc_qr', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
+        $stmt->execute([$qr_path]);
+
+        $message = "Crypto settings updated!";
     }
 }
 
@@ -249,12 +267,22 @@ $homepage_videos = get_homepage_videos();
 
             <div class="card">
                 <h3 style="margin-top: 0; color: #2d3748;">Crypto Deposit Address</h3>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="update_crypto_address">
+                    
                     <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">BTC Wallet Address</label>
                     <?php $btc_address = get_admin_setting('btc_address'); ?>
                     <input type="text" name="btc_address" value="<?php echo htmlspecialchars($btc_address); ?>">
-                    <button type="submit" style="background: #f7931a;">Update Address</button>
+
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">QR Code Image</label>
+                    <?php $btc_qr = get_admin_setting('btc_qr'); ?>
+                    <input type="hidden" name="current_qr" value="<?php echo htmlspecialchars($btc_qr); ?>">
+                    <?php if ($btc_qr): ?>
+                        <div style="margin-bottom: 1rem;"><img src="../<?php echo htmlspecialchars($btc_qr); ?>" style="width: 100px; border-radius: 4px; border: 1px solid #eee;"></div>
+                    <?php endif; ?>
+                    <input type="file" name="btc_qr_file" accept="image/*" style="background: #f9f9f9; padding: 0.5rem;">
+
+                    <button type="submit" style="background: #f7931a;">Update Crypto Settings</button>
                 </form>
             </div>
 
