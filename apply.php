@@ -247,66 +247,7 @@ include 'header.php';
                 </table>
             </div>
 
-            <div style="border: 1px solid #ddd; border-radius: 50px; padding: 10px 30px; display: inline-block; margin-bottom: 20px; color: #6772e5; font-weight: 600;">
-                Powered by <span style="font-size: 1.2rem; font-weight: 900; letter-spacing: -0.5px;">stripe</span>
-            </div>
-            
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px; line-height: 1.5;">
-                After clicking the Submit button, please wait a few seconds for your application to process. Submissions sometimes takes longer. However, if you encounter any issues, feel free to email us at <a href="mailto:info@thecgdl.org" style="color: #2D236E;">info@thecgdl.org</a> or drop a text on WhatsApp at +1(437)3241474 for assistance.
-            </p>
-
             <form>
-                <div style="margin-bottom: 30px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">Credit Card / Debit Card <span style="color: red;">(Required)</span></label>
-                    <div style="display: flex; flex-direction: column; gap: 0;">
-                        <div style="border: 1px solid #ddd; border-radius: 8px 8px 0 0; border-bottom: none; background: #f9f9fb;">
-                            <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Email</label>
-                            <input type="email" id="stripe_email" placeholder="Email" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                        </div>
-                        <div style="display: flex; border: 1px solid #ddd; border-bottom: none; background: #f9f9fb;">
-                            <div style="flex: 2; border-right: 1px solid #ddd;">
-                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Card number</label>
-                                <div style="position: relative;">
-                                    <input type="text" id="card_number" placeholder="1234 1234 1234 1234" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                                </div>
-                            </div>
-                            <div style="flex: 1; border-right: 1px solid #ddd;">
-                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Expiry date</label>
-                                <input type="text" placeholder="MM / YY" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Security code</label>
-                                <div style="position: relative;">
-                                    <input type="text" placeholder="CVC" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                                </div>
-                            </div>
-                        </div>
-                        <div style="border: 1px solid #ddd; border-radius: 0 0 8px 8px; background: #f9f9fb; position: relative;">
-                            <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Country</label>
-                            <input type="text" id="stripe_country" readonly style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem; cursor: not-allowed;">
-                            <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none;">
-                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 30px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Application Processing Fee <span style="color: red;">(Required)</span></label>
-                    <div style="color: #666; margin-bottom: 10px; font-size: 0.9rem;">Price:</div>
-                    <div style="font-weight: 700; font-size: 1.1rem; color: #2D236E;">$19.99</div>
-                </div>
-
-                <div style="margin-bottom: 40px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">Declaration <span style="color: red;">(Required)</span></label>
-                    <div style="display: flex; gap: 15px; align-items: flex-start; background: #f9f9fb; padding: 20px; border-radius: 12px; border: 1px solid #ddd;">
-                        <input type="checkbox" style="width: 20px; height: 20px; margin-top: 3px; cursor: pointer;">
-                        <div style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            I affirm that all information provided in this application is accurate and truthful to the best of my knowledge. I agree to adhere to Terms and Conditions and Refund Policy outlined on CGDL's website. I understand that providing false information may lead to disqualification from the scholarship program or event participation in YDF-26.
-                        </div>
-                    </div>
-                </div>
-
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
                     <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
                     <button type="submit" class="btn-apply-special" style="width: 200px; padding: 15px;">SUBMIT</button>
