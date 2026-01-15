@@ -165,7 +165,7 @@ include 'header.php';
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">How did you hear about YDF26? <span style="color: red;">(Required)</span></label>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="source-options-container" style="display: flex; flex-direction: column; gap: 10px; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
                             <input type="radio" name="source" value="CGDL Social media"> CGDL Social media
                         </label>
@@ -371,13 +371,22 @@ function nextStep(step) {
             
             if (!radioChecked) {
                 isValid = false;
-                alert('Please select how you heard about us.');
-                return;
+                // Highlight the source section
+                let sourceContainer = document.querySelector('.source-options-container');
+                if (sourceContainer) {
+                    sourceContainer.style.border = '1px solid red';
+                    sourceContainer.style.background = '#fff5f5';
+                }
+            } else {
+                let sourceContainer = document.querySelector('.source-options-container');
+                if (sourceContainer) {
+                    sourceContainer.style.border = 'none';
+                    sourceContainer.style.background = 'transparent';
+                }
             }
         }
 
         if (!isValid) {
-            alert('Please fill in all required fields.');
             return;
         }
     }
