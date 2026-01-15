@@ -242,7 +242,7 @@ if (isset($_GET['page'])) {
             <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.4; margin-bottom: 25px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border-left: 2px solid #FFD700;">
                 Upgrade later to forum admission or self funded and the cost will be fully adjusted towards the upgrade.
             </p>
-            <a href="ycf-visa-invitation-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 0; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; text-align: center; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            <a href="ycf-visa-invitation-application.php#gf_24" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 0; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; text-align: center; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
         </div>
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); height: 100%; min-height: 350px; position: relative;">
             <img src="attached_assets/germany-0_1767641199459.jpg" alt="Berlin" style="width: 100%; height: 100%; object-fit: cover;">
