@@ -254,7 +254,10 @@ include 'header.php';
                         <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
                             <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
                                 <input type="radio" name="payment_method" value="crypto" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(this.checked)">
-                                <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC, ETH, USDT)</span>
+                                <div style="display: flex; flex-direction: column;">
+                                    <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC, ETH, USDT)</span>
+                                    <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
+                                </div>
                             </label>
                             <div style="display: flex; gap: 8px;">
                                 <span style="font-size: 1.5rem;">₿</span>
@@ -299,8 +302,11 @@ include 'header.php';
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
                         <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                            <input type="radio" name="payment_method" value="card" checked style="width: 20px; height: 20px;">
-                            <span style="font-weight: 600; color: #2D236E;">Credit or Debit Card</span>
+                            <input type="radio" name="payment_method" value="card" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(false)">
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-weight: 600; color: #2D236E;">Credit or Debit Card</span>
+                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
+                            </div>
                         </label>
                         <div style="display: flex; gap: 8px;">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 15px;">
@@ -309,8 +315,11 @@ include 'header.php';
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
                         <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                            <input type="radio" name="payment_method" value="paypal" style="width: 20px; height: 20px;">
-                            <span style="font-weight: 600; color: #2D236E;">PayPal</span>
+                            <input type="radio" name="payment_method" value="paypal" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(false)">
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-weight: 600; color: #2D236E;">PayPal</span>
+                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
+                            </div>
                         </label>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" style="height: 18px;">
                     </div>
