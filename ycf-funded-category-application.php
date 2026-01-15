@@ -27,8 +27,8 @@ $is_guaranteed = false;
                 Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.
             <?php endif; ?>
         </div>
-        <?php if ($package === 'forum_admission'): ?>
-            <div style="margin-top: 20px; font-size: 2.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif;">$499.00</div>
+        <?php if ($package === 'funded'): ?>
+            <div style="margin-top: 20px; font-size: 2.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif;">$19.99</div>
         <?php endif; ?>
     </div>
 </div>
