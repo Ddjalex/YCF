@@ -10,7 +10,7 @@ $package_prices = [
     'visa_invitation' => 99.00
 ];
 $service_charges = [
-    'visa_invitation' => 0.00
+    'visa_invitation' => 3.00
 ];
 $current_package_name = $package_names['visa_invitation'];
 $current_price = $package_prices['visa_invitation'];
