@@ -1,5 +1,5 @@
 <?php 
-include 'header.php';
+include 'header.php'; 
 require_once 'functions.php';
 
 // Fetch dynamic data
@@ -48,7 +48,163 @@ if (isset($_GET['page'])) {
             </div>
         </div>
         
-        <a href="#" class="btn-custom-animate" style="padding: 10px 20px; font-size: 0.9rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Register Now</a>
+        <a href="#packages" class="btn-custom-animate" style="padding: 10px 20px; font-size: 0.9rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Register Now</a>
+    </div>
+</section>
+
+<section id="packages" class="participation-seats" style="padding: 4rem 5%; background: #fcfcfc; text-align: center;">
+    <h2 class="montserrat" style="font-size: clamp(1.8rem, 5vw, 2.8rem); color: #000; font-weight: 900; margin-bottom: 1rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
+    <p style="font-size: 1.1rem; color: #333; margin-bottom: 3.5rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
+            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Fully Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">30 Seats</div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
+        </div>
+        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
+            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Partially Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">50 Seats</div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
+        </div>
+        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
+            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Forum Admission</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">40 Seats</div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
+        </div>
+        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
+            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Self Funded</h3>
+            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">80 Seats</div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
+        </div>
+    </div>
+</section>
+
+<!-- Scholarship Categories Section -->
+<section style="background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed; color: white; text-align: center; position: relative;">
+    <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 80px 20px;">
+        <div style="background: #2D236E; border-radius: 15px; padding: 25px; max-width: 800px; margin: 0 auto 40px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 class="montserrat" style="font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Scholarship Categories</h2>
+            <h3 class="montserrat" style="font-size: clamp(1.1rem, 3vw, 1.8rem); margin-bottom: 15px; font-weight: 700;">(Competitive Selection)</h3>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: white; margin-bottom: 0;">
+                These are <em>funded</em> categories offered to outstanding applicants based on merit, motivation, and global representation. The <strong>Fully Funded</strong> and <strong>Partially Funded</strong> categories share one unified application form.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 50px;">
+            <!-- Fully Funded Detail -->
+            <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
+                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;">$16.99</div>
+                <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; text-align: center;">Fully Funded Category</h3>
+                <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px;">
+                    <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; line-height: 1.5;">Participants selected under the Fully Funded category receive a complete scholarship package that covers:</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">✈️</span> Round-trip airfare to Berlin, Germany</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🍽️</span> Daily meals & breakfast</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🔑</span> Full access to all conference sessions, workshops, and activities</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🛂</span> Comprehensive visa support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Partially Funded Detail -->
+            <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
+                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;">$16.99</div>
+                <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; text-align: center;">Partially Funded Category</h3>
+                <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px;">
+                    <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; line-height: 1.5;">Participants selected for the Partially Funded category receive significant subsidization and will be provided:</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🔑</span> Full access to all conference sessions & workshops</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🏨</span> Accommodation in a premium 4-star hotel</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🍽️</span> Meals & breakfast</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">📜</span> Certificate of Participation from CGDL</li>
+                        <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🛂</span> Visa support letter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="ycf-funded-category-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 18px 80px; text-decoration: none; border-radius: 12px; font-weight: 800; display: inline-block; font-size: 1.2rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Apply Now!</a>
+    </div>
+</section>
+
+<!-- Guaranteed Categories Section -->
+<section style="background: #fff; padding: 80px 20px; text-align: center;">
+    <div style="background: #2D236E; border-radius: 15px; padding: 25px; max-width: 800px; margin: 0 auto 40px; border: 1px solid rgba(0,0,0,0.05); color: white;">
+        <h2 class="montserrat" style="font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Guaranteed Categories</h2>
+        <h3 class="montserrat" style="font-size: clamp(1.1rem, 3vw, 1.8rem); margin-bottom: 15px; font-weight: 700;">(Confirmed Seats)</h3>
+        <p style="font-size: 1.05rem; line-height: 1.6; opacity: 0.9; margin-bottom: 0;">
+            These categories offer guaranteed participation with no competitive selection. Applicants secure their seat upon completing their registration.
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 50px;">
+        <!-- Forum Admission Detail -->
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; color: white; text-align: left;">
+            <div style="font-size: 1.1rem; opacity: 0.7; text-decoration: line-through; margin-bottom: 5px; text-align: center;">$799.99</div>
+            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;">$499.00</div>
+            <h3 class="montserrat" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; text-align: center;">Forum Admission Category</h3>
+            <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px;">
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">✅</span> Guaranteed participation at YDF 2026</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🎟️</span> Access to all conference sessions & workshops</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">📜</span> Certificate of Participation from CGDL</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px; color: #ff9f9f;"><span style="color: #FFD700;">❌</span> No Accommodation included</li>
+                </ul>
+            </div>
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="ycf-forum-admission-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            </div>
+        </div>
+
+        <!-- Self-Funded Detail -->
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; color: white; text-align: left;">
+            <div style="font-size: 1.1rem; opacity: 0.7; text-decoration: line-through; margin-bottom: 5px; text-align: center;">$999.99</div>
+            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;">$799.00</div>
+            <h3 class="montserrat" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; text-align: center;">Self-Funded Category</h3>
+            <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px;">
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;">
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">✅</span> Guaranteed participation with priority confirmation</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🏨</span> Accommodation in premium 4-star hotel</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">🍽️</span> All meals & breakfast included</li>
+                    <li style="margin-bottom: 8px; display: flex; gap: 8px;"><span style="color: #FFD700;">📜</span> Certificate of Participation from CGDL</li>
+                </ul>
+            </div>
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="ycf-self-funded-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visa Invitation Section -->
+<section style="background: #f8f9fa; padding: 80px 5%; position: relative; overflow: hidden;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
+        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.2);">
+            <h1 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Visa Invitation Letter</h1>
+            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6; margin-bottom: 25px;">
+                Applicants who want to apply early for their visa can request a <strong>Visa Invitation Letter Package</strong> from CGDL.
+            </p>
+            <div style="margin-bottom: 30px;">
+                <span style="font-size: 1.2rem; opacity: 0.7; text-decoration: line-through; margin-right: 15px;">$299.99</span>
+                <span style="font-size: 2.2rem; font-weight: 900;">$99.00</span>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; font-size: 0.9rem; line-height: 2;">
+                <li style="display: flex; gap: 12px;"><span style="color: #FFD700;">🛂</span> Official Visa Invitation Letter</li>
+                <li style="display: flex; gap: 12px;"><span style="color: #FFD700;">📄</span> Visa Documents Checklist</li>
+                <li style="display: flex; gap: 12px;"><span style="color: #FFD700;">✅</span> Confirmation of Event Participation</li>
+            </ul>
+            <a href="ycf-visa-invitation-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 0; text-decoration: none; border-radius: 12px; font-weight: 800; display: block; text-align: center; font-size: 1.1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+        </div>
+        <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); height: 100%; min-height: 400px; position: relative;">
+            <img src="attached_assets/germany-0_1767641199459.jpg" alt="Berlin" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(45, 35, 110, 0.9)); padding: 40px 20px; color: white; text-align: center;">
+                <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; letter-spacing: 5px;">SUM / VISA</h2>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -150,7 +306,7 @@ if (isset($_GET['page'])) {
         <div>
             <h2 class="montserrat" style="font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -1px; font-family: Montserrat, sans-serif;">FORUM<br>HIGHLIGHTS</h2>
             <p style="font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
-            <a href="#" class="btn-custom-animate" style="background: var(--btn-yellow); color: var(--deep-navy); padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: inline-block;">Register Now</a>
+            <a href="#packages" class="btn-custom-animate" style="background: var(--btn-yellow); color: var(--deep-navy); padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: inline-block;">Register Now</a>
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 0.5rem; text-align: left;">
@@ -171,34 +327,6 @@ if (isset($_GET['page'])) {
                 <div style="font-size: 0.85rem; font-weight: 600;">Visit to the Bundestag Parliament</div>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="participation-seats" style="padding: 4rem 5%; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: clamp(1.8rem, 5vw, 2.8rem); color: #000; font-weight: 900; margin-bottom: 1rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
-    <p style="font-size: 1.1rem; color: #333; margin-bottom: 3.5rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-        <a href="ycf-funded-category-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Fully Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">30 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
-        </a>
-        <a href="ycf-funded-category-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Partially Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">50 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
-        </a>
-        <a href="ycf-forum-admission-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Forum Admission</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">40 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
-        </a>
-        <a href="ycf-self-funded-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 2.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Self Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 10px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">80 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
-        </a>
     </div>
 </section>
 <?php 
