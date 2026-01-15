@@ -333,7 +333,7 @@ include 'header.php';
                 </div>
             </div>
 
-            <form>
+            <form id="application-form" onsubmit="handleFormSubmit(event)">
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
                     <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
                     <button type="submit" class="btn-apply-special" style="width: 200px; padding: 15px;">SUBMIT</button>
