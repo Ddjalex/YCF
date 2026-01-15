@@ -112,11 +112,10 @@ if ($search):
 
 <!-- Participation Seats Grid Section -->
 <section id="participation-seats" style="padding: 5rem 10% 4rem; background: #fff; text-align: center;">
-    <h2 class="montserrat" style="font-size: 3rem; color: #000; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase;">Total Participation Seats: 200</h2>
+    <h2 class="montserrat" style="font-size: 3rem; color: #000; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase;">TOTAL PARTICIPATION SEATS: 200</h2>
     <p style="font-size: 1rem; color: #444; margin-bottom: 3rem; font-weight: 500;">CGDL is offering 200 seats for the Youth Development Forum 2026:</p>
     
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto;">
-        <!-- Card Template -->
         <?php 
         $seat_cards = [
             ['title' => 'FULLY FUNDED', 'seats' => '30 Seats', 'type' => 'Competitive Selection', 'pkg' => 'scholarship'],
@@ -125,14 +124,16 @@ if ($search):
             ['title' => 'SELF FUNDED', 'seats' => '80 Seats', 'type' => 'Guaranteed Selection', 'pkg' => 'self-funded']
         ];
         foreach ($seat_cards as $card): ?>
-        <div style="background: #2D236E; border-radius: 12px; padding: 40px 20px; color: white; position: relative; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
-            <h3 class="montserrat" style="font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px;"><?php echo $card['title']; ?></h3>
-            <div style="background: #FFD700; color: #2D236E; padding: 8px 25px; border-radius: 6px; font-weight: 900; font-size: 1.2rem;"><?php echo $card['seats']; ?></div>
-            <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin: 0;"><?php echo $card['type']; ?></p>
+        <div style="background: #2D236E; border-radius: 12px; padding: 60px 20px; color: white; position: relative; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; min-height: 400px; justify-content: space-between;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
+                <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; letter-spacing: 0.5px;"><?php echo $card['title']; ?></h3>
+                <div style="background: #FFD700; color: #2D236E; padding: 10px 30px; border-radius: 8px; font-weight: 900; font-size: 1.4rem;"><?php echo $card['seats']; ?></div>
+                <p style="font-size: 0.9rem; font-weight: 600; opacity: 0.9; margin: 0;"><?php echo $card['type']; ?></p>
+            </div>
             
-            <a href="apply.php?package=<?php echo $card['pkg']; ?>" style="margin-top: 10px; background: none; border: none; display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; cursor: pointer;">
-                <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left: 35px solid #FFD700; transform: skewX(-15deg);"></div>
-                <span class="montserrat" style="font-weight: 900; font-size: 1.3rem; letter-spacing: 1px;">APPLY NOW</span>
+            <a href="apply.php?package=<?php echo $card['pkg']; ?>" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; margin-top: auto; padding-top: 40px; transition: transform 0.2s;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                <div style="width: 0; height: 0; border-top: 15px solid transparent; border-bottom: 15px solid transparent; border-left: 25px solid #FFD700;"></div>
+                <span class="montserrat" style="font-weight: 900; font-size: 1.6rem; letter-spacing: 1px; white-space: nowrap;">APPLY NOW</span>
             </a>
         </div>
         <?php endforeach; ?>
