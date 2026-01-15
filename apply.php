@@ -259,18 +259,6 @@ include 'header.php';
 
 <script>
 function nextStep(step) {
-    if (step === 2) {
-        // Carry over email from step 1
-        const email = document.getElementById('reg_email').value;
-        // Step 2 doesn't have email field in the image but if it was needed we'd put it there.
-    }
-    
-    if (step === 3) {
-        // Auto-fill Stripe fields from registration form
-        document.getElementById('stripe_email').value = document.getElementById('reg_email').value;
-        document.getElementById('stripe_country').value = document.getElementById('reg_country').value;
-    }
-
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'none';
