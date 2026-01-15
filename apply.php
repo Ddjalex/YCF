@@ -226,7 +226,10 @@ include 'header.php';
                     <div style="border-bottom: 1px solid #eee;">
                         <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
                             <input type="radio" name="payment_method" value="crypto" onchange="toggleCryptoDetails(this.checked)" required>
-                            <span style="font-weight: 600;">Cryptocurrency (BTC)</span>
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC)</span>
+                                <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
+                            </div>
                         </label>
                         <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
                             <div style="text-align: center; margin-bottom: 20px;">
@@ -242,6 +245,26 @@ include 'header.php';
                                 <input type="file" id="crypto_screenshot" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
                             </div>
                         </div>
+                    </div>
+
+                    <div style="border-bottom: 1px solid #eee;">
+                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                            <input type="radio" name="payment_method" value="card" disabled>
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-weight: 600; color: #2D236E;">Mastercard / Visa</span>
+                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                            <input type="radio" name="payment_method" value="paypal" disabled>
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-weight: 600; color: #2D236E;">PayPal</span>
+                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
