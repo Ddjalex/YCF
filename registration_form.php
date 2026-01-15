@@ -5,6 +5,13 @@
 function render_registration_form($package_id, $package_name, $price) {
     ?>
     <div id="registration-form-container" style="background: white; border-radius: 15px; padding: 40px; color: #333; text-align: left; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <script>
+            // Hide package details when the registration form is rendered
+            const detailsGrid = document.getElementById('package-details-grid');
+            if (detailsGrid) {
+                detailsGrid.style.display = 'none';
+            }
+        </script>
         <h2 class="montserrat" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;"><?php echo $package_name; ?> Registration</h2>
         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Please note that your information interacts with our server as you enter it.</p>
         

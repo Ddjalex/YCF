@@ -30,7 +30,7 @@ $is_guaranteed = false;
             </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;" id="package-details-grid">
             <!-- Fully Funded -->
             <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
                 <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">$16.99</div>
