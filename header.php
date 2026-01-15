@@ -21,17 +21,32 @@ require_once 'functions.php';
             --btn-yellow: #FFD700;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         /* Mobile First Responsive Utilities */
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            header {
+                padding: 0 3% !important;
+            }
+            nav {
+                gap: 1rem !important;
+            }
         }
 
         @media (max-width: 768px) {
             header {
                 padding: 0 15px !important;
                 height: 70px !important;
+                position: fixed !important;
+                background: rgba(255, 255, 255, 0.95) !important;
             }
             .logo-main-img {
                 height: 40px !important;
@@ -43,10 +58,22 @@ require_once 'functions.php';
                 font-size: 0.7rem !important;
             }
             nav {
-                display: none !important; /* Will need a mobile menu toggle later if requested */
+                display: none !important;
             }
             .mobile-menu-toggle {
-                display: block !important;
+                display: flex !important;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+            }
+            .mobile-menu-toggle span {
+                width: 25px;
+                height: 3px;
+                background: var(--dark-blue);
+                border-radius: 2px;
+            }
+            .hero-container {
+                padding-top: 100px !important;
             }
         }
 
@@ -461,6 +488,11 @@ require_once 'functions.php';
             </div>
             <div class="header-tools" style="display: none;">
                 <span class="lang-switch btn-custom-animate">EN</span>
+            </div>
+            <div class="mobile-menu-toggle" style="display: none;">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
