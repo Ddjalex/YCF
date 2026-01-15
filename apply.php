@@ -227,7 +227,7 @@ include 'header.php';
                         <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
                             <input type="radio" name="payment_method" value="crypto" onchange="toggleCryptoDetails(this.checked)" required>
                             <div style="display: flex; flex-direction: column;">
-                                <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC)</span>
+                                <span style="font-weight: 600; color: #2D236E;">Cryptocurrency </span>
                                 <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
                             </div>
                             <div style="display: flex; gap: 8px; margin-left: auto;">
@@ -241,7 +241,13 @@ include 'header.php';
                                 $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
                                 ?>
                                 <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 8px; margin-bottom: 10px;">
-                                <p style="word-break: break-all; font-family: monospace; font-weight: 600; color: #2D236E;"><?php echo $btc_address; ?></p>
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px dashed #ccc;">
+                                    <span id="btc_address_text" style="word-break: break-all; font-family: monospace; font-weight: 600; color: #2D236E;"><?php echo $btc_address; ?></span>
+                                    <button type="button" onclick="copyAddress()" style="background: #2D236E; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 5px;">
+                                        <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: white;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                                        Copy
+                                    </button>
+                                </div>
                             </div>
                             <div style="margin-bottom: 15px;">
                                 <label style="display: block; font-weight: 600; margin-bottom: 8px;">Transaction ID (TXID) <span style="color: red;">(Required)</span></label>
@@ -356,6 +362,22 @@ function nextStep(step) {
 
 function toggleCryptoDetails(show) {
     document.getElementById('crypto_details').style.display = show ? 'block' : 'none';
+}
+
+function copyAddress() {
+    const address = document.getElementById('btc_address_text').innerText;
+    navigator.clipboard.writeText(address).then(() => {
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Copied!';
+        btn.style.background = '#28a745';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '#2D236E';
+        }, 2000);
+    }).catch(err => {
+        alert('Failed to copy address');
+    });
 }
 
 function handleFinalSubmit() {
