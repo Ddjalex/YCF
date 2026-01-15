@@ -292,10 +292,20 @@ function get_news_by_id($id) {
 }
 
 function get_admin_setting($key, $default = '') {
-    // This would typically pull from a database table
-    // For now we use the provided default or can hardcode
-    $settings = [
+    $pdo = get_db_connection();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = ?");
+            $stmt->execute([$key]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) return $result['value'];
+        } catch (PDOException $e) {
+        }
+    }
+    
+    // Default fallback values
+    $defaults = [
         'btc_address' => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
     ];
-    return $settings[$key] ?? $default;
+    return $defaults[$key] ?? $default;
 }

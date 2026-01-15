@@ -171,6 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmt = $pdo->prepare("DELETE FROM videos WHERE id = ?");
         $stmt->execute([$_POST['id']]);
         $message = "Video removed.";
+    } elseif ($_POST['action'] === 'update_crypto_address') {
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('btc_address', ?) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value");
+        $stmt->execute([$_POST['btc_address']]);
+        $message = "Crypto address updated!";
     }
 }
 
@@ -240,6 +244,17 @@ $homepage_videos = get_homepage_videos();
                     <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">Target Event Date</label>
                     <input type="text" name="countdown_date" value="<?php echo htmlspecialchars($current_date); ?>">
                     <button type="submit" style="background: #2d3748;">Sync Countdown</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0; color: #2d3748;">Crypto Deposit Address</h3>
+                <form method="POST">
+                    <input type="hidden" name="action" value="update_crypto_address">
+                    <label style="display: block; font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">BTC Wallet Address</label>
+                    <?php $btc_address = get_admin_setting('btc_address'); ?>
+                    <input type="text" name="btc_address" value="<?php echo htmlspecialchars($btc_address); ?>">
+                    <button type="submit" style="background: #f7931a;">Update Address</button>
                 </form>
             </div>
 
