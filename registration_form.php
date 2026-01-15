@@ -205,10 +205,10 @@ function render_registration_form($package_id, $package_name, $price) {
                             <td style="padding: 15px; font-size: 0.9rem;">Service Charges, VAT & Processing Fee</td>
                             <td style="padding: 15px; text-align: right; font-weight: 600;">$3.00</td>
                         </tr>
-                        <tr style="background: #f9f9fb; font-weight: 800; color: #2D236E; font-size: 1.1rem;">
-                            <td style="padding: 15px;">Total</td>
-                            <td style="padding: 15px; text-align: right;">$<?php echo number_format($price + 3.00, 2); ?></td>
-                        </tr>
+                    <tr style="background: #f9f9fb; font-weight: 800; color: #2D236E; font-size: 1.1rem;">
+                        <td style="padding: 15px;">Total</td>
+                        <td style="padding: 15px; text-align: right;">$<?php echo number_format($price + 3.00, 2); ?></td>
+                    </tr>
                     </table>
                 </div>
 

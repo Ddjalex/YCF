@@ -10,7 +10,7 @@ $package_prices = [
     'self_funded' => 799.00
 ];
 $service_charges = [
-    'self_funded' => 0.00
+    'self_funded' => 3.00
 ];
 $current_package_name = $package_names['self_funded'];
 $current_price = $package_prices['self_funded'];

@@ -10,7 +10,7 @@ $package_prices = [
     'forum_admission' => 499.00
 ];
 $service_charges = [
-    'forum_admission' => 0.00
+    'forum_admission' => 3.00
 ];
 $current_package_name = $package_names['forum_admission'];
 $current_price = $package_prices['forum_admission'];
