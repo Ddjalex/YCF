@@ -401,8 +401,8 @@ if ($search):
                     <div><span style="font-size: 1.1rem;">✈</span> Airfare</div>
                     <div><span style="font-size: 1.1rem;">🏨</span> Accommodation</div>
                 </div>
-                <div style="margin-top: 30px;">
-                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 12px 30px;">Register NOW!</a>
+                <div style="margin-top: 30px; width: 100%;">
+                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
@@ -439,8 +439,8 @@ if ($search):
                 <div style="font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
                     <span style="font-size: 1.1rem;">✈</span> Airfare
                 </div>
-                <div style="margin-top: 30px;">
-                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 12px 30px;">Register NOW!</a>
+                <div style="margin-top: 30px; width: 100%;">
+                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
