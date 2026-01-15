@@ -179,22 +179,22 @@ if (isset($_GET['page'])) {
     <p style="font-size: 1rem; color: #333; margin-bottom: 2.5rem;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
-        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700;">
+        <a href="ycf-funded-category-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: transform 0.3s;">
             <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase;">Fully Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.3rem 1rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem;">30 Seats</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700;">
+        </a>
+        <a href="ycf-funded-category-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: transform 0.3s;">
             <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase;">Partially Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.3rem 1rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem;">50 Seats</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700;">
+        </a>
+        <a href="ycf-forum-admission-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: transform 0.3s;">
             <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase;">Forum Admission</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.3rem 1rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem;">40 Seats</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700;">
+        </a>
+        <a href="ycf-self-funded-application.php" class="seat-card" style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; text-decoration: none; display: block; transition: transform 0.3s;">
             <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase;">Self Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.3rem 1rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem;">80 Seats</div>
-        </div>
+        </a>
     </div>
 </section>
 <?php 
