@@ -386,6 +386,20 @@ function nextStep(step) {
             }
         }
 
+        // Step 3 specific validation (Payment Screenshot)
+        if (currentStepNum === 3) {
+            let paymentMethod = document.querySelector('input[name="payment_method"]:checked')?.value;
+            if (paymentMethod === 'crypto') {
+                let screenshotInput = document.querySelector('input[name="crypto_screenshot"]');
+                if (!screenshotInput || !screenshotInput.files.length) {
+                    isValid = false;
+                    if (screenshotInput) screenshotInput.style.borderColor = 'red';
+                } else {
+                    if (screenshotInput) screenshotInput.style.borderColor = '#ddd';
+                }
+            }
+        }
+
         if (!isValid) {
             return;
         }
