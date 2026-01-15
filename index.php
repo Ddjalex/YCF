@@ -24,35 +24,8 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto 30px; min-height: 50px; border: 1px solid #eee; gap: 8px;">
-        <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
-            <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
-        </div>
-        
-        <div id="countdown" style="display: flex; gap: 0.8rem; align-items: center; padding: 8px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="days" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">d</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="hours" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">h</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="minutes" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">m</span>
-            </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="seconds" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">s</span>
-            </div>
-        </div>
-        
-        <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
-    </div>
-
-    <!-- News & Updates Section -->
-    <section style="padding: 60px 20px; background: #fff;">
+    <!-- News & Updates Section (2nd element vertically) -->
+    <section style="padding: 20px 20px 60px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
                 <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #000; text-transform: uppercase; margin: 0;">Latest News</h2>
@@ -85,6 +58,34 @@ if (isset($_GET['page'])) {
             </div>
         </div>
     </section>
+
+    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto; min-height: 50px; border: 1px solid #eee; gap: 8px;">
+        <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
+            <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
+        </div>
+        
+        <div id="countdown" style="display: flex; gap: 0.8rem; align-items: center; padding: 8px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="days" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">d</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="hours" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">h</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="minutes" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">m</span>
+            </div>
+            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
+                <span id="seconds" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
+                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">s</span>
+            </div>
+        </div>
+        
+        <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
+    </div>
+</section>
 
 <section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
     <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
@@ -193,7 +194,7 @@ if (isset($_GET['page'])) {
         </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px;">
+    <div style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid; gap: 20px; max-width: 900px; margin: 0 auto 40px;">
         <!-- Forum Admission Detail -->
         <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; color: white; text-align: left;">
             <div style="font-size: 1rem; opacity: 0.7; text-decoration: line-through; margin-bottom: 5px; text-align: center;">$799.99</div>
@@ -294,7 +295,7 @@ if (isset($_GET['page'])) {
         <a href="#" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 16px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 5px;">View all &rsaquo;</a>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+    <div style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid; gap: 1.5rem;">
         <div class="agenda-day" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
             <div style="display: flex; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 8px;">
                 <span style="background: var(--primary-blue); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">Day 1</span>
@@ -337,7 +338,7 @@ if (isset($_GET['page'])) {
     <h2 class="montserrat" style="font-size: clamp(1.6rem, 4vw, 2.2rem); color: #000; font-weight: 900; margin-bottom: 1.2rem; line-height: 1.1; font-family: Montserrat, sans-serif;">Europe's Youth Vision</h2>
     <p style="font-size: 0.9rem; color: #333; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.5;">Core objectives of leading European and international youth frameworks.</p>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;">
+    <div style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); display: grid; gap: 1.2rem;">
         <div class="vision-card" style="background: #2D236E; color: white; padding: 2rem 1.2rem; border-radius: 16px; text-align: center;">
             <h3 class="montserrat" style="font-size: 1.1rem; margin-bottom: 0.8rem; line-height: 1.3; font-family: Montserrat, sans-serif;">EU Youth Strategy</h3>
             <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.5;">Participation, social inclusion, and digital transformation.</p>
