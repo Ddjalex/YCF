@@ -360,7 +360,7 @@ if ($search):
         </div>
 
         <div style="grid-column: 1 / -1; margin-top: 40px; text-align: center; background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(10px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <a href="ydf-funded-category-application.php" class="btn-apply-now-floating">APPLY NOW!</a>
+            <a href="ycf-funded-category-application.php" class="btn-apply-now-floating">APPLY NOW!</a>
         </div>
     </div>
 </section>
@@ -404,7 +404,7 @@ if ($search):
                     <div><span style="font-size: 1.1rem;">🏨</span> Accommodation</div>
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="ydf-forum-admission-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="ycf-forum-admission-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@ if ($search):
                     <span style="font-size: 1.1rem;">✈</span> Airfare
                 </div>
                 <div style="margin-top: 30px; width: 100%;">
-                    <a href="ydf-self-funded-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
+                    <a href="ycf-self-funded-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box;">REGISTER NOW!</a>
                 </div>
             </div>
         </div>
@@ -470,7 +470,7 @@ if ($search):
             <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 30px;">This option is available to all categories of applicants. Applicants can later upgrade to either forum admission or self funded and the cost of their visa package will be fully adjusted towards the upgrade.</p>
 
             <div style="margin-top: auto;">
-                <a href="ydf-visa-invitation-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box; text-align: center;">REGISTER NOW!</a>
+                <a href="ycf-visa-invitation-application.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 15px 20px; width: 100%; border-radius: 10px; box-sizing: border-box; text-align: center;">REGISTER NOW!</a>
             </div>
         </div>
         

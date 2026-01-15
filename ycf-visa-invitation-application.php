@@ -2,7 +2,7 @@
 include 'header.php';
 $package = 'visa_invitation';
 $package_names = [
-    'visa_invitation' => 'YDF Visa Invitation Application'
+    'visa_invitation' => 'YCF Visa Invitation Application'
 ];
 $package_prices = [
     'visa_invitation' => 99.00
@@ -19,7 +19,7 @@ $is_guaranteed = true;
 
 <div class="hero-container" style="padding-top: 100px; min-height: auto; background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed;">
     <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 60px 20px; color: white; text-align: center;">
-        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Development Forum 2026<br><?php echo str_replace('YDF ', '', str_replace(' Registration', '', $current_package_name)); ?></h1>
+        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Crypto Forum 2026<br><?php echo str_replace('YCF ', '', str_replace(' Registration', '', $current_package_name)); ?></h1>
         <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 15px 30px; border-radius: 10px; font-weight: 800; font-size: 1.1rem; max-width: 800px;">
             <?php if ($is_guaranteed): ?>
                 Guaranteed Selection for <?php echo str_replace(' Registration', '', $current_package_name); ?>.
@@ -180,7 +180,7 @@ $is_guaranteed = true;
                 </div>
 
                 <div style="margin-bottom: 40px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">How did you hear about YDF26? <span style="color: red;">(Required)</span></label>
+                    <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">How did you hear about YCF26? <span style="color: red;">(Required)</span></label>
                     <div class="source-options-container" style="display: flex; flex-direction: column; gap: 10px; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
                             <input type="radio" name="source" value="CGDL Social media"> CGDL Social media
