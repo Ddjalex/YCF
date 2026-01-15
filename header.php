@@ -119,7 +119,7 @@ require_once 'functions.php';
             z-index: 1 !important;
             border-radius: 50px !important;
             padding: 14px 40px !important;
-            transition: color 0.3s ease !important;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -130,6 +130,13 @@ require_once 'functions.php';
             background: #2D236E !important;
             color: white !important;
             border: none !important;
+            animation: pulse-scaling 2s infinite ease-in-out !important;
+        }
+
+        @keyframes pulse-scaling {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .btn-custom-animate::before {
@@ -169,12 +176,13 @@ require_once 'functions.php';
             font-weight: bold !important;
             text-transform: uppercase !important;
             cursor: pointer !important;
-            transition: color 0.4s ease !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             text-decoration: none !important;
             font-size: 1.2rem !important;
+            animation: pulse-scaling 2s infinite ease-in-out !important;
         }
         
         .btn-apply-special::before {

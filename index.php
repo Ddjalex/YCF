@@ -52,30 +52,32 @@ if (isset($_GET['page'])) {
     </div>
 </section>
 
-<section id="packages" class="participation-seats" style="padding: 3rem 5%; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: clamp(1.6rem, 4vw, 2.2rem); color: #000; font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
-    <p style="font-size: 1rem; color: #333; margin-bottom: 2.5rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
-        <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2rem 1rem; border-bottom: 5px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Fully Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">30 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2rem 1rem; border-bottom: 5px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Partially Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">50 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2rem 1rem; border-bottom: 5px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Forum Admission</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">40 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
-        </div>
-        <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2rem 1rem; border-bottom: 5px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-            <h3 class="montserrat" style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Self Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: 900; font-size: 1rem; margin-bottom: 0.8rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">80 Seats</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
+<section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
+    <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
+        <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); color: #000; font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
+        <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Fully Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">30 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
+            </div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Partially Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">50 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
+            </div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Forum Admission</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">40 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
+            </div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Self Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">80 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
+            </div>
         </div>
     </div>
 </section>
