@@ -135,22 +135,22 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Profession <span style="color: red;">(Required)</span></label>
-                    <input type="text" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" required name="profession" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Organization / University</label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" name="organization" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Country of Residence <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_country" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_country" required name="country_residence" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Departure City <span style="color: red;">(Required)</span></label>
-                    <input type="text" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" required name="departure_city" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
@@ -347,19 +347,22 @@ function nextStep(step) {
         let isValid = true;
         let currentView = document.getElementById('step' + currentStepNum);
         
-        // Validate required inputs (including selects, textareas, and files)
+        // Validate all required inputs within the CURRENT step's view
+        // This ensures protection works for Step 1, Step 2, and Step 3 individually
         let inputs = currentView.querySelectorAll('input[required], select[required], textarea[required]');
+        
         inputs.forEach(input => {
+            let isFieldValid = true;
+            
             if (input.type === 'file') {
                 if (!input.files || !input.files.length) {
-                    isValid = false;
-                    input.style.borderColor = 'red';
-                    input.style.borderWidth = '2px';
-                } else {
-                    input.style.borderColor = '#ddd';
-                    input.style.borderWidth = '1px';
+                    isFieldValid = false;
                 }
             } else if (!input.value.trim()) {
+                isFieldValid = false;
+            }
+
+            if (!isFieldValid) {
                 isValid = false;
                 input.style.borderColor = 'red';
                 input.style.borderWidth = '2px';
@@ -369,7 +372,7 @@ function nextStep(step) {
             }
         });
 
-        // Step 2 specific validation
+        // Step 2 specific validation for radio group
         if (currentStepNum === 2) {
             let sourceRadios = document.getElementsByName('source');
             let radioChecked = false;
@@ -380,7 +383,7 @@ function nextStep(step) {
                 }
             }
             
-            let sourceContainer = document.querySelector('.source-options-container');
+            let sourceContainer = currentView.querySelector('.source-options-container');
             if (!radioChecked) {
                 isValid = false;
                 if (sourceContainer) {
@@ -395,32 +398,21 @@ function nextStep(step) {
             }
         }
 
-        // Step 3 specific validation (Payment Method and Screenshot)
+        // Step 3 specific validation for payment method
         if (currentStepNum === 3 && step > 3) {
-            let paymentMethodInput = document.querySelector('input[name="payment_method"]:checked');
+            let paymentMethodInput = currentView.querySelector('input[name="payment_method"]:checked');
             if (!paymentMethodInput) {
                 isValid = false;
                 alert('Please select a payment method.');
                 return;
             }
-
-            if (paymentMethodInput.value === 'crypto') {
-                let screenshotInput = document.querySelector('input[name="crypto_screenshot"]');
-                if (!screenshotInput || !screenshotInput.files.length) {
-                    isValid = false;
-                    if (screenshotInput) {
-                        screenshotInput.style.borderColor = 'red';
-                        screenshotInput.style.borderWidth = '2px';
-                    }
-                }
-            }
         }
 
         if (!isValid) {
-            // Smooth scroll to first error
+            // Smooth scroll to the first error found in the current step
             const firstError = currentView.querySelector('[style*="border-color: red"], [style*="border: 2px solid red"]');
             if (firstError) {
-                const yOffset = -150;
+                const yOffset = -150; 
                 const y = firstError.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
