@@ -391,7 +391,9 @@
             <div class="nav-item">
                 <a href="/contact">Contact</a>
             </div>
-            <a href="registration.php" class="btn-custom-animate" style="font-size: 0.85rem; padding: 10px 25px;">Register Now</a>
+            <div class="header-tools" style="display: none;">
+                <span class="lang-switch btn-custom-animate">EN</span>
+            </div>
         </nav>
     </header>
     <script>
