@@ -278,7 +278,6 @@ include 'header.php';
                                 <label style="display: block; font-size: 0.8rem; color: #888; padding: 10px 15px 2px;">Security code</label>
                                 <div style="position: relative;">
                                     <input type="text" placeholder="CVC" style="width: 100%; padding: 5px 15px 12px; border: none; outline: none; background: transparent; font-size: 1rem;">
-                                    <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888;">💳</span>
                                 </div>
                             </div>
                         </div>
@@ -303,8 +302,7 @@ include 'header.php';
                     <div style="display: flex; gap: 15px; align-items: flex-start; background: #f9f9fb; padding: 20px; border-radius: 12px; border: 1px solid #ddd;">
                         <input type="checkbox" style="width: 20px; height: 20px; margin-top: 3px; cursor: pointer;">
                         <div style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            <div style="background: #0088cc; color: white; display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 5px;">I agree to the Terms and Conditions</div>
-                            <br>I affirm that all information provided in this application is accurate and truthful to the best of my knowledge. I agree to adhere to Terms and Conditions and Refund Policy outlined on CGDL's website. I understand that providing false information may lead to disqualification from the scholarship program or event participation in YDF-26.
+                            I affirm that all information provided in this application is accurate and truthful to the best of my knowledge. I agree to adhere to Terms and Conditions and Refund Policy outlined on CGDL's website. I understand that providing false information may lead to disqualification from the scholarship program or event participation in YDF-26.
                         </div>
                     </div>
                 </div>
@@ -356,31 +354,6 @@ function nextStep(step) {
         document.getElementById('intro-section').style.display = 'flex';
     }
 }
-
-// Card detection logic
-document.getElementById('card_number').addEventListener('input', function(e) {
-    let num = e.target.value.replace(/\D/g, '');
-    const visa = document.getElementById('icon_visa');
-    const master = document.getElementById('icon_mastercard');
-    const amex = document.getElementById('icon_amex');
-    
-    // Reset opacities
-    visa.style.opacity = '0.3';
-    master.style.opacity = '0.3';
-    amex.style.opacity = '0.3';
-    
-    if (num.startsWith('4')) {
-        visa.style.opacity = '1';
-    } else if (num.startsWith('5')) {
-        master.style.opacity = '1';
-    } else if (num.startsWith('3')) {
-        amex.style.opacity = '1';
-    } else if (num === '') {
-        visa.style.opacity = '1';
-        master.style.opacity = '1';
-        amex.style.opacity = '1';
-    }
-});
 </script>
 
 <?php include 'footer.php'; ?>
