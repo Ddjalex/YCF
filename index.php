@@ -110,110 +110,186 @@ if ($search):
     </div>
 </section>
 
-<section class="news" style="padding: 4rem 10%; background: #fcfcfc;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
-        <h2 style="color: var(--dark-blue); font-size: 2rem; font-weight: 700;">LATEST NEWS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">View all &rsaquo;</a>
-    </div>
+<!-- Participation Seats Grid Section -->
+<section id="participation-seats" style="padding: 5rem 10% 4rem; background: #fff; text-align: center;">
+    <h2 class="montserrat" style="font-size: 3rem; color: #000; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase;">Total Participation Seats: 200</h2>
+    <p style="font-size: 1rem; color: #444; margin-bottom: 3rem; font-weight: 500;">CGDL is offering 200 seats for the Youth Development Forum 2026:</p>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
-        <?php foreach (get_latest_news() as $item): ?>
-            <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-                <div style="height: 200px; background: #eee; background-image: url('<?php echo $item['image']; ?>'); background-size: cover;"></div>
-                <div style="padding: 2rem;">
-                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                        <span style="background: var(--primary-blue); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; margin-right: 1rem;"><?php echo $item['category']; ?></span>
-                        <span style="font-size: 0.85rem; color: #999;"><?php echo $item['date']; ?></span>
-                    </div>
-                    <h3 style="color: var(--dark-blue); margin: 0 0 1rem; font-size: 1.25rem; line-height: 1.3; height: 3.3rem; overflow: hidden;"><?php echo $item['title']; ?></h3>
-                    <p style="font-size: 0.95rem; color: #666; margin-bottom: 1.5rem; height: 4.5rem; overflow: hidden;"><?php echo $item['summary']; ?></p>
-                    <a href="news_detail.php?id=<?php echo $item['id']; ?>" class="btn-custom-animate" style="font-size: 0.8rem; padding: 8px 20px;">Read More &rarr;</a>
-                </div>
-            </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto;">
+        <!-- Card Template -->
+        <?php 
+        $seat_cards = [
+            ['title' => 'FULLY FUNDED', 'seats' => '30 Seats', 'type' => 'Competitive Selection', 'pkg' => 'scholarship'],
+            ['title' => 'PARTIALLY FUNDED', 'seats' => '50 Seats', 'type' => 'Competitive Selection', 'pkg' => 'scholarship'],
+            ['title' => 'FORUM ADMISSION', 'seats' => '40 Seats', 'type' => 'Guaranteed Selection', 'pkg' => 'forum-admission'],
+            ['title' => 'SELF FUNDED', 'seats' => '80 Seats', 'type' => 'Guaranteed Selection', 'pkg' => 'self-funded']
+        ];
+        foreach ($seat_cards as $card): ?>
+        <div style="background: #2D236E; border-radius: 12px; padding: 40px 20px; color: white; position: relative; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+            <h3 class="montserrat" style="font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px;"><?php echo $card['title']; ?></h3>
+            <div style="background: #FFD700; color: #2D236E; padding: 8px 25px; border-radius: 6px; font-weight: 900; font-size: 1.2rem;"><?php echo $card['seats']; ?></div>
+            <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin: 0;"><?php echo $card['type']; ?></p>
+            
+            <a href="apply.php?package=<?php echo $card['pkg']; ?>" style="margin-top: 10px; background: none; border: none; display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; cursor: pointer;">
+                <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left: 35px solid #FFD700; transform: skewX(-15deg);"></div>
+                <span class="montserrat" style="font-weight: 900; font-size: 1.3rem; letter-spacing: 1px;">APPLY NOW</span>
+            </a>
+        </div>
         <?php endforeach; ?>
     </div>
 </section>
 
-<section class="participation-seats" id="participation-seats" style="padding: 4rem 10% 2rem; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: 1.8rem; color: #000; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; text-transform: uppercase;">Total Participation Seats: 200</h2>
-    <p style="font-size: 0.95rem; color: #333; margin-bottom: 2rem; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Development Forum 2026:</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; perspective: 1000px;">
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
-            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Fully Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">30 Seats</div>
-            <p style="font-size: 0.85rem; font-weight: 700;">Competitive Selection</p>
-            <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
+<!-- Scholarship Categories Redesign -->
+<section style="background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed; position: relative; padding: 0;">
+    <div style="background: rgba(45, 35, 110, 0.92); width: 100%; height: 100%; padding: 80px 10%;">
+        <div style="background: #2D236E; color: white; max-width: 900px; margin: 0 auto 60px; padding: 30px; border-radius: 15px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 800; line-height: 1.2;">Scholarship Categories<br>(Competitive Selection)</h2>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9; margin-top: 15px;">These are funded categories offered to outstanding applicants based on merit, motivation, and global representation. The Fully Funded and Partially Funded categories share one unified application form.</p>
+            <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #2D236E;"></div>
         </div>
-        
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
-            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Partially Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">50 Seats</div>
-            <p style="font-size: 0.85rem; font-weight: 700;">Competitive Selection</p>
-            <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
-        </div>
-        
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
-            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Forum Admission</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">40 Seats</div>
-            <p style="font-size: 0.85rem; font-weight: 700;">Guaranteed Selection</p>
-            <a href="apply.php?package=forum-admission" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
-        </div>
-        
-        <div style="background: #2D236E; border-radius: 16px; padding: 1.5rem 1rem; position: relative; border-bottom: 8px solid #FFD700; transition: all 0.4s; color: white;">
-            <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase;">Self Funded</h3>
-            <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; margin-bottom: 1rem;">80 Seats</div>
-            <p style="font-size: 0.85rem; font-weight: 700;">Guaranteed Selection</p>
-            <a href="apply.php?package=self-funded" class="btn-apply-special" style="display: block; margin-top: 15px; padding: 10px; background: #FFD700; color: #2D236E; text-decoration: none; border-radius: 6px; font-weight: 800;">Apply Now</a>
-        </div>
-    </div>
-</section>
 
-<section class="guaranteed-categories" style="padding: 4rem 10%; background: white;">
-    <h2 class="montserrat" style="text-align: center; font-size: 2.5rem; color: #2D236E; margin-bottom: 40px;">Guaranteed Categories (Confirmed Seats)</h2>
-    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
-        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; flex: 1; min-width: 300px; position: relative; border-bottom: 8px solid #FFD700;">
-            <div style="text-decoration: line-through; opacity: 0.6; font-size: 1.2rem;">$799.99</div>
-            <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700; margin-bottom: 20px;">$499.00</div>
-            <h3 class="montserrat" style="font-size: 1.8rem; margin-bottom: 20px;">Forum Admission Category</h3>
-            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
-                <li style="margin-bottom: 10px;">✓ Guaranteed participation</li>
-                <li style="margin-bottom: 10px;">✓ Access to all sessions & workshops</li>
-                <li style="margin-bottom: 10px;">✓ Certificate of Participation</li>
-            </ul>
-            <a href="apply.php?package=forum-admission" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
-        </div>
-        
-        <div style="background: #2D236E; border-radius: 20px; padding: 40px; color: white; flex: 1; min-width: 300px; position: relative; border-bottom: 8px solid #FFD700;">
-            <div style="text-decoration: line-through; opacity: 0.6; font-size: 1.2rem;">$999.99</div>
-            <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700; margin-bottom: 20px;">$799.00</div>
-            <h3 class="montserrat" style="font-size: 1.8rem; margin-bottom: 20px;">Self-Funded Category</h3>
-            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
-                <li style="margin-bottom: 10px;">✓ 4-star hotel (3 nights)</li>
-                <li style="margin-bottom: 10px;">✓ All meals & breakfast included</li>
-                <li style="margin-bottom: 10px;">✓ Priority confirmation</li>
-            </ul>
-            <a href="apply.php?package=self-funded" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
-        </div>
-    </div>
-
-    <div style="max-width: 800px; margin: 40px auto; background: #2D236E; padding: 40px; border-radius: 24px; color: white; display: flex; flex-wrap: wrap; gap: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-bottom: 8px solid #FFD700;">
-        <div style="flex: 1; min-width: 300px;">
-            <h3 class="montserrat" style="font-size: 2rem; margin-bottom: 10px;">Visa Invitation Letter</h3>
-            <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px;">
-                <span style="text-decoration: line-through; opacity: 0.6; font-size: 1.1rem;">$299.99</span>
-                <span style="font-size: 2rem; font-weight: 800; color: #FFD700;">$99.00</span>
+        <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto;">
+            <!-- Fully Funded -->
+            <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
+                    <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Fully Funded Category</h3>
+                </div>
+                
+                <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
+                    <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected under the Fully Funded category receive a complete scholarship package that covers:</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
+                        <li>✈️ Round-trip airfare to Berlin, Germany</li>
+                        <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                        <li>🍽️ Daily meals & breakfast</li>
+                        <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
+                        <li>📜 Certificate of Participation issued by CGDL</li>
+                        <li>🎒 Delegate kit including conference materials</li>
+                        <li>🗺️ Guided city tour of Berlin, covering historical sites & diplomacy landmarks</li>
+                        <li>🛂 Comprehensive visa support, including an official visa support letter</li>
+                        <li>🤝 Participation in cultural exchange sessions and networking events</li>
+                        <li>📢 Opportunity to engage with global speakers, experts, and youth leaders</li>
+                    </ul>
+                </div>
+                <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; width: 100%; padding: 20px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; border: none; cursor: pointer;">APPLY NOW!</a>
             </div>
-            <ul style="list-style: none; padding: 0; margin-bottom: 30px; font-size: 0.9rem; line-height: 1.6;">
-                <li style="margin-bottom: 8px;">✓ Official Visa Invitation Letter</li>
-                <li style="margin-bottom: 8px;">✓ Visa Documents Checklist</li>
-                <li style="margin-bottom: 8px;">✓ Embassy Coordination Assistance</li>
-            </ul>
-            <a href="apply.php?package=visa-invitation" class="btn-apply-special" style="display: block; text-align: center; text-decoration: none; padding: 15px; background: #FFD700; color: #2D236E; font-weight: 800; border-radius: 10px; text-transform: uppercase;">Register NOW!</a>
+
+            <!-- Partially Funded -->
+            <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
+                    <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Partially Funded Category</h3>
+                </div>
+                
+                <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
+                    <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected for the Partially Funded category receive significant subsidization and will be provided:</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
+                        <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
+                        <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                        <li>🍽️ Meals & breakfast throughout the forum</li>
+                        <li>📜 Certificate of Participation from CGDL</li>
+                        <li>🎒 Delegate kit including conference materials</li>
+                        <li>🗺️ Guided city tour of Berlin focusing on history & diplomacy</li>
+                        <li>🛂 Comprehensive visa support, including an official visa support letter</li>
+                        <li>🤝 Participation in cultural & networking activities</li>
+                    </ul>
+                    <div style="margin-top: 30px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 20px;">
+                        <h4 style="text-align: center; text-transform: uppercase; font-size: 0.8rem; color: #999;">Not Included</h4>
+                        <p style="text-align: center; font-size: 0.9rem; margin-top: 10px;">✈️ Airfare</p>
+                    </div>
+                </div>
+                <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; width: 100%; padding: 20px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; border: none; cursor: pointer;">APPLY NOW!</a>
+            </div>
         </div>
-        <div style="flex: 1; min-width: 300px; border-radius: 16px; overflow: hidden; background: url('https://images.unsplash.com/photo-1599946347341-671151699d21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;"></div>
     </div>
 </section>
+
+<!-- Guaranteed Categories -->
+<section style="padding: 80px 10%; background: #fff; text-align: center;">
+    <h2 class="montserrat" style="font-size: 2.8rem; font-weight: 900; color: #2D236E; margin-bottom: 15px;">Guaranteed Categories<br>(Confirmed Seats)</h2>
+    <p style="color: #444; margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.6;">These categories offer guaranteed participation with no competitive selection. Applicants secure their seat upon completing their registration.</p>
+    
+    <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto;">
+        <!-- Forum Admission -->
+        <div style="background: #2D236E; color: white; border-radius: 20px; padding: 50px 40px; flex: 1; min-width: 350px; text-align: left; border-bottom: 8px solid #FFD700; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+            <div style="opacity: 0.6; text-decoration: line-through; font-size: 1.2rem;">$799.99</div>
+            <div style="font-size: 3rem; font-weight: 800; color: #FFD700; margin-bottom: 30px;">$499.00</div>
+            <h3 class="montserrat" style="font-size: 2rem; font-weight: 900; margin-bottom: 25px;">Forum Admission Category</h3>
+            <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 25px;">
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 25px;">Forum Admission is ideal for participants seeking guaranteed entry without accommodation support. It includes:</p>
+                <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.95rem;">
+                    <li>✔️ Guaranteed participation at the Youth Development Forum 2026</li>
+                    <li>✔️ Access to all conference sessions & workshops</li>
+                    <li>✔️ Certificate of Participation from CGDL</li>
+                    <li>✔️ Delegate kit & conference materials</li>
+                    <li>✔️ Guided city tour of Berlin (historical + diplomatic insights)</li>
+                    <li>✔️ Comprehensive visa support, including visa support letter</li>
+                </ul>
+                <div style="margin-top: 30px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 20px;">
+                    <p style="font-size: 0.8rem; color: #999; text-transform: uppercase;">Not Included</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; margin-top: 10px;">
+                        <li>✈️ Airfare</li>
+                        <li>🏨 Accommodation</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="apply.php?package=forum-admission" style="display: block; width: 100%; padding: 20px; margin-top: 40px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; text-transform: uppercase;">Register NOW!</a>
+        </div>
+
+        <!-- Self Funded -->
+        <div style="background: #2D236E; color: white; border-radius: 20px; padding: 50px 40px; flex: 1; min-width: 350px; text-align: left; border-bottom: 8px solid #FFD700; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+            <div style="opacity: 0.6; text-decoration: line-through; font-size: 1.2rem;">$999.99</div>
+            <div style="font-size: 3rem; font-weight: 800; color: #FFD700; margin-bottom: 30px;">$799.00</div>
+            <h3 class="montserrat" style="font-size: 2rem; font-weight: 900; margin-bottom: 25px;">Self-Funded Category</h3>
+            <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 25px;">
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 25px;">The Self-Funded category is an upgraded guaranteed option designed for those who prefer a package that includes accommodation. It includes:</p>
+                <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.95rem;">
+                    <li>✔️ Guaranteed participation with priority confirmation</li>
+                    <li>✔️ Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                    <li>✔️ Meals & breakfast</li>
+                    <li>✔️ Access to all conference sessions & workshops</li>
+                    <li>✔️ Certificate of Participation from CGDL</li>
+                    <li>✔️ Delegate kit & materials</li>
+                    <li>✔️ Guided city tour of Berlin</li>
+                    <li>✔️ Comprehensive visa support, including visa support letter</li>
+                </ul>
+                <div style="margin-top: 30px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 20px;">
+                    <p style="font-size: 0.8rem; color: #999; text-transform: uppercase;">Not Included</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">✈️ Airfare</p>
+                </div>
+            </div>
+            <a href="apply.php?package=self-funded" style="display: block; width: 100%; padding: 20px; margin-top: 40px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; text-transform: uppercase;">Register NOW!</a>
+        </div>
+    </div>
+</section>
+
+<!-- Visa Invitation Letter Package -->
+<section style="padding: 60px 10%; background: #fcfcfc;">
+    <div style="max-width: 1100px; margin: 0 auto; background: #2D236E; border-radius: 25px; color: white; display: flex; flex-wrap: wrap; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); border-bottom: 8px solid #FFD700;">
+        <div style="flex: 1; min-width: 350px; padding: 60px 50px;">
+            <h3 class="montserrat" style="font-size: 2.8rem; font-weight: 900; margin-bottom: 25px;">Visa Invitation Letter</h3>
+            <p style="font-size: 1rem; opacity: 0.9; line-height: 1.6; margin-bottom: 30px;">Applicants who want to apply early for their visa can request a Visa Invitation Letter Package from CGDL.</p>
+            <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 35px;">
+                <span style="opacity: 0.6; text-decoration: line-through; font-size: 1.3rem;">$299.99</span>
+                <span style="font-size: 3rem; font-weight: 800; color: #FFD700;">$99.00</span>
+            </div>
+            <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1rem; margin-bottom: 40px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 25px;">
+                <li>✔️ Official Visa Invitation Letter</li>
+                <li>✔️ Visa Documents Checklist</li>
+                <li>✔️ Confirmation of Event Participation</li>
+                <li>✔️ Embassy Coordination Assistance</li>
+            </ul>
+            <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 30px;">This option is available to all categories of applicants. Applicants can later upgrade to either forum admission or self funded and the cost of their visa package will be fully adjusted towards the upgrade.</p>
+            <a href="apply.php?package=visa-invitation" style="display: block; width: 100%; padding: 20px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">Register NOW!</a>
+        </div>
+        <div style="flex: 1; min-width: 350px; background: url('https://images.unsplash.com/photo-1599946347341-671151699d21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80') center/cover; position: relative;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to right, #2D236E, transparent); opacity: 0.3;"></div>
+        </div>
+    </div>
+</section>
+
 <?php endif; ?>
 
 <?php include 'footer.php'; ?>

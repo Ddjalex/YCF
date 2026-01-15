@@ -5,7 +5,7 @@ include 'header.php';
 $packages = [
     'scholarship' => [
         'title' => 'Fully/Partially Funded Application',
-        'price' => 19.99,
+        'price' => 16.99,
         'description' => 'Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.'
     ],
     'forum-admission' => [
