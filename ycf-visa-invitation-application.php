@@ -30,9 +30,4 @@ $is_guaranteed = true;
     </div>
 </div>
 
-<section style="padding: 60px 5%; background: #fcfcfc; text-align: center;">
-    <h2 class="montserrat" style="font-size: 3rem; font-weight: 900; color: #000; margin-bottom: 10px;">Key Themes of YDF 2026</h2>
-    <p style="font-size: 1.1rem; color: #444; max-width: 800px; margin: 0 auto;">The sessions, workshops, and dialogues revolve around <strong>cross-cutting global</strong></p>
-</section>
-
 <?php include 'footer.php'; ?>
