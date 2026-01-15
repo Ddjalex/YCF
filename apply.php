@@ -296,8 +296,14 @@ include 'header.php';
                                 </div>
                             </div>
                             <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Transaction Screenshot <span style="color: red;">(Required)</span></label>
-                                <input type="file" name="crypto_screenshot" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Transaction ID / Hash (TXID) <span style="color: red;">(Required)</span></label>
+                                    <input type="text" name="transaction_id" required placeholder="Enter your transaction ID or hash" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Transaction Screenshot <span style="color: red;">(Required)</span></label>
+                                    <input type="file" name="crypto_screenshot" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -411,6 +417,9 @@ function nextStep(step) {
 
             if (paymentMethodInput.value === 'crypto') {
                 let screenshotInput = currentView.querySelector('input[name="crypto_screenshot"]');
+                let txidInput = currentView.querySelector('input[name="transaction_id"]');
+                
+                // Validate Screenshot
                 if (!screenshotInput || !screenshotInput.files.length) {
                     isValid = false;
                     if (screenshotInput) {
@@ -421,6 +430,20 @@ function nextStep(step) {
                     if (screenshotInput) {
                         screenshotInput.style.borderColor = '#ddd';
                         screenshotInput.style.borderWidth = '1px';
+                    }
+                }
+
+                // Validate Transaction ID
+                if (!txidInput || !txidInput.value.trim()) {
+                    isValid = false;
+                    if (txidInput) {
+                        txidInput.style.borderColor = 'red';
+                        txidInput.style.borderWidth = '2px';
+                    }
+                } else {
+                    if (txidInput) {
+                        txidInput.style.borderColor = '#ddd';
+                        txidInput.style.borderWidth = '1px';
                     }
                 }
             }
