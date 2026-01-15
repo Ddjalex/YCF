@@ -88,7 +88,10 @@ $is_guaranteed = true;
                     </div>
                 </div>
                 <div style="margin-top: 30px;" id="gf_23">
-                    <a href="#" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; font-size: 1.1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+                    <?php 
+                    require_once 'registration_form.php';
+                    render_registration_form('self_funded', 'YDF Self Funded', 799.00); 
+                    ?>
                 </div>
             </div>
         </div>
