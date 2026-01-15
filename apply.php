@@ -1,13 +1,52 @@
 <?php
 include 'header.php';
+
+$package = $_GET['package'] ?? 'funded';
+$package_names = [
+    'fully_funded' => 'YDF Fully Funded Category Registration',
+    'partially_funded' => 'YDF Partially Funded Category Registration',
+    'forum_admission' => 'YDF Forum Admission Registration',
+    'self_funded' => 'YDF Self Funded Category Registration',
+    'funded' => 'YDF Funded Category Registration'
+];
+
+$package_prices = [
+    'fully_funded' => 19.99,
+    'partially_funded' => 19.99,
+    'forum_admission' => 499.00,
+    'self_funded' => 0.00,
+    'funded' => 19.99
+];
+
+$service_charges = [
+    'fully_funded' => 0.00,
+    'partially_funded' => 0.00,
+    'forum_admission' => 120.00,
+    'self_funded' => 0.00,
+    'funded' => 0.00
+];
+
+$current_package_name = $package_names[$package] ?? $package_names['funded'];
+$current_price = $package_prices[$package] ?? $package_prices['funded'];
+$current_service_charge = $service_charges[$package] ?? $service_charges['funded'];
+$total_amount = $current_price + $current_service_charge;
+
+$is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
 ?>
 
 <div class="hero-container" style="padding-top: 100px; min-height: auto; background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed;">
     <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 60px 20px; color: white; text-align: center;">
-        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Development Forum 2026<br>Fully/Partially Funded Application</h1>
+        <h1 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;">Youth Development Forum 2026<br><?php echo str_replace('YDF ', '', str_replace(' Registration', '', $current_package_name)); ?></h1>
         <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 15px 30px; border-radius: 10px; font-weight: 800; font-size: 1.1rem; max-width: 800px;">
-            Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.
+            <?php if ($is_guaranteed): ?>
+                Guaranteed Selection for <?php echo str_replace(' Registration', '', $current_package_name); ?>.
+            <?php else: ?>
+                Apply Once To Be Considered For Both Fully Funded And Partially Funded Seats - No Separate Applications Required.
+            <?php endif; ?>
         </div>
+        <?php if ($package === 'forum_admission'): ?>
+            <div style="margin-top: 20px; font-size: 2.5rem; font-weight: 800; font-family: 'Montserrat', sans-serif;">$499.00</div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -16,10 +55,10 @@ include 'header.php';
         <div style="flex: 1; min-width: 300px;">
             <h2 class="montserrat" style="font-size: 2.5rem; color: #2D236E; margin-bottom: 20px;">Ready to Lead the Future?<br>Berlin 2026 Is Calling</h2>
             <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 20px;">
-                You're just a few clicks away from your chance to join (<strong>Fully Funded/Partially Funded</strong>) one of the most exciting youth events of <strong>2026</strong>!
+                You're just a few clicks away from your chance to join (<strong><?php echo str_replace(' Registration', '', $current_package_name); ?></strong>) one of the most exciting youth events of <strong>2026</strong>!
             </p>
             <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 20px;">
-                From <strong>May 7–10, 2026, 200 young changemakers</strong> from across the globe will gather in <strong>Berlin, Germany</strong> for four unforgettable days of bold conversations, interactive learning, leadership development, and cultural experiences. Selection is <strong>merit-based</strong>, so bring your best ideas, passion, and story to the table.
+                From <strong>May 7–10, 2026, 200 young changemakers</strong> from across the globe will gather in <strong>Berlin, Germany</strong> for four unforgettable days of bold conversations, interactive learning, leadership development, and cultural experiences. Selection is <strong><?php echo $is_guaranteed ? 'guaranteed' : 'merit-based'; ?></strong>, so bring your best ideas, passion, and story to the table.
             </p>
             <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 20px;">
                 Your journey to the future starts here — let your voice be heard!
@@ -57,7 +96,7 @@ include 'header.php';
     </div>
 
     <div style="margin-top: 80px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.05); border: 1px solid #eee;">
-        <h2 class="montserrat" style="font-size: 2rem; color: #2D236E; margin-bottom: 10px;">YDF Funded Category Registration</h2>
+        <h2 class="montserrat" style="font-size: 2rem; color: #2D236E; margin-bottom: 10px;"><?php echo $current_package_name; ?></h2>
         <p style="color: #666; margin-bottom: 15px;">Please note that your information interacts with our server as you enter it.</p>
         
         <!-- Step 1 View -->
@@ -183,9 +222,14 @@ include 'header.php';
                     <textarea id="reg_journey" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
                 </div>
 
-                <div style="margin-bottom: 40px;">
+                <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Profile Photo <span style="color: red;">(Required)</span></label>
                     <input type="file" id="reg_profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Passport Photo <span style="color: red;">(Required)</span></label>
+                    <input type="file" id="reg_passport_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
@@ -207,15 +251,29 @@ include 'header.php';
             <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Application Fee</h3>
             
             <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 30px;">
-                Complete your application by submitting the application fee.
+                Complete your application by submitting the application fee to secure your spot at the Youth Development Forum 2026. We process payments through Stripe, a globally trusted and highly secure platform, ensuring your personal and payment details are fully protected under General Data Protection Regulation (GDPR) standards. Have questions? We’re here to help! Reach out to us at info@thecgdl.org. Let’s make it happen!
             </p>
 
             <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">Billing Information</h4>
             <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <tr style="background: #f9f9fb; border-bottom: 1px solid #eee;">
+                        <td style="padding: 15px; color: #444;"><?php echo str_replace(' Registration', '', $current_package_name); ?> x 1</td>
+                        <td style="padding: 15px; text-align: right; color: #444;">$<?php echo number_format($current_price, 2); ?></td>
+                    </tr>
+                    <?php if ($current_service_charge > 0): ?>
+                    <tr style="background: #f9f9fb; border-bottom: 1px solid #eee;">
+                        <td style="padding: 15px; color: #444;">Subtotal</td>
+                        <td style="padding: 15px; text-align: right; color: #444;">$<?php echo number_format($current_price, 2); ?></td>
+                    </tr>
+                    <tr style="background: #f9f9fb; border-bottom: 1px solid #eee;">
+                        <td style="padding: 15px; color: #444;">Service Charges, VAT & Processing Fee</td>
+                        <td style="padding: 15px; text-align: right; color: #444;">$<?php echo number_format($current_service_charge, 2); ?></td>
+                    </tr>
+                    <?php endif; ?>
                     <tr style="background: #f9f9fb; font-weight: 800; font-size: 1.1rem; color: #2D236E;">
                         <td style="padding: 15px;">Total</td>
-                        <td style="padding: 15px; text-align: right;">$19.99</td>
+                        <td style="padding: 15px; text-align: right;">$<?php echo number_format($total_amount, 2); ?></td>
                     </tr>
                 </table>
             </div>
@@ -326,38 +384,33 @@ function nextStep(step) {
                 if (!input.files || !input.files.length) isFieldValid = false;
             } else if (input.tagName.toLowerCase() === 'select') {
                 if (!input.value) isFieldValid = false;
-            } else if (!input.value.trim()) {
-                isFieldValid = false;
+            } else if (input.type === 'radio') {
+                const name = input.name;
+                const checked = currentView.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) isFieldValid = false;
+            } else {
+                if (!input.value.trim()) isFieldValid = false;
             }
-
+            
             if (!isFieldValid) {
                 isValid = false;
                 input.style.borderColor = 'red';
-                input.style.borderWidth = '2px';
             } else {
                 input.style.borderColor = '#ddd';
-                input.style.borderWidth = '1px';
             }
         });
-
-        if (currentStepNum === 2) {
-            let radioChecked = false;
-            document.getElementsByName('source').forEach(r => { if(r.checked) radioChecked = true; });
-            if (!radioChecked) {
-                isValid = false;
-                document.querySelector('.source-options-container').style.border = '2px solid red';
-            } else {
-                document.querySelector('.source-options-container').style.border = 'none';
-            }
+        
+        if (!isValid) {
+            alert('Please fill in all required fields.');
+            return;
         }
-
-        if (!isValid) return;
     }
-
-    document.getElementById('step1').style.display = (step === 1) ? 'block' : 'none';
-    document.getElementById('step2').style.display = (step === 2) ? 'block' : 'none';
-    document.getElementById('step3').style.display = (step === 3) ? 'block' : 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('step' + step).style.display = 'block';
+    window.scrollTo({ top: document.querySelector('.hero-container').offsetHeight, behavior: 'smooth' });
 }
 
 function toggleCryptoDetails(show) {
@@ -365,37 +418,37 @@ function toggleCryptoDetails(show) {
 }
 
 function copyAddress() {
-    const address = document.getElementById('btc_address_text').innerText;
-    navigator.clipboard.writeText(address).then(() => {
+    const text = document.getElementById('btc_address_text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
         const btn = event.currentTarget;
         const originalText = btn.innerHTML;
         btn.innerHTML = 'Copied!';
-        btn.style.background = '#28a745';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '#2D236E';
-        }, 2000);
-    }).catch(err => {
-        alert('Failed to copy address');
+        setTimeout(() => btn.innerHTML = originalText, 2000);
     });
 }
 
 function handleFinalSubmit() {
     const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
-    if (!paymentMethod) { alert('Please select a payment method.'); return; }
-
-    const txid = document.getElementById('transaction_id');
-    const screenshot = document.getElementById('crypto_screenshot');
-
-    let isValid = true;
-    if (!txid.value.trim()) { txid.style.borderColor = 'red'; isValid = false; }
-    if (!screenshot.files.length) { screenshot.style.borderColor = 'red'; isValid = false; }
-
-    if (!isValid) { alert('Transaction ID and Screenshot are required.'); return; }
-
+    if (!paymentMethod) {
+        alert('Please select a payment method.');
+        return;
+    }
+    
+    if (paymentMethod.value === 'crypto') {
+        const txid = document.getElementById('transaction_id').value;
+        const screenshot = document.getElementById('crypto_screenshot').files[0];
+        if (!txid || !screenshot) {
+            alert('Please provide transaction ID and screenshot for crypto payment.');
+            return;
+        }
+    }
+    
+    // Show success popup
     const popup = document.getElementById('successPopup');
     popup.style.display = 'flex';
-    setTimeout(() => popup.querySelector('div').style.transform = 'scale(1)', 10);
+    setTimeout(() => {
+        popup.querySelector('div').style.transform = 'scale(1)';
+    }, 10);
 }
 </script>
 
