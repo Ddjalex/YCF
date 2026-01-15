@@ -75,22 +75,22 @@ include 'header.php';
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">First Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" id="reg_first_name" placeholder="First" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_first_name" placeholder="First" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Last Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" id="reg_last_name" placeholder="Last" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_last_name" placeholder="Last" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Nationality <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_nationality" placeholder="e.g USA, UK, UAE" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_nationality" placeholder="e.g USA, UK, UAE" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Email <span style="color: red;">(Required)</span></label>
-                    <input type="email" id="reg_email" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="email" id="reg_email" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start;">
@@ -113,7 +113,8 @@ include 'header.php';
             <form>
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Gender <span style="color: red;">(Required)</span></label>
-                    <select style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
@@ -123,18 +124,18 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Date of Birth <span style="color: red;">(Required)</span></label>
-                    <input type="date" style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="date" required style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Phone No (with Country Code) <span style="color: red;">(Required)</span></label>
-                    <input type="text" placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" required placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     <small style="color: #888; display: block; margin-top: 5px;">Please input a valid international phone number</small>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Profession <span style="color: red;">(Required)</span></label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
@@ -144,17 +145,18 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Country of Residence <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_country" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_country" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Departure City <span style="color: red;">(Required)</span></label>
-                    <input type="text" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Do you require a visa to travel to Germany? <span style="color: red;">(Required)</span></label>
-                    <select style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <option value="">Select Option</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -186,7 +188,7 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Tell us about your journey so far. <span style="color: red;">(Required)</span></label>
-                    <textarea style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
+                    <textarea required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
                     <small style="color: #888; display: block; margin-top: 5px;">Briefly describe your experiences, initiatives, or achievements in areas such as social impact, public policy, volunteerism, leadership, technology, entrepreneurship, or any other field you are engaged in. What inspires your work, and why are you interested in being part of the Youth Development Forum 2026?</small>
                 </div>
 
@@ -338,6 +340,48 @@ include 'header.php';
 
 <script>
 function nextStep(step) {
+    const currentStepNum = parseInt(document.querySelector('#step1, #step2, #step3:not([style*="display: none"])')?.id?.replace('step', '') || '1');
+    
+    // Validation logic for moving forward
+    if (step > currentStepNum) {
+        let isValid = true;
+        let currentView = document.getElementById('step' + currentStepNum);
+        
+        // Validate required inputs
+        let inputs = currentView.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = 'red';
+            } else {
+                input.style.borderColor = '#ddd';
+            }
+        });
+
+        // Step 2 specific validation
+        if (currentStepNum === 2) {
+            let sourceRadios = document.getElementsByName('source');
+            let radioChecked = false;
+            for (let radio of sourceRadios) {
+                if (radio.checked) {
+                    radioChecked = true;
+                    break;
+                }
+            }
+            
+            if (!radioChecked) {
+                isValid = false;
+                alert('Please select how you heard about us.');
+                return;
+            }
+        }
+
+        if (!isValid) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+    }
+
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'none';
@@ -350,15 +394,10 @@ function nextStep(step) {
     const y = formElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({top: y, behavior: 'smooth'});
 
-    // Hide intro section if not on step 1 to save space
+    // Show/Hide intro section
     if (step > 1) {
         document.getElementById('intro-section').style.display = 'none';
     } else {
-        document.getElementById('intro-section').style.display = 'flex';
-    }
-    
-    // Ensure intro section is shown when going back to step 1
-    if (step === 1) {
         document.getElementById('intro-section').style.display = 'flex';
     }
 }
