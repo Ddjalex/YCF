@@ -149,59 +149,66 @@ if ($search):
             <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #2D236E;"></div>
         </div>
 
-        <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto;">
-            <!-- Fully Funded -->
-            <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
-                    <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Fully Funded Category</h3>
-                </div>
-                
-                <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
-                    <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected under the Fully Funded category receive a complete scholarship package that covers:</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
-                        <li>✈️ Round-trip airfare to Berlin, Germany</li>
-                        <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
-                        <li>🍽️ Daily meals & breakfast</li>
-                        <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
-                        <li>📜 Certificate of Participation issued by CGDL</li>
-                        <li>🎒 Delegate kit including conference materials</li>
-                        <li>🗺️ Guided city tour of Berlin, covering historical sites & diplomacy landmarks</li>
-                        <li>🛂 Comprehensive visa support, including an official visa support letter</li>
-                        <li>🤝 Participation in cultural exchange sessions and networking events</li>
-                        <li>📢 Opportunity to engage with global speakers, experts, and youth leaders</li>
-                    </ul>
-                </div>
-                <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; width: 100%; padding: 20px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; border: none; cursor: pointer;">APPLY NOW!</a>
-            </div>
-
-            <!-- Partially Funded -->
-            <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
-                    <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Partially Funded Category</h3>
-                </div>
-                
-                <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
-                    <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected for the Partially Funded category receive significant subsidization and will be provided:</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
-                        <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
-                        <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
-                        <li>🍽️ Meals & breakfast throughout the forum</li>
-                        <li>📜 Certificate of Participation from CGDL</li>
-                        <li>🎒 Delegate kit including conference materials</li>
-                        <li>🗺️ Guided city tour of Berlin focusing on history & diplomacy</li>
-                        <li>🛂 Comprehensive visa support, including an official visa support letter</li>
-                        <li>🤝 Participation in cultural & networking activities</li>
-                    </ul>
-                    <div style="margin-top: 30px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 20px;">
-                        <h4 style="text-align: center; text-transform: uppercase; font-size: 0.8rem; color: #999;">Not Included</h4>
-                        <p style="text-align: center; font-size: 0.9rem; margin-top: 10px;">✈️ Airfare</p>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px;">
+                <!-- Fully Funded -->
+                <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
+                        <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Fully Funded Category</h3>
+                    </div>
+                    
+                    <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
+                        <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected under the Fully Funded category receive a complete scholarship package that covers:</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
+                            <li>✈️ Round-trip airfare to Berlin, Germany</li>
+                            <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                            <li>🍽️ Daily meals & breakfast</li>
+                            <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
+                            <li>📜 Certificate of Participation issued by CGDL</li>
+                            <li>🎒 Delegate kit including conference materials</li>
+                            <li>🗺️ Guided city tour of Berlin, covering historical sites & diplomacy</li>
+                            <li>🛂 Comprehensive visa support, including an official visa support letter</li>
+                            <li>🤝 Participation in cultural exchange sessions and networking events</li>
+                            <li>📢 Opportunity to engage with global speakers, experts, and youth leaders</li>
+                        </ul>
                     </div>
                 </div>
-                <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; width: 100%; padding: 20px; background: linear-gradient(to right, #444, #000); color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; border: none; cursor: pointer;">APPLY NOW!</a>
+
+                <!-- Partially Funded -->
+                <div style="background: #2D236E; color: white; border-radius: 25px; padding: 50px 40px; flex: 1; min-width: 350px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <span style="font-size: 1.8rem; font-weight: 700; color: #FFD700;">$16.99</span>
+                        <h3 class="montserrat" style="font-size: 2.2rem; font-weight: 900; margin: 15px 0;">Partially Funded Category</h3>
+                    </div>
+                    
+                    <div style="border-top: 1px dotted rgba(255,255,255,0.3); padding: 25px 0;">
+                        <h4 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; color: #FFD700;">What's Included</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 25px;">Participants selected for the Partially Funded category receive significant subsidization and will be provided:</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 2;">
+                            <li>🗝️ Full access to all conference sessions, workshops, and activities</li>
+                            <li>🏨 Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                            <li>🍽️ Meals & breakfast throughout the forum</li>
+                            <li>📜 Certificate of Participation from CGDL</li>
+                            <li>🎒 Delegate kit including conference materials</li>
+                            <li>🗺️ Guided city tour of Berlin focusing on history & diplomacy</li>
+                            <li>🛂 Comprehensive visa support, including an official visa support letter</li>
+                            <li>🤝 Participation in cultural & networking activities</li>
+                        </ul>
+                        <div style="margin-top: 30px; border-top: 1px dotted rgba(255,255,255,0.3); padding-top: 20px;">
+                            <h4 style="text-align: center; text-transform: uppercase; font-size: 0.8rem; color: #999;">Not Included</h4>
+                            <p style="text-align: center; font-size: 0.9rem; margin-top: 10px;">✈️ Airfare</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unified Apply Button -->
+            <div style="max-width: 800px; margin: 0 auto;">
+                <a href="apply.php?package=scholarship" class="btn-apply-special" style="display: block; width: 100%; padding: 25px; background: linear-gradient(to right, #FFD700, #DAA520); color: #2D236E; text-align: center; text-decoration: none; border-radius: 12px; font-weight: 900; font-size: 1.5rem; letter-spacing: 1px; border: none; cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 25px rgba(218, 165, 32, 0.4); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    APPLY NOW!
+                </a>
             </div>
         </div>
     </div>
