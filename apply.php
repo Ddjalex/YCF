@@ -71,7 +71,7 @@ include 'header.php';
 
             <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Basic Details</h3>
 
-            <form>
+            <div class="form-step-container">
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">First Name <span style="color: red;">(Required)</span></label>
@@ -96,7 +96,7 @@ include 'header.php';
                 <div style="display: flex; justify-content: flex-start;">
                     <button type="button" onclick="nextStep(2)" class="btn-apply-special" style="width: 200px; padding: 15px;">NEXT</button>
                 </div>
-            </form>
+            </div>
         </div>
 
         <!-- Step 2 View (Hidden by default) -->
@@ -110,10 +110,10 @@ include 'header.php';
 
             <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Personal Details and Motivation</h3>
 
-            <form>
+            <div class="form-step-container">
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Gender <span style="color: red;">(Required)</span></label>
-                    <select required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select id="reg_gender" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -124,48 +124,42 @@ include 'header.php';
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Date of Birth <span style="color: red;">(Required)</span></label>
-                    <input type="date" required style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="date" id="reg_dob" required style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Phone No (with Country Code) <span style="color: red;">(Required)</span></label>
-                    <input type="text" required placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_phone" required placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     <small style="color: #888; display: block; margin-top: 5px;">Please input a valid international phone number</small>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Profession <span style="color: red;">(Required)</span></label>
-                    <input type="text" required name="profession" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                </div>
-
-                <div style="margin-bottom: 30px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Organization / University</label>
-                    <input type="text" name="organization" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_profession" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Country of Residence <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_country" required name="country_residence" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_residence" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Departure City <span style="color: red;">(Required)</span></label>
-                    <input type="text" required name="departure_city" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_departure" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Do you require a visa to travel to Germany? <span style="color: red;">(Required)</span></label>
-                    <select required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select id="reg_visa" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                         <option value="">Select Option</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
-                    <small style="color: #888; display: block; margin-top: 5px;">It doesn't affect your qualification for the event</small>
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #444;">How did you hear about YDF26? <span style="color: red;">(Required)</span></label>
-                <div class="source-options-container" style="display: flex; flex-direction: column; gap: 10px; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
+                    <div class="source-options-container" style="display: flex; flex-direction: column; gap: 10px; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
                             <input type="radio" name="source" value="CGDL Social media"> CGDL Social media
                         </label>
@@ -185,29 +179,20 @@ include 'header.php';
                 </div>
 
                 <div style="margin-bottom: 30px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Motivational Questions:</label>
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Tell us about your journey so far. <span style="color: red;">(Required)</span></label>
-                    <textarea required name="journey" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
-                    <small style="color: #888; display: block; margin-top: 5px;">Briefly describe your experiences, initiatives, or achievements in areas such as social impact, public policy, volunteerism, leadership, technology, entrepreneurship, or any other field you are engaged in. What inspires your work, and why are you interested in being part of the Youth Development Forum 2026?</small>
-                </div>
-
-                <div style="margin-bottom: 30px;">
-                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">How do you create impact?</label>
-                    <textarea style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
-                    <small style="color: #888; display: block; margin-top: 5px;">What personal strengths, skills, or values guide your work, and how do you see yourself contributing to the collective learning and outcomes of the Youth Development Forum 2026? (Optional)</small>
+                    <textarea id="reg_journey" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Profile Photo <span style="color: red;">(Required)</span></label>
-                    <input type="file" name="profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                    <small style="color: #888; display: block; margin-top: 5px;">Accepted file types: jpg, jpeg, png, webp, heic, Max. file size: 3 MB.</small>
+                    <input type="file" id="reg_profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
                     <button type="button" onclick="nextStep(1)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
                     <button type="button" onclick="nextStep(3)" class="btn-apply-special" style="width: 200px; padding: 15px;">NEXT</button>
                 </div>
-            </form>
+            </div>
         </div>
 
         <!-- Step 3 View -->
@@ -222,124 +207,64 @@ include 'header.php';
             <h3 class="montserrat" style="font-size: 1.8rem; color: #2D236E; margin-bottom: 30px; border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px;">Application Fee</h3>
             
             <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 30px;">
-                Complete your application by submitting the application fee to secure your spot at the Youth Development Forum 2026. We process payments through Stripe, a globally trusted and highly secure platform, ensuring your personal and payment details are fully protected under General Data Protection Regulation (GDPR) standards. Have questions? We're here to help! Reach out to us at <a href="mailto:info@thecgdl.org" style="color: #2D236E; font-weight: 600;">info@thecgdl.org</a>. Let's make it happen!
+                Complete your application by submitting the application fee.
             </p>
 
             <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">Billing Information</h4>
-            
             <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                    <tr style="border-bottom: 1px solid #ddd; background: #f9f9fb;">
-                        <td style="padding: 15px; font-weight: 500;">Application Fee for Fully/Partially Funded Category x 1</td>
-                        <td style="padding: 15px; text-align: right;">$16.99</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 15px; font-weight: 500;">Subtotal</td>
-                        <td style="padding: 15px; text-align: right;">$16.99</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 15px; font-weight: 500;">Service Charges, VAT & Processing Fee</td>
-                        <td style="padding: 15px; text-align: right;">$3.00</td>
-                    </tr>
                     <tr style="background: #f9f9fb; font-weight: 800; font-size: 1.1rem; color: #2D236E;">
-                        <td style="padding: 15px;">Total (Nineteen dollars ninety nine cents)</td>
+                        <td style="padding: 15px;">Total</td>
                         <td style="padding: 15px; text-align: right;">$19.99</td>
                     </tr>
                 </table>
             </div>
 
             <div style="margin-bottom: 40px;">
-                <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">How would you like to pay?</h4>
+                <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">Payment Method</h4>
                 <div style="display: flex; flex-direction: column; gap: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 20px; background: #f9f9fb;">
                     <div style="border-bottom: 1px solid #eee;">
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
-                            <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                                <input type="radio" name="payment_method" value="crypto" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(this.checked)">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span style="font-weight: 600; color: #2D236E;">Cryptocurrency (BTC, ETH, USDT)</span>
-                                    <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
-                                </div>
-                            </label>
-                            <div style="display: flex; gap: 8px;">
-                                <span style="font-size: 1.5rem;">₿</span>
-                                <span style="font-size: 1.5rem;">◈</span>
-                                <span style="font-size: 1.5rem;">₮</span>
-                            </div>
-                        </div>
+                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                            <input type="radio" name="payment_method" value="crypto" onchange="toggleCryptoDetails(this.checked)" required>
+                            <span style="font-weight: 600;">Cryptocurrency (BTC)</span>
+                        </label>
                         <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
-                            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center;">
-                                <div style="text-align: center;">
-                                    <?php 
-                                    $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
-                                    $btc_qr_custom = get_admin_setting('btc_qr');
-                                    
-                                    if ($btc_qr_custom) {
-                                        $qr_url = $btc_qr_custom;
-                                    } else {
-                                        $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
-                                    }
-                                    ?>
-                                    <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 4px;">
-                                    <div style="margin-top: 10px; font-size: 0.8rem; font-weight: 700; color: #f7931a;">BITCOIN (BTC)</div>
-                                </div>
-                                <div style="flex: 1; min-width: 250px;">
-                                    <div style="margin-bottom: 15px;">
-                                        <label style="display: block; font-size: 0.8rem; color: #888; margin-bottom: 5px;">BTC Wallet Address:</label>
-                                        <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; font-size: 0.9rem; word-break: break-all; position: relative;">
-                                            <span id="btc_addr_text"><?php echo $btc_address; ?></span>
-                                            <button type="button" onclick="copyToClipboard('btc_addr_text')" style="background: none; border: none; color: #2D236E; cursor: pointer; float: right; font-size: 1rem;">📋</button>
-                                        </div>
-                                    </div>
-                                    <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
-                                        <strong>Instructions:</strong> Please send exactly <strong>$19.99</strong> equivalent in BTC to the address above. After payment, upload your transaction screenshot below.
-                                    </div>
-                                </div>
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <?php $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'); ?>
+                                <p style="word-break: break-all; font-family: monospace;"><?php echo $btc_address; ?></p>
                             </div>
-                            <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-                                <div style="margin-bottom: 15px;">
-                                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Transaction ID / Hash (TXID) <span style="color: red;">(Required)</span></label>
-                                    <input type="text" name="transaction_id" required placeholder="Enter your transaction ID or hash" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                                </div>
-                                <div>
-                                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Transaction Screenshot <span style="color: red;">(Required)</span></label>
-                                    <input type="file" name="crypto_screenshot" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
-                                </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Transaction ID (TXID) <span style="color: red;">(Required)</span></label>
+                                <input type="text" id="transaction_id" placeholder="Enter TXID" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 8px;">Screenshot <span style="color: red;">(Required)</span></label>
+                                <input type="file" id="crypto_screenshot" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                            <input type="radio" name="payment_method" value="card" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(false)">
-                            <div style="display: flex; flex-direction: column;">
-                                <span style="font-weight: 600; color: #2D236E;">Credit or Debit Card</span>
-                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
-                            </div>
-                        </label>
-                        <div style="display: flex; gap: 8px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 15px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 15px;">
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; flex: 1;">
-                            <input type="radio" name="payment_method" value="paypal" style="width: 20px; height: 20px;" onchange="toggleCryptoDetails(false)">
-                            <div style="display: flex; flex-direction: column;">
-                                <span style="font-weight: 600; color: #2D236E;">PayPal</span>
-                                <span style="color: #dc3545; font-size: 0.7rem; font-weight: 600;">Currently Unavailable</span>
-                            </div>
-                        </label>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" style="height: 18px;">
-                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-start; gap: 20px; margin-top: 40px;">
+                    <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
+                    <button type="button" onclick="handleFinalSubmit()" class="btn-apply-special" style="width: 200px; padding: 15px;">SUBMIT</button>
                 </div>
             </div>
-
-            <form id="application-form" onsubmit="handleFormSubmit(event)">
-                <div style="display: flex; justify-content: flex-start; gap: 20px;">
-                    <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="submit" class="btn-apply-special" style="width: 200px; padding: 15px;">SUBMIT</button>
-                </div>
-            </form>
         </div>
+    </div>
+</div>
+
+<!-- Professional Success Popup -->
+<div id="successPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+    <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: scale(0.7); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <div style="width: 80px; height: 80px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: white;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path></svg>
+        </div>
+        <h2 class="montserrat" style="color: #2D236E; margin-bottom: 15px;">Registration Successful!</h2>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 25px; font-size: 1.1rem;">
+            Registration form and payment detail approval sent to registered email address.
+        </p>
+        <button onclick="window.location.href='index.php'" style="background: #2D236E; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; text-transform: uppercase;">Back to Home</button>
     </div>
 </div>
 
@@ -347,25 +272,17 @@ include 'header.php';
 function nextStep(step) {
     const currentStepNum = parseInt(document.querySelector('#step1:not([style*="display: none"]), #step2:not([style*="display: none"]), #step3:not([style*="display: none"])')?.id?.replace('step', '') || '1');
     
-    // Validation logic for moving forward
     if (step > currentStepNum) {
         let isValid = true;
         let currentView = document.getElementById('step' + currentStepNum);
-        
-        // Validate all required inputs within the CURRENT step's view
         let inputs = currentView.querySelectorAll('input[required], select[required], textarea[required]');
         
         inputs.forEach(input => {
             let isFieldValid = true;
-            
             if (input.type === 'file') {
-                if (!input.files || !input.files.length) {
-                    isFieldValid = false;
-                }
+                if (!input.files || !input.files.length) isFieldValid = false;
             } else if (input.tagName.toLowerCase() === 'select') {
-                if (!input.value || input.value === "") {
-                    isFieldValid = false;
-                }
+                if (!input.value) isFieldValid = false;
             } else if (!input.value.trim()) {
                 isFieldValid = false;
             }
@@ -380,115 +297,46 @@ function nextStep(step) {
             }
         });
 
-        // Step 2 specific validation for radio group
         if (currentStepNum === 2) {
-            let sourceRadios = document.getElementsByName('source');
             let radioChecked = false;
-            for (let radio of sourceRadios) {
-                if (radio.checked) {
-                    radioChecked = true;
-                    break;
-                }
-            }
-            
-            let sourceContainer = currentView.querySelector('.source-options-container');
+            document.getElementsByName('source').forEach(r => { if(r.checked) radioChecked = true; });
             if (!radioChecked) {
                 isValid = false;
-                if (sourceContainer) {
-                    sourceContainer.style.border = '2px solid red';
-                    sourceContainer.style.background = '#fff5f5';
-                }
+                document.querySelector('.source-options-container').style.border = '2px solid red';
             } else {
-                if (sourceContainer) {
-                    sourceContainer.style.border = 'none';
-                    sourceContainer.style.background = 'transparent';
-                }
+                document.querySelector('.source-options-container').style.border = 'none';
             }
         }
 
-        // Step 3 specific validation (Payment Method and Screenshot)
-        if (currentStepNum === 3 && step > 3) {
-            let paymentMethodInput = currentView.querySelector('input[name="payment_method"]:checked');
-            if (!paymentMethodInput) {
-                isValid = false;
-                alert('Please select a payment method.');
-                return;
-            }
-
-            if (paymentMethodInput.value === 'crypto') {
-                let screenshotInput = currentView.querySelector('input[name="crypto_screenshot"]');
-                let txidInput = currentView.querySelector('input[name="transaction_id"]');
-                
-                // Validate Screenshot
-                if (!screenshotInput || !screenshotInput.files.length) {
-                    isValid = false;
-                    if (screenshotInput) {
-                        screenshotInput.style.borderColor = 'red';
-                        screenshotInput.style.borderWidth = '2px';
-                    }
-                } else {
-                    if (screenshotInput) {
-                        screenshotInput.style.borderColor = '#ddd';
-                        screenshotInput.style.borderWidth = '1px';
-                    }
-                }
-
-                // Validate Transaction ID
-                if (!txidInput || !txidInput.value.trim()) {
-                    isValid = false;
-                    if (txidInput) {
-                        txidInput.style.borderColor = 'red';
-                        txidInput.style.borderWidth = '2px';
-                    }
-                } else {
-                    if (txidInput) {
-                        txidInput.style.borderColor = '#ddd';
-                        txidInput.style.borderWidth = '1px';
-                    }
-                }
-            }
-        }
-
-        if (!isValid) {
-            // Smooth scroll to the first error found in the current step
-            const firstError = currentView.querySelector('[style*="border-color: red"], [style*="border: 2px solid red"]');
-            if (firstError) {
-                const yOffset = -150; 
-                const y = firstError.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                window.scrollTo({top: y, behavior: 'smooth'});
-            }
-            return;
-        }
+        if (!isValid) return;
     }
 
-    // Process step transition
-    document.getElementById('step1').style.display = 'none';
-    document.getElementById('step2').style.display = 'none';
-    document.getElementById('step3').style.display = 'none';
-    
-    document.getElementById('step' + step).style.display = 'block';
-    
-    const formElement = document.getElementById('step' + step);
-    const yOffset = -150; 
-    const y = formElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({top: y, behavior: 'smooth'});
-
-    if (step > 1) {
-        document.getElementById('intro-section').style.display = 'none';
-    } else {
-        document.getElementById('intro-section').style.display = 'flex';
-    }
+    document.getElementById('step1').style.display = (step === 1) ? 'block' : 'none';
+    document.getElementById('step2').style.display = (step === 2) ? 'block' : 'none';
+    document.getElementById('step3').style.display = (step === 3) ? 'block' : 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function toggleCryptoDetails(show) {
     document.getElementById('crypto_details').style.display = show ? 'block' : 'none';
 }
 
-function copyToClipboard(id) {
-    const text = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        alert('Address copied to clipboard!');
-    });
+function handleFinalSubmit() {
+    const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+    if (!paymentMethod) { alert('Please select a payment method.'); return; }
+
+    const txid = document.getElementById('transaction_id');
+    const screenshot = document.getElementById('crypto_screenshot');
+
+    let isValid = true;
+    if (!txid.value.trim()) { txid.style.borderColor = 'red'; isValid = false; }
+    if (!screenshot.files.length) { screenshot.style.borderColor = 'red'; isValid = false; }
+
+    if (!isValid) { alert('Transaction ID and Screenshot are required.'); return; }
+
+    const popup = document.getElementById('successPopup');
+    popup.style.display = 'flex';
+    setTimeout(() => popup.querySelector('div').style.transform = 'scale(1)', 10);
 }
 </script>
 
