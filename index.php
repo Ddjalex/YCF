@@ -24,7 +24,7 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto; min-height: 50px; border: 1px solid #eee; gap: 8px;">
+    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto 30px; min-height: 50px; border: 1px solid #eee; gap: 8px;">
         <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
             <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
         </div>
@@ -49,6 +49,66 @@ if (isset($_GET['page'])) {
         </div>
         
         <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
+    </div>
+
+    <!-- News & Updates Section -->
+    <section class="news" style="padding: 3rem 5%; background: #fcfcfc;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;">
+            <h2 style="color: var(--dark-blue); font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 700; margin: 0; font-family: Montserrat, sans-serif;">LATEST NEWS</h2>
+            <a href="news.php" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; font-size: 0.9rem;">View all &rsaquo;</a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+            <?php foreach ($news as $item): ?>
+                <div class="news-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <div style="height: 180px; background: #eee; background-image: url('<?php echo $item['image']; ?>'); background-size: cover; background-position: center;"></div>
+                    <div style="padding: 1.2rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--primary-blue); color: white; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 15px; text-transform: uppercase;"><?php echo htmlspecialchars($item['category']); ?></span>
+                            <span style="font-size: 0.75rem; color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
+                        </div>
+                        <h3 style="color: var(--dark-blue); margin: 0 0 0.8rem; font-size: 1rem; line-height: 1.3; height: 2.6rem; overflow: hidden;"><?php echo htmlspecialchars($item['title']); ?></h3>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.2rem; height: 3.4rem; overflow: hidden;"><?php echo htmlspecialchars($item['summary']); ?></p>
+                        <a href="news_detail.php?id=<?php echo $item['id']; ?>" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 16px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 5px; display: inline-block;">Read More &rarr;</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+</section>
+
+<!-- News & Updates Section -->
+<section style="padding: 60px 20px; background: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+            <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #000; text-transform: uppercase; margin: 0;">Latest News</h2>
+            <a href="news.php" style="color: #00aeef; font-weight: 700; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">View All Posts <span style="font-size: 1.2rem;">→</span></a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <?php foreach($news as $item): ?>
+            <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
+                <div style="width: 100%; height: 200px; overflow: hidden;">
+                    <img src="<?php echo htmlspecialchars($item['image']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                        <span style="color: #00aeef;"><?php echo htmlspecialchars($item['category']); ?></span>
+                        <span style="color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
+                    </div>
+                    <h3 class="montserrat" style="font-size: 1.25rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: #000;">
+                        <?php echo htmlspecialchars($item['title']); ?>
+                    </h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                        <?php echo htmlspecialchars($item['summary']); ?>
+                    </p>
+                    <a href="news_detail.php?id=<?php echo $item['id']; ?>" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
+                        Read Full Story <span style="font-size: 1.1rem;">+</span>
+                    </a>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </section>
 
@@ -251,30 +311,6 @@ if (isset($_GET['page'])) {
                 <p style="font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Berlin, Germany</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="news" style="padding: 3rem 5%; background: #fcfcfc;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;">
-        <h2 style="color: var(--dark-blue); font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 700; margin: 0; font-family: Montserrat, sans-serif;">LATEST NEWS</h2>
-        <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; font-size: 0.9rem;">View all &rsaquo;</a>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
-        <?php foreach ($news as $item): ?>
-            <div class="news-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                <div style="height: 180px; background: #eee; background-image: url('<?php echo $item['image']; ?>'); background-size: cover; background-position: center;"></div>
-                <div style="padding: 1.2rem;">
-                    <div style="display: flex; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 8px;">
-                        <span style="background: var(--primary-blue); color: white; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 15px; text-transform: uppercase;"><?php echo htmlspecialchars($item['category']); ?></span>
-                        <span style="font-size: 0.75rem; color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
-                    </div>
-                    <h3 style="color: var(--dark-blue); margin: 0 0 0.8rem; font-size: 1rem; line-height: 1.3; height: 2.6rem; overflow: hidden;"><?php echo htmlspecialchars($item['title']); ?></h3>
-                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.2rem; height: 3.4rem; overflow: hidden;"><?php echo htmlspecialchars($item['summary']); ?></p>
-                    <a href="news_detail.php?id=<?php echo $item['id']; ?>" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 16px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 5px; display: inline-block;">Read More &rarr;</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
     </div>
 </section>
 
