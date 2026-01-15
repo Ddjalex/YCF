@@ -231,15 +231,17 @@ include 'header.php';
                                 <span style="color: #28a745; font-size: 0.7rem; font-weight: 600;">Available Now</span>
                             </div>
                             <div style="display: flex; gap: 8px; margin-left: auto;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" style="height: 24px;" alt="Bitcoin">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tether_Logo.svg" style="height: 24px;" alt="Tether">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Ethereum_logo_2014.svg" style="height: 24px;" alt="Ethereum">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" style="height: 24px;" alt="Bitcoin Logo">
                             </div>
                         </label>
                         <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
                             <div style="text-align: center; margin-bottom: 20px;">
-                                <?php $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'); ?>
-                                <p style="word-break: break-all; font-family: monospace;"><?php echo $btc_address; ?></p>
+                                <?php 
+                                $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'); 
+                                $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
+                                ?>
+                                <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 8px; margin-bottom: 10px;">
+                                <p style="word-break: break-all; font-family: monospace; font-weight: 600; color: #2D236E;"><?php echo $btc_address; ?></p>
                             </div>
                             <div style="margin-bottom: 15px;">
                                 <label style="display: block; font-weight: 600; margin-bottom: 8px;">Transaction ID (TXID) <span style="color: red;">(Required)</span></label>
