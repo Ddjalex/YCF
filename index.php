@@ -363,6 +363,90 @@ if ($search):
     </div>
 </section>
 
+<section class="guaranteed-categories" style="padding: 60px 10%; background: #fff; text-align: center;">
+    <div style="max-width: 1000px; margin: 0 auto 50px;">
+        <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; color: #000; margin-bottom: 10px; text-transform: none;">Guaranteed Categories<br>(Confirmed Seats)</h2>
+        <p style="font-size: 1.1rem; color: #333; line-height: 1.6;">These categories offer <em>guaranteed</em> participation with no competitive selection. Applicants secure their seat upon completing their registration.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; width: 100%;">
+        <!-- Forum Admission Info -->
+        <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3); text-align: left;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 1.2rem; text-decoration: line-through; opacity: 0.7; color: white; margin-bottom: 2px;">$799.99</div>
+                <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: white;">$499.00</div>
+                <h3 class="montserrat" style="font-size: 2rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Forum Admission Category</h3>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                    <span style="font-size: 0.9rem; text-transform: none; letter-spacing: 0.5px; opacity: 0.9;">What\'s Included</span>
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.9; margin-bottom: 25px; font-weight: 400;">Forum Admission is ideal for participants seeking guaranteed entry without accommodation support. It includes:</p>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; font-size: 0.95rem;">
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">✓</span> Guaranteed participation at the Youth Development Forum 2026</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🤝</span> Access to all conference sessions & workshops</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">●</span> Certificate of Participation from CGDL</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">💼</span> Delegate kit & conference materials</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🏛</span> Guided city tour of Berlin (historical + diplomatic insights)</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">✉</span> Comprehensive visa support, including visa support letter</li>
+            </ul>
+            <div style="margin-top: auto; padding-top: 30px; text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                    <span style="font-size: 0.9rem; text-transform: none; letter-spacing: 0.5px; opacity: 0.9;">Not Included</span>
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                </div>
+                <div style="font-size: 0.95rem; display: flex; flex-direction: column; gap: 5px; align-items: center;">
+                    <div><span style="font-size: 1.1rem;">✈</span> Airfare</div>
+                    <div><span style="font-size: 1.1rem;">🏨</span> Accommodation</div>
+                </div>
+                <div style="margin-top: 30px;">
+                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 12px 30px;">Register NOW!</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Self-Funded Info -->
+        <div style="background: rgba(45, 35, 110, 0.95); backdrop-filter: blur(10px); border-radius: 25px; padding: 40px; color: white; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.3); text-align: left;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 1.2rem; text-decoration: line-through; opacity: 0.7; color: white; margin-bottom: 2px;">$999.99</div>
+                <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; color: white;">$799.00</div>
+                <h3 class="montserrat" style="font-size: 2rem; font-weight: 800; text-transform: none; margin-bottom: 15px;">Self-Funded Category</h3>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                    <span style="font-size: 0.9rem; text-transform: none; letter-spacing: 0.5px; opacity: 0.9;">What\'s Included</span>
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.9; margin-bottom: 25px; font-weight: 400;">The Self-Funded category is an upgraded guaranteed option designed for those who prefer a package that includes accommodation. It includes:</p>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; font-size: 0.95rem;">
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">✓</span> Guaranteed participation with priority confirmation</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🏨</span> Accommodation in a premium 4-star hotel (3 nights, 4 days)</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🍱</span> Meals & breakfast</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🤝</span> Access to all conference sessions & workshops</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">●</span> Certificate of Participation from CGDL</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">💼</span> Delegate kit & materials</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">🏛</span> Guided city tour of Berlin</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><span style="font-size: 1.1rem; color: white;">✉</span> Comprehensive visa support, including visa support letter</li>
+            </ul>
+            <div style="margin-top: auto; padding-top: 30px; text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                    <span style="font-size: 0.9rem; text-transform: none; letter-spacing: 0.5px; opacity: 0.9;">Not Included</span>
+                    <span style="height: 1px; flex-grow: 1; background: rgba(255,255,255,0.3); border-top: 1px dashed rgba(255,255,255,0.4);"></span>
+                </div>
+                <div style="font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span style="font-size: 1.1rem;">✈</span> Airfare
+                </div>
+                <div style="margin-top: 30px;">
+                    <a href="apply.php" class="btn-apply-now-floating" style="font-size: 1.1rem; padding: 12px 30px;">Register NOW!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="hotels" style="padding: 6rem 10%; background: #0a1128; color: white;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
         <h2 style="color: white; font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">HOTELS</h2>
