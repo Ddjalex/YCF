@@ -260,7 +260,6 @@ if ($search):
             <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Fully Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">30 Seats</div>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; margin-bottom: 10px;">Competitive Selection</p>
-            <a href="apply.php?package=fully_funded" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 15px; width: 100%;">Apply Now</a>
         </div>
         
         <!-- Card 2 -->
@@ -268,7 +267,6 @@ if ($search):
             <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Partially Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">50 Seats</div>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; margin-bottom: 10px;">Competitive Selection</p>
-            <a href="apply.php?package=partially_funded" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 15px; width: 100%;">Apply Now</a>
         </div>
         
         <!-- Card 3 -->
@@ -276,7 +274,6 @@ if ($search):
             <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Forum Admission</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">40 Seats</div>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; margin-bottom: 10px;">Guaranteed Selection</p>
-            <a href="apply.php?package=forum_admission" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 15px; width: 100%;">Register Now</a>
         </div>
         
         <!-- Card 4 -->
@@ -284,7 +281,6 @@ if ($search):
             <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Self Funded</h3>
             <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">80 Seats</div>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; margin-bottom: 10px;">Guaranteed Selection</p>
-            <a href="apply.php?package=self_funded" class="btn-custom-animate" style="font-size: 0.75rem; padding: 6px 15px; width: 100%;">Register Now</a>
         </div>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Guaranteed Selection</p>
         </div>
