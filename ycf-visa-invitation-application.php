@@ -47,7 +47,7 @@ $is_guaranteed = true;
                 </p>
             </div>
             
-            <a href="#" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 18px 0; text-decoration: none; border-radius: 12px; font-weight: 800; display: block; text-align: center; font-size: 1.2rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            <a href="#" id="gf_24" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 18px 0; text-decoration: none; border-radius: 12px; font-weight: 800; display: block; text-align: center; font-size: 1.2rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
         </div>
         
         <!-- Image Card -->

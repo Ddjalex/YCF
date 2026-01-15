@@ -144,7 +144,7 @@ if (isset($_GET['page'])) {
         </div>
 
         <div style="margin-top: 30px;">
-            <a href="ycf-funded-category-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 60px; text-decoration: none; border-radius: 10px; font-weight: 800; display: inline-block; font-size: 1.1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Apply Now!</a>
+            <a href="ycf-funded-category-application.php#gf_21" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 60px; text-decoration: none; border-radius: 10px; font-weight: 800; display: inline-block; font-size: 1.1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Apply Now!</a>
         </div>
     </div>
 </section>
@@ -185,7 +185,7 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
             <div style="margin-top: 25px; text-align: center;">
-                <a href="ycf-forum-admission-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; font-size: 0.95rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+                <a href="ycf-forum-admission-application.php#gf_22" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; font-size: 0.95rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
             </div>
         </div>
 
@@ -215,7 +215,7 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
             <div style="margin-top: 25px; text-align: center;">
-                <a href="ycf-self-funded-application.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; font-size: 0.95rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+                <a href="ycf-self-funded-application.php#gf_23" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; font-size: 0.95rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
             </div>
         </div>
     </div>
