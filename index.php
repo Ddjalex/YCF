@@ -89,41 +89,42 @@ if (isset($_GET['page'])) {
             justify-content: center;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            background-color: inherit; /* Inherit from parent card */
         }
 
         .top-static, .leaf-front {
             top: 0;
             align-items: flex-end;
             line-height: 1;
-            background-color: #222;
+            background-color: #222 !important;
             border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
             border-bottom: 0.5px solid rgba(0,0,0,0.4);
+            z-index: 1;
         }
 
         .bottom-static, .leaf-back {
             bottom: 0;
             align-items: flex-start;
             line-height: 0;
-            background-color: #1a1a1a;
+            background-color: #1a1a1a !important;
             border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
+            z-index: 0;
         }
 
-        /* Z-Index Strategy */
-        .top-static { z-index: 1; }
-        .bottom-static { z-index: 2; }
         .leaf {
             position: absolute;
             top: 0;
             width: 100%;
             height: 50%;
-            z-index: 10;
+            z-index: 5 !important;
             transform-style: preserve-3d;
             transition: transform 0.5s ease-in;
             transform-origin: bottom;
             pointer-events: none;
+            background: none !important;
         }
-        .leaf-front { z-index: 11; }
-        .leaf-back { z-index: 12; transform: rotateX(-180deg); }
+        .leaf-front { z-index: 6 !important; position: absolute; top: 0; height: 100%; }
+        .leaf-back { z-index: 7 !important; position: absolute; top: 0; height: 100%; transform: rotateX(-180deg); }
 
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
@@ -154,7 +155,12 @@ if (isset($_GET['page'])) {
             function update() {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
-                if (diff <= 0) return;
+                
+                // If countdown is finished, stop updating
+                if (diff < 0) {
+                    clearInterval(intervalId);
+                    return;
+                }
 
                 const values = {
                     days: Math.floor(diff / 86400000),
@@ -167,9 +173,11 @@ if (isset($_GET['page'])) {
                     const val = String(values[unit]).padStart(2, '0');
                     if (previousValues[unit] === null) {
                         const card = document.querySelector(`[data-unit="${unit}"]`);
-                        card.querySelector('.top-static').innerText = val;
-                        card.querySelector('.bottom-static').innerText = val;
-                        previousValues[unit] = val;
+                        if (card) {
+                            card.querySelector('.top-static').innerText = val;
+                            card.querySelector('.bottom-static').innerText = val;
+                            previousValues[unit] = val;
+                        }
                         continue;
                     }
                     if (previousValues[unit] !== val) {
@@ -180,28 +188,42 @@ if (isset($_GET['page'])) {
 
             function flip(unit, newVal) {
                 const card = document.querySelector(`[data-unit="${unit}"]`);
+                if (!card) return;
+                
                 const topStatic = card.querySelector('.top-static');
                 const bottomStatic = card.querySelector('.bottom-static');
                 const leafFront = card.querySelector('.leaf-front');
                 const leafBack = card.querySelector('.leaf-back');
                 const oldVal = previousValues[unit];
 
-                // Setup animation state
+                // Stop any current animation and sync state immediately
+                card.classList.remove('flipping');
+                void card.offsetWidth; // Reflow to reset animation
+
+                // 1. Set current (old) values to panels about to be hidden/revealed
                 leafFront.innerText = oldVal;
+                bottomStatic.innerText = oldVal;
+                
+                // 2. Set new values to panels about to be flipped/shown
                 leafBack.innerText = newVal;
                 topStatic.innerText = newVal;
-                bottomStatic.innerText = oldVal;
 
+                // 3. Update memory state early to prevent re-triggering
+                previousValues[unit] = newVal;
+
+                // 4. Trigger the flip animation
                 card.classList.add('flipping');
 
+                // 5. Cleanup after animation (0.5s matching CSS)
                 setTimeout(() => {
                     card.classList.remove('flipping');
                     bottomStatic.innerText = newVal;
-                    previousValues[unit] = newVal;
+                    // Fully sync front leaf for next frame
+                    leafFront.innerText = newVal;
                 }, 500);
             }
 
-            setInterval(update, 1000);
+            const intervalId = setInterval(update, 1000);
             update();
         })();
     </script>
