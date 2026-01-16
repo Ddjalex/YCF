@@ -52,28 +52,28 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- High-End Info Cards -->
-    <div class="info-cards-scroll-container" style="max-width: 1100px; margin: 0 auto 40px; padding: 0 20px;">
-        <div class="info-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; padding-bottom: 15px;">
-            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 35px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-bottom: 5px solid #FFD700; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                <div style="background: #FFD700; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+    <div class="info-cards-scroll-container" style="max-width: 1200px; margin: 0 auto 40px; padding: 0 20px;">
+        <div class="info-cards-grid">
+            <div class="info-card">
+                <div class="info-card-icon">
                     <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </div>
-                <div style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1.5px; text-align: center; opacity: 0.9;">Event Location</div>
-                <div style="text-align: center;"><div style="background: #FFD700; color: #2D236E; padding: 8px 20px; border-radius: 10px; font-weight: 900; font-size: 1.1rem; display: inline-block; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">Berlin, Germany</div></div>
+                <div class="info-card-label">Event Location</div>
+                <div style="text-align: center;"><div class="info-card-value">Berlin, Germany</div></div>
             </div>
-            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 35px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-bottom: 5px solid #FFD700; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                <div style="background: #FFD700; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <div class="info-card">
+                <div class="info-card-icon">
                     <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
                 </div>
-                <div style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1.5px; text-align: center; opacity: 0.9;">Event Dates</div>
-                <div style="text-align: center;"><div style="background: #FFD700; color: #2D236E; padding: 8px 20px; border-radius: 10px; font-weight: 900; font-size: 1.1rem; display: inline-block; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">May 7–10, 2026</div></div>
+                <div class="info-card-label">Event Dates</div>
+                <div style="text-align: center;"><div class="info-card-value">May 7–10, 2026</div></div>
             </div>
-            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 35px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-bottom: 5px solid #FFD700; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                <div style="background: #FFD700; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <div class="info-card">
+                <div class="info-card-icon">
                     <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                 </div>
-                <div style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1.5px; text-align: center; opacity: 0.9;">Total Seats</div>
-                <div style="text-align: center;"><div style="background: #FFD700; color: #2D236E; padding: 8px 20px; border-radius: 10px; font-weight: 900; font-size: 1.1rem; display: inline-block; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">200</div></div>
+                <div class="info-card-label">Total Seats</div>
+                <div style="text-align: center;"><div class="info-card-value">200</div></div>
             </div>
         </div>
     </div>
@@ -91,8 +91,67 @@ if (isset($_GET['page'])) {
             background: rgba(255, 215, 0, 0.15);
             box-shadow: 0 0 50px rgba(255,215,0,0.4);
         }
-        .info-cards-scroll-container::-webkit-scrollbar {
-            display: none;
+        
+        /* Info Cards Styling */
+        .info-cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        .info-card {
+            background: #2D236E;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 35px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-bottom: 5px solid #FFD700;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .info-card-icon {
+            background: #FFD700;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .info-card-label {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        .info-card-value {
+            background: #FFD700;
+            color: #2D236E;
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .info-cards-grid {
+                flex-direction: row;
+                justify-content: center;
+                gap: 30px;
+            }
+            .info-card {
+                flex: 1;
+                max-width: 350px;
+            }
         }
     </style>
 
