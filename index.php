@@ -26,203 +26,78 @@ if (isset($_GET['page'])) {
 
     <!-- High-End Flip Countdown -->
     <div style="background: #000; border-radius: clamp(8px, 2vw, 12px); padding: clamp(12px, 2.5vw, 20px) 10px; width: 95%; max-width: 650px; margin: 0 auto 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-        
-        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(6px, 1.5vw, 15px); margin-bottom: clamp(12px, 2.5vw, 20px);">
-            <?php foreach (['days', 'hours', 'minutes', 'seconds'] as $unit): ?>
-            <div class="countdown-group" style="flex: 1; max-width: 120px; display: flex; flex-direction: column; align-items: center;">
-                <div class="flip-card" data-unit="<?php echo $unit; ?>">
-                    <div class="top-static">00</div>
-                    <div class="bottom-static">00</div>
-                    <div class="leaf">
-                        <div class="leaf-front">00</div>
-                        <div class="leaf-back">00</div>
-                    </div>
-                </div>
-                <span class="label" style="margin-top: clamp(6px, 1.2vw, 10px); color: #888; font-size: clamp(0.6rem, 1.5vw, 0.75rem); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;"><?php echo ($unit === 'minutes') ? 'Mins' : (($unit === 'seconds') ? 'Secs' : ucfirst($unit)); ?></span>
+        <div class="flip-countdown" style="display: flex; gap: clamp(10px, 2vw, 18px); justify-content: center;">
+            <div class="time-box" style="text-align: center;">
+                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="days">00</span></div>
+                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">DAYS</div>
             </div>
-            <?php endforeach; ?>
+            <div class="time-box" style="text-align: center;">
+                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="hours">00</span></div>
+                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">HOURS</div>
+            </div>
+            <div class="time-box" style="text-align: center;">
+                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="minutes">00</span></div>
+                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">MINS</div>
+            </div>
+            <div class="time-box" style="text-align: center;">
+                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="seconds">00</span></div>
+                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">SECS</div>
+            </div>
         </div>
         
         <div style="position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1);">Register Here</a>
+            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1); margin-top: 20px;">Register Here</a>
         </div>
     </div>
 
     <style>
-        .flip-card {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1.2; /* Height-compact proportions */
-            background-color: #0d0d0d;
-            border-radius: clamp(3px, 0.8vw, 6px);
-            font-size: clamp(1.2rem, 4.5vw, 3.5rem);
-            font-weight: 800;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            perspective: 1000px;
-            overflow: hidden;
+        .flip-card span {
+            display: inline-block;
         }
-
-        .flip-card div {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            background-color: #0d0d0d;
+        .flip-card span.animate {
+            animation: smoothFlip .6s ease-in-out;
         }
-
-        .top-static, .leaf-front {
-            top: 0;
-            align-items: flex-end;
-            line-height: 1;
-            background: linear-gradient(to bottom, #1a1a1a, #151515) !important;
-            border-radius: clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0 0;
-            border-bottom: 0.5px solid rgba(0,0,0,0.5);
-            z-index: 1;
-        }
-
-        .bottom-static, .leaf-back {
-            bottom: 0;
-            align-items: flex-start;
-            line-height: 0;
-            background: linear-gradient(to bottom, #121212, #0a0a0a) !important;
-            border-radius: 0 0 clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px);
-            z-index: 0;
-        }
-
-        .leaf {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 50%;
-            z-index: 10 !important;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.2, 0, 0.3, 1), opacity 0.6s ease;
-            transform-origin: bottom;
-            pointer-events: none;
-            background: none !important;
-            opacity: 1;
-        }
-
-        .leaf-front { 
-            z-index: 11 !important; 
-            position: absolute; 
-            top: 0; 
-            height: 100%;
-            opacity: 1;
-        }
-
-        .leaf-back { 
-            z-index: 12 !important; 
-            position: absolute; 
-            top: 0; 
-            height: 100%; 
-            transform: rotateX(-180deg);
-            opacity: 0;
-        }
-
-        .flip-card.flipping .leaf {
-            transform: rotateX(-110deg); /* Softer vertical flip */
-            opacity: 0;
-        }
-
-        /* Smooth fade-in for revealed back */
-        .flip-card.flipping .leaf-back {
-            opacity: 1;
-            transition: opacity 0.4s ease-in;
-        }
-
-        .flip-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background: #000;
-            z-index: 25;
-            transform: translateY(-50%);
-            opacity: 0.6;
-        }
-
-        @media (max-width: 480px) {
-            .flip-card { aspect-ratio: 1.1; }
-            #countdown { gap: 6px; }
+        @keyframes smoothFlip {
+            0% { transform: rotateX(0); opacity: 1; }
+            50% { transform: rotateX(-45deg); opacity: .6; }
+            100% { transform: rotateX(0); opacity: 1; }
         }
     </style>
 
     <script>
         (function() {
-            const targetDate = new Date('June 15, 2026 09:00:00').getTime();
-            const previousValues = { days: null, hours: null, minutes: null, seconds: null };
+            const target = new Date("2026-06-15T09:00:00").getTime();
+            
+            function update(id, val) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const v = String(val).padStart(2, '0');
+                if (el.textContent !== v) {
+                    el.textContent = v;
+                    el.classList.remove('animate');
+                    void el.offsetWidth;
+                    el.classList.add('animate');
+                }
+            }
 
-            function update() {
+            function tick() {
                 const now = new Date().getTime();
-                const diff = targetDate - now;
-                if (diff < 0) {
-                    clearInterval(intervalId);
-                    return;
-                }
+                const d = target - now;
+                if (d < 0) return;
 
-                const values = {
-                    days: Math.floor(diff / 86400000),
-                    hours: Math.floor((diff % 86400000) / 3600000),
-                    minutes: Math.floor((diff % 3600000) / 60000),
-                    seconds: Math.floor((diff % 60000) / 1000)
-                };
+                const days = Math.floor(d / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((d % (1000 * 60)) / 1000);
 
-                for (const unit in values) {
-                    const val = String(values[unit]).padStart(2, '0');
-                    if (previousValues[unit] === null) {
-                        const card = document.querySelector(`[data-unit="${unit}"]`);
-                        if (card) {
-                            card.querySelector('.top-static').innerText = val;
-                            card.querySelector('.bottom-static').innerText = val;
-                            previousValues[unit] = val;
-                        }
-                        continue;
-                    }
-                    if (previousValues[unit] !== val) {
-                        flip(unit, val);
-                    }
-                }
+                update("days", days);
+                update("hours", hours);
+                update("minutes", minutes);
+                update("seconds", seconds);
             }
 
-            function flip(unit, newVal) {
-                const card = document.querySelector(`[data-unit="${unit}"]`);
-                if (!card) return;
-                
-                const topStatic = card.querySelector('.top-static');
-                const bottomStatic = card.querySelector('.bottom-static');
-                const leafFront = card.querySelector('.leaf-front');
-                const leafBack = card.querySelector('.leaf-back');
-                const oldVal = previousValues[unit];
-
-                card.classList.remove('flipping');
-                void card.offsetWidth;
-
-                leafFront.innerText = oldVal;
-                bottomStatic.innerText = oldVal;
-                leafBack.innerText = newVal;
-                topStatic.innerText = newVal;
-                previousValues[unit] = newVal;
-
-                card.classList.add('flipping');
-
-                setTimeout(() => {
-                    card.classList.remove('flipping');
-                    bottomStatic.innerText = newVal;
-                    leafFront.innerText = newVal;
-                }, 600);
-            }
-
-            const intervalId = setInterval(update, 1000);
-            update();
+            setInterval(tick, 1000);
+            tick();
         })();
     </script>
 
