@@ -28,45 +28,53 @@ if (isset($_GET['page'])) {
     <div style="background: #000; border-radius: 20px; padding: 60px 20px; width: 95%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
         
         <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 30px); margin-bottom: 50px; flex-wrap: wrap;">
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-top" id="days">00</div>
-                        <div class="flip-card-bottom">00</div>
+            <!-- Days -->
+            <div class="countdown-group">
+                <div class="flip-card" data-days>
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf">
+                        <div class="leaf-front">00</div>
+                        <div class="leaf-back">00</div>
                     </div>
-                    <div class="flip-card-line"></div>
                 </div>
-                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Days</span>
+                <span class="label">Days</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-top" id="hours">00</div>
-                        <div class="flip-card-bottom">00</div>
+            <!-- Hours -->
+            <div class="countdown-group">
+                <div class="flip-card" data-hours>
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf">
+                        <div class="leaf-front">00</div>
+                        <div class="leaf-back">00</div>
                     </div>
-                    <div class="flip-card-line"></div>
                 </div>
-                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Hours</span>
+                <span class="label">Hours</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-top" id="minutes">00</div>
-                        <div class="flip-card-bottom">00</div>
+            <!-- Minutes -->
+            <div class="countdown-group">
+                <div class="flip-card" data-minutes>
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf">
+                        <div class="leaf-front">00</div>
+                        <div class="leaf-back">00</div>
                     </div>
-                    <div class="flip-card-line"></div>
                 </div>
-                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Minutes</span>
+                <span class="label">Minutes</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-top" id="seconds">00</div>
-                        <div class="flip-card-bottom">00</div>
+            <!-- Seconds -->
+            <div class="countdown-group">
+                <div class="flip-card" data-seconds>
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf">
+                        <div class="leaf-front">00</div>
+                        <div class="leaf-back">00</div>
                     </div>
-                    <div class="flip-card-line"></div>
                 </div>
-                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Seconds</span>
+                <span class="label">Seconds</span>
             </div>
         </div>
         
@@ -76,56 +84,148 @@ if (isset($_GET['page'])) {
     </div>
 
     <style>
-        .flip-card {
-            width: clamp(100px, 18vw, 160px);
-            height: clamp(120px, 22vw, 200px);
-            position: relative;
-            background: #222;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            overflow: hidden;
-        }
-        .flip-card-inner {
-            height: 100%;
-            width: 100%;
+        .countdown-group {
             display: flex;
             flex-direction: column;
-        }
-        .flip-card-top, .flip-card-bottom {
-            height: 50%;
-            width: 100%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: clamp(3rem, 10vw, 6rem);
+            gap: 15px;
+        }
+        .countdown-group .label {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .flip-card {
+            position: relative;
+            width: clamp(80px, 15vw, 140px);
+            height: clamp(100px, 18vw, 180px);
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
+            line-height: clamp(100px, 18vw, 180px);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .flip-card .top,
+        .flip-card .bottom,
+        .flip-card .leaf-front,
+        .flip-card .leaf-back {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
             overflow: hidden;
-            background: #222;
+            background-color: #222;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
-        .flip-card-top {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            align-items: flex-end;
-            padding-bottom: 0;
+        .flip-card .top,
+        .flip-card .leaf-front {
+            top: 0;
+            border-radius: 12px 12px 0 0;
+            line-height: clamp(100px, 18vw, 180px);
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+        }
+        .flip-card .bottom,
+        .flip-card .leaf-back {
+            bottom: 0;
+            border-radius: 0 0 12px 12px;
             line-height: 0;
+            background-color: #1e1e1e;
         }
-        .flip-card-bottom {
-            align-items: flex-start;
-            padding-top: 0;
-            line-height: 0;
+        .flip-card .leaf {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            z-index: 10;
+            transition: transform 0.6s;
+            transform-origin: bottom;
+            transform-style: preserve-3d;
         }
-        .flip-card-line {
+        .flip-card .leaf-back {
+            transform: rotateX(-180deg);
+        }
+        .flip-card.flipping .leaf {
+            transform: rotateX(-180deg);
+        }
+        /* Visual depth enhancements */
+        .flip-card::after {
+            content: '';
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: rgba(0,0,0,0.8);
-            z-index: 5;
+            height: 2px;
+            background: rgba(0,0,0,0.6);
+            z-index: 20;
             transform: translateY(-50%);
         }
     </style>
+
+    <script>
+        const targetDate = new Date('June 15, 2026 09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) return;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            flip('days', d);
+            flip('hours', h);
+            flip('minutes', m);
+            flip('seconds', s);
+        }
+
+        const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
+
+        function flip(unit, value) {
+            const formattedValue = value.toString().padStart(2, '0');
+            if (previousValues[unit] === formattedValue) return;
+
+            const card = document.querySelector(`[data-${unit}]`);
+            const top = card.querySelector('.top');
+            const bottom = card.querySelector('.bottom');
+            const leafFront = card.querySelector('.leaf-front');
+            const leafBack = card.querySelector('.leaf-back');
+
+            const prevValue = previousValues[unit] === -1 ? formattedValue : previousValues[unit];
+            
+            // Set initial states
+            top.innerText = formattedValue;
+            leafFront.innerText = prevValue;
+            leafBack.innerText = formattedValue;
+            bottom.innerText = prevValue;
+
+            // Trigger animation
+            card.classList.remove('flipping');
+            void card.offsetWidth; // force reflow
+            card.classList.add('flipping');
+
+            // Cleanup after animation
+            setTimeout(() => {
+                bottom.innerText = formattedValue;
+                card.classList.remove('flipping');
+            }, 600);
+
+            previousValues[unit] = formattedValue;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 
     <!-- High-End Info Cards -->
     <div class="info-cards-scroll-container" style="max-width: 1200px; margin: 0 auto 40px; padding: 0 20px;">
