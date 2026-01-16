@@ -478,7 +478,7 @@ require_once 'functions.php';
                 <a href="/">Home</a>
             </div>
             <div class="nav-item">
-                <a href="/apply" class="btn-apply-special">Apply Now</a>
+                <a href="#seats-section" class="btn-apply-special">Register Now</a>
             </div>
             <div class="mobile-menu-toggle" style="display: none;">
                 <span></span>
