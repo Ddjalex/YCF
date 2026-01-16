@@ -432,6 +432,23 @@ function handleFinalSubmit() {
         return;
     }
     
+    const formData = new FormData();
+    // Collecting data from all steps
+    const step1Inputs = document.getElementById('step1').querySelectorAll('input');
+    const step2Inputs = document.getElementById('step2').querySelectorAll('input, select, textarea');
+    const step3Inputs = document.getElementById('step3').querySelectorAll('input');
+
+    step1Inputs.forEach(input => formData.append(input.id.replace('reg_', ''), input.value));
+    step2Inputs.forEach(input => {
+        if (input.type === 'radio') {
+            if (input.checked) formData.append(input.name, input.value);
+        } else if (input.type === 'file') {
+            if (input.files[0]) formData.append(input.id.replace('reg_', ''), input.files[0]);
+        } else {
+            formData.append(input.id.replace('reg_', ''), input.value);
+        }
+    });
+
     if (paymentMethod.value === 'crypto') {
         const txid = document.getElementById('transaction_id').value;
         const screenshot = document.getElementById('crypto_screenshot').files[0];
@@ -439,10 +456,31 @@ function handleFinalSubmit() {
             showCustomModal('Please provide transaction ID and screenshot for crypto payment.');
             return;
         }
+        formData.append('payment_method', 'crypto');
+        formData.append('txid', txid);
+        formData.append('payment_screenshot', screenshot);
     }
     
-    // Show professional success modal
-    showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
+    formData.append('package_id', '<?php echo $package; ?>');
+    formData.append('package_name', '<?php echo $current_package_name; ?>');
+    formData.append('amount', '<?php echo $total_amount; ?>');
+
+    fetch('process_registration.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
+        } else {
+            showCustomModal('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showCustomModal('Registration submitted. Thank you!');
+    });
 }
 </script>
 

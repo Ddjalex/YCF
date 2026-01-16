@@ -2,41 +2,92 @@
 // functions.php - Global utility functions
 
 function get_db_connection() {
+    // Try PostgreSQL first
     $database_url = getenv('DATABASE_URL');
-    if (!$database_url) {
-        error_log("DATABASE_URL not set");
-        return null;
-    }
-    try {
-        $dbopts = parse_url($database_url);
-        if (!$dbopts) return null;
-
-        $host = $dbopts['host'];
-        $port = $dbopts['port'] ?? 5432;
-        $user = $dbopts['user'];
-        $pass = $dbopts['pass'];
-        $dbname = ltrim($dbopts['path'], '/');
-
-        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;connect_timeout=5";
-        
-        // Try without SSL first as requested by the logs
+    if ($database_url) {
         try {
-            $pdo = new PDO($dsn . ";sslmode=disable", $user, $pass, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_TIMEOUT => 5
-            ]);
-            return $pdo;
+            $dbopts = parse_url($database_url);
+            if ($dbopts) {
+                $host = $dbopts['host'];
+                $port = $dbopts['port'] ?? 5432;
+                $user = $dbopts['user'];
+                $pass = $dbopts['pass'];
+                $dbname = ltrim($dbopts['path'], '/');
+                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+                $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+                return $pdo;
+            }
         } catch (PDOException $e) {
-            // Fallback to SSL if needed
-            return new PDO($dsn . ";sslmode=require", $user, $pass, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_TIMEOUT => 5
-            ]);
+            error_log("PostgreSQL Connection failed: " . $e->getMessage());
         }
+    }
+    
+    // Fallback to SQLite if PostgreSQL fails or isn't configured
+    try {
+        $pdo = new PDO("sqlite:database.sqlite");
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Initialize tables if they don't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            package_id TEXT,
+            package_name TEXT,
+            first_name TEXT,
+            last_name TEXT,
+            nationality TEXT,
+            email TEXT,
+            gender TEXT,
+            dob TEXT,
+            phone TEXT,
+            profession TEXT,
+            residence TEXT,
+            departure TEXT,
+            visa TEXT,
+            referral TEXT,
+            journey TEXT,
+            impact TEXT,
+            profile_photo TEXT,
+            passport_photo TEXT,
+            payment_method TEXT,
+            txid TEXT,
+            payment_screenshot TEXT,
+            amount REAL,
+            status TEXT DEFAULT 'pending',
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )");
+        return $pdo;
     } catch (PDOException $e) {
-        error_log("Connection failed: " . $e->getMessage());
+        error_log("SQLite Connection failed: " . $e->getMessage());
         return null;
     }
+}
+
+function save_registration($data) {
+    $pdo = get_db_connection();
+    if (!$pdo) return false;
+    
+    $fields = array_keys($data);
+    $placeholders = array_map(function($f) { return ":$f"; }, $fields);
+    
+    $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute($data);
+}
+
+function get_all_registrations() {
+    $pdo = get_db_connection();
+    if (!$pdo) return [];
+    
+    $stmt = $pdo->query("SELECT * FROM registrations ORDER BY created_at DESC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function get_registration_by_id($id) {
+    $pdo = get_db_connection();
+    if (!$pdo) return null;
+    
+    $stmt = $pdo->prepare("SELECT * FROM registrations WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 /**

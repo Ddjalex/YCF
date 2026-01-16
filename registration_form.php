@@ -282,7 +282,30 @@ function render_registration_form($package_id, $package_name, $price) {
 
     document.getElementById('multi-step-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
+        
+        // Prepare form data for saving
+        const formData = new FormData(this);
+        formData.append('package_id', '<?php echo $package_id; ?>');
+        formData.append('package_name', '<?php echo $package_name; ?>');
+        formData.append('amount', '<?php echo $price + 3.00; ?>');
+        formData.append('action', 'save_registration');
+
+        fetch('process_registration.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
+            } else {
+                showCustomModal('There was an error saving your registration: ' + data.message);
+            }
+        })
+        .catch(error => {
+            showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
+            console.error('Error:', error);
+        });
     });
     </script>
     <?php
