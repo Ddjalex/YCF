@@ -25,9 +25,9 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- High-End Flip Countdown -->
-    <div style="background: #000; border-radius: 20px; padding: 60px 20px; width: 95%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
+    <div style="background: #000; border-radius: clamp(15px, 3vw, 20px); padding: clamp(20px, 5vw, 40px) 15px; width: 95%; max-width: 900px; margin: 0 auto 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
         
-        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 30px); margin-bottom: 50px; flex-wrap: wrap;">
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(8px, 1.5vw, 20px); margin-bottom: clamp(25px, 5vw, 40px);">
             <!-- Days -->
             <div class="countdown-group">
                 <div class="flip-card" data-days>
@@ -62,7 +62,7 @@ if (isset($_GET['page'])) {
                         <div class="leaf-back">00</div>
                     </div>
                 </div>
-                <span class="label">Minutes</span>
+                <span class="label">Mins</span>
             </div>
             <!-- Seconds -->
             <div class="countdown-group">
@@ -74,12 +74,12 @@ if (isset($_GET['page'])) {
                         <div class="leaf-back">00</div>
                     </div>
                 </div>
-                <span class="label">Seconds</span>
+                <span class="label">Secs</span>
             </div>
         </div>
         
-        <div style="margin-top: 20px; position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: 25px 60px; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
+        <div style="position: relative; z-index: 2;">
+            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: clamp(15px, 3vw, 20px) clamp(30px, 6vw, 60px); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
         </div>
     </div>
 
@@ -88,28 +88,30 @@ if (isset($_GET['page'])) {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: clamp(8px, 1.5vw, 12px);
+            flex: 1;
+            max-width: 140px;
         }
         .countdown-group .label {
             color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-weight: 700;
             font-family: 'Inter', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
         }
         .flip-card {
             position: relative;
-            width: clamp(80px, 15vw, 140px);
-            height: clamp(100px, 18vw, 180px);
+            width: 100%;
+            aspect-ratio: 0.85;
             background-color: #1a1a1a;
-            border-radius: 12px;
-            font-size: clamp(3rem, 8vw, 6rem);
+            border-radius: clamp(6px, 1.5vw, 12px);
+            font-size: clamp(1.8rem, 6vw, 5rem);
             font-weight: 800;
-            line-height: clamp(100px, 18vw, 180px);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
         .flip-card .top,
         .flip-card .bottom,
@@ -123,21 +125,31 @@ if (isset($_GET['page'])) {
             background-color: #222;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
         }
         .flip-card .top,
         .flip-card .leaf-front {
             top: 0;
-            border-radius: 12px 12px 0 0;
-            line-height: clamp(100px, 18vw, 180px);
-            border-bottom: 1px solid rgba(0,0,0,0.3);
+            border-radius: clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px) 0 0;
+            align-items: flex-end;
+            line-height: 0;
+            padding-bottom: 0;
+            border-bottom: 0.5px solid rgba(0,0,0,0.3);
         }
         .flip-card .bottom,
         .flip-card .leaf-back {
             bottom: 0;
-            border-radius: 0 0 12px 12px;
+            border-radius: 0 0 clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px);
+            align-items: flex-start;
             line-height: 0;
+            padding-top: 0;
             background-color: #1e1e1e;
         }
+        /* Proper font alignment in split halves */
+        .flip-card .top, .flip-card .leaf-front { height: 50%; line-height: 100%; transform: translateY(0); }
+        .flip-card .bottom, .flip-card .leaf-back { height: 50%; line-height: 0; }
+
         .flip-card .leaf {
             position: absolute;
             top: 0;
@@ -145,7 +157,7 @@ if (isset($_GET['page'])) {
             width: 100%;
             height: 50%;
             z-index: 10;
-            transition: transform 0.6s;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: bottom;
             transform-style: preserve-3d;
         }
@@ -155,22 +167,27 @@ if (isset($_GET['page'])) {
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
-        /* Visual depth enhancements */
         .flip-card::after {
             content: '';
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: rgba(0,0,0,0.6);
+            height: 1px;
+            background: rgba(0,0,0,0.5);
             z-index: 20;
             transform: translateY(-50%);
+        }
+
+        @media (max-width: 480px) {
+            .countdown-group { gap: 6px; }
+            .flip-card { aspect-ratio: 0.8; }
         }
     </style>
 
     <script>
         const targetDate = new Date('June 15, 2026 09:00:00').getTime();
+        const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -189,13 +206,13 @@ if (isset($_GET['page'])) {
             flip('seconds', s);
         }
 
-        const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
-
         function flip(unit, value) {
             const formattedValue = value.toString().padStart(2, '0');
             if (previousValues[unit] === formattedValue) return;
 
             const card = document.querySelector(`[data-${unit}]`);
+            if (!card) return;
+            
             const top = card.querySelector('.top');
             const bottom = card.querySelector('.bottom');
             const leafFront = card.querySelector('.leaf-front');
@@ -203,18 +220,15 @@ if (isset($_GET['page'])) {
 
             const prevValue = previousValues[unit] === -1 ? formattedValue : previousValues[unit];
             
-            // Set initial states
             top.innerText = formattedValue;
             leafFront.innerText = prevValue;
             leafBack.innerText = formattedValue;
             bottom.innerText = prevValue;
 
-            // Trigger animation
             card.classList.remove('flipping');
-            void card.offsetWidth; // force reflow
+            void card.offsetWidth; 
             card.classList.add('flipping');
 
-            // Cleanup after animation
             setTimeout(() => {
                 bottom.innerText = formattedValue;
                 card.classList.remove('flipping');
