@@ -25,11 +25,11 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- High-End Flip Countdown -->
-    <div style="background: #000; border-radius: clamp(10px, 2vw, 15px); padding: clamp(15px, 3vw, 25px) 10px; width: 95%; max-width: 700px; margin: 0 auto 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
+    <div style="background: #050505; border-radius: 20px; padding: clamp(20px, 4vw, 40px) 15px; width: 95%; max-width: 800px; margin: 0 auto 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); text-align: center; position: relative; border: 1px solid rgba(255,255,255,0.03);">
         
-        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(6px, 1.2vw, 15px); margin-bottom: clamp(15px, 3vw, 25px);">
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 25px); margin-bottom: 30px;">
             <?php foreach (['days', 'hours', 'minutes', 'seconds'] as $unit): ?>
-            <div class="countdown-group">
+            <div class="countdown-group" style="flex: 1; max-width: 150px;">
                 <div class="flip-card" data-unit="<?php echo $unit; ?>">
                     <div class="top-static">00</div>
                     <div class="bottom-static">00</div>
@@ -38,46 +38,29 @@ if (isset($_GET['page'])) {
                         <div class="leaf-back">00</div>
                     </div>
                 </div>
-                <span class="label"><?php echo ($unit === 'minutes') ? 'Mins' : (($unit === 'seconds') ? 'Secs' : ucfirst($unit)); ?></span>
+                <span class="label" style="margin-top: 15px; color: #666; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;"><?php echo ($unit === 'minutes') ? 'Mins' : (($unit === 'seconds') ? 'Secs' : ucfirst($unit)); ?></span>
             </div>
             <?php endforeach; ?>
         </div>
         
-        <div style="position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: clamp(10px, 2vw, 15px) clamp(25px, 5vw, 45px); font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(255,255,255,0.1);">Register Here</a>
+        <div style="position: relative; z-index: 2; margin-top: 10px;">
+            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: 18px 45px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
         </div>
     </div>
 
     <style>
-        .countdown-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: clamp(4px, 1vw, 8px);
-            flex: 1;
-            max-width: 120px;
-        }
-        .countdown-group .label {
-            color: #fff;
-            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
-            font-weight: 700;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.7;
-        }
         .flip-card {
             position: relative;
             width: 100%;
-            aspect-ratio: 1.1;
-            background-color: #1a1a1a;
-            border-radius: clamp(4px, 1vw, 8px);
-            font-size: clamp(1.5rem, 5vw, 4rem);
+            aspect-ratio: 0.95;
+            background-color: #0a0a0a;
+            border-radius: 12px;
+            font-size: clamp(2rem, 6vw, 5.5rem);
             font-weight: 800;
-            color: #fff;
+            color: #eee;
             font-family: 'Montserrat', sans-serif;
-            perspective: 1200px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            perspective: 1500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .flip-card div {
@@ -90,16 +73,15 @@ if (isset($_GET['page'])) {
             justify-content: center;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            background-color: #1a1a1a;
         }
 
         .top-static, .leaf-front {
             top: 0;
             align-items: flex-end;
             line-height: 1;
-            background: linear-gradient(to bottom, #2a2a2a, #222) !important;
-            border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
-            border-bottom: 0.5px solid rgba(0,0,0,0.5);
+            background: linear-gradient(to bottom, #1a1a1a, #151515) !important;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid rgba(0,0,0,0.8);
             z-index: 1;
         }
 
@@ -107,8 +89,8 @@ if (isset($_GET['page'])) {
             bottom: 0;
             align-items: flex-start;
             line-height: 0;
-            background: linear-gradient(to bottom, #1e1e1e, #151515) !important;
-            border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
+            background: linear-gradient(to bottom, #121212, #0d0d0d) !important;
+            border-radius: 0 0 10px 10px;
             z-index: 0;
         }
 
@@ -119,62 +101,65 @@ if (isset($_GET['page'])) {
             height: 50%;
             z-index: 10 !important;
             transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: bottom;
             pointer-events: none;
             background: none !important;
         }
+
         .leaf-front { 
             z-index: 11 !important; 
             position: absolute; 
             top: 0; 
             height: 100%;
-            box-shadow: inset 0 -50px 50px -40px rgba(0,0,0,0.5);
+            box-shadow: inset 0 -40px 60px -30px rgba(0,0,0,0.9);
         }
+
         .leaf-back { 
             z-index: 12 !important; 
             position: absolute; 
             top: 0; 
             height: 100%; 
             transform: rotateX(-180deg);
-            box-shadow: inset 0 50px 50px -40px rgba(0,0,0,0.5);
+            box-shadow: inset 0 40px 60px -30px rgba(0,0,0,0.9);
         }
 
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
 
-        /* Shadow during flip */
+        /* Ambient Lighting Shadows */
         .flip-card.flipping .top-static::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3);
-            animation: shadow-in 0.6s ease-in;
+            background: rgba(0,0,0,0.6);
+            animation: shadow-fade 0.65s ease-in;
             z-index: 2;
         }
 
-        @keyframes shadow-in {
+        @keyframes shadow-fade {
             0% { opacity: 0; }
-            50% { opacity: 1; }
+            40% { opacity: 1; }
             100% { opacity: 0; }
         }
 
+        /* Physical Split Line */
         .flip-card::after {
             content: '';
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 3px;
             background: #000;
             z-index: 25;
             transform: translateY(-50%);
-            box-shadow: 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.03);
         }
 
         @media (max-width: 480px) {
-            .flip-card { aspect-ratio: 1; }
+            .flip-card { aspect-ratio: 0.9; }
         }
     </style>
 
@@ -186,8 +171,6 @@ if (isset($_GET['page'])) {
             function update() {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
-                
-                // If countdown is finished, stop updating
                 if (diff < 0) {
                     clearInterval(intervalId);
                     return;
@@ -227,31 +210,22 @@ if (isset($_GET['page'])) {
                 const leafBack = card.querySelector('.leaf-back');
                 const oldVal = previousValues[unit];
 
-                // Stop any current animation and sync state immediately
                 card.classList.remove('flipping');
-                void card.offsetWidth; // Reflow to reset animation
+                void card.offsetWidth;
 
-                // 1. Set current (old) values to panels about to be hidden/revealed
                 leafFront.innerText = oldVal;
                 bottomStatic.innerText = oldVal;
-                
-                // 2. Set new values to panels about to be flipped/shown
                 leafBack.innerText = newVal;
                 topStatic.innerText = newVal;
-
-                // 3. Update memory state early to prevent re-triggering
                 previousValues[unit] = newVal;
 
-                // 4. Trigger the flip animation
                 card.classList.add('flipping');
 
-                // 5. Cleanup after animation (0.6s matching CSS)
                 setTimeout(() => {
                     card.classList.remove('flipping');
                     bottomStatic.innerText = newVal;
-                    // Fully sync front leaf for next frame
                     leafFront.innerText = newVal;
-                }, 600);
+                }, 650);
             }
 
             const intervalId = setInterval(update, 1000);
