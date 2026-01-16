@@ -30,6 +30,11 @@ function render_registration_form($package_id, $package_name, $price) {
             </div>
         </div>
 
+        <div id="error-banner" style="display: none; background: #fff5f5; border: 1px solid #fc8181; color: #c53030; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.2rem;">⚠️</span>
+            <span>There was a problem with your submission. Please review the fields below.</span>
+        </div>
+
         <h2 class="montserrat" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;"><?php echo $package_name; ?> Registration</h2>
         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Please note that your information interacts with our server as you enter it.</p>
         
@@ -268,6 +273,46 @@ function render_registration_form($package_id, $package_name, $price) {
     }
 
     function nextStep(step) {
+        const currentStep = step === 2 ? 1 : 2;
+        const container = document.getElementById('step-' + currentStep);
+        const inputs = container.querySelectorAll('[required]');
+        let isValid = true;
+        
+        // Reset error states
+        document.getElementById('error-banner').style.display = 'none';
+        container.querySelectorAll('.error-msg').forEach(el => el.remove());
+        container.querySelectorAll('input, select, textarea').forEach(el => el.style.borderColor = '#ddd');
+
+        if (step > currentStep) {
+            inputs.forEach(input => {
+                if (!input.value.trim() || (input.type === 'radio' && !container.querySelector(`input[name="${input.name}"]:checked`))) {
+                    isValid = false;
+                    input.style.borderColor = '#fc8181';
+                    
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-msg';
+                    errorMsg.style.color = '#c53030';
+                    errorMsg.style.fontSize = '0.75rem';
+                    errorMsg.style.marginTop = '5px';
+                    errorMsg.innerText = 'This field is required.';
+                    
+                    if (input.type === 'radio') {
+                        if (!input.parentNode.parentNode.querySelector('.error-msg')) {
+                            input.parentNode.parentNode.appendChild(errorMsg);
+                        }
+                    } else {
+                        input.parentNode.appendChild(errorMsg);
+                    }
+                }
+            });
+        }
+
+        if (!isValid) {
+            document.getElementById('error-banner').style.display = 'flex';
+            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+
         document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
         document.getElementById('step-' + step).style.display = 'block';
         
@@ -290,12 +335,18 @@ function render_registration_form($package_id, $package_name, $price) {
         formData.append('amount', '<?php echo $price + 3.00; ?>');
         formData.append('action', 'save_registration');
 
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Processing...';
+
         fetch('process_registration.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Complete Registration';
             if (data.success) {
                 showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
             } else {
