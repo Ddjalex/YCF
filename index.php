@@ -146,6 +146,7 @@ if (isset($_GET['page'])) {
             align-items: flex-start;
             line-height: 0;
             background-color: #1e1e1e;
+            z-index: 1;
         }
         .flip-card .leaf {
             position: absolute;
@@ -160,13 +161,16 @@ if (isset($_GET['page'])) {
         }
         .flip-card .leaf-front {
             z-index: 11;
+            background-color: #222;
         }
         .flip-card .leaf-back {
             transform: rotateX(-180deg);
             background-color: #1e1e1e;
             display: flex;
             align-items: flex-start;
-            z-index: 10;
+            z-index: 12;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
@@ -178,8 +182,8 @@ if (isset($_GET['page'])) {
             left: 0;
             width: 100%;
             height: 1px;
-            background: rgba(0,0,0,0.4);
-            z-index: 20;
+            background: rgba(0,0,0,0.8);
+            z-index: 25;
             transform: translateY(-50%);
         }
         
