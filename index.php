@@ -49,6 +49,10 @@ if (isset($_GET['page'])) {
                 <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Seconds</span>
             </div>
         </div>
+        
+        <div style="margin-top: 30px; position: relative; z-index: 2;">
+            <a href="apply" class="btn-apply-special" style="width: auto; min-width: 250px; padding: 15px 40px; font-size: 1.2rem; border-radius: 50px;">Apply Now!</a>
+        </div>
     </div>
 
     <!-- High-End Info Cards -->
