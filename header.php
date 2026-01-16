@@ -478,7 +478,7 @@ require_once 'functions.php';
                 <a href="/">Home</a>
             </div>
             <div class="nav-item">
-                <a href="/about" style="color: #D4AF37;">About Us <span>⌄</span></a>
+                <a href="/about" style="color: #D4AF37;">About Us</a>
                 <div class="dropdown">
                     <a href="#">Who We Are?</a>
                     <a href="#">Board of Advisory</a>
@@ -486,14 +486,14 @@ require_once 'functions.php';
                 </div>
             </div>
             <div class="nav-item">
-                <a href="/agenda">Upcoming Events <span>⌄</span></a>
+                <a href="/agenda">Upcoming Events</a>
                 <div class="dropdown">
                     <a href="#">🇩🇪 YDF 2026 <span class="badge">NEW</span></a>
                     <a href="#">🇪🇸 YGF 2026</a>
                 </div>
             </div>
             <div class="nav-item">
-                <a href="/news">Previous Events <span>⌄</span></a>
+                <a href="/news">Previous Events</a>
                 <div class="dropdown">
                     <a href="#">🇹🇷 YIF 2025</a>
                     <a href="#">🇨🇭 YEF 2025</a>
