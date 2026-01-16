@@ -25,28 +25,28 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- Premium Redesigned Countdown -->
-    <div style="background: linear-gradient(135deg, #2D236E 0%, #1a144d 100%); border-radius: 40px; padding: 60px 20px; width: 100%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); text-align: center; position: relative; overflow: hidden;">
+    <div style="background: linear-gradient(135deg, #2D236E 0%, #1a144d 100%); border-radius: 20px; padding: 40px 15px; width: 95%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); text-align: center; position: relative; overflow: hidden;">
         <!-- Animated background elements -->
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%); animation: pulse-glow 8s infinite alternate; pointer-events: none;"></div>
         
-        <h3 class="montserrat" style="color: #FFD700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 45px; font-weight: 800; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Time To Application Deadline</h3>
+        <h3 class="montserrat" style="color: #FFD700; font-size: clamp(0.9rem, 4vw, 1.2rem); text-transform: uppercase; letter-spacing: clamp(2px, 2vw, 4px); margin-bottom: clamp(25px, 8vw, 45px); font-weight: 800; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 0 10px;">Time To Application Deadline</h3>
         
-        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(20px, 5vw, 60px); margin-bottom: 10px; flex-wrap: wrap; position: relative; z-index: 2;">
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div style="width: clamp(100px, 20vw, 140px); height: clamp(100px, 20vw, 140px); background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 30px rgba(255,215,0,0.2), inset 0 0 15px rgba(255,215,0,0.2); backdrop-filter: blur(5px); transform: rotate(-2deg);" id="days">00</div>
-                <span style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Days</span>
+        <div id="countdown" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); justify-content: center; gap: clamp(10px, 3vw, 40px); margin-bottom: 10px; position: relative; z-index: 2; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(-2deg);" id="days">00</div>
+                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Days</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div style="width: clamp(100px, 20vw, 140px); height: clamp(100px, 20vw, 140px); background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 30px rgba(255,215,0,0.2), inset 0 0 15px rgba(255,215,0,0.2); backdrop-filter: blur(5px); transform: rotate(1deg);" id="hours">00</div>
-                <span style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Hours</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(1deg);" id="hours">00</div>
+                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Hours</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div style="width: clamp(100px, 20vw, 140px); height: clamp(100px, 20vw, 140px); background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 30px rgba(255,215,0,0.2), inset 0 0 15px rgba(255,215,0,0.2); backdrop-filter: blur(5px); transform: rotate(-1deg);" id="minutes">00</div>
-                <span style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Minutes</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(-1deg);" id="minutes">00</div>
+                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Minutes</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <div style="width: clamp(100px, 20vw, 140px); height: clamp(100px, 20vw, 140px); background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 30px rgba(255,215,0,0.2), inset 0 0 15px rgba(255,215,0,0.2); backdrop-filter: blur(5px); transform: rotate(2deg);" id="seconds">00</div>
-                <span style="color: white; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;">Seconds</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(2deg);" id="seconds">00</div>
+                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Seconds</span>
             </div>
         </div>
     </div>
