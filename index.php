@@ -24,36 +24,108 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <!-- Premium Redesigned Countdown -->
-    <div style="background: linear-gradient(135deg, #2D236E 0%, #1a144d 100%); border-radius: 20px; padding: 40px 15px; width: 95%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); text-align: center; position: relative; overflow: hidden;">
-        <!-- Animated background elements -->
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%); animation: pulse-glow 8s infinite alternate; pointer-events: none;"></div>
+    <!-- High-End Flip Countdown -->
+    <div style="background: #000; border-radius: 20px; padding: 60px 20px; width: 95%; max-width: 1000px; margin: 0 auto 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
         
-        <h3 class="montserrat" style="color: #FFD700; font-size: clamp(0.9rem, 4vw, 1.2rem); text-transform: uppercase; letter-spacing: clamp(2px, 2vw, 4px); margin-bottom: clamp(25px, 8vw, 45px); font-weight: 800; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); padding: 0 10px;">Time To Application Deadline</h3>
-        
-        <div id="countdown" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); justify-content: center; gap: clamp(10px, 3vw, 40px); margin-bottom: 10px; position: relative; z-index: 2; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(-2deg);" id="days">00</div>
-                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Days</span>
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 30px); margin-bottom: 50px; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-top" id="days">00</div>
+                        <div class="flip-card-bottom">00</div>
+                    </div>
+                    <div class="flip-card-line"></div>
+                </div>
+                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Days</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(1deg);" id="hours">00</div>
-                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Hours</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-top" id="hours">00</div>
+                        <div class="flip-card-bottom">00</div>
+                    </div>
+                    <div class="flip-card-line"></div>
+                </div>
+                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Hours</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(-1deg);" id="minutes">00</div>
-                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Minutes</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-top" id="minutes">00</div>
+                        <div class="flip-card-bottom">00</div>
+                    </div>
+                    <div class="flip-card-line"></div>
+                </div>
+                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Minutes</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <div style="width: 100%; aspect-ratio: 1/1; max-width: 130px; background: rgba(255, 215, 0, 0.05); border: 2px solid #FFD700; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 900; color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.1); backdrop-filter: blur(5px); transform: rotate(2deg);" id="seconds">00</div>
-                <span style="color: white; font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Seconds</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-top" id="seconds">00</div>
+                        <div class="flip-card-bottom">00</div>
+                    </div>
+                    <div class="flip-card-line"></div>
+                </div>
+                <span style="color: #fff; font-size: 1.1rem; font-weight: 600; font-family: 'Inter', sans-serif;">Seconds</span>
             </div>
         </div>
         
-        <div style="margin-top: 30px; position: relative; z-index: 2;">
-            <a href="apply" class="btn-apply-special" style="width: auto; min-width: 250px; padding: 15px 40px; font-size: 1.2rem; border-radius: 50px;">Apply Now!</a>
+        <div style="margin-top: 20px; position: relative; z-index: 2;">
+            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: 25px 60px; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
         </div>
     </div>
+
+    <style>
+        .flip-card {
+            width: clamp(100px, 18vw, 160px);
+            height: clamp(120px, 22vw, 200px);
+            position: relative;
+            background: #222;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+        .flip-card-inner {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .flip-card-top, .flip-card-bottom {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 800;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background: #222;
+        }
+        .flip-card-top {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: flex-end;
+            padding-bottom: 0;
+            line-height: 0;
+        }
+        .flip-card-bottom {
+            align-items: flex-start;
+            padding-top: 0;
+            line-height: 0;
+        }
+        .flip-card-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,0,0,0.8);
+            z-index: 5;
+            transform: translateY(-50%);
+        }
+    </style>
 
     <!-- High-End Info Cards -->
     <div class="info-cards-scroll-container" style="max-width: 1200px; margin: 0 auto 40px; padding: 0 20px;">
@@ -82,19 +154,6 @@ if (isset($_GET['page'])) {
         </div>
     </div>
 
-    <style>
-        @keyframes pulse-glow {
-            from { opacity: 0.3; transform: scale(1); }
-            to { opacity: 0.6; transform: scale(1.1); }
-        }
-        #countdown > div > div {
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #countdown > div:hover > div {
-            transform: scale(1.1) rotate(0deg) !important;
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 50px rgba(255,215,0,0.4);
-        }
         
         /* Info Cards Styling */
         .info-cards-grid {
