@@ -28,54 +28,19 @@ if (isset($_GET['page'])) {
     <div style="background: #000; border-radius: clamp(10px, 2vw, 15px); padding: clamp(15px, 3vw, 25px) 10px; width: 95%; max-width: 700px; margin: 0 auto 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
         
         <div id="countdown" style="display: flex; justify-content: center; gap: clamp(6px, 1.2vw, 15px); margin-bottom: clamp(15px, 3vw, 25px);">
-            <!-- Days -->
+            <?php foreach (['days', 'hours', 'minutes', 'seconds'] as $unit): ?>
             <div class="countdown-group">
-                <div class="flip-card" data-days>
-                    <div class="top">00</div>
-                    <div class="bottom">00</div>
+                <div class="flip-card" data-unit="<?php echo $unit; ?>">
+                    <div class="top-static">00</div>
+                    <div class="bottom-static">00</div>
                     <div class="leaf">
                         <div class="leaf-front">00</div>
                         <div class="leaf-back">00</div>
                     </div>
                 </div>
-                <span class="label">Days</span>
+                <span class="label"><?php echo ($unit === 'minutes') ? 'Mins' : (($unit === 'seconds') ? 'Secs' : ucfirst($unit)); ?></span>
             </div>
-            <!-- Hours -->
-            <div class="countdown-group">
-                <div class="flip-card" data-hours>
-                    <div class="top">00</div>
-                    <div class="bottom">00</div>
-                    <div class="leaf">
-                        <div class="leaf-front">00</div>
-                        <div class="leaf-back">00</div>
-                    </div>
-                </div>
-                <span class="label">Hours</span>
-            </div>
-            <!-- Minutes -->
-            <div class="countdown-group">
-                <div class="flip-card" data-minutes>
-                    <div class="top">00</div>
-                    <div class="bottom">00</div>
-                    <div class="leaf">
-                        <div class="leaf-front">00</div>
-                        <div class="leaf-back">00</div>
-                    </div>
-                </div>
-                <span class="label">Mins</span>
-            </div>
-            <!-- Seconds -->
-            <div class="countdown-group">
-                <div class="flip-card" data-seconds>
-                    <div class="top">00</div>
-                    <div class="bottom">00</div>
-                    <div class="leaf">
-                        <div class="leaf-front">00</div>
-                        <div class="leaf-back">00</div>
-                    </div>
-                </div>
-                <span class="label">Secs</span>
-            </div>
+            <?php endforeach; ?>
         </div>
         
         <div style="position: relative; z-index: 2;">
@@ -111,29 +76,22 @@ if (isset($_GET['page'])) {
             font-weight: 800;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             perspective: 1000px;
         }
 
-        /* Panels Base */
-        .flip-card .top,
-        .flip-card .bottom,
-        .flip-card .leaf-front,
-        .flip-card .leaf-back {
+        .flip-card div {
             position: absolute;
             left: 0;
             width: 100%;
             height: 50%;
             overflow: hidden;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
             display: flex;
             justify-content: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
-        /* Top Panels (Static Top & Flip Front) */
-        .flip-card .top,
-        .flip-card .leaf-front {
+        .top-static, .leaf-front {
             top: 0;
             align-items: flex-end;
             line-height: 1;
@@ -142,9 +100,7 @@ if (isset($_GET['page'])) {
             border-bottom: 0.5px solid rgba(0,0,0,0.4);
         }
 
-        /* Bottom Panels (Static Bottom & Flip Back) */
-        .flip-card .bottom,
-        .flip-card .leaf-back {
+        .bottom-static, .leaf-back {
             bottom: 0;
             align-items: flex-start;
             line-height: 0;
@@ -152,34 +108,27 @@ if (isset($_GET['page'])) {
             border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
         }
 
-        /* Z-Index Hierarchy */
-        .flip-card .top { z-index: 1; }
-        .flip-card .bottom { z-index: 2; }
-        
-        .flip-card .leaf {
+        /* Z-Index Strategy */
+        .top-static { z-index: 1; }
+        .bottom-static { z-index: 2; }
+        .leaf {
             position: absolute;
             top: 0;
-            left: 0;
             width: 100%;
             height: 50%;
             z-index: 10;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: bottom;
             transform-style: preserve-3d;
+            transition: transform 0.5s ease-in;
+            transform-origin: bottom;
             pointer-events: none;
         }
-
-        .flip-card .leaf-front { z-index: 11; }
-        .flip-card .leaf-back { 
-            z-index: 12; 
-            transform: rotateX(-180deg);
-        }
+        .leaf-front { z-index: 11; }
+        .leaf-back { z-index: 12; transform: rotateX(-180deg); }
 
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
 
-        /* Clear Divider Line */
         .flip-card::after {
             content: '';
             position: absolute;
@@ -202,76 +151,58 @@ if (isset($_GET['page'])) {
             const targetDate = new Date('June 15, 2026 09:00:00').getTime();
             const previousValues = { days: null, hours: null, minutes: null, seconds: null };
 
-            function updateCountdown() {
+            function update() {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
-
                 if (diff <= 0) return;
 
                 const values = {
-                    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((diff % (1000 * 60)) / 1000)
+                    days: Math.floor(diff / 86400000),
+                    hours: Math.floor((diff % 86400000) / 3600000),
+                    minutes: Math.floor((diff % 3600000) / 60000),
+                    seconds: Math.floor((diff % 60000) / 1000)
                 };
 
                 for (const unit in values) {
-                    flip(unit, values[unit]);
+                    const val = String(values[unit]).padStart(2, '0');
+                    if (previousValues[unit] === null) {
+                        const card = document.querySelector(`[data-unit="${unit}"]`);
+                        card.querySelector('.top-static').innerText = val;
+                        card.querySelector('.bottom-static').innerText = val;
+                        previousValues[unit] = val;
+                        continue;
+                    }
+                    if (previousValues[unit] !== val) {
+                        flip(unit, val);
+                    }
                 }
             }
 
-            function flip(unit, value) {
-                const formattedValue = value.toString().padStart(2, '0');
-                
-                // Initialize if null
-                if (previousValues[unit] === null) {
-                    const card = document.querySelector(`[data-${unit}]`);
-                    if (card) {
-                        card.querySelector('.top').innerText = formattedValue;
-                        card.querySelector('.bottom').innerText = formattedValue;
-                    }
-                    previousValues[unit] = formattedValue;
-                    return;
-                }
-
-                // Only flip if value changed
-                if (previousValues[unit] === formattedValue) return;
-
-                const card = document.querySelector(`[data-${unit}]`);
-                if (!card) return;
-                
-                const top = card.querySelector('.top');
-                const bottom = card.querySelector('.bottom');
+            function flip(unit, newVal) {
+                const card = document.querySelector(`[data-unit="${unit}"]`);
+                const topStatic = card.querySelector('.top-static');
+                const bottomStatic = card.querySelector('.bottom-static');
                 const leafFront = card.querySelector('.leaf-front');
                 const leafBack = card.querySelector('.leaf-back');
+                const oldVal = previousValues[unit];
 
-                const prevValue = previousValues[unit];
-                
-                // Set initial states for transition
-                // 1. Static Top shows NEW value immediately (but hidden by flip-front)
-                // 2. Flip Front shows OLD value (starts at 0deg)
-                // 3. Flip Back shows NEW value (starts at -180deg)
-                // 4. Static Bottom shows OLD value (stays visible until flip revealed)
-                
-                top.innerText = formattedValue;
-                leafFront.innerText = prevValue;
-                leafBack.innerText = formattedValue;
-                bottom.innerText = prevValue;
+                // Setup animation state
+                leafFront.innerText = oldVal;
+                leafBack.innerText = newVal;
+                topStatic.innerText = newVal;
+                bottomStatic.innerText = oldVal;
 
-                card.classList.remove('flipping');
-                void card.offsetWidth; // Reflow
                 card.classList.add('flipping');
 
                 setTimeout(() => {
-                    bottom.innerText = formattedValue;
                     card.classList.remove('flipping');
-                }, 600);
-
-                previousValues[unit] = formattedValue;
+                    bottomStatic.innerText = newVal;
+                    previousValues[unit] = newVal;
+                }, 500);
             }
 
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
+            setInterval(update, 1000);
+            update();
         })();
     </script>
 
