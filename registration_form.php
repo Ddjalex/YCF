@@ -282,7 +282,7 @@ function render_registration_form($package_id, $package_name, $price) {
 
     document.getElementById('multi-step-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Thank you! Your registration has been submitted and is pending verification of payment.');
+        showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
     });
     </script>
     <?php

@@ -504,6 +504,56 @@ require_once 'functions.php';
             </div>
         </nav>
     </header>
+
+    <!-- Professional Custom Modal -->
+    <div id="customModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(10, 17, 40, 0.9); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
+        <div style="background-color: #ffffff; margin: auto; padding: 0; border: none; width: 90%; max-width: 500px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden; animation: modalFadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);">
+            <div style="background: #2D236E; padding: 30px; text-align: center; position: relative;">
+                <div style="width: 80px; height: 80px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                    <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: #2D236E;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <h2 class="montserrat" style="color: #ffffff; margin: 0; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px;">Success!</h2>
+            </div>
+            <div style="padding: 40px 30px; text-align: center;">
+                <p id="modalMessage" style="font-size: 1.1rem; line-height: 1.6; color: #4a4a4a; margin-bottom: 30px; font-weight: 500;">Your registration has been submitted and is pending verification of payment.</p>
+                <button onclick="closeCustomModal()" class="btn-custom-animate" style="width: 100%; padding: 18px; font-size: 1rem; letter-spacing: 2px;">CONTINUE</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+
+    <script>
+        function showCustomModal(message) {
+            const modal = document.getElementById('customModal');
+            const msgEl = document.getElementById('modalMessage');
+            if (modal && msgEl) {
+                msgEl.innerText = message || "Your registration has been submitted and is pending verification of payment.";
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCustomModal() {
+            const modal = document.getElementById('customModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // Redirect to home or refresh if needed
+                window.location.href = '/';
+            }
+        }
+
+        // Global alert replacement
+        window.alert = function(message) {
+            showCustomModal(message);
+        };
+    </script>
     <script>
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');

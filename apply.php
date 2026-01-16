@@ -365,19 +365,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
     </div>
 </div>
 
-<!-- Professional Success Popup -->
-<div id="successPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
-    <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: scale(0.7); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-        <div style="width: 80px; height: 80px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-            <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: white;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path></svg>
-        </div>
-        <h2 class="montserrat" style="color: #2D236E; margin-bottom: 15px;">Registration Successful!</h2>
-        <p style="color: #666; line-height: 1.6; margin-bottom: 25px; font-size: 1.1rem;">
-            Registration form and payment detail approval sent to registered email address.
-        </p>
-        <button onclick="window.location.href='index.php'" style="background: #2D236E; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; text-transform: uppercase;">Back to Home</button>
-    </div>
-</div>
+<!-- Professional Success Popup REMOVED - replaced by global modal in header.php -->
 
 <script>
 function nextStep(step) {
@@ -411,7 +399,7 @@ function nextStep(step) {
         });
         
         if (!isValid) {
-            alert('Please fill in all required fields.');
+            showCustomModal('Please fill in all required fields.');
             return;
         }
     }
@@ -440,7 +428,7 @@ function copyAddress() {
 function handleFinalSubmit() {
     const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
     if (!paymentMethod) {
-        alert('Please select a payment method.');
+        showCustomModal('Please select a payment method.');
         return;
     }
     
@@ -448,17 +436,13 @@ function handleFinalSubmit() {
         const txid = document.getElementById('transaction_id').value;
         const screenshot = document.getElementById('crypto_screenshot').files[0];
         if (!txid || !screenshot) {
-            alert('Please provide transaction ID and screenshot for crypto payment.');
+            showCustomModal('Please provide transaction ID and screenshot for crypto payment.');
             return;
         }
     }
     
-    // Show success popup
-    const popup = document.getElementById('successPopup');
-    popup.style.display = 'flex';
-    setTimeout(() => {
-        popup.querySelector('div').style.transform = 'scale(1)';
-    }, 10);
+    // Show professional success modal
+    showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
 }
 </script>
 
