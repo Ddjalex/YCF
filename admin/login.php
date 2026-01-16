@@ -5,7 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Use the password from the screenshot or a default
     if ($password === 'admin123') {
         $_SESSION['admin_logged_in'] = true;
-        header('Location: ./dashboard.php');
+        // Absolute path redirection
+        $dir = dirname($_SERVER['PHP_SELF']);
+        $redirect_url = rtrim($dir, '/') . '/dashboard.php';
+        header("Location: $redirect_url");
         exit;
     } else {
         $error = "Secure access required";

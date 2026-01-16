@@ -1,6 +1,9 @@
 <?php
-// admin/index.php - Redirect to dashboard within the admin folder
+// admin/index.php - Absolute path redirection to dashboard
 session_start();
-header('Location: ./dashboard.php');
+// Get current directory path to ensure correct redirection
+$dir = dirname($_SERVER['PHP_SELF']);
+$redirect_url = rtrim($dir, '/') . '/dashboard.php';
+header("Location: $redirect_url");
 exit;
 ?>
