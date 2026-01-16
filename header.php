@@ -480,9 +480,6 @@ require_once 'functions.php';
             <div class="nav-item">
                 <a href="apply">Apply</a>
             </div>
-            <div class="nav-item">
-                <a href="admin" target="_blank">Admin</a>
-            </div>
             <div class="mobile-menu-toggle" style="display: none;">
                 <span></span>
                 <span></span>

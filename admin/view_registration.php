@@ -12,6 +12,37 @@ if (!$id) {
     exit;
 }
 
+// Handle Approval
+$message = '';
+if (isset($_POST['approve'])) {
+    $pdo = get_db_connection();
+    if ($pdo) {
+        $stmt = $pdo->prepare("UPDATE registrations SET status = 'Approved' WHERE id = ?");
+        if ($stmt->execute([$id])) {
+            $reg = get_registration_by_id($id);
+            if ($reg) {
+                $to = $reg['email'];
+                $subject = "Registration Approved - YCF 2026";
+                $body = "Dear " . htmlspecialchars($reg['first_name']) . ",\n\n";
+                $body .= "We are pleased to inform you that your registration for the Youth Crypto Forum Germany 2026 has been APPROVED.\n\n";
+                $body .= "Package: " . $reg['package_name'] . "\n";
+                $body .= "Registration ID: #" . $reg['id'] . "\n\n";
+                $body .= "Further details regarding your participation will be sent to you shortly.\n\n";
+                $body .= "Best regards,\nThe YCF Team";
+                
+                $headers = "From: no-reply@youthcryptoforum.de";
+                
+                // Note: mail() might need a configured SMTP server
+                if (mail($to, $subject, $body, $headers)) {
+                    $message = "<div style='padding:15px; background:#d4edda; color:#155724; border-radius:8px; margin-bottom:20px; font-weight:600;'>Registration Approved and Confirmation Email Sent!</div>";
+                } else {
+                    $message = "<div style='padding:15px; background:#fff3cd; color:#856404; border-radius:8px; margin-bottom:20px; font-weight:600;'>Registration Approved, but confirmation email could not be sent (SMTP not configured).</div>";
+                }
+            }
+        }
+    }
+}
+
 $reg = get_registration_by_id($id);
 if (!$reg) {
     echo "Registration not found.";
@@ -29,7 +60,7 @@ if (!$reg) {
         .container { max-width: 900px; margin: 0 auto; }
         .back-link { margin-bottom: 20px; display: block; color: #2D236E; text-decoration: none; font-weight: 600; }
         .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 30px; margin-bottom: 20px; }
-        h1 { color: #2D236E; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 25px; }
+        h1 { color: #2D236E; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .field { margin-bottom: 15px; }
         .label { font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; display: block; }
@@ -39,14 +70,27 @@ if (!$reg) {
         .photo-box img { max-width: 100%; border-radius: 4px; max-height: 300px; }
         .status-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; background: #eee; }
         .status-pending { background: #fff3cd; color: #856404; }
+        .status-approved { background: #d4edda; color: #155724; }
+        .btn-approve { background: #28a745; color: white; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .btn-approve:hover { background: #218838; }
+        .btn-approve:disabled { background: #ccc; cursor: not-allowed; }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="dashboard.php" class="back-link">← Back to Dashboard</a>
         
+        <?php echo $message; ?>
+
         <div class="card">
-            <h1>Registration #<?php echo $reg['id']; ?> <span class="status-badge status-<?php echo strtolower($reg['status']); ?>"><?php echo $reg['status']; ?></span></h1>
+            <h1>
+                <div>Registration #<?php echo $reg['id']; ?> <span class="status-badge status-<?php echo strtolower($reg['status']); ?>"><?php echo $reg['status']; ?></span></div>
+                <?php if ($reg['status'] !== 'Approved'): ?>
+                <form method="POST">
+                    <button type="submit" name="approve" class="btn-approve">Approve Registration</button>
+                </form>
+                <?php endif; ?>
+            </h1>
             
             <div class="grid">
                 <div class="field">
