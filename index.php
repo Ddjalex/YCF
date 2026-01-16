@@ -133,9 +133,10 @@ if (isset($_GET['page'])) {
             top: 0;
             border-radius: clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px) 0 0;
             align-items: flex-end;
-            line-height: 0;
+            line-height: 1;
             padding-bottom: 0;
             border-bottom: 0.5px solid rgba(0,0,0,0.3);
+            background-color: #222;
         }
         .flip-card .bottom,
         .flip-card .leaf-back {
@@ -147,8 +148,14 @@ if (isset($_GET['page'])) {
             background-color: #1e1e1e;
         }
         /* Proper font alignment in split halves */
-        .flip-card .top, .flip-card .leaf-front { height: 50%; line-height: 100%; transform: translateY(0); }
-        .flip-card .bottom, .flip-card .leaf-back { height: 50%; line-height: 0; }
+        .flip-card .top, .flip-card .leaf-front { 
+            height: 50%; 
+            overflow: hidden;
+        }
+        .flip-card .bottom, .flip-card .leaf-back { 
+            height: 50%; 
+            overflow: hidden;
+        }
 
         .flip-card .leaf {
             position: absolute;
@@ -163,6 +170,8 @@ if (isset($_GET['page'])) {
         }
         .flip-card .leaf-back {
             transform: rotateX(-180deg);
+            display: flex;
+            align-items: flex-start;
         }
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
@@ -186,59 +195,61 @@ if (isset($_GET['page'])) {
     </style>
 
     <script>
-        const targetDate = new Date('June 15, 2026 09:00:00').getTime();
-        const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
+        (function() {
+            const targetDate = new Date('June 15, 2026 09:00:00').getTime();
+            const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
 
-            if (diff <= 0) return;
+                if (diff <= 0) return;
 
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-            flip('days', d);
-            flip('hours', h);
-            flip('minutes', m);
-            flip('seconds', s);
-        }
+                flip('days', d);
+                flip('hours', h);
+                flip('minutes', m);
+                flip('seconds', s);
+            }
 
-        function flip(unit, value) {
-            const formattedValue = value.toString().padStart(2, '0');
-            if (previousValues[unit] === formattedValue) return;
+            function flip(unit, value) {
+                const formattedValue = value.toString().padStart(2, '0');
+                if (previousValues[unit] === formattedValue) return;
 
-            const card = document.querySelector(`[data-${unit}]`);
-            if (!card) return;
-            
-            const top = card.querySelector('.top');
-            const bottom = card.querySelector('.bottom');
-            const leafFront = card.querySelector('.leaf-front');
-            const leafBack = card.querySelector('.leaf-back');
+                const card = document.querySelector(`[data-${unit}]`);
+                if (!card) return;
+                
+                const top = card.querySelector('.top');
+                const bottom = card.querySelector('.bottom');
+                const leafFront = card.querySelector('.leaf-front');
+                const leafBack = card.querySelector('.leaf-back');
 
-            const prevValue = previousValues[unit] === -1 ? formattedValue : previousValues[unit];
-            
-            top.innerText = formattedValue;
-            leafFront.innerText = prevValue;
-            leafBack.innerText = formattedValue;
-            bottom.innerText = prevValue;
+                const prevValue = previousValues[unit] === -1 ? formattedValue : previousValues[unit];
+                
+                top.innerText = formattedValue;
+                leafFront.innerText = prevValue;
+                leafBack.innerText = formattedValue;
+                bottom.innerText = prevValue;
 
-            card.classList.remove('flipping');
-            void card.offsetWidth; 
-            card.classList.add('flipping');
-
-            setTimeout(() => {
-                bottom.innerText = formattedValue;
                 card.classList.remove('flipping');
-            }, 600);
+                void card.offsetWidth; 
+                card.classList.add('flipping');
 
-            previousValues[unit] = formattedValue;
-        }
+                setTimeout(() => {
+                    bottom.innerText = formattedValue;
+                    card.classList.remove('flipping');
+                }, 600);
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+                previousValues[unit] = formattedValue;
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        })();
     </script>
 
     <!-- High-End Info Cards -->
