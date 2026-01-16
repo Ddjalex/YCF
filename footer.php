@@ -13,9 +13,9 @@
             <div>
                 <h3 class="montserrat" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-blue);">Policies</h3>
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem;">
-                    <li><a href="/terms.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
-                    <li><a href="/privacy.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
-                    <li><a href="/refund.php" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
+                    <li><a href="/terms" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Terms & Conditions</a></li>
+                    <li><a href="/privacy" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Privacy Policies</a></li>
+                    <li><a href="/refund" style="color: white; text-decoration: none; opacity: 0.75; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;"><span style="color: var(--primary-blue);">›</span> Refund Policies</a></li>
                 </ul>
             </div>
 

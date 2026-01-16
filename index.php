@@ -78,7 +78,7 @@ if (isset($_GET['page'])) {
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
                 <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #000; text-transform: uppercase; margin: 0;">Latest News</h2>
-                <a href="news.php" style="color: #00aeef; font-weight: 700; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">View All Posts <span style="font-size: 1.2rem;">→</span></a>
+                <a href="news" style="color: #00aeef; font-weight: 700; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">View All Posts <span style="font-size: 1.2rem;">→</span></a>
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
@@ -98,7 +98,7 @@ if (isset($_GET['page'])) {
                         <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
                             <?php echo htmlspecialchars($item['summary']); ?>
                         </p>
-                        <a href="news_detail.php?id=<?php echo $item['id']; ?>" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
+                        <a href="news_detail?id=<?php echo $item['id']; ?>" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
                             Read Full Story <span style="font-size: 1.1rem;">+</span>
                         </a>
                     </div>
@@ -201,7 +201,7 @@ if (isset($_GET['page'])) {
         </div>
 
         <div style="margin-top: 30px; display: flex; justify-content: center; width: 100%;">
-            <a href="apply.php" class="btn-apply-special" style="max-width: 900px; padding: 18px 0;">Apply Now!</a>
+            <a href="apply" class="btn-apply-special" style="max-width: 900px; padding: 18px 0;">Apply Now!</a>
         </div>
     </div>
 </section>
