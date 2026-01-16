@@ -46,7 +46,7 @@ if (isset($_GET['page'])) {
         </div>
         
         <div style="position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1); margin-top: 20px;">Register Here</a>
+            <a href="#seats-section" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1); margin-top: 20px;">Register Here</a>
         </div>
     </div>
 
@@ -128,7 +128,7 @@ if (isset($_GET['page'])) {
         </div>
     </div>
 
-        
+    <style>
         /* Info Cards Styling */
         .info-cards-grid {
             display: flex;
