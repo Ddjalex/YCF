@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $pdo = get_db_connection();
     
-    // Ensure admin_settings table exists
     if ($pdo) {
         $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (key TEXT PRIMARY KEY, value TEXT)");
         
@@ -41,269 +40,223 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - YDF 2026</title>
+    <title>Admin Terminal - YDF 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #009edb;
+            --primary: #00a4df;
             --dark: #003366;
-            --bg: #f8f9fa;
+            --bg: #f4f7f6;
+            --text-gray: #666;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 0; display: flex; min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 0; }
         
-        /* Sidebar */
-        .sidebar { width: 260px; background: white; border-right: 1px solid #eee; display: flex; flex-direction: column; }
-        .sidebar-header { padding: 30px 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 12px; }
-        .sidebar-header img { width: 40px; }
-        .sidebar-header h2 { font-size: 1.1rem; color: var(--dark); margin: 0; }
-        .nav-links { padding: 20px 0; flex-grow: 1; }
-        .nav-link { display: flex; align-items: center; padding: 12px 25px; color: #666; text-decoration: none; transition: 0.2s; font-weight: 500; }
-        .nav-link:hover, .nav-link.active { background: #f0f7ff; color: var(--primary); }
-        .nav-link.active { border-left: 4px solid var(--primary); }
+        /* Fixed Header */
+        header {
+            background: #003366;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 { font-size: 1.1rem; margin: 0; font-weight: 700; letter-spacing: 0.5px; }
+        .public-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 35px;
+            height: fit-content;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-group { margin-bottom: 22px; }
+        label { display: block; font-size: 0.85rem; color: #888; margin-bottom: 10px; font-weight: 500; }
         
-        /* Main Content */
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; }
-        header { background: var(--dark); color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 1rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .public-site { color: white; text-decoration: none; font-size: 0.9rem; }
-        
-        .content-body { padding: 40px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        
-        .card { background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); padding: 30px; margin-bottom: 30px; }
-        .card-title { font-size: 1.25rem; font-weight: 700; color: #333; margin-bottom: 25px; }
-        
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.85rem; color: #888; margin-bottom: 8px; font-weight: 500; }
         input[type="text"], input[type="url"], textarea { 
-            width: 100%; padding: 12px 15px; border: 1px solid #eee; border-radius: 8px; 
-            font-size: 0.95rem; box-sizing: border-box; background: #fafbfc;
+            width: 100%; padding: 14px 18px; border: 1px solid #eef0f2; border-radius: 8px; 
+            font-size: 0.95rem; box-sizing: border-box; background: #fafbfc; outline: none;
+            transition: border-color 0.2s;
         }
+        input[type="text"]:focus { border-color: var(--primary); }
         
         .btn { 
-            display: inline-block; width: 100%; padding: 12px; border-radius: 8px; border: none; 
-            font-weight: 600; cursor: pointer; text-align: center; transition: 0.2s; font-size: 0.95rem;
+            display: inline-block; width: 100%; padding: 15px; border-radius: 8px; border: none; 
+            font-weight: 700; cursor: pointer; text-align: center; transition: 0.2s; font-size: 0.95rem;
+            text-transform: none;
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: #008ac0; }
-        .btn-dark { background: #2D236E; color: white; }
-        .btn-orange { background: #f39c12; color: white; }
-        
+        .btn-dark { background: #2c3241; color: white; }
+        .btn-dark:hover { background: #1f242f; }
+        .btn-orange { background: #ff9f43; color: white; }
+        .btn-orange:hover { background: #e68a35; }
+
+        /* Tables & Lists */
+        .table-container { grid-column: span 2; }
         table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 15px; font-size: 0.8rem; text-transform: uppercase; color: #888; border-bottom: 1px solid #eee; }
-        td { padding: 15px; border-bottom: 1px solid #f9f9f9; font-size: 0.95rem; }
-        
-        .status { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
-        .status-pending { background: #fff3cd; color: #856404; }
-        
-        .section-hidden { display: none; }
+        th { text-align: left; padding: 18px; font-size: 0.85rem; text-transform: uppercase; color: #888; border-bottom: 2px solid #f0f2f5; font-weight: 700; }
+        td { padding: 18px; border-bottom: 1px solid #f0f2f5; font-size: 0.95rem; color: #444; }
+
+        .file-input-wrapper {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        input[type="file"] { font-size: 0.85rem; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <img src="../attached_assets/logo/Gemini_Generated_Image_ol8lm2ol8lm2ol8l-removebg-preview.png" alt="Logo">
-            <h2>YDF Terminal</h2>
+    <header>
+        <h1>ADMIN TERMINAL</h1>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <a href="/" class="public-link">Public Site →</a>
+            <a href="logout.php" class="public-link" style="opacity: 0.7;">Sign Out</a>
         </div>
-        <div class="nav-links">
-            <a href="#" class="nav-link active" onclick="showSection('overview')">Dashboard Overview</a>
-            <a href="#" class="nav-link" onclick="showSection('registrations')">Manage Registrations</a>
-            <a href="#" class="nav-link" onclick="showSection('settings')">Global Settings</a>
-            <a href="#" class="nav-link" onclick="showSection('hotels')">Hotel Database</a>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Hero Video Card -->
+        <div class="card">
+            <div class="card-title">Hero Video</div>
+            <form method="POST">
+                <input type="hidden" name="action" value="update_hero">
+                <div class="form-group">
+                    <label>Current Video Path/URL</label>
+                    <input type="text" name="video_url" value="<?php echo htmlspecialchars($hero_video); ?>">
+                </div>
+                <div class="form-group">
+                    <label>Or Upload New Video</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" name="hero_file">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Hero Video</button>
+            </form>
         </div>
-        <div style="padding: 20px;">
-            <a href="logout.php" class="btn btn-dark" style="background: #f8d7da; color: #721c24;">Sign Out</a>
+
+        <!-- Add New Video Card -->
+        <div class="card">
+            <div class="card-title">Add New Video</div>
+            <div class="form-group">
+                <input type="text" placeholder="Video Title">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Video URL">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Thumbnail Image URL">
+            </div>
+            <button class="btn btn-primary">Add Video</button>
+        </div>
+
+        <!-- Global Countdown Card -->
+        <div class="card">
+            <div class="card-title">Global Countdown</div>
+            <form method="POST">
+                <input type="hidden" name="action" value="update_countdown">
+                <div class="form-group">
+                    <label>Target Event Date</label>
+                    <input type="text" name="target_date" value="<?php echo htmlspecialchars($countdown_date); ?>">
+                </div>
+                <button type="submit" class="btn btn-dark">Sync Countdown</button>
+            </form>
+        </div>
+
+        <!-- Crypto Settings Card -->
+        <div class="card">
+            <div class="card-title">Crypto Deposit Address</div>
+            <form method="POST">
+                <input type="hidden" name="action" value="update_crypto">
+                <div class="form-group">
+                    <label>BTC Wallet Address</label>
+                    <input type="text" name="btc_address" value="<?php echo htmlspecialchars($btc_address); ?>">
+                </div>
+                <div class="form-group">
+                    <label>QR Code Image</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" name="qr_file">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-orange">Update Crypto Settings</button>
+            </form>
+        </div>
+
+        <!-- Registrations Management Card -->
+        <div class="card table-container">
+            <div class="card-title">Manage Registrations</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Package</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($registrations)): ?>
+                    <tr><td colspan="4" style="text-align: center; color: #999;">No registrations found.</td></tr>
+                    <?php else: ?>
+                        <?php foreach (array_slice($registrations, 0, 10) as $reg): ?>
+                        <tr>
+                            <td><?php echo date('M d', strtotime($reg['created_at'])); ?></td>
+                            <td><?php echo htmlspecialchars($reg['first_name'] . ' ' . $reg['last_name']); ?></td>
+                            <td><?php echo htmlspecialchars($reg['package_name']); ?></td>
+                            <td><a href="view_registration.php?id=<?php echo $reg['id']; ?>" style="color: var(--primary); text-decoration: none; font-weight: 700;">View Details</a></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Active Hotel Database Card -->
+        <div class="card table-container">
+            <div class="card-title">Active Hotel Database</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name/Location</th>
+                        <th>Visuals</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Database empty.</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <div class="main-content">
-        <header>
-            <h1>ADMIN TERMINAL</h1>
-            <a href="/" class="public-site">Public Site →</a>
-        </header>
-
-        <div class="content-body">
-            <!-- Overview Section -->
-            <div id="section-overview">
-                <div class="grid">
-                    <!-- Hero Video Card -->
-                    <div class="card">
-                        <div class="card-title">Hero Video</div>
-                        <form method="POST">
-                            <input type="hidden" name="action" value="update_hero">
-                            <div class="form-group">
-                                <label>Current Video Path/URL</label>
-                                <input type="text" name="video_url" value="<?php echo htmlspecialchars($hero_video); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Or Upload New Video</label>
-                                <input type="file" disabled>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Update Hero Video</button>
-                        </form>
-                    </div>
-
-                    <!-- Add New Video Card -->
-                    <div class="card">
-                        <div class="card-title">Add New Video</div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Video Title">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Video URL">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Thumbnail Image URL">
-                        </div>
-                        <button class="btn btn-primary">Add Video</button>
-                    </div>
-
-                    <!-- Global Countdown Card -->
-                    <div class="card">
-                        <div class="card-title">Global Countdown</div>
-                        <form method="POST">
-                            <input type="hidden" name="action" value="update_countdown">
-                            <div class="form-group">
-                                <label>Target Event Date</label>
-                                <input type="text" name="target_date" value="<?php echo htmlspecialchars($countdown_date); ?>">
-                            </div>
-                            <button type="submit" class="btn btn-dark">Sync Countdown</button>
-                        </form>
-                    </div>
-
-                    <!-- Crypto Settings Card -->
-                    <div class="card">
-                        <div class="card-title">Crypto Deposit Address</div>
-                        <form method="POST">
-                            <input type="hidden" name="action" value="update_crypto">
-                            <div class="form-group">
-                                <label>BTC Wallet Address</label>
-                                <input type="text" name="btc_address" value="<?php echo htmlspecialchars($btc_address); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>QR Code Image</label>
-                                <input type="file" disabled>
-                            </div>
-                            <button type="submit" class="btn btn-orange">Update Crypto Settings</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">Manage Videos</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="2" style="text-align: center; color: #888;">No additional videos configured.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Registrations Section -->
-            <div id="section-registrations" class="section-hidden">
-                <div class="card">
-                    <div class="card-title">Recent Registrations</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Name</th>
-                                <th>Package</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($registrations as $reg): ?>
-                            <tr>
-                                <td><?php echo date('M d, Y', strtotime($reg['created_at'])); ?></td>
-                                <td><?php echo htmlspecialchars($reg['first_name'] . ' ' . $reg['last_name']); ?></td>
-                                <td><?php echo htmlspecialchars($reg['package_name']); ?></td>
-                                <td><span class="status status-pending"><?php echo $reg['status']; ?></span></td>
-                                <td><a href="view_registration.php?id=<?php echo $reg['id']; ?>" style="color: var(--primary); text-decoration: none; font-weight: 600;">View</a></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Hotels Section -->
-            <div id="section-hotels" class="section-hidden">
-                <div class="grid">
-                    <div class="card">
-                        <div class="card-title">New Hotel Entry</div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Hotel Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Location String">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Short Description" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Video URL (YouTube/MP4)">
-                        </div>
-                        <div class="form-group">
-                            <label>Hotel Photo (URL or Upload)</label>
-                            <input type="text" placeholder="Photo Path/URL">
-                        </div>
-                        <div class="form-group">
-                            <input type="file">
-                        </div>
-                        <div style="display: flex; gap: 20px;">
-                             <input type="text" placeholder="Stars" style="width: 80px;" value="5">
-                             <input type="text" placeholder="Map Link">
-                        </div>
-                        <button class="btn btn-primary" style="margin-top: 20px;">Deploy Entry</button>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">Active Hotel Database</div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name/Location</th>
-                                    <th>Visuals</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="3" style="text-align: center; color: #888;">Database empty. Add a new entry.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.getElementById('section-overview').classList.add('section-hidden');
-            document.getElementById('section-registrations').classList.add('section-hidden');
-            document.getElementById('section-hotels').classList.add('section-hidden');
-            
-            // Show target section
-            document.getElementById('section-' + sectionId).classList.remove('section-hidden');
-            
-            // Update active link
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-        }
-    </script>
 </body>
 </html>
