@@ -25,9 +25,9 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- High-End Flip Countdown -->
-    <div style="background: #000; border-radius: clamp(15px, 3vw, 20px); padding: clamp(20px, 5vw, 40px) 15px; width: 95%; max-width: 900px; margin: 0 auto 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
+    <div style="background: #000; border-radius: clamp(10px, 2vw, 15px); padding: clamp(15px, 3vw, 25px) 10px; width: 95%; max-width: 700px; margin: 0 auto 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden;">
         
-        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(8px, 1.5vw, 20px); margin-bottom: clamp(25px, 5vw, 40px);">
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(6px, 1.2vw, 15px); margin-bottom: clamp(15px, 3vw, 25px);">
             <!-- Days -->
             <div class="countdown-group">
                 <div class="flip-card" data-days>
@@ -79,7 +79,7 @@ if (isset($_GET['page'])) {
         </div>
         
         <div style="position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: clamp(15px, 3vw, 20px) clamp(30px, 6vw, 60px); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 1.5px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
+            <a href="apply" style="display: inline-block; background: #fff; color: #222; padding: clamp(10px, 2vw, 15px) clamp(25px, 5vw, 45px); font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(255,255,255,0.1);">Register Here</a>
         </div>
     </div>
 
@@ -88,30 +88,31 @@ if (isset($_GET['page'])) {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: clamp(8px, 1.5vw, 12px);
+            gap: clamp(4px, 1vw, 8px);
             flex: 1;
-            max-width: 140px;
+            max-width: 120px;
         }
         .countdown-group .label {
             color: #fff;
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
             font-weight: 700;
             font-family: 'Inter', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            opacity: 0.8;
+            opacity: 0.7;
         }
         .flip-card {
             position: relative;
             width: 100%;
-            aspect-ratio: 0.85;
+            aspect-ratio: 1.1; /* More horizontal/compact proportions */
             background-color: #1a1a1a;
-            border-radius: clamp(6px, 1.5vw, 12px);
-            font-size: clamp(1.8rem, 6vw, 5rem);
+            border-radius: clamp(4px, 1vw, 8px);
+            font-size: clamp(1.5rem, 5vw, 4rem);
             font-weight: 800;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            perspective: 1000px;
         }
         .flip-card .top,
         .flip-card .bottom,
@@ -122,7 +123,6 @@ if (isset($_GET['page'])) {
             width: 100%;
             height: 50%;
             overflow: hidden;
-            background-color: #222;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             display: flex;
@@ -131,32 +131,20 @@ if (isset($_GET['page'])) {
         .flip-card .top,
         .flip-card .leaf-front {
             top: 0;
-            border-radius: clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px) 0 0;
+            border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
             align-items: flex-end;
             line-height: 1;
-            padding-bottom: 0;
-            border-bottom: 0.5px solid rgba(0,0,0,0.3);
             background-color: #222;
+            border-bottom: 0.5px solid rgba(0,0,0,0.3);
         }
         .flip-card .bottom,
         .flip-card .leaf-back {
             bottom: 0;
-            border-radius: 0 0 clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px);
+            border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
             align-items: flex-start;
             line-height: 0;
-            padding-top: 0;
             background-color: #1e1e1e;
         }
-        /* Proper font alignment in split halves */
-        .flip-card .top, .flip-card .leaf-front { 
-            height: 50%; 
-            overflow: hidden;
-        }
-        .flip-card .bottom, .flip-card .leaf-back { 
-            height: 50%; 
-            overflow: hidden;
-        }
-
         .flip-card .leaf {
             position: absolute;
             top: 0;
@@ -170,6 +158,7 @@ if (isset($_GET['page'])) {
         }
         .flip-card .leaf-back {
             transform: rotateX(-180deg);
+            background-color: #1e1e1e;
             display: flex;
             align-items: flex-start;
         }
@@ -183,14 +172,23 @@ if (isset($_GET['page'])) {
             left: 0;
             width: 100%;
             height: 1px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4);
             z-index: 20;
             transform: translateY(-50%);
         }
+        
+        /* Proper font alignment in split halves */
+        .flip-card .top, .flip-card .leaf-front { 
+            height: 50%; 
+            overflow: hidden;
+        }
+        .flip-card .bottom, .flip-card .leaf-back { 
+            height: 50%; 
+            overflow: hidden;
+        }
 
         @media (max-width: 480px) {
-            .countdown-group { gap: 6px; }
-            .flip-card { aspect-ratio: 0.8; }
+            .flip-card { aspect-ratio: 1; }
         }
     </style>
 
