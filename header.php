@@ -199,19 +199,22 @@ require_once 'functions.php';
             text-align: center !important;
             line-height: 1.5 !important;
             transition-duration: 0s !important;
-            animation: gradientMove 5s linear infinite, pulse-scaling-site 5s infinite linear !important;
+            animation: combinedAnim 5s linear infinite !important;
         }
         
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes pulse-scaling-site {
-            0% { transform: scaleX(1.0) scaleY(1.0); }
-            50% { transform: scaleX(1.03705) scaleY(1.03705); }
-            100% { transform: scaleX(1.0) scaleY(1.0); }
+        @keyframes combinedAnim {
+            0% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.0) scaleY(1.0);
+            }
+            50% { 
+                background-position: 100% 50%; 
+                transform: scaleX(1.03705) scaleY(1.03705);
+            }
+            100% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.0) scaleY(1.0);
+            }
         }
         
         body {
