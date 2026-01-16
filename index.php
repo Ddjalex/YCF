@@ -185,14 +185,15 @@ if (isset($_GET['page'])) {
 </section>
 
 <!-- Guaranteed Categories Section -->
-<section style="background: #fff; padding: 60px 20px; text-align: center;">
-    <div style="background: #2D236E; border-radius: 12px; padding: 20px; max-width: 700px; margin: 0 auto 30px; border: 1px solid rgba(0,0,0,0.05); color: white;">
-        <h2 class="montserrat" style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); margin-bottom: 8px; font-weight: 800; text-transform: uppercase;">Guaranteed Categories</h2>
-        <h3 class="montserrat" style="font-size: clamp(1rem, 2.5vw, 1.5rem); margin-bottom: 12px; font-weight: 700;">(Confirmed Seats)</h3>
-        <p style="font-size: 0.95rem; line-height: 1.5; opacity: 0.9; margin-bottom: 0;">
-            These categories offer guaranteed participation with no competitive selection. Applicants secure their seat upon completing their registration.
-        </p>
-    </div>
+<section style="background: url('attached_assets/istock-486585530_1768550282103.jpg') center/cover no-repeat fixed; color: white; text-align: center; position: relative;">
+    <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 60px 20px;">
+        <div style="background: #2D236E; border-radius: 12px; padding: 20px; max-width: 700px; margin: 0 auto 30px; border: 1px solid rgba(255, 255, 255, 0.1); color: white;">
+            <h2 class="montserrat" style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); margin-bottom: 8px; font-weight: 800; text-transform: uppercase;">Guaranteed Categories</h2>
+            <h3 class="montserrat" style="font-size: clamp(1rem, 2.5vw, 1.5rem); margin-bottom: 12px; font-weight: 700;">(Confirmed Seats)</h3>
+            <p style="font-size: 0.95rem; line-height: 1.5; opacity: 0.9; margin-bottom: 0;">
+                These categories offer guaranteed participation with no competitive selection. Applicants secure their seat upon completing their registration.
+            </p>
+        </div>
 
     <div style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid; gap: 20px; max-width: 900px; margin: 0 auto 40px;">
         <!-- Forum Admission Detail -->
