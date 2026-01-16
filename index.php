@@ -183,15 +183,7 @@ if (isset($_GET['page'])) {
             transform: translateY(-50%);
         }
         
-        /* Proper font alignment in split halves */
-        .flip-card .top, .flip-card .leaf-front { 
-            height: 50%; 
-            overflow: hidden;
-        }
-        .flip-card .bottom, .flip-card .leaf-back { 
-            height: 50%; 
-            overflow: hidden;
-        }
+        /* Removed duplicate overflow fixes */
 
         @media (max-width: 480px) {
             .flip-card { aspect-ratio: 1; }
