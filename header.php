@@ -184,43 +184,27 @@ require_once 'functions.php';
             overflow: hidden !important;
             z-index: 1 !important;
             border-radius: 8px !important;
-            padding: 15px 35px !important;
+            padding: 12px 24px !important;
             width: 100% !important;
-            max-width: 600px !important;
-            background-color: #2D236E !important; /* Matches site theme */
-            color: #fff !important;
+            background-color: var(--e-global-color-0ca85f4) !important;
+            color: #2D236E !important;
             border: none !important;
-            font-weight: bold !important;
+            font-weight: 500 !important;
             text-transform: uppercase !important;
             cursor: pointer !important;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            display: inline-block !important;
             text-decoration: none !important;
-            font-size: 1.2rem !important;
-            animation: pulse-scaling 2s infinite ease-in-out !important;
+            font-size: 19px !important;
+            text-align: center !important;
+            line-height: 1.5 !important;
+            transition-duration: 0s !important;
+            animation: pulse-scaling-site 5s infinite linear !important;
         }
         
-        .btn-apply-special::before {
-            content: '' !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: -110% !important;
-            width: 120% !important;
-            height: 100% !important;
-            background-color: #FFD700 !important; /* The yellow color from site */
-            transform: skewX(-30deg) !important;
-            transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
-            z-index: -1 !important;
-        }
-        
-        .btn-apply-special:hover::before {
-            left: -10% !important;
-        }
-        
-        .btn-apply-special:hover {
-            color: #2D236E !important; /* Text color on yellow hover */
+        @keyframes pulse-scaling-site {
+            0% { transform: scaleX(1.0) scaleY(1.0); }
+            50% { transform: scaleX(1.03705) scaleY(1.03705); }
+            100% { transform: scaleX(1.0) scaleY(1.0); }
         }
         
         body {

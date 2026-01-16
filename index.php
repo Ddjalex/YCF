@@ -179,7 +179,7 @@ if (isset($_GET['page'])) {
         </div>
 
         <div style="margin-top: 30px; display: flex; justify-content: center; width: 100%;">
-            <a href="apply.php" style="background: var(--e-global-color-0ca85f4); color: #2D236E; width: 100%; max-width: 900px; padding: 18px 0; text-decoration: none; border-radius: 12px; font-weight: 500; display: block; font-size: 19px; border: none; text-transform: uppercase; box-shadow: none; text-align: center; line-height: 1.5; position: relative;">Apply Now!</a>
+            <a href="apply.php" class="btn-apply-special" style="max-width: 900px; padding: 18px 0;">Apply Now!</a>
         </div>
     </div>
 </section>
@@ -220,7 +220,7 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
             <div style="margin-top: 25px; text-align: center; width: 100%;">
-                <a href="apply.php?package=forum-admission" style="background: var(--e-global-color-0ca85f4); color: #2D236E; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; display: block; width: 100%; font-size: 19px; border: none; text-transform: uppercase; text-align: center; line-height: 1.5; box-shadow: none; position: relative;">Register NOW!</a>
+                <a href="apply.php?package=forum-admission" class="btn-apply-special">Register NOW!</a>
             </div>
         </div>
 
@@ -250,7 +250,7 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
             <div style="margin-top: 25px; text-align: center; width: 100%;">
-                <a href="apply.php?package=self-funded" style="background: var(--e-global-color-0ca85f4); color: #2D236E; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; display: block; width: 100%; font-size: 19px; border: none; text-transform: uppercase; text-align: center; line-height: 1.5; box-shadow: none; position: relative;">Register NOW!</a>
+                <a href="apply.php?package=self-funded" class="btn-apply-special">Register NOW!</a>
             </div>
         </div>
     </div>
@@ -278,7 +278,7 @@ if (isset($_GET['page'])) {
                 Upgrade later to forum admission or self funded and the cost will be fully adjusted towards the upgrade.
             </p>
             <div style="margin-top: 25px; text-align: center; width: 100%;">
-                <a href="apply.php?package=visa-letter" style="background: var(--e-global-color-0ca85f4); color: #2D236E; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 500; display: block; width: 100%; font-size: 19px; border: none; text-transform: uppercase; text-align: center; line-height: 1.5; box-shadow: none; position: relative;">Register NOW!</a>
+                <a href="apply.php?package=visa-letter" class="btn-apply-special">Register NOW!</a>
             </div>
         </div>
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); height: 100%; min-height: 350px; position: relative;">
