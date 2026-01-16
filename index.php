@@ -76,7 +76,8 @@ if (isset($_GET['page'])) {
             font-weight: 800;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            perspective: 1000px;
+            perspective: 1200px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
         .flip-card div {
@@ -89,16 +90,16 @@ if (isset($_GET['page'])) {
             justify-content: center;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            background-color: inherit; /* Inherit from parent card */
+            background-color: #1a1a1a;
         }
 
         .top-static, .leaf-front {
             top: 0;
             align-items: flex-end;
             line-height: 1;
-            background-color: #222 !important;
+            background: linear-gradient(to bottom, #2a2a2a, #222) !important;
             border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
-            border-bottom: 0.5px solid rgba(0,0,0,0.4);
+            border-bottom: 0.5px solid rgba(0,0,0,0.5);
             z-index: 1;
         }
 
@@ -106,7 +107,7 @@ if (isset($_GET['page'])) {
             bottom: 0;
             align-items: flex-start;
             line-height: 0;
-            background-color: #1a1a1a !important;
+            background: linear-gradient(to bottom, #1e1e1e, #151515) !important;
             border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
             z-index: 0;
         }
@@ -116,18 +117,47 @@ if (isset($_GET['page'])) {
             top: 0;
             width: 100%;
             height: 50%;
-            z-index: 5 !important;
+            z-index: 10 !important;
             transform-style: preserve-3d;
-            transition: transform 0.5s ease-in;
+            transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
             transform-origin: bottom;
             pointer-events: none;
             background: none !important;
         }
-        .leaf-front { z-index: 6 !important; position: absolute; top: 0; height: 100%; }
-        .leaf-back { z-index: 7 !important; position: absolute; top: 0; height: 100%; transform: rotateX(-180deg); }
+        .leaf-front { 
+            z-index: 11 !important; 
+            position: absolute; 
+            top: 0; 
+            height: 100%;
+            box-shadow: inset 0 -50px 50px -40px rgba(0,0,0,0.5);
+        }
+        .leaf-back { 
+            z-index: 12 !important; 
+            position: absolute; 
+            top: 0; 
+            height: 100%; 
+            transform: rotateX(-180deg);
+            box-shadow: inset 0 50px 50px -40px rgba(0,0,0,0.5);
+        }
 
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
+        }
+
+        /* Shadow during flip */
+        .flip-card.flipping .top-static::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            animation: shadow-in 0.6s ease-in;
+            z-index: 2;
+        }
+
+        @keyframes shadow-in {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         .flip-card::after {
@@ -136,10 +166,11 @@ if (isset($_GET['page'])) {
             top: 50%;
             left: 0;
             width: 100%;
-            height: 1.5px;
-            background: rgba(0,0,0,0.8);
-            z-index: 20;
+            height: 2px;
+            background: #000;
+            z-index: 25;
             transform: translateY(-50%);
+            box-shadow: 0 1px 1px rgba(255,255,255,0.1);
         }
 
         @media (max-width: 480px) {
@@ -214,13 +245,13 @@ if (isset($_GET['page'])) {
                 // 4. Trigger the flip animation
                 card.classList.add('flipping');
 
-                // 5. Cleanup after animation (0.5s matching CSS)
+                // 5. Cleanup after animation (0.6s matching CSS)
                 setTimeout(() => {
                     card.classList.remove('flipping');
                     bottomStatic.innerText = newVal;
                     // Fully sync front leaf for next frame
                     leafFront.innerText = newVal;
-                }, 500);
+                }, 600);
             }
 
             const intervalId = setInterval(update, 1000);
