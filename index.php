@@ -179,7 +179,7 @@ if (isset($_GET['page'])) {
         </div>
 
         <div style="margin-top: 30px; display: flex; justify-content: center; width: 100%;">
-            <a href="apply.php" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; width: 100%; max-width: 900px; padding: 18px 0; text-decoration: none; border-radius: 12px; font-weight: 800; display: block; font-size: 1.2rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">Apply Now!</a>
+            <a href="apply.php" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; width: 100%; max-width: 900px; padding: 18px 0; text-decoration: none; border-radius: 12px; font-weight: 800; display: block; font-size: 1.2rem; border: none; text-transform: uppercase; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease;">Apply Now!</a>
         </div>
     </div>
 </section>
@@ -219,8 +219,8 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <div style="margin-top: 25px; text-align: center;">
-                <a href="apply.php?package=forum-admission" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 0; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; width: 100%; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            <div style="margin-top: 25px; text-align: center; width: 100%;">
+                <a href="apply.php?package=forum-admission" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; padding: 15px 0; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; width: 100%; font-size: 1rem; border: none; text-transform: uppercase; transition: all 0.3s ease;">Register NOW!</a>
             </div>
         </div>
 
@@ -249,8 +249,8 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <div style="margin-top: 25px; text-align: center;">
-                <a href="apply.php?package=self-funded" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 0; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; width: 100%; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+            <div style="margin-top: 25px; text-align: center; width: 100%;">
+                <a href="apply.php?package=self-funded" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; padding: 15px 0; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; width: 100%; font-size: 1rem; border: none; text-transform: uppercase; transition: all 0.3s ease;">Register NOW!</a>
             </div>
         </div>
     </div>
@@ -278,7 +278,7 @@ if (isset($_GET['page'])) {
                 Upgrade later to forum admission or self funded and the cost will be fully adjusted towards the upgrade.
             </p>
             <div style="margin-top: 25px; text-align: center; width: 100%;">
-                <a href="apply.php?package=visa-letter" class="btn-custom-animate" style="background: linear-gradient(to bottom, #8B6914, #000); color: white; padding: 15px 0; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; width: 100%; text-align: center; font-size: 1rem; border: 1px solid rgba(255,215,0,0.3); text-transform: uppercase;">Register NOW!</a>
+                <a href="apply.php?package=visa-letter" class="btn-custom-animate" style="background: #FFD700; color: #2D236E; padding: 15px 0; text-decoration: none; border-radius: 10px; font-weight: 800; display: block; width: 100%; text-align: center; font-size: 1rem; border: none; text-transform: uppercase; transition: all 0.3s ease;">Register NOW!</a>
             </div>
         </div>
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); height: 100%; min-height: 350px; position: relative;">
