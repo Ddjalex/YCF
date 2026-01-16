@@ -186,8 +186,9 @@ require_once 'functions.php';
             border-radius: 8px !important;
             padding: 12px 24px !important;
             width: 100% !important;
-            background-color: var(--e-global-color-0ca85f4) !important;
-            color: #2D236E !important;
+            background: linear-gradient(270deg, #F1D302, #000000, #F1D302, #000000) !important;
+            background-size: 400% 400% !important;
+            color: #ffffff !important;
             border: none !important;
             font-weight: 500 !important;
             text-transform: uppercase !important;
@@ -198,7 +199,13 @@ require_once 'functions.php';
             text-align: center !important;
             line-height: 1.5 !important;
             transition-duration: 0s !important;
-            animation: pulse-scaling-site 5s infinite linear !important;
+            animation: gradientMove 5s linear infinite, pulse-scaling-site 5s infinite linear !important;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         @keyframes pulse-scaling-site {
