@@ -348,13 +348,22 @@ function render_registration_form($package_id, $package_name, $price) {
             submitBtn.disabled = false;
             submitBtn.innerText = 'Complete Registration';
             if (data.success) {
-                showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
+                // Successfully saved to DB, now redirect to a thank you page or show success in UI
+                window.location.href = 'thank-you'; 
             } else {
-                showCustomModal('There was an error saving your registration: ' + data.message);
+                document.getElementById('error-banner').style.display = 'flex';
+                document.getElementById('error-banner').querySelector('span:last-child').innerText = 'There was an error saving your registration: ' + data.message;
+                document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         })
         .catch(error => {
-            showCustomModal('Thank you! Your registration has been submitted and is pending verification of payment.');
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Complete Registration';
+            // Even if fetch fails, if it was a network error but registration might have gone through
+            // Or just show error banner
+            document.getElementById('error-banner').style.display = 'flex';
+            document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Connection error. Please try again.';
+            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
             console.error('Error:', error);
         });
     });
