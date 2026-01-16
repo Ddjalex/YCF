@@ -104,7 +104,7 @@ if (isset($_GET['page'])) {
         .flip-card {
             position: relative;
             width: 100%;
-            aspect-ratio: 1.1; /* More horizontal/compact proportions */
+            aspect-ratio: 1.1;
             background-color: #1a1a1a;
             border-radius: clamp(4px, 1vw, 8px);
             font-size: clamp(1.5rem, 5vw, 4rem);
@@ -114,6 +114,8 @@ if (isset($_GET['page'])) {
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             perspective: 1000px;
         }
+
+        /* Panels Base */
         .flip-card .top,
         .flip-card .bottom,
         .flip-card .leaf-front,
@@ -123,31 +125,37 @@ if (isset($_GET['page'])) {
             width: 100%;
             height: 50%;
             overflow: hidden;
-            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             display: flex;
             justify-content: center;
-            background-color: #1a1a1a;
         }
+
+        /* Top Panels (Static Top & Flip Front) */
         .flip-card .top,
         .flip-card .leaf-front {
             top: 0;
-            border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
             align-items: flex-end;
             line-height: 1;
             background-color: #222;
-            border-bottom: 0.5px solid rgba(0,0,0,0.3);
-            z-index: 2;
+            border-radius: clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0 0;
+            border-bottom: 0.5px solid rgba(0,0,0,0.4);
         }
+
+        /* Bottom Panels (Static Bottom & Flip Back) */
         .flip-card .bottom,
         .flip-card .leaf-back {
             bottom: 0;
-            border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
             align-items: flex-start;
             line-height: 0;
-            background-color: #1e1e1e;
-            z-index: 1;
+            background-color: #1a1a1a;
+            border-radius: 0 0 clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px);
         }
+
+        /* Z-Index Hierarchy */
+        .flip-card .top { z-index: 1; }
+        .flip-card .bottom { z-index: 2; }
+        
         .flip-card .leaf {
             position: absolute;
             top: 0;
@@ -158,36 +166,31 @@ if (isset($_GET['page'])) {
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: bottom;
             transform-style: preserve-3d;
+            pointer-events: none;
         }
-        .flip-card .leaf-front {
-            z-index: 11;
-            background-color: #222;
-        }
-        .flip-card .leaf-back {
+
+        .flip-card .leaf-front { z-index: 11; }
+        .flip-card .leaf-back { 
+            z-index: 12; 
             transform: rotateX(-180deg);
-            background-color: #1e1e1e;
-            display: flex;
-            align-items: flex-start;
-            z-index: 12;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
+
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
+
+        /* Clear Divider Line */
         .flip-card::after {
             content: '';
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
-            height: 1px;
+            height: 1.5px;
             background: rgba(0,0,0,0.8);
-            z-index: 25;
+            z-index: 20;
             transform: translateY(-50%);
         }
-        
-        /* Removed duplicate overflow fixes */
 
         @media (max-width: 480px) {
             .flip-card { aspect-ratio: 1; }
@@ -197,7 +200,7 @@ if (isset($_GET['page'])) {
     <script>
         (function() {
             const targetDate = new Date('June 15, 2026 09:00:00').getTime();
-            const previousValues = { days: -1, hours: -1, minutes: -1, seconds: -1 };
+            const previousValues = { days: null, hours: null, minutes: null, seconds: null };
 
             function updateCountdown() {
                 const now = new Date().getTime();
@@ -205,19 +208,33 @@ if (isset($_GET['page'])) {
 
                 if (diff <= 0) return;
 
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const values = {
+                    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((diff % (1000 * 60)) / 1000)
+                };
 
-                flip('days', d);
-                flip('hours', h);
-                flip('minutes', m);
-                flip('seconds', s);
+                for (const unit in values) {
+                    flip(unit, values[unit]);
+                }
             }
 
             function flip(unit, value) {
                 const formattedValue = value.toString().padStart(2, '0');
+                
+                // Initialize if null
+                if (previousValues[unit] === null) {
+                    const card = document.querySelector(`[data-${unit}]`);
+                    if (card) {
+                        card.querySelector('.top').innerText = formattedValue;
+                        card.querySelector('.bottom').innerText = formattedValue;
+                    }
+                    previousValues[unit] = formattedValue;
+                    return;
+                }
+
+                // Only flip if value changed
                 if (previousValues[unit] === formattedValue) return;
 
                 const card = document.querySelector(`[data-${unit}]`);
@@ -228,7 +245,13 @@ if (isset($_GET['page'])) {
                 const leafFront = card.querySelector('.leaf-front');
                 const leafBack = card.querySelector('.leaf-back');
 
-                const prevValue = previousValues[unit] === -1 ? formattedValue : previousValues[unit];
+                const prevValue = previousValues[unit];
+                
+                // Set initial states for transition
+                // 1. Static Top shows NEW value immediately (but hidden by flip-front)
+                // 2. Flip Front shows OLD value (starts at 0deg)
+                // 3. Flip Back shows NEW value (starts at -180deg)
+                // 4. Static Bottom shows OLD value (stays visible until flip revealed)
                 
                 top.innerText = formattedValue;
                 leafFront.innerText = prevValue;
@@ -236,7 +259,7 @@ if (isset($_GET['page'])) {
                 bottom.innerText = prevValue;
 
                 card.classList.remove('flipping');
-                void card.offsetWidth; 
+                void card.offsetWidth; // Reflow
                 card.classList.add('flipping');
 
                 setTimeout(() => {
