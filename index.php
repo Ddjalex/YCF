@@ -127,6 +127,7 @@ if (isset($_GET['page'])) {
             backface-visibility: hidden;
             display: flex;
             justify-content: center;
+            background-color: #1a1a1a;
         }
         .flip-card .top,
         .flip-card .leaf-front {
@@ -136,6 +137,7 @@ if (isset($_GET['page'])) {
             line-height: 1;
             background-color: #222;
             border-bottom: 0.5px solid rgba(0,0,0,0.3);
+            z-index: 2;
         }
         .flip-card .bottom,
         .flip-card .leaf-back {
@@ -156,11 +158,15 @@ if (isset($_GET['page'])) {
             transform-origin: bottom;
             transform-style: preserve-3d;
         }
+        .flip-card .leaf-front {
+            z-index: 11;
+        }
         .flip-card .leaf-back {
             transform: rotateX(-180deg);
             background-color: #1e1e1e;
             display: flex;
             align-items: flex-start;
+            z-index: 10;
         }
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
