@@ -478,13 +478,7 @@ require_once 'functions.php';
                 <a href="/">Home</a>
             </div>
             <div class="nav-item">
-                <a href="/blog">Blog</a>
-            </div>
-            <div class="nav-item">
-                <a href="/contact">Contact</a>
-            </div>
-            <div class="header-tools" style="display: none;">
-                <span class="lang-switch btn-custom-animate">EN</span>
+                <a href="/apply" class="btn-apply-special">Apply Now</a>
             </div>
             <div class="mobile-menu-toggle" style="display: none;">
                 <span></span>
