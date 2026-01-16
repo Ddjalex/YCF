@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Use the password from the screenshot or a default
     if ($password === 'admin123') {
         $_SESSION['admin_logged_in'] = true;
-        header('Location: dashboard.php');
+        header('Location: ./dashboard.php');
         exit;
     } else {
         $error = "Secure access required";
