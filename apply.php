@@ -105,7 +105,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
         </div>
     </div>
 
-    <div id="form-error-banner" style="display: none; background: #fff; border: 1px solid #dc3545; border-radius: 8px; padding: 15px; margin-bottom: 25px; color: #dc3545; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;">
+    <div id="form-error-banner" style="display: none; background: #fff; border: 1px solid #dc3545; border-radius: 8px; padding: 15px; margin-bottom: 25px; color: #dc3545; font-size: 0.95rem; align-items: center; gap: 10px;">
         <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #dc3545;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
         <span>There was a problem with your submission. Please review the fields below.</span>
     </div>
