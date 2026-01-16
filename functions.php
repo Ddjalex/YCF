@@ -14,8 +14,41 @@ function get_db_connection() {
                 $pass = $dbopts['pass'];
                 $dbname = ltrim($dbopts['path'], '/');
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
-                $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-                return $pdo;
+    // Initialize tables if they don't exist
+    $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+        id SERIAL PRIMARY KEY,
+        package_id TEXT,
+        package_name TEXT,
+        first_name TEXT,
+        last_name TEXT,
+        nationality TEXT,
+        email TEXT,
+        gender TEXT,
+        dob TEXT,
+        phone TEXT,
+        profession TEXT,
+        residence TEXT,
+        departure TEXT,
+        visa TEXT,
+        referral TEXT,
+        journey TEXT,
+        impact TEXT,
+        profile_photo TEXT,
+        passport_photo TEXT,
+        payment_method TEXT,
+        txid TEXT,
+        payment_screenshot TEXT,
+        amount REAL,
+        status TEXT DEFAULT 'pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+    
+    $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+        key TEXT PRIMARY KEY,
+        value TEXT
+    )");
+    
+    return $pdo;
             }
         } catch (PDOException $e) {
             error_log("PostgreSQL Connection failed: " . $e->getMessage());
