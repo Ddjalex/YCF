@@ -87,7 +87,7 @@ if (isset($_GET['page'])) {
     </section>
 </section>
 
-<section id="packages" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
+<section id="seats-section" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
     <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
         <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); color: #000; font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
         <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
