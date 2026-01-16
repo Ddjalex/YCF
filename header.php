@@ -516,6 +516,18 @@ require_once 'functions.php';
             const modal = document.getElementById('customModal');
             const msgEl = document.getElementById('modalMessage');
             if (modal && msgEl) {
+                // Reset to success style by default
+                const modalHeader = modal.querySelector('div div');
+                const modalIcon = modal.querySelector('svg');
+                const modalTitle = modal.querySelector('h2');
+                
+                if (modalHeader) modalHeader.style.background = '#2D236E';
+                if (modalTitle) modalTitle.innerText = 'Success!';
+                if (modalIcon) {
+                    modalIcon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
+                    modalIcon.style.fill = '#2D236E';
+                }
+
                 msgEl.innerText = message || "Your registration has been submitted and is pending verification of payment.";
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
