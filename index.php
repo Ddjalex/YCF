@@ -26,6 +26,7 @@ if (isset($_GET['page'])) {
 
     <!-- High-End Flip Countdown -->
     <div style="background: #050505; border-radius: 20px; padding: clamp(20px, 4vw, 40px) 15px; width: 95%; max-width: 800px; margin: 0 auto 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); text-align: center; position: relative; border: 1px solid rgba(255,255,255,0.03);">
+        
         <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 25px); margin-bottom: 30px;">
             <?php foreach (['days', 'hours', 'minutes', 'seconds'] as $unit): ?>
             <div class="countdown-group" style="flex: 1; max-width: 150px;">
@@ -41,6 +42,7 @@ if (isset($_GET['page'])) {
             </div>
             <?php endforeach; ?>
         </div>
+        
         <div style="position: relative; z-index: 2; margin-top: 10px;">
             <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: 18px 45px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
         </div>
@@ -60,6 +62,7 @@ if (isset($_GET['page'])) {
             perspective: 1500px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
+
         .flip-card div {
             position: absolute;
             left: 0;
@@ -71,6 +74,7 @@ if (isset($_GET['page'])) {
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
+
         .top-static, .leaf-front {
             top: 0;
             align-items: flex-end;
@@ -80,6 +84,7 @@ if (isset($_GET['page'])) {
             border-bottom: 1px solid rgba(0,0,0,0.8);
             z-index: 1;
         }
+
         .bottom-static, .leaf-back {
             bottom: 0;
             align-items: flex-start;
@@ -88,6 +93,7 @@ if (isset($_GET['page'])) {
             border-radius: 0 0 10px 10px;
             z-index: 0;
         }
+
         .leaf {
             position: absolute;
             top: 0;
@@ -100,6 +106,7 @@ if (isset($_GET['page'])) {
             pointer-events: none;
             background: none !important;
         }
+
         .leaf-front { 
             z-index: 11 !important; 
             position: absolute; 
@@ -107,6 +114,7 @@ if (isset($_GET['page'])) {
             height: 100%;
             box-shadow: inset 0 -40px 60px -30px rgba(0,0,0,0.9);
         }
+
         .leaf-back { 
             z-index: 12 !important; 
             position: absolute; 
@@ -115,9 +123,12 @@ if (isset($_GET['page'])) {
             transform: rotateX(-180deg);
             box-shadow: inset 0 40px 60px -30px rgba(0,0,0,0.9);
         }
+
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
+
+        /* Ambient Lighting Shadows */
         .flip-card.flipping .top-static::before {
             content: '';
             position: absolute;
@@ -126,11 +137,14 @@ if (isset($_GET['page'])) {
             animation: shadow-fade 0.65s ease-in;
             z-index: 2;
         }
+
         @keyframes shadow-fade {
             0% { opacity: 0; }
             40% { opacity: 1; }
             100% { opacity: 0; }
         }
+
+        /* Physical Split Line */
         .flip-card::after {
             content: '';
             position: absolute;
@@ -143,6 +157,7 @@ if (isset($_GET['page'])) {
             transform: translateY(-50%);
             box-shadow: 0 1px 0 rgba(255,255,255,0.03);
         }
+
         @media (max-width: 480px) {
             .flip-card { aspect-ratio: 0.9; }
         }
@@ -152,6 +167,7 @@ if (isset($_GET['page'])) {
         (function() {
             const targetDate = new Date('June 15, 2026 09:00:00').getTime();
             const previousValues = { days: null, hours: null, minutes: null, seconds: null };
+
             function update() {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
@@ -159,12 +175,14 @@ if (isset($_GET['page'])) {
                     clearInterval(intervalId);
                     return;
                 }
+
                 const values = {
                     days: Math.floor(diff / 86400000),
                     hours: Math.floor((diff % 86400000) / 3600000),
                     minutes: Math.floor((diff % 3600000) / 60000),
                     seconds: Math.floor((diff % 60000) / 1000)
                 };
+
                 for (const unit in values) {
                     const val = String(values[unit]).padStart(2, '0');
                     if (previousValues[unit] === null) {
@@ -181,28 +199,35 @@ if (isset($_GET['page'])) {
                     }
                 }
             }
+
             function flip(unit, newVal) {
                 const card = document.querySelector(`[data-unit="${unit}"]`);
                 if (!card) return;
+                
                 const topStatic = card.querySelector('.top-static');
                 const bottomStatic = card.querySelector('.bottom-static');
                 const leafFront = card.querySelector('.leaf-front');
                 const leafBack = card.querySelector('.leaf-back');
                 const oldVal = previousValues[unit];
+
                 card.classList.remove('flipping');
                 void card.offsetWidth;
+
                 leafFront.innerText = oldVal;
                 bottomStatic.innerText = oldVal;
                 leafBack.innerText = newVal;
                 topStatic.innerText = newVal;
                 previousValues[unit] = newVal;
+
                 card.classList.add('flipping');
+
                 setTimeout(() => {
                     card.classList.remove('flipping');
                     bottomStatic.innerText = newVal;
                     leafFront.innerText = newVal;
                 }, 650);
             }
+
             const intervalId = setInterval(update, 1000);
             update();
         })();
