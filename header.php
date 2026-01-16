@@ -19,17 +19,34 @@ require_once 'functions.php';
             --text-gray: #4a4a4a;
             --deep-navy: #0a1128;
             --btn-yellow: #FFD700;
+            
+            /* Styles from attached text */
+            --wp--preset--color--black: #000000;
+            --wp--preset--color--white: #ffffff;
+            --wp--preset--spacing--40: 1rem;
+            --wp--preset--spacing--50: 1.5rem;
+            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --e-global-color-a2bd39d: #332370;
+            --e-global-color-0ca85f4: #F1D302;
+            --direction-multiplier: 1;
+            --affwp-card-padding: 1.5rem;
+            --container-border-radius: 20px;
         }
 
         * {
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Mobile First Responsive Utilities */
-        .container {
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(51, 51, 51);
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
         }
 
         @media (max-width: 1024px) {
