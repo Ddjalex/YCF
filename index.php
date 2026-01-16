@@ -24,31 +24,53 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <div class="countdown-wrapper" style="background: #f8f9fa; border-radius: 10px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); width: fit-content; max-width: 95%; margin: 0 auto 30px; min-height: 50px; border: 1px solid #eee; gap: 8px;">
-        <div style="background: #00aeef; padding: 8px 1.2rem; height: auto; display: flex; align-items: center; border-radius: 6px;">
-            <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: white; line-height: 1.1; white-space: nowrap;">Starts in:</span>
-        </div>
+    <!-- Premium Countdown & Info Cards -->
+    <div style="background: #2D236E; border-radius: 40px; padding: 40px 20px; width: 100%; max-width: 1000px; margin: 0 auto 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 2px solid #FFD700;">
+        <h3 class="montserrat" style="color: white; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;">Time To Application Deadline</h3>
         
-        <div id="countdown" style="display: flex; gap: 0.8rem; align-items: center; padding: 8px; color: #333; font-family: Inter, Arial, sans-serif; flex-wrap: wrap; justify-content: center;">
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="days" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">d</span>
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 3vw, 30px); margin-bottom: 40px; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div style="width: clamp(70px, 15vw, 100px); height: clamp(70px, 15vw, 100px); background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: #2D236E; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" id="days">00</div>
+                <span style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Days</span>
             </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="hours" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">h</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div style="width: clamp(70px, 15vw, 100px); height: clamp(70px, 15vw, 100px); background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: #2D236E; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" id="hours">00</div>
+                <span style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Hours</span>
             </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="minutes" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">m</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div style="width: clamp(70px, 15vw, 100px); height: clamp(70px, 15vw, 100px); background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: #2D236E; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" id="minutes">00</div>
+                <span style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Minutes</span>
             </div>
-            <div class="time-block" style="text-align: center; display: flex; align-items: baseline; gap: 3px;">
-                <span id="seconds" style="display: block; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 700; line-height: 1;">00</span>
-                <span style="text-transform: uppercase; font-size: 0.6rem; font-weight: 600; color: #999;">s</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div style="width: clamp(70px, 15vw, 100px); height: clamp(70px, 15vw, 100px); background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; color: #2D236E; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" id="seconds">00</div>
+                <span style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Seconds</span>
             </div>
         </div>
-        
-        <a href="#packages" class="btn-custom-animate" style="padding: 8px 16px; font-size: 0.85rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Register Now</a>
+
+        <!-- High-End Info Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; border-bottom: 5px solid #FFD700;">
+                <div style="background: #FFD700; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #2D236E;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div style="color: white; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px;">Event Location</div>
+                <div style="background: #FFD700; color: #2D236E; padding: 4px 12px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; display: inline-block;">Berlin, Germany</div>
+            </div>
+            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; border-bottom: 5px solid #FFD700;">
+                <div style="background: #FFD700; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #2D236E;"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                </div>
+                <div style="color: white; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px;">Event Dates</div>
+                <div style="background: #FFD700; color: #2D236E; padding: 4px 12px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; display: inline-block;">May 7–10, 2026</div>
+            </div>
+            <div style="background: #2D236E; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; border-bottom: 5px solid #FFD700;">
+                <div style="background: #FFD700; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #2D236E;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                </div>
+                <div style="color: white; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px;">Total Seats</div>
+                <div style="background: #FFD700; color: #2D236E; padding: 4px 12px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; display: inline-block;">200</div>
+            </div>
+        </div>
     </div>
 
     <!-- News & Updates Section (Now after countdown) -->
