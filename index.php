@@ -25,79 +25,195 @@ if (isset($_GET['page'])) {
     </div>
 
     <!-- High-End Flip Countdown -->
-    <div style="background: #000; border-radius: clamp(8px, 2vw, 12px); padding: clamp(12px, 2.5vw, 20px) 10px; width: 95%; max-width: 650px; margin: 0 auto 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-        <div class="flip-countdown" style="display: flex; gap: clamp(10px, 2vw, 18px); justify-content: center;">
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="days">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">DAYS</div>
+    <div style="background: #000; border-radius: clamp(10px, 2vw, 20px); padding: clamp(20px, 4vw, 40px) 15px; width: 95%; max-width: 800px; margin: 0 auto 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); text-align: center; position: relative; border: 1px solid rgba(255,255,255,0.03);">
+        
+        <div id="countdown" style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 25px); margin-bottom: 30px;">
+            <?php foreach (['days', 'hours', 'minutes', 'seconds'] as $unit): ?>
+            <div class="countdown-group" style="flex: 1; max-width: 150px;">
+                <div class="flip-card" data-unit="<?php echo $unit; ?>">
+                    <div class="top-static">00</div>
+                    <div class="bottom-static">00</div>
+                    <div class="leaf">
+                        <div class="leaf-front">00</div>
+                        <div class="leaf-back">00</div>
+                    </div>
+                </div>
+                <span class="label" style="margin-top: 15px; color: #666; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;"><?php echo ($unit === 'minutes') ? 'Mins' : (($unit === 'seconds') ? 'Secs' : ucfirst($unit)); ?></span>
             </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="hours">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">HOURS</div>
-            </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="minutes">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">MINS</div>
-            </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="seconds">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">SECS</div>
-            </div>
+            <?php endforeach; ?>
         </div>
         
-        <div style="position: relative; z-index: 2;">
-            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1); margin-top: 20px;">Register Here</a>
+        <div style="position: relative; z-index: 2; margin-top: 10px;">
+            <a href="apply" style="display: inline-block; background: #fff; color: #000; padding: 18px 45px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(255,255,255,0.1);">Register Here</a>
         </div>
     </div>
 
     <style>
-        .flip-card span {
-            display: inline-block;
+        .flip-card {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 0.95;
+            background-color: #0a0a0a;
+            border-radius: 12px;
+            font-size: clamp(2rem, 6vw, 5.5rem);
+            font-weight: 800;
+            color: #eee;
+            font-family: 'Montserrat', sans-serif;
+            perspective: 1500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
-        .flip-card span.animate {
-            animation: smoothFlip .6s ease-in-out;
+
+        .flip-card div {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
-        @keyframes smoothFlip {
-            0% { transform: rotateX(0); opacity: 1; }
-            50% { transform: rotateX(-45deg); opacity: .6; }
-            100% { transform: rotateX(0); opacity: 1; }
+
+        .top-static, .leaf-front {
+            top: 0;
+            align-items: flex-end;
+            line-height: 1;
+            background: linear-gradient(to bottom, #1a1a1a, #151515) !important;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid rgba(0,0,0,0.8);
+            z-index: 1;
+        }
+
+        .bottom-static, .leaf-back {
+            bottom: 0;
+            align-items: flex-start;
+            line-height: 0;
+            background: linear-gradient(to bottom, #121212, #0d0d0d) !important;
+            border-radius: 0 0 10px 10px;
+            z-index: 0;
+        }
+
+        .leaf {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            z-index: 10 !important;
+            transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom;
+            pointer-events: none;
+            background: none !important;
+        }
+
+        .leaf-front { 
+            z-index: 11 !important; 
+            position: absolute; 
+            top: 0; 
+            height: 100%;
+            box-shadow: inset 0 -40px 60px -30px rgba(0,0,0,0.9);
+        }
+
+        .leaf-back { 
+            z-index: 12 !important; 
+            position: absolute; 
+            top: 0; 
+            height: 100%; 
+            transform: rotateX(-180deg);
+            box-shadow: inset 0 40px 60px -30px rgba(0,0,0,0.9);
+        }
+
+        .flip-card.flipping .leaf {
+            transform: rotateX(-180deg);
+        }
+
+        /* Physical Split Line */
+        .flip-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #000;
+            z-index: 25;
+            transform: translateY(-50%);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.03);
+        }
+
+        @media (max-width: 480px) {
+            .flip-card { aspect-ratio: 0.9; }
         }
     </style>
 
     <script>
         (function() {
-            const target = new Date("2026-06-15T09:00:00").getTime();
-            
-            function update(id, val) {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const v = String(val).padStart(2, '0');
-                if (el.textContent !== v) {
-                    el.textContent = v;
-                    el.classList.remove('animate');
-                    void el.offsetWidth;
-                    el.classList.add('animate');
+            const targetDate = new Date('June 15, 2026 09:00:00').getTime();
+            const previousValues = { days: null, hours: null, minutes: null, seconds: null };
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+                if (diff < 0) {
+                    clearInterval(intervalId);
+                    return;
+                }
+
+                const values = {
+                    days: Math.floor(diff / 86400000),
+                    hours: Math.floor((diff % 86400000) / 3600000),
+                    minutes: Math.floor((diff % 3600000) / 60000),
+                    seconds: Math.floor((diff % 60000) / 1000)
+                };
+
+                for (const unit in values) {
+                    const val = String(values[unit]).padStart(2, '0');
+                    if (previousValues[unit] === null) {
+                        const card = document.querySelector(`[data-unit="${unit}"]`);
+                        if (card) {
+                            card.querySelector('.top-static').innerText = val;
+                            card.querySelector('.bottom-static').innerText = val;
+                            previousValues[unit] = val;
+                        }
+                        continue;
+                    }
+                    if (previousValues[unit] !== val) {
+                        flip(unit, val);
+                    }
                 }
             }
 
-            function tick() {
-                const now = new Date().getTime();
-                const d = target - now;
-                if (d < 0) return;
+            function flip(unit, newVal) {
+                const card = document.querySelector(`[data-unit="${unit}"]`);
+                if (!card) return;
+                
+                const topStatic = card.querySelector('.top-static');
+                const bottomStatic = card.querySelector('.bottom-static');
+                const leafFront = card.querySelector('.leaf-front');
+                const leafBack = card.querySelector('.leaf-back');
+                const oldVal = previousValues[unit];
 
-                const days = Math.floor(d / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((d % (1000 * 60)) / 1000);
+                card.classList.remove('flipping');
+                void card.offsetWidth;
 
-                update("days", days);
-                update("hours", hours);
-                update("minutes", minutes);
-                update("seconds", seconds);
+                leafFront.innerText = oldVal;
+                bottomStatic.innerText = oldVal;
+                leafBack.innerText = newVal;
+                topStatic.innerText = newVal;
+                previousValues[unit] = newVal;
+
+                card.classList.add('flipping');
+
+                setTimeout(() => {
+                    card.classList.remove('flipping');
+                    bottomStatic.innerText = newVal;
+                    leafFront.innerText = newVal;
+                }, 650);
             }
 
-            setInterval(tick, 1000);
-            tick();
+            const intervalId = setInterval(update, 1000);
+            update();
         })();
     </script>
 
