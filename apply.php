@@ -21,19 +21,19 @@ $package_names = [
 ];
 
 $package_prices = [
-    'fully_funded' => 19.99,
-    'partially_funded' => 19.99,
+    'fully_funded' => 31.99,
+    'partially_funded' => 31.99,
     'forum_admission' => 499.00,
     'self_funded' => 799.00,
-    'funded' => 19.99
+    'funded' => 31.99
 ];
 
 $service_charges = [
-    'fully_funded' => 0.00,
-    'partially_funded' => 0.00,
+    'fully_funded' => 3.00,
+    'partially_funded' => 3.00,
     'forum_admission' => 120.00,
     'self_funded' => 0.00,
-    'funded' => 0.00
+    'funded' => 3.00
 ];
 
 $current_package_name = $package_names[$package] ?? $package_names['funded'];

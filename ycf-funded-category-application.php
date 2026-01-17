@@ -7,10 +7,10 @@ $package_names = [
     'funded' => 'YCF Funded Category Application'
 ];
 $package_prices = [
-    'funded' => 16.99
+    'funded' => 31.99
 ];
 $service_charges = [
-    'funded' => 0.00
+    'funded' => 3.00
 ];
 $current_package_name = $package_names['funded'];
 $current_price = $package_prices['funded'];
@@ -33,7 +33,7 @@ $is_guaranteed = false;
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;" id="package-details-grid">
             <!-- Fully Funded -->
             <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
-                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">$16.99</div>
+                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">$34.99</div>
                 <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase;">Fully Funded Category</h3>
                 
                 <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px; text-align: left;">
@@ -56,7 +56,7 @@ $is_guaranteed = false;
 
             <!-- Partially Funded -->
             <div style="background: #2D236E; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
-                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">$16.99</div>
+                <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">$34.99</div>
                 <h3 class="montserrat" style="font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase;">Partially Funded Category</h3>
                 
                 <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 20px; text-align: left;">

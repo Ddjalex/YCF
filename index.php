@@ -439,7 +439,7 @@ if (isset($_GET['page'])) {
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px;">
             <!-- Fully Funded Detail -->
             <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
-                <div style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-align: center;">$16.99</div>
+                <div style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-align: center;">$34.99</div>
                 <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Fully Funded Category</h3>
                 <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 15px;">
                     <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
@@ -461,7 +461,7 @@ if (isset($_GET['page'])) {
 
             <!-- Partially Funded Detail -->
             <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
-                <div style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-align: center;">$16.99</div>
+                <div style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-align: center;">$34.99</div>
                 <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Partially Funded Category</h3>
                 <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 15px;">
                     <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
