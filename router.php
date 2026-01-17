@@ -9,6 +9,7 @@ if (file_exists($file) && !is_dir($file)) {
     if ($ext === 'mp4') {
         header('Content-Type: video/mp4');
         header('Accept-Ranges: bytes');
+        header('Content-Length: ' . filesize($file));
         readfile($file);
         exit;
     }
