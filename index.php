@@ -381,24 +381,67 @@ if (isset($_GET['page'])) {
         </div>
     </section>
 
-    <!-- European Youth Vision Section -->
-    <section style="padding: 60px 20px; background: #fff; color: #000; text-align: center;">
-        <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
-            <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; color: #000; line-height: 1.1; font-family: Montserrat, sans-serif;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
-            <p style="font-size: 1.1rem; color: #333; max-width: 800px; margin: 0 auto 3rem; font-weight: 400; font-family: Inter, sans-serif;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+    <!-- Forum Highlights Section -->
+    <section style="position: relative; padding: 100px 20px; min-height: 800px; display: flex; align-items: center; background: url('https://thecgdl.org/wp-content/uploads/2026/01/YDF-Germany-06-scaled.jpg') center/cover no-repeat; color: white;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; position: relative; z-index: 2; width: 100%; align-items: flex-start;">
+            <div style="flex: 1; min-width: 300px; padding-top: 40px;">
+                <h2 class="montserrat" style="font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1; margin-bottom: 30px; text-transform: uppercase;">FORUM<br>HIGHLIGHTS</h2>
+                <p style="font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 500px;">
+                    This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.
+                </p>
+                <a href="#seats-section" class="btn-custom-animate" style="padding: 18px 45px !important; font-size: 1.1rem !important;">Register Now</a>
+            </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
-                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">EU Youth Strategy 2019–2027</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+            <div style="flex: 1.2; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M21 6h-7.59l3.29-3.29L15.29 1.29 12 4.59 8.71 1.29 7.29 2.71 10.59 6H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"/></svg>
+                    </div>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Expert-led Workshops & Interactive Masterclasses</span>
                 </div>
-                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">EU Digital Decade & AI governance goals</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Empowering young people in emerging technologies.</p>
+                
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Youth Diplomacy Sessions & Policy Dialogues</span>
                 </div>
-                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
-                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Council of Europe’s Youth Sector Priorities</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+                
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Networking with global leaders, changemakers & institutions</span>
+                </div>
+                
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.91-4.33-3.56zm2.95-8H5.08c.96-1.65 2.49-2.93 4.33-3.56-.6 1.11-1.06 2.31-1.38 3.56zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                    </div>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Country presentations, cultural exchange & collaborative activities</span>
+                </div>
+                
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M12 7V3H2v18h20V7H12zm-2 12H4v-2h6v2zm0-4H4v-2h6v2zm0-4H4V9h6v2zm10 8h-8v-2h8v2zm0-4h-8v-2h8v2zm0-4h-8V9h8v2z"/></svg>
+                    </div>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Visit to the Federal Parliament of Germany (The Bundestag)</span>
+                </div>
+                
+                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 15px; display: flex; flex-direction: column; gap: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <div style="flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: #FFD700;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <span style="font-size: 1.25rem; font-weight: 700;">Guided City Tour of Berlin, highlighting:</span>
+                    </div>
+                    <div style="padding-left: 60px; font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">
+                        • World War history<br>
+                        • Diplomatic evolution in Europe<br>
+                        • Lessons for future generations<br>
+                        • The city’s transformation into a hub of innovation, democracy & culture
+                    </div>
                 </div>
             </div>
         </div>
