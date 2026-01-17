@@ -27,7 +27,7 @@ $package_prices = [
     'forum_admission' => 597.00,
     'self_funded' => 697.00,
     'funded' => 149.99,
-    'visa_letter' => 147.99
+    'visa_letter' => 149.99
 ];
 
 $service_charges = [
@@ -36,7 +36,7 @@ $service_charges = [
     'forum_admission' => 2.00,
     'self_funded' => 2.00,
     'funded' => 0.00,
-    'visa_letter' => 2.00
+    'visa_letter' => 0.00
 ];
 
 $current_package_name = $package_names[$package] ?? $package_names['funded'];
