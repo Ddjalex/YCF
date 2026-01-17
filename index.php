@@ -18,8 +18,9 @@ if (isset($_GET['page'])) {
     <div class="video-container" style="width: 100%; max-width: 900px; aspect-ratio: 16/9; height: auto; border-radius: clamp(10px, 3vw, 40px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); background: #000; margin: 0 auto 30px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $display_video = $hero_video;
-        if (strpos($display_video, 'http') !== 0 && strpos($display_video, '/') !== 0 && strpos($display_video, 'attached_assets') !== 0 && strpos($display_video, 'uploads/') !== 0) {
-            $display_video = '/' . $display_video;
+        // Ensure local paths are handled correctly relative to the root
+        if (strpos($display_video, 'http') !== 0 && strpos($display_video, 'attached_assets') !== 0) {
+            $display_video = '/' . ltrim($display_video, '/');
         }
         ?>
         <video src="<?php echo htmlspecialchars($display_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
