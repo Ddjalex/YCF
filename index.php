@@ -382,23 +382,23 @@ if (isset($_GET['page'])) {
     </section>
 
     <!-- European Youth Vision Section -->
-    <section style="padding: 60px 20px; background: #2D236E; color: white; text-align: center;">
+    <section style="padding: 100px 20px; background: #fff; color: #000; text-align: center;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
-            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto 40px;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+            <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #000; line-height: 1.1;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
+            <p style="font-size: 1.1rem; color: #333; max-width: 800px; margin: 0 auto 60px; font-weight: 500;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div style="background: rgba(255,255,255,0.1); padding: 40px 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
-                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #FFD700;">EU Youth Strategy 2019–2027</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.6;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+                <div style="background: #2D236E; padding: 50px 30px; border-radius: 25px; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">EU Youth Strategy 2019–<br>2027</h3>
+                    <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 40px 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
-                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #FFD700;">EU Digital Decade & AI governance goals</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.6;">Empowering young people in emerging technologies.</p>
+                <div style="background: #2D236E; padding: 50px 30px; border-radius: 25px; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">EU Digital Decade & AI<br>governance goals</h3>
+                    <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9;">Empowering young people in emerging technologies.</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 40px 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
-                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #FFD700;">Council of Europe’s Youth Sector Priorities</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.6;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+                <div style="background: #2D236E; padding: 50px 30px; border-radius: 25px; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">Council of Europe’s<br>Youth Sector Priorities</h3>
+                    <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
                 </div>
             </div>
         </div>
