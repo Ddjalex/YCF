@@ -503,6 +503,38 @@ if (isset($_GET['page'])) {
             </p>
         </div>
 
+    <style>
+        /* Shared Sliding Animation for Buttons */
+        .btn-slide-animation {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1;
+        }
+        
+        .btn-slide-animation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+        }
+        
+        .btn-slide-animation:hover::before {
+            left: 0;
+        }
+
+        .btn-slide-animation:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+    
     <div style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid; gap: 20px; max-width: 900px; margin: 0 auto 40px;">
         <!-- Forum Admission Detail -->
         <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
@@ -527,7 +559,7 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <a href="apply?package=forum_admission" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
+            <a href="apply?package=forum_admission" class="btn-slide-animation" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
         </div>
 
         <!-- Self Funded Detail -->
@@ -554,12 +586,11 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <a href="apply?package=self_funded" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
+            <a href="apply?package=self_funded" class="btn-slide-animation" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
         </div>
     </div>
 
     <div style="margin-top: 30px; display: flex; justify-content: center; width: 100%;">
-        <a href="apply" class="btn-apply-special" style="max-width: 900px; padding: 18px 0;">Apply Now!</a>
     </div>
 </section>
 
