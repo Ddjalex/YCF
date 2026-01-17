@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($action === 'update_hero') {
             $video_url = $_POST['video_url'] ?? '';
+            $success_msg = "Video path updated.";
             
             // Handle file upload
             if (isset($_FILES['hero_file']) && $_FILES['hero_file']['error'] === UPLOAD_ERR_OK) {
@@ -27,11 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $target = $upload_dir . $filename;
                 if (move_uploaded_file($_FILES['hero_file']['tmp_name'], $target)) {
                     $video_url = 'uploads/' . $filename;
+                    $success_msg = "Video uploaded and updated successfully!";
                 }
             }
             
             $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('hero_video', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value");
-            $stmt->execute([$video_url]);
+            if ($stmt->execute([$video_url])) {
+                echo "<script>alert('$success_msg'); window.location.href='dashboard.php';</script>";
+                exit;
+            }
         } elseif ($action === 'update_countdown') {
             $date = $_POST['target_date'] ?? '';
             $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('countdown_date', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value");
