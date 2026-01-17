@@ -14,7 +14,7 @@ if (file_exists($file) && !is_dir($file)) {
         if (isset($_SERVER['HTTP_RANGE'])) {
             preg_match('/bytes=(\d+)-(\d*)?/', $_SERVER['HTTP_RANGE'], $matches);
             $start = intval($matches[1]);
-            $end = ($matches[2] !== '') ? intval($matches[2]) : $end;
+            $end = (isset($matches[2]) && $matches[2] !== '') ? intval($matches[2]) : $end;
             
             header('HTTP/1.1 206 Partial Content');
             header("Content-Range: bytes $start-$end/$size");
@@ -30,8 +30,8 @@ if (file_exists($file) && !is_dir($file)) {
         $fp = fopen($file, 'rb');
         fseek($fp, $start);
         
-        $buffer = 8192;
         while (!feof($fp) && ($pos = ftell($fp)) <= $end) {
+            $buffer = 8192;
             if ($pos + $buffer > $end) {
                 $buffer = $end - $pos + 1;
             }

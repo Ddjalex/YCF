@@ -25,8 +25,8 @@ if (isset($_GET['page'])) {
         }
         ?>
         <video key="<?php echo htmlspecialchars($display_video); ?>" autoplay loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;" onloadedmetadata="this.play()">
-            <source src="/<?php echo htmlspecialchars($display_video); ?>#t=0.001" type="video/mp4">
-            <source src="<?php echo htmlspecialchars($display_video); ?>#t=0.001" type="video/mp4">
+            <source src="/<?php echo htmlspecialchars($display_video); ?>" type="video/mp4">
+            <source src="<?php echo htmlspecialchars($display_video); ?>" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
