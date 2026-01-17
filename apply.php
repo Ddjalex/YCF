@@ -148,7 +148,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                 </div>
 
                 <div style="display: flex; justify-content: flex-start;">
-                    <button type="button" onclick="nextStep(2)" class="btn-apply-special" style="width: 200px; padding: 15px;">NEXT</button>
+                    <button type="button" onclick="nextStep(2)" class="btn-apply-style" style="width: 200px;">NEXT</button>
                 </div>
             </div>
         </div>
@@ -248,8 +248,8 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                 </div>
 
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
-                    <button type="button" onclick="nextStep(1)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="button" onclick="nextStep(3)" class="btn-apply-special" style="width: 200px; padding: 15px;">NEXT</button>
+                    <button type="button" onclick="nextStep(1)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-family: 'Inter', sans-serif;">Previous</button>
+                    <button type="button" onclick="nextStep(3)" class="btn-apply-style" style="width: 200px; margin-top: 0;">NEXT</button>
                 </div>
             </div>
         </div>

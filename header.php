@@ -19,8 +19,6 @@ require_once 'functions.php';
             --text-gray: #4a4a4a;
             --deep-navy: #0a1128;
             --btn-yellow: #FFD700;
-            
-            /* Styles from attached text */
             --wp--preset--color--black: #000000;
             --wp--preset--color--white: #ffffff;
             --wp--preset--spacing--40: 1rem;
@@ -31,6 +29,59 @@ require_once 'functions.php';
             --direction-multiplier: 1;
             --affwp-card-padding: 1.5rem;
             --container-border-radius: 20px;
+            --flip-bg: #1a1a1a;
+            --flip-text: #ffffff;
+            --flip-label: #FFD700;
+            --flip-border: rgba(255,255,255,0.1);
+        }
+
+        .btn-apply-style {
+            --primary-blue: #009edb;
+            --dark-blue: #003366;
+            --light-blue: #e6f4fa;
+            --white: #ffffff;
+            --text-gray: #4a4a4a;
+            --deep-navy: #0a1128;
+            --btn-yellow: #FFD700;
+            --wp--preset--color--black: #000000;
+            --wp--preset--color--white: #ffffff;
+            --wp--preset--spacing--40: 1rem;
+            --wp--preset--spacing--50: 1.5rem;
+            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --e-global-color-a2bd39d: #332370;
+            --e-global-color-0ca85f4: #F1D302;
+            --direction-multiplier: 1;
+            --affwp-card-padding: 1.5rem;
+            --container-border-radius: 20px;
+            --flip-bg: #1a1a1a;
+            --flip-text: #ffffff;
+            --flip-label: #FFD700;
+            --flip-border: rgba(255,255,255,0.1);
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: white;
+            text-align: center;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background: var(--dark-blue);
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-apply-style:hover {
+            background: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--wp--preset--shadow--natural);
         }
 
         * {
@@ -499,7 +550,7 @@ require_once 'functions.php';
             </div>
             <div style="padding: 40px 30px; text-align: center;">
                 <p id="modalMessage" style="font-size: 1.1rem; line-height: 1.6; color: #4a4a4a; margin-bottom: 30px; font-weight: 500;">Your registration has been submitted and is pending verification of payment.</p>
-                <button onclick="closeCustomModal()" class="btn-custom-animate" style="width: 100%; padding: 18px; font-size: 1rem; letter-spacing: 2px;">CONTINUE</button>
+                <button onclick="closeCustomModal()" class="btn-apply-style" style="margin-top: 0; letter-spacing: 2px;">CONTINUE</button>
             </div>
         </div>
     </div>

@@ -72,7 +72,7 @@ if (isset($_GET['page'])) {
         </div>
         
         <div style="position: relative; z-index: 2; margin-top: 30px;">
-            <a href="#seats-section" style="display: inline-block; background: #FFD700; color: #000; padding: clamp(12px, 2.5vw, 16px) clamp(30px, 6vw, 50px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 900; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(255,215,0,0.2);">Register Here</a>
+            <a href="#seats-section" class="btn-apply-style">Register Here</a>
         </div>
     </div>
 
