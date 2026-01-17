@@ -405,7 +405,7 @@ if (isset($_GET['page'])) {
     </section>
 
     <!-- Forum Highlights Section -->
-    <section style="position: relative; padding: 100px 20px; min-height: 800px; display: flex; align-items: center; background: url('https://thecgdl.org/wp-content/uploads/2026/01/YDF-Germany-06-scaled.jpg') center/cover no-repeat; color: white;">
+    <section style="position: relative; padding: 100px 20px; min-height: 800px; display: flex; align-items: center; background: url('attached_assets/images_(58)_1768649186788.jpg') center/cover no-repeat; color: white;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; position: relative; z-index: 2; width: 100%; align-items: flex-start;">
             <div style="flex: 1; min-width: 300px; padding-top: 40px;">
