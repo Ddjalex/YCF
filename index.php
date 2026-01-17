@@ -440,35 +440,31 @@ if (isset($_GET['page'])) {
     </section>
 </section>
 
-<section id="seats-section" class="participation-seats" style="padding: 100px 20px; text-align: center; background: #fff;">
-    <div style="max-width: 1140px; margin: 0 auto;">
-        <h2 class="montserrat" style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: #000; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Total Participation Seats: 200</h2>
-        <p style="font-size: 1.1rem; color: #333; margin-bottom: 60px; font-weight: 500;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
+<section id="seats-section" class="participation-seats" style="padding: 60px 20px; text-align: center; background: #fff;">
+    <div style="border: 1px solid #eee; border-radius: 20px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; background: #fff;">
+        <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); color: #000; font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; font-family: Montserrat, sans-serif;">Total Participation Seats: 200</h2>
+        <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem; font-family: Inter, sans-serif;">CGDL is offering <strong>200 seats</strong> for the Youth Crypto Forum 2026:</p>
         
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-            <!-- Fully Funded -->
-            <div style="background: #2D236E; border-radius: 20px; padding: 50px 20px; flex: 1; min-width: 260px; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 8px solid #FFD700; transition: transform 0.3s ease;">
-                <h3 class="montserrat" style="color: white; font-size: 1.25rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Fully Funded</h3>
-                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 12px 30px; border-radius: 12px; font-weight: 900; font-size: 1.1rem; margin-bottom: 20px;">30 Seats</div>
-                <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; font-weight: 600;">Competitive Selection</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Fully Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">30 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
             </div>
-            <!-- Partially Funded -->
-            <div style="background: #2D236E; border-radius: 20px; padding: 50px 20px; flex: 1; min-width: 260px; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 8px solid #FFD700; transition: transform 0.3s ease;">
-                <h3 class="montserrat" style="color: white; font-size: 1.25rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Partially Funded</h3>
-                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 12px 30px; border-radius: 12px; font-weight: 900; font-size: 1.1rem; margin-bottom: 20px;">50 Seats</div>
-                <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; font-weight: 600;">Competitive Selection</div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Partially Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">50 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Competitive Selection</div>
             </div>
-            <!-- Forum Admission -->
-            <div style="background: #2D236E; border-radius: 20px; padding: 50px 20px; flex: 1; min-width: 260px; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 8px solid #FFD700; transition: transform 0.3s ease;">
-                <h3 class="montserrat" style="color: white; font-size: 1.25rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Forum Admission</h3>
-                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 12px 30px; border-radius: 12px; font-weight: 900; font-size: 1.1rem; margin-bottom: 20px;">40 Seats</div>
-                <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; font-weight: 600;">Guaranteed Selection</div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Forum Admission</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">40 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
             </div>
-            <!-- Self Funded -->
-            <div style="background: #2D236E; border-radius: 20px; padding: 50px 20px; flex: 1; min-width: 260px; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 8px solid #FFD700; transition: transform 0.3s ease;">
-                <h3 class="montserrat" style="color: white; font-size: 1.25rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Self Funded</h3>
-                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 12px 30px; border-radius: 12px; font-weight: 900; font-size: 1.1rem; margin-bottom: 20px;">80 Seats</div>
-                <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; font-weight: 600;">Guaranteed Selection</div>
+            <div class="seat-card" style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1rem; border-bottom: 8px solid #FFD700; text-decoration: none; display: block; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                <h3 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Self Funded</h3>
+                <div style="background: #FFD700; color: #2D236E; display: inline-block; padding: 0.6rem 1.8rem; border-radius: 8px; font-weight: 900; font-size: 1.1rem; margin-bottom: 1rem; box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2);">80 Seats</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 600; font-family: Inter, sans-serif;">Guaranteed Selection</div>
             </div>
         </div>
     </div>
