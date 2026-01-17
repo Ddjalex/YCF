@@ -405,70 +405,70 @@ if (isset($_GET['page'])) {
     </section>
 
     <!-- Forum Highlights Section -->
-    <section style="position: relative; padding: 100px 20px; min-height: 800px; display: flex; align-items: center; background: url('attached_assets/images_(58)_1768649186788.jpg') center/cover no-repeat; color: white;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; position: relative; z-index: 2; width: 100%; align-items: flex-start;">
-            <div style="flex: 1; min-width: 300px; padding-top: 40px;">
-                <h2 class="montserrat" style="font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1; margin-bottom: 30px; text-transform: uppercase;">FORUM<br>HIGHLIGHTS</h2>
-                <p style="font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 500px;">
+    <section style="position: relative; padding: 120px 20px; min-height: 850px; display: flex; align-items: center; background: url('attached_assets/images_(58)_1768649186788.jpg') center/cover no-repeat; color: white;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 1;"></div>
+        <div style="max-width: 1300px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; position: relative; z-index: 2; width: 100%; align-items: flex-start; justify-content: space-between;">
+            <div style="flex: 1; min-width: 300px; padding-top: 20px;">
+                <h2 class="montserrat" style="font-size: clamp(3.5rem, 10vw, 6.5rem); font-weight: 900; line-height: 0.9; margin-bottom: 25px; text-transform: uppercase; letter-spacing: -2px;">FORUM<br>HIGHLIGHTS</h2>
+                <p style="font-size: 1.35rem; line-height: 1.5; color: rgba(255,255,255,0.95); margin-bottom: 45px; max-width: 520px; font-weight: 500;">
                     This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.
                 </p>
-                <a href="#seats-section" class="btn-custom-animate" style="padding: 18px 45px !important; font-size: 1.1rem !important;">Register Now</a>
+                <a href="#seats-section" class="btn-custom-animate" style="padding: 20px 50px !important; font-size: 1.2rem !important; letter-spacing: 1px;">Register Now</a>
             </div>
             
-            <div style="flex: 1.2; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
+            <div style="flex: 1.1; min-width: 300px; display: flex; flex-direction: column; gap: 12px; max-width: 650px;">
                 <!-- Workshop Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 20px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.1); transform: perspective(1000px); transition: transform 0.3s ease;">
-                    <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 18px 30px; border-radius: 50px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease;">
+                    <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
                     </div>
-                    <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Expert-led Workshops & Interactive Masterclasses</h3>
+                    <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Expert-led Workshops & Interactive Masterclasses</h3>
                 </div>
 
                 <!-- Diplomacy Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 20px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 18px 30px; border-radius: 50px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                     </div>
-                    <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Youth Diplomacy Sessions & Policy Dialogues</h3>
+                    <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Youth Diplomacy Sessions & Policy Dialogues</h3>
                 </div>
 
                 <!-- Networking Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 20px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 18px 30px; border-radius: 50px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                     </div>
-                    <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Networking with global leaders, changemakers & institutions</h3>
+                    <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Networking with global leaders, changemakers & institutions</h3>
                 </div>
 
                 <!-- Cultural Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 20px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 18px 30px; border-radius: 50px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26z"/></svg>
                     </div>
-                    <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Country presentations, cultural exchange & collaborative activities</h3>
+                    <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Country presentations, cultural exchange & collaborative activities</h3>
                 </div>
 
                 <!-- Bundestag Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 20px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M12 7V3H2v18h20V7H12zm-2 12H4v-2h6v2zm0-4H4v-2h6v2zm0-4H4V9h6v2zm10 8h-8v-2h8v2zm0-4h-8v-2h8v2zm0-4h-8V9h8v2z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 18px 30px; border-radius: 50px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M12 7V3H2v18h20V7H12zm-2 12H4v-2h6v2zm0-4H4v-2h6v2zm0-4H4V9h6v2zm10 8h-8v-2h8v2zm0-4h-8v-2h8v2zm0-4h-8V9h8v2z"/></svg>
                     </div>
-                    <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Visit to the Federal Parliament of Germany (The Bundestag)</h3>
+                    <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Visit to the Federal Parliament of Germany (The Bundestag)</h3>
                 </div>
 
                 <!-- City Tour Item -->
-                <div style="background: rgba(45, 35, 110, 0.85); backdrop-filter: blur(10px); padding: 25px 30px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="flex-shrink: 0; width: 45px; height: 45px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);">
-                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #2D236E;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div style="background: rgba(45, 35, 110, 0.9); backdrop-filter: blur(15px); padding: 22px 35px; border-radius: 25px; display: flex; flex-direction: column; gap: 12px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="display: flex; align-items: center; gap: 18px;">
+                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+                            <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: #2D236E;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                         </div>
-                        <h3 class="montserrat" style="margin: 0; font-size: 1.1rem; font-weight: 700; text-transform: none; letter-spacing: 0;">Guided City Tour of Berlin, highlighting:</h3>
+                        <h3 class="montserrat" style="margin: 0; font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff;">Guided City Tour of Berlin, highlighting:</h3>
                     </div>
-                    <div style="padding-left: 60px; font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.6; font-weight: 500;">
-                        <div style="margin-bottom: 5px;">• World War history</div>
-                        <div style="margin-bottom: 5px;">• Diplomatic evolution in Europe</div>
-                        <div style="margin-bottom: 5px;">• Lessons for future generations</div>
+                    <div style="padding-left: 66px; font-size: 0.95rem; color: rgba(255,255,255,0.9); line-height: 1.6; font-weight: 500;">
+                        <div style="margin-bottom: 4px;">• World War history</div>
+                        <div style="margin-bottom: 4px;">• Diplomatic evolution in Europe</div>
+                        <div style="margin-bottom: 4px;">• Lessons for future generations</div>
                         <div>• The city’s transformation into a hub of innovation, democracy & culture</div>
                     </div>
                 </div>
