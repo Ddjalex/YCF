@@ -359,13 +359,86 @@ if (isset($_GET['page'])) {
         }
     </style>
 
-    <!-- Youth Development Forum Intro Section -->
+    <!-- Aligned with Europe's Youth Vision & Global Priorities -->
+    <section style="padding: 80px 20px; background: #f9f9fb;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 class="montserrat" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #000; margin-bottom: 20px; text-transform: uppercase;">
+                Aligned with Europe's Youth Vision &<br>Global Priorities
+            </h2>
+            <p style="font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto 50px;">
+                The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: #2D236E; padding: 40px 30px; border-radius: 20px; color: white;">
+                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">EU Youth Strategy 2019–2027</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+                </div>
+                <div style="background: #2D236E; padding: 40px 30px; border-radius: 20px; color: white;">
+                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">EU Digital Decade & AI governance goals</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Empowering young people in emerging technologies.</p>
+                </div>
+                <div style="background: #2D236E; padding: 40px 30px; border-radius: 20px; color: white;">
+                    <h3 class="montserrat" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">Council of Europe's Youth Sector Priorities</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Highlights Section -->
+    <section style="background: url('attached_assets/image_1768647567110.png') center/cover no-repeat; padding: 100px 20px; color: white; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);"></div>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px; position: relative; z-index: 1;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 class="montserrat" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">FORUM<br>HIGHLIGHTS</h2>
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px; max-width: 500px;">This curated tour emphasizes how history shapes diplomacy, peacebuilding, and leadership today.</p>
+                <a href="#seats-section" class="btn-apply-style" style="display: inline-block;">Register Now</a>
+            </div>
+            <div style="flex: 1.5; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 1.8rem;">💬</div>
+                    <div style="font-weight: 700; font-size: 1.1rem;">Expert-led Workshops & Interactive Masterclasses</div>
+                </div>
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 1.8rem;">📄</div>
+                    <div style="font-weight: 700; font-size: 1.1rem;">Youth Diplomacy Sessions & Policy Dialogues</div>
+                </div>
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 1.8rem;">🤝</div>
+                    <div style="font-weight: 700; font-size: 1.1rem;">Networking with global leaders, changemakers & institutions</div>
+                </div>
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 1.8rem;">🌍</div>
+                    <div style="font-weight: 700; font-size: 1.1rem;">Country presentations, cultural exchange & collaborative activities</div>
+                </div>
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 1.8rem;">🏛️</div>
+                    <div style="font-weight: 700; font-size: 1.1rem;">Visit to the Federal Parliament of Germany (The Bundestag)</div>
+                </div>
+                <div style="background: rgba(45, 35, 110, 0.9); padding: 20px 30px; border-radius: 15px; display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <div style="font-size: 1.8rem;">🗺️</div>
+                        <div style="font-weight: 700; font-size: 1.1rem;">Guided City Tour of Berlin, highlighting:</div>
+                    </div>
+                    <ul style="margin: 0; padding-left: 60px; font-size: 0.9rem; opacity: 0.9; line-height: 1.6;">
+                        <li>World War history</li>
+                        <li>Diplomatic evolution in Europe</li>
+                        <li>Lessons for future generations</li>
+                        <li>The city's transformation into a hub of innovation, democracy & culture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Youth Crypto Forum Intro Section -->
     <section style="padding: 80px 20px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
             <div style="flex: 1; min-width: 300px;">
                 <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #2D236E; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase;">
                     YOUTH<br>
-                    DEVELOPMENT<br>
+                    Crypto<br>
                     FORUM 2026
                 </h2>
                 <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 20px;">
