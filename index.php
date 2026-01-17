@@ -381,6 +381,29 @@ if (isset($_GET['page'])) {
         </div>
     </section>
 
+    <!-- Aligned with Europe’s Youth Vision Section -->
+    <section style="padding: 100px 20px; background: #fff; color: #000; text-align: center;">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #000; line-height: 1.1;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
+            <p style="font-size: 1.1rem; color: #333; max-width: 800px; margin: 0 auto 60px; font-weight: 400;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+                <div style="background: #2D236E; padding: 40px 25px; border-radius: 20px; color: white; flex: 1; min-width: 300px; max-width: 360px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h4 class="montserrat" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">EU Youth Strategy 2019–2027</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; font-weight: 400;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+                </div>
+                <div style="background: #2D236E; padding: 40px 25px; border-radius: 20px; color: white; flex: 1; min-width: 300px; max-width: 360px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h4 class="montserrat" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">EU Digital Decade & AI governance goals</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; font-weight: 400;">Empowering young people in emerging technologies.</p>
+                </div>
+                <div style="background: #2D236E; padding: 40px 25px; border-radius: 20px; color: white; flex: 1; min-width: 300px; max-width: 360px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    <h4 class="montserrat" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">Council of Europe’s Youth Sector Priorities</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; font-weight: 400;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Forum Highlights Section -->
     <section style="position: relative; padding: 100px 20px; min-height: 800px; display: flex; align-items: center; background: url('https://thecgdl.org/wp-content/uploads/2026/01/YDF-Germany-06-scaled.jpg') center/cover no-repeat; color: white;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
