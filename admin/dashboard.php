@@ -16,6 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($action === 'update_hero') {
             $video_url = $_POST['video_url'] ?? '';
+            
+            // Handle file upload
+            if (isset($_FILES['hero_file']) && $_FILES['hero_file']['error'] === UPLOAD_ERR_OK) {
+                $upload_dir = '../uploads/';
+                if (!file_exists($upload_dir)) {
+                    mkdir($upload_dir, 0777, true);
+                }
+                $filename = time() . '_' . basename($_FILES['hero_file']['name']);
+                $target = $upload_dir . $filename;
+                if (move_uploaded_file($_FILES['hero_file']['tmp_name'], $target)) {
+                    $video_url = 'uploads/' . $filename;
+                }
+            }
+            
             $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('hero_video', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value");
             $stmt->execute([$video_url]);
         } elseif ($action === 'update_countdown') {
@@ -149,7 +163,7 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
         <!-- Hero Video Card -->
         <div class="card">
             <div class="card-title">Hero Video</div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="update_hero">
                 <div class="form-group">
                     <label>Current Video Path/URL</label>
@@ -158,7 +172,7 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
                 <div class="form-group">
                     <label>Or Upload New Video</label>
                     <div class="file-input-wrapper">
-                        <input type="file" name="hero_file">
+                        <input type="file" name="hero_file" accept="video/*">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Hero Video</button>
