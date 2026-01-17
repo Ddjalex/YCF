@@ -425,6 +425,55 @@ if (isset($_GET['page'])) {
     </div>
 </section>
 
+    <!-- Visa Invitation Letter Section -->
+    <section id="visa-section" style="padding: 60px 20px; background: #fff;">
+        <div style="max-width: 1100px; margin: 0 auto; background: #2D236E; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(0,0,0,0.2);">
+            <!-- Content Side -->
+            <div style="flex: 1; min-width: 300px; padding: clamp(30px, 5vw, 60px); color: white; text-align: left;">
+                <h2 class="montserrat" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 20px; text-transform: none;">Visa Invitation Letter</h2>
+                <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 30px;">
+                    Applicants who want to apply early for their visa can request a <strong>Visa Invitation Letter Package</strong> from CGDL.
+                </p>
+                
+                <div style="margin-bottom: 30px;">
+                    <span style="text-decoration: line-through; opacity: 0.6; font-size: 1.2rem; margin-right: 10px;">$299.99</span>
+                    <span style="font-size: 2.5rem; font-weight: 800; color: #fff;">$99.00</span>
+                </div>
+
+                <ul style="list-style: none; padding: 0; margin: 0 0 40px 0; border-top: 1px dashed rgba(255,255,255,0.2);">
+                    <li style="padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 1.2rem;">✉️</span> Official Visa Invitation Letter
+                    </li>
+                    <li style="padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 1.2rem;">📋</span> Visa Documents Checklist
+                    </li>
+                    <li style="padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 1.2rem;">📄</span> Confirmation of Event Participation
+                    </li>
+                    <li style="padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 1.2rem;">🏢</span> Embassy Coordination Assistance
+                    </li>
+                </ul>
+
+                <p style="font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 30px;">
+                    This option is available to all categories of applicants. Applicants can later upgrade to either forum admission or self funded and the cost of their visa package will be fully adjusted towards the upgrade.
+                </p>
+
+                <a href="apply?package=visa_letter" class="btn-apply-style" style="margin-top: 0; width: auto; padding: 15px 50px;">Register NOW!</a>
+            </div>
+            
+            <!-- Image Side -->
+            <div style="flex: 1; min-width: 300px; position: relative; overflow: hidden; background: #000;">
+                <img src="attached_assets/image_1768640597035.png" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;" alt="Berlin Brandenburg Gate">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                    <div style="background: rgba(168, 85, 247, 0.4); backdrop-filter: blur(5px); padding: 15px 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); color: white; display: inline-block;">
+                        <span style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">SCHENGEN VISA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <!-- Scholarship Categories Section -->
 <section style="background: url('attached_assets/germany-0_1767641199459.jpg') center/cover no-repeat fixed; color: white; text-align: center; position: relative;">
     <div style="background: rgba(45, 35, 110, 0.85); width: 100%; padding: 60px 20px;">

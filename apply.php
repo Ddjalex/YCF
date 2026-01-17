@@ -17,7 +17,8 @@ $package_names = [
     'partially_funded' => 'YDF Partially Funded Category Registration',
     'forum_admission' => 'YDF Forum Admission Registration',
     'self_funded' => 'YDF Self Funded Category Registration',
-    'funded' => 'YDF Funded Category Registration'
+    'funded' => 'YDF Funded Category Registration',
+    'visa_letter' => 'YDF Visa Invitation Letter Package Registration'
 ];
 
 $package_prices = [
@@ -25,7 +26,8 @@ $package_prices = [
     'partially_funded' => 31.99,
     'forum_admission' => 597.00,
     'self_funded' => 697.00,
-    'funded' => 31.99
+    'funded' => 31.99,
+    'visa_letter' => 99.00
 ];
 
 $service_charges = [
@@ -33,7 +35,8 @@ $service_charges = [
     'partially_funded' => 3.00,
     'forum_admission' => 2.00,
     'self_funded' => 2.00,
-    'funded' => 3.00
+    'funded' => 3.00,
+    'visa_letter' => 0.00
 ];
 
 $current_package_name = $package_names[$package] ?? $package_names['funded'];
