@@ -382,53 +382,37 @@ if (isset($_GET['page'])) {
     </section>
 
     <!-- Aligned with Europe’s Youth Vision Section -->
-    <section style="padding: 30px 0; background: #fff; color: #000; text-align: center; overflow: hidden;">
-        <div style="border: 1px solid #eee; border-radius: 20px; padding: 25px 10px; max-width: 1100px; margin: 0 auto; background: #fff;">
-            <h2 class="montserrat" style="font-size: clamp(1.1rem, 5vw, 2.2rem); font-weight: 900; margin-bottom: 0.6rem; text-transform: uppercase; color: #2D236E; line-height: 1.2; font-family: Montserrat, sans-serif; word-wrap: break-word; overflow-wrap: break-word; padding: 0 10px;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
-            <p style="font-size: 0.85rem; color: #333; max-width: 800px; margin: 0 auto 1.2rem; font-weight: 400; font-family: Inter, sans-serif; padding: 0 15px; line-height: 1.4;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+    <section style="padding: 40px 15px; background: #fff; color: #000; text-align: center;">
+        <div style="border: 1px solid #eee; border-radius: 20px; padding: 30px 15px; max-width: 1100px; margin: 0 auto; background: #fff;">
+            <h2 class="montserrat" style="font-size: clamp(1.2rem, 6vw, 2.5rem); font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; color: #2D236E; line-height: 1.1; font-family: Montserrat, sans-serif; word-wrap: break-word;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
+            <p style="font-size: 0.95rem; color: #333; max-width: 800px; margin: 0 auto 2rem; font-weight: 400; font-family: Inter, sans-serif;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
             
-            <div class="horizontal-scroll-mobile" style="display: flex; gap: 0.8rem; max-width: 1000px; margin: 0 auto; overflow-x: auto; padding-bottom: 15px; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; padding-left: 10px; padding-right: 10px;">
-                <div style="flex: 0 0 230px; background: #2D236E; border-radius: 12px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 230px; box-shadow: 0 8px 20px rgba(45, 35, 110, 0.1); scroll-snap-align: center;">
-                    <h4 class="montserrat" style="color: white; font-size: 0.9rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3;">EU Youth Strategy 2019–2027</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.75rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.4;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
+            <div class="vision-cards-container" style="display: flex; flex-direction: column; gap: 1.2rem; max-width: 1000px; margin: 0 auto;">
+                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1.5rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 200px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">EU Youth Strategy 2019–2027</h4>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Encouraging youth participation, social inclusion, green leadership, and digital transformation.</p>
                 </div>
-                <div style="flex: 0 0 230px; background: #2D236E; border-radius: 12px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 230px; box-shadow: 0 8px 20px rgba(45, 35, 110, 0.1); scroll-snap-align: center;">
-                    <h4 class="montserrat" style="color: white; font-size: 0.9rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3;">EU Digital Decade & AI governance goals</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.75rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.4;">Empowering young people in emerging technologies.</p>
+                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1.5rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 200px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">EU Digital Decade & AI governance goals</h4>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Empowering young people in emerging technologies.</p>
                 </div>
-                <div style="flex: 0 0 230px; background: #2D236E; border-radius: 12px; padding: 1.5rem 1rem; border-bottom: 6px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 230px; box-shadow: 0 8px 20px rgba(45, 35, 110, 0.1); scroll-snap-align: center;">
-                    <h4 class="montserrat" style="color: white; font-size: 0.9rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3;">Council of Europe’s Youth Sector Priorities</h4>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.75rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.4;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
+                <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1.5rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 200px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
+                    <h4 class="montserrat" style="color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.5px;">Council of Europe’s Youth Sector Priorities</h4>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; font-weight: 400; font-family: Inter, sans-serif; line-height: 1.6;">Strengthening democratic participation, human rights education, and intercultural dialogue.</p>
                 </div>
             </div>
         </div>
         
         <style>
             @media (min-width: 768px) {
-                .horizontal-scroll-mobile {
-                    display: grid !important;
-                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-                    overflow-x: visible !important;
-                    padding-bottom: 0 !important;
-                    padding-left: 0 !important;
-                    padding-right: 0 !important;
+                .vision-cards-container {
+                    flex-direction: row !important;
+                    justify-content: center !important;
                     gap: 1.5rem !important;
                 }
-                .horizontal-scroll-mobile > div {
-                    flex: none !important;
-                    width: 100% !important;
+                .vision-cards-container > div {
+                    flex: 1 !important;
                 }
-            }
-            .horizontal-scroll-mobile::-webkit-scrollbar {
-                height: 3px;
-            }
-            .horizontal-scroll-mobile::-webkit-scrollbar-track {
-                background: #f1f1f1;
-                border-radius: 10px;
-            }
-            .horizontal-scroll-mobile::-webkit-scrollbar-thumb {
-                background: #2D236E;
-                border-radius: 10px;
             }
         </style>
     </section>
