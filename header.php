@@ -112,9 +112,10 @@ require_once 'functions.php';
             }
             .logo-divider {
                 height: 30px !important;
+                margin: 0 10px !important;
             }
             .logo-text {
-                font-size: 0.7rem !important;
+                font-size: 0.65rem !important;
             }
             nav {
                 display: none !important;
@@ -124,15 +125,59 @@ require_once 'functions.php';
                 flex-direction: column;
                 gap: 5px;
                 cursor: pointer;
+                z-index: 1001;
             }
             .mobile-menu-toggle span {
                 width: 25px;
-                height: 3px;
-                background: var(--dark-blue);
+                height: 2px;
+                background: #2D236E;
                 border-radius: 2px;
+                transition: all 0.3s;
             }
             .hero-container {
                 padding-top: 100px !important;
+            }
+            
+            /* Mobile Drawer */
+            .mobile-drawer {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100%;
+                background: #2D236E;
+                z-index: 1200;
+                transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                display: flex;
+                flex-direction: column;
+                padding: 100px 40px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+            }
+            .mobile-drawer.active {
+                right: 0;
+            }
+            .mobile-drawer a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: 800;
+                margin-bottom: 30px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .mobile-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 1150;
+                display: none;
+                backdrop-filter: blur(3px);
+            }
+            .mobile-overlay.active {
+                display: block;
             }
         }
 
@@ -522,13 +567,30 @@ require_once 'functions.php';
             <div class="nav-item">
                 <a href="apply">Apply</a>
             </div>
-            <div class="mobile-menu-toggle" style="display: none;">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </nav>
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
+
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <a href="/" onclick="toggleMobileMenu()">Home</a>
+        <a href="apply" onclick="toggleMobileMenu()">Apply</a>
+        <a href="registration_form" onclick="toggleMobileMenu()" style="color: #FFD700;">Register Now</a>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileOverlay');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : 'auto';
+        }
+    </script>
 
     <!-- Professional Custom Modal -->
     <div id="customModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(10, 17, 40, 0.9); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
