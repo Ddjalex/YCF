@@ -8,33 +8,39 @@ if (file_exists($file) && !is_dir($file)) {
     $ext = pathinfo($file, PATHINFO_EXTENSION);
     if ($ext === 'mp4') {
         $size = filesize($file);
-        $start = 0;
-        $end = $size - 1;
-
+        
+        // Handle Range requests for streaming
         if (isset($_SERVER['HTTP_RANGE'])) {
-            preg_match('/bytes=(\d+)-(\d*)?/', $_SERVER['HTTP_RANGE'], $matches);
-            $start = intval($matches[1]);
-            $end = (isset($matches[2]) && $matches[2] !== '') ? intval($matches[2]) : $end;
-            
-            header('HTTP/1.1 206 Partial Content');
-            header("Content-Range: bytes $start-$end/$size");
-            $length = ($end - $start) + 1;
+            list($size_unit, $range_orig) = explode('=', $_SERVER['HTTP_RANGE'], 2);
+            if ($size_unit == 'bytes') {
+                list($range, $extra_ranges) = explode(',', $range_orig, 2);
+            } else {
+                $range = '';
+            }
         } else {
-            $length = $size;
+            $range = '';
         }
 
-        header('Content-Type: video/mp4');
-        header('Accept-Ranges: bytes');
-        header("Content-Length: $length");
+        list($start, $end) = explode('-', $range, 2);
+        $start = (int)$start;
+        $end = ($end === '') ? $size - 1 : (int)$end;
+        
+        $new_length = $end - $start + 1;
+        
+        header('HTTP/1.1 206 Partial Content');
+        header("Content-Type: video/mp4");
+        header("Content-Length: $new_length");
+        header("Content-Range: bytes $start-$end/$size");
+        header("Accept-Ranges: bytes");
         
         $fp = fopen($file, 'rb');
         fseek($fp, $start);
-        
-        while (!feof($fp) && ($pos = ftell($fp)) <= $end) {
-            $buffer = 8192;
+        $buffer = 1024 * 64; // 64KB chunks
+        while(!feof($fp) && ($pos = ftell($fp)) <= $end) {
             if ($pos + $buffer > $end) {
                 $buffer = $end - $pos + 1;
             }
+            set_time_limit(0);
             echo fread($fp, $buffer);
             flush();
         }
