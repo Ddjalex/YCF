@@ -1,26 +1,44 @@
 <?php
-// PHP Dev Server does not support .htaccess. 
-// For production (Apache), use the .htaccess below.
-// For the Replit PHP Dev Server, we would typically need a router file.
+// Custom router for PHP development server
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$file = __DIR__ . $uri;
 
-$request = $_SERVER['REQUEST_URI'];
-$base = explode('?', $request)[0];
+if (file_exists($file) && !is_dir($file)) {
+    // Manually handle video mime types for the dev server
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    if ($ext === 'mp4') {
+        header('Content-Type: video/mp4');
+        header('Accept-Ranges: bytes');
+        readfile($file);
+        exit;
+    }
+    return false;
+}
 
-// Remove leading slash
-$path = ltrim($base, '/');
-
-// If empty, serve index.php
-if ($path == '') {
+// Support for pretty URLs
+if ($uri === '/') {
     include 'index.php';
     exit;
 }
 
-// Check if the file exists as .php
+$path = ltrim($uri, '/');
 if (file_exists($path . '.php')) {
     include $path . '.php';
     exit;
 }
 
-// Fallback to 404 or index if file not found
+// Support for subdirectories like admin/
+if (strpos($uri, '/admin/') === 0) {
+    $admin_file = __DIR__ . $uri;
+    if (file_exists($admin_file) && !is_dir($admin_file)) {
+        require_once $admin_file;
+        exit;
+    }
+    // Check if it's a .php file without extension in URL
+    if (file_exists($admin_file . '.php')) {
+        require_once $admin_file . '.php';
+        exit;
+    }
+}
+
 return false;
-?>
