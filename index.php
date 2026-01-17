@@ -18,12 +18,16 @@ if (isset($_GET['page'])) {
     <div class="video-container" style="width: 100%; max-width: 900px; aspect-ratio: 16/9; height: auto; border-radius: clamp(10px, 3vw, 40px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); background: #000; margin: 0 auto 30px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
         $display_video = $hero_video;
-        // Ensure local paths are handled correctly relative to the root
+        // Logic to ensure the video source is correctly formatted for the browser
         if (strpos($display_video, 'http') !== 0 && strpos($display_video, 'attached_assets') !== 0) {
+            // Ensure local paths like 'uploads/file.mp4' become '/uploads/file.mp4'
             $display_video = '/' . ltrim($display_video, '/');
         }
         ?>
-        <video src="<?php echo htmlspecialchars($display_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
+        <video key="<?php echo htmlspecialchars($display_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="<?php echo htmlspecialchars($display_video); ?>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <!-- High-End 3D Flip Countdown -->
