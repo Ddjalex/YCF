@@ -595,7 +595,7 @@ if (isset($_GET['page'])) {
                     <img src="attached_assets/istock-486585530_1768641075006.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
                 </div>
                 <div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column;">
-                    <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center; padding-top: 100px;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$299.99</span>$99.00</div>
+                    <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center; padding-top: 100px;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$299.99</span>$147.99</div>
                     <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Visa Letter Package</h3>
                     <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 15px; flex-grow: 1;">
                         <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>

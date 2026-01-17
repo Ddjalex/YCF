@@ -22,21 +22,21 @@ $package_names = [
 ];
 
 $package_prices = [
-    'fully_funded' => 31.99,
-    'partially_funded' => 31.99,
+    'fully_funded' => 149.99,
+    'partially_funded' => 149.99,
     'forum_admission' => 597.00,
     'self_funded' => 697.00,
-    'funded' => 31.99,
-    'visa_letter' => 99.00
+    'funded' => 149.99,
+    'visa_letter' => 147.99
 ];
 
 $service_charges = [
-    'fully_funded' => 3.00,
-    'partially_funded' => 3.00,
+    'fully_funded' => 0.00,
+    'partially_funded' => 0.00,
     'forum_admission' => 2.00,
     'self_funded' => 2.00,
-    'funded' => 3.00,
-    'visa_letter' => 0.00
+    'funded' => 0.00,
+    'visa_letter' => 2.00
 ];
 
 $current_package_name = $package_names[$package] ?? $package_names['funded'];

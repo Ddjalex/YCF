@@ -7,10 +7,10 @@ $package_names = [
     'visa_invitation' => 'YCF Visa Invitation Application'
 ];
 $package_prices = [
-    'visa_invitation' => 99.00
+    'visa_invitation' => 147.99
 ];
 $service_charges = [
-    'visa_invitation' => 3.00
+    'visa_invitation' => 2.00
 ];
 $current_package_name = $package_names['visa_invitation'];
 $current_price = $package_prices['visa_invitation'];
@@ -24,7 +24,7 @@ $is_guaranteed = true;
         <div id="gf_24">
             <?php 
             require_once 'registration_form.php';
-            render_registration_form('visa_invitation', 'YDF Visa Invitation', 99.00); 
+            render_registration_form('visa_invitation', 'YDF Visa Invitation', 147.99); 
             ?>
         </div>
     </div>
