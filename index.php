@@ -93,7 +93,8 @@ if (isset($_GET['page'])) {
             line-height: clamp(90px, 18vw, 140px);
             background-color: var(--flip-bg);
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            perspective: 1000px;
         }
 
         .flip-card .top,
@@ -109,14 +110,16 @@ if (isset($_GET['page'])) {
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             box-sizing: border-box;
+            color: var(--flip-text);
         }
 
         .flip-card .top,
         .flip-card .leaf-front {
             top: 0;
             border-radius: 8px 8px 0 0;
-            line-height: clamp(90px, 18vw, 140px); /* Match total height */
-            border-bottom: 1px solid rgba(0,0,0,0.3);
+            line-height: clamp(90px, 18vw, 140px);
+            border-bottom: 1px solid rgba(0,0,0,0.5);
+            z-index: 2;
         }
 
         .flip-card .bottom,
@@ -124,7 +127,12 @@ if (isset($_GET['page'])) {
             bottom: 0;
             border-radius: 0 0 8px 8px;
             line-height: 0;
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0));
+            z-index: 1;
+        }
+
+        /* Improved shadows for depth */
+        .flip-card .bottom {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 20%);
         }
 
         .flip-card .leaf {
@@ -135,30 +143,53 @@ if (isset($_GET['page'])) {
             height: 50%;
             z-index: 10;
             transform-origin: bottom;
-            transition: transform 0.6s ease-in;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
 
         .flip-card .leaf-rear {
             transform: rotateX(-180deg);
             background-color: var(--flip-bg);
+            z-index: 11;
         }
 
+        .flip-card .leaf-front {
+            z-index: 12;
+        }
+
+        /* Flip Position: Up to Down */
         .flip-card.flipping .leaf {
             transform: rotateX(-180deg);
         }
 
-        /* Decorative line in the middle */
+        /* Shadow animation on the leaf */
+        .flip-card.flipping .leaf-front {
+            animation: shadow-top 0.6s ease-in forwards;
+        }
+        .flip-card.flipping .leaf-rear {
+            animation: shadow-bottom 0.6s ease-out forwards;
+        }
+
+        @keyframes shadow-top {
+            0% { background-color: var(--flip-bg); }
+            100% { background-color: #000; }
+        }
+        @keyframes shadow-bottom {
+            0% { background-color: #000; }
+            100% { background-color: var(--flip-bg); }
+        }
+
         .flip-card::after {
             content: "";
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: rgba(0,0,0,0.6);
-            z-index: 20;
+            height: 1px;
+            background: rgba(0,0,0,0.8);
+            z-index: 25;
             transform: translateY(-50%);
+            box-shadow: 0 1px 2px rgba(255,255,255,0.05);
         }
     </style>
 
@@ -178,12 +209,17 @@ if (isset($_GET['page'])) {
                 
                 if (top.textContent === formattedVal) return;
 
-                // Start flipping
+                // Prepare for flip
                 card.classList.remove('flipping');
                 void card.offsetWidth; // force reflow
                 
+                // Front of moving flap shows current number
                 leafFront.textContent = top.textContent;
+                // Back of moving flap shows new number
                 leafRear.textContent = formattedVal;
+                // Bottom static half shows current number initially
+                bottom.textContent = top.textContent;
+                // Top static half shows new number immediately (it's behind the flap)
                 top.textContent = formattedVal;
                 
                 card.classList.add('flipping');
