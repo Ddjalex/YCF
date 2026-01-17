@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('hero_video', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value");
             if ($stmt->execute([$video_url])) {
-                echo "<script>alert('$success_msg'); window.location.href='dashboard.php';</script>";
+                $_SESSION['success_msg'] = $success_msg;
+                header('Location: dashboard.php');
                 exit;
             }
         } elseif ($action === 'update_countdown') {
@@ -83,6 +84,22 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
             top: 0;
             z-index: 1000;
         }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 30px 0;
+            border-left: 5px solid #28a745;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .alert-success .close { cursor: pointer; font-weight: 700; opacity: 0.5; }
+        .alert-success .close:hover { opacity: 1; }
         header h1 { font-size: 1.1rem; margin: 0; font-weight: 700; letter-spacing: 0.5px; }
         .public-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
 
@@ -163,6 +180,13 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
             <a href="logout.php" class="public-link" style="opacity: 0.7;">Sign Out</a>
         </div>
     </header>
+
+    <?php if (isset($_SESSION['success_msg'])): ?>
+        <div class="alert-success">
+            <span><?php echo $_SESSION['success_msg']; unset($_SESSION['success_msg']); ?></span>
+            <span class="close" onclick="this.parentElement.style.display='none'">&times;</span>
+        </div>
+    <?php endif; ?>
 
     <div class="dashboard-container">
         <!-- Hero Video Card -->
