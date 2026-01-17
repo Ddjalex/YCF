@@ -359,6 +359,28 @@ if (isset($_GET['page'])) {
         }
     </style>
 
+    <!-- Youth Development Forum Intro Section -->
+    <section style="padding: 80px 20px; background: #fff;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #2D236E; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase;">
+                    YOUTH<br>
+                    DEVELOPMENT<br>
+                    FORUM 2026
+                </h2>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 20px;">
+                    Across four transformative days in Berlin, the forum brings together young leaders, global experts, diplomats, entrepreneurs, content creators, and policy innovators to engage in hands-on learning, discussions, networking, and cultural immersion.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 20px;">
+                    With a strong emphasis on youth diplomacy, leadership development, sustainable development, emerging technologies, and 21st-century skills, the forum equips participants with the tools they need to drive meaningful change in their communities and careers.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="attached_assets/image_1768647208100.png" alt="Germany is Hosting Youth Development Forum" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
     <!-- News & Updates Section (Now after countdown) -->
     <section style="padding: 20px 20px 60px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto;">
