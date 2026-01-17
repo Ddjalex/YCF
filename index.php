@@ -376,7 +376,7 @@ if (isset($_GET['page'])) {
                 </p>
             </div>
             <div style="flex: 1; min-width: 300px;">
-                <img src="attached_assets/image_1768647208100.png" alt="Germany is Hosting Youth Development Forum" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <img src="attached_assets/download_(6)_1768647425333.jpg" alt="Germany is Hosting Youth Development Forum" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
