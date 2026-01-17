@@ -11,9 +11,9 @@ if (isset($_GET['page'])) {
 } else {
 ?>
 <section class="hero-container" style="padding: clamp(60px, 10vh, 120px) 20px 40px; text-align: center;">
-    <h1 class="hero-title image-text-mask" style="font-size: clamp(2.5rem, 10vw, 8rem); font-family: Montserrat, sans-serif; font-weight: 900; line-height: 1;">YOUTH CRYPTO</h1>
-    <h2 class="hero-subtitle image-text-mask" style="font-size: clamp(1rem, 4vw, 3rem); font-family: Montserrat, sans-serif; font-weight: 800;">Forum Germany 2026</h2>
-    <p class="hero-description" style="margin: 15px auto; max-width: 700px; color: var(--text-gray); font-size: clamp(0.85rem, 1.8vw, 1.1rem);">Shaping the Future of Digital Economy & Blockchain Technology. June 15–17, 2026 · Berlin, Germany</p>
+    <h1 class="hero-title image-text-mask" style="font-size: clamp(2.5rem, 8vw, 6rem); font-family: Montserrat, sans-serif; font-weight: 900; line-height: 1.1;">Youth Development Forum 2026</h1>
+    <h2 class="hero-subtitle image-text-mask" style="font-size: clamp(1.5rem, 5vw, 4rem); font-family: Montserrat, sans-serif; font-weight: 800;">Berlin, Germany</h2>
+    <p class="hero-description" style="margin: 30px auto; max-width: 800px; color: var(--text-gray); font-size: clamp(1rem, 2vw, 1.2rem);">The Youth Development Forum 2026 is a global gathering of emerging leaders, young professionals, students, and change-makers from more than 150 countries, taking place in Berlin, Germany, from 7–10 May 2026. Organized by the Center for Global Dialogue & Leadership (CGDL), this four-day international conference is designed to uplift the next generation of youth advocates, innovators, policymakers, and peacebuilders.</p>
     
     <div class="video-container" style="width: 100%; max-width: 900px; aspect-ratio: 16/9; height: auto; border-radius: clamp(10px, 3vw, 40px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); background: #000; margin: 0 auto 30px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
