@@ -77,22 +77,22 @@ if (isset($_GET['page'])) {
         .time-box { text-align: center; }
         .flip-label { 
             margin-top: 12px; 
-            font-size: clamp(10px, 2vw, 14px); 
+            font-size: clamp(8px, 2vw, 12px); 
             font-weight: 800; 
             color: var(--flip-label); 
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .flip-card {
             position: relative;
-            width: clamp(70px, 14vw, 110px);
-            height: clamp(90px, 18vw, 140px);
-            font-size: clamp(40px, 8vw, 70px);
+            width: clamp(50px, 18vw, 110px);
+            height: clamp(65px, 24vw, 140px);
+            font-size: clamp(28px, 10vw, 70px);
             font-weight: 900;
-            line-height: clamp(90px, 18vw, 140px);
+            line-height: clamp(65px, 24vw, 140px);
             background-color: var(--flip-bg);
-            border-radius: 8px;
+            border-radius: 6px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             perspective: 1000px;
         }
@@ -116,8 +116,8 @@ if (isset($_GET['page'])) {
         .flip-card .top,
         .flip-card .leaf-front {
             top: 0;
-            border-radius: 8px 8px 0 0;
-            line-height: clamp(90px, 18vw, 140px);
+            border-radius: 6px 6px 0 0;
+            line-height: clamp(65px, 24vw, 140px);
             border-bottom: 1px solid rgba(0,0,0,0.5);
             z-index: 2;
         }
@@ -125,7 +125,7 @@ if (isset($_GET['page'])) {
         .flip-card .bottom,
         .flip-card .leaf-rear {
             bottom: 0;
-            border-radius: 0 0 8px 8px;
+            border-radius: 0 0 6px 6px;
             line-height: 0;
             z-index: 1;
         }
@@ -190,6 +190,13 @@ if (isset($_GET['page'])) {
             z-index: 25;
             transform: translateY(-50%);
             box-shadow: 0 1px 2px rgba(255,255,255,0.05);
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .flip-countdown {
+                gap: 8px;
+            }
         }
     </style>
 
