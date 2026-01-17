@@ -28,9 +28,11 @@ if (file_exists($file) && !is_dir($file)) {
         }
 
         header("Content-Type: video/mp4");
-        header("Content-Length: $new_length");
         header("Accept-Ranges: bytes");
-        header("Cache-Control: public, max-age=3600");
+        header("Content-Length: $new_length");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
         
         $fp = fopen($file, 'rb');
         fseek($fp, $start);

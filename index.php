@@ -20,13 +20,16 @@ if (isset($_GET['page'])) {
         $display_video = $hero_video;
         // Logic to ensure the video source is correctly formatted for the browser
         if (strpos($display_video, 'http') !== 0 && strpos($display_video, 'attached_assets') !== 0) {
-            // Force relative path without leading slash to help browser resolution in some contexts
+            // Ensure local paths like 'uploads/file.mp4' are correctly resolved for Replit
             $display_video = ltrim($display_video, '/');
+            $display_video_root = '/' . $display_video;
+        } else {
+            $display_video_root = $display_video;
         }
         ?>
-        <video key="<?php echo htmlspecialchars($display_video); ?>" autoplay loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
+        <video key="<?php echo htmlspecialchars($display_video_root); ?>" autoplay loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
+            <source src="<?php echo htmlspecialchars($display_video_root); ?>" type="video/mp4">
             <source src="<?php echo htmlspecialchars($display_video); ?>" type="video/mp4">
-            <source src="/<?php echo htmlspecialchars($display_video); ?>" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
