@@ -24,43 +24,141 @@ if (isset($_GET['page'])) {
         <video src="<?php echo htmlspecialchars($hero_video); ?>" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
     </div>
 
-    <!-- High-End Flip Countdown -->
-    <div style="background: #000; border-radius: clamp(8px, 2vw, 12px); padding: clamp(12px, 2.5vw, 20px) 10px; width: 95%; max-width: 650px; margin: 0 auto 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-        <div class="flip-countdown" style="display: flex; gap: clamp(10px, 2vw, 18px); justify-content: center;">
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="days">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">DAYS</div>
+    <!-- High-End 3D Flip Countdown -->
+    <div style="background: #000; border-radius: clamp(8px, 2vw, 12px); padding: clamp(20px, 4vw, 40px) 10px; width: 95%; max-width: 700px; margin: 0 auto 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+        <div class="flip-countdown" style="display: flex; gap: clamp(12px, 3vw, 24px); justify-content: center; perspective: 1000px;">
+            <div class="time-box">
+                <div class="flip-card" id="card-days">
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf"><div class="leaf-front">00</div><div class="leaf-rear">00</div></div>
+                </div>
+                <div class="flip-label">DAYS</div>
             </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="hours">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">HOURS</div>
+            <div class="time-box">
+                <div class="flip-card" id="card-hours">
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf"><div class="leaf-front">00</div><div class="leaf-rear">00</div></div>
+                </div>
+                <div class="flip-label">HOURS</div>
             </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="minutes">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">MINS</div>
+            <div class="time-box">
+                <div class="flip-card" id="card-minutes">
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf"><div class="leaf-front">00</div><div class="leaf-rear">00</div></div>
+                </div>
+                <div class="flip-label">MINS</div>
             </div>
-            <div class="time-box" style="text-align: center;">
-                <div class="flip-card" style="aspect-ratio: 3/4; width: clamp(64px, 12vw, 96px); background: rgba(255, 255, 255, 0.06); border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: clamp(28px, 6vw, 46px); font-weight: 700; overflow: hidden; position: relative;"><span id="seconds">00</span></div>
-                <div class="flip-label" style="margin-top: 6px; font-size: clamp(10px, 2vw, 13px); opacity: 0.7; color: #fff;">SECS</div>
+            <div class="time-box">
+                <div class="flip-card" id="card-seconds">
+                    <div class="top">00</div>
+                    <div class="bottom">00</div>
+                    <div class="leaf"><div class="leaf-front">00</div><div class="leaf-rear">00</div></div>
+                </div>
+                <div class="flip-label">SECS</div>
             </div>
         </div>
         
-        <div style="position: relative; z-index: 2;">
-            <a href="#seats-section" style="display: inline-block; background: #fff; color: #000; padding: clamp(10px, 2vw, 14px) clamp(25px, 5vw, 40px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 800; text-transform: uppercase; text-decoration: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.1); margin-top: 20px;">Register Here</a>
+        <div style="position: relative; z-index: 2; margin-top: 30px;">
+            <a href="#seats-section" style="display: inline-block; background: #FFD700; color: #000; padding: clamp(12px, 2.5vw, 16px) clamp(30px, 6vw, 50px); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 900; text-transform: uppercase; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(255,215,0,0.2);">Register Here</a>
         </div>
     </div>
 
     <style>
-        .flip-card span {
-            display: inline-block;
+        :root {
+            --flip-bg: #1a1a1a;
+            --flip-text: #ffffff;
+            --flip-label: #FFD700;
+            --flip-border: rgba(255,255,255,0.1);
         }
-        .flip-card span.animate {
-            animation: smoothFlip .6s ease-in-out;
+
+        .time-box { text-align: center; }
+        .flip-label { 
+            margin-top: 12px; 
+            font-size: clamp(10px, 2vw, 14px); 
+            font-weight: 800; 
+            color: var(--flip-label); 
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        @keyframes smoothFlip {
-            0% { transform: rotateX(0); opacity: 1; }
-            50% { transform: rotateX(-45deg); opacity: .6; }
-            100% { transform: rotateX(0); opacity: 1; }
+
+        .flip-card {
+            position: relative;
+            width: clamp(70px, 14vw, 110px);
+            height: clamp(90px, 18vw, 140px);
+            font-size: clamp(40px, 8vw, 70px);
+            font-weight: 900;
+            line-height: clamp(90px, 18vw, 140px);
+            background-color: var(--flip-bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .flip-card .top,
+        .flip-card .bottom,
+        .flip-card .leaf-front,
+        .flip-card .leaf-rear {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            background-color: var(--flip-bg);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            box-sizing: border-box;
+        }
+
+        .flip-card .top,
+        .flip-card .leaf-front {
+            top: 0;
+            border-radius: 8px 8px 0 0;
+            line-height: clamp(90px, 18vw, 140px); /* Match total height */
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+        }
+
+        .flip-card .bottom,
+        .flip-card .leaf-rear {
+            bottom: 0;
+            border-radius: 0 0 8px 8px;
+            line-height: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0));
+        }
+
+        .flip-card .leaf {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            z-index: 10;
+            transform-origin: bottom;
+            transition: transform 0.6s ease-in;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card .leaf-rear {
+            transform: rotateX(-180deg);
+            background-color: var(--flip-bg);
+        }
+
+        .flip-card.flipping .leaf {
+            transform: rotateX(-180deg);
+        }
+
+        /* Decorative line in the middle */
+        .flip-card::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0,0,0,0.6);
+            z-index: 20;
+            transform: translateY(-50%);
         }
     </style>
 
@@ -68,16 +166,32 @@ if (isset($_GET['page'])) {
         (function() {
             const target = new Date("2026-06-15T09:00:00").getTime();
             
-            function update(id, val) {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const v = String(val).padStart(2, '0');
-                if (el.textContent !== v) {
-                    el.textContent = v;
-                    el.classList.remove('animate');
-                    void el.offsetWidth;
-                    el.classList.add('animate');
-                }
+            function updateCard(id, newVal) {
+                const card = document.getElementById(id);
+                if (!card) return;
+                
+                const formattedVal = String(newVal).padStart(2, '0');
+                const top = card.querySelector('.top');
+                const bottom = card.querySelector('.bottom');
+                const leafFront = card.querySelector('.leaf-front');
+                const leafRear = card.querySelector('.leaf-rear');
+                
+                if (top.textContent === formattedVal) return;
+
+                // Start flipping
+                card.classList.remove('flipping');
+                void card.offsetWidth; // force reflow
+                
+                leafFront.textContent = top.textContent;
+                leafRear.textContent = formattedVal;
+                top.textContent = formattedVal;
+                
+                card.classList.add('flipping');
+                
+                setTimeout(() => {
+                    bottom.textContent = formattedVal;
+                    card.classList.remove('flipping');
+                }, 600);
             }
 
             function tick() {
@@ -90,10 +204,10 @@ if (isset($_GET['page'])) {
                 const minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((d % (1000 * 60)) / 1000);
 
-                update("days", days);
-                update("hours", hours);
-                update("minutes", minutes);
-                update("seconds", seconds);
+                updateCard("card-days", days);
+                updateCard("card-hours", hours);
+                updateCard("card-minutes", minutes);
+                updateCard("card-seconds", seconds);
             }
 
             setInterval(tick, 1000);
