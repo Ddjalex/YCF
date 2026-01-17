@@ -8,40 +8,40 @@ if (file_exists($file) && !is_dir($file)) {
     $ext = pathinfo($file, PATHINFO_EXTENSION);
     if ($ext === 'mp4') {
         $size = filesize($file);
-        
-        // Handle Range requests for streaming
+        $start = 0;
+        $end = $size - 1;
+
         if (isset($_SERVER['HTTP_RANGE'])) {
-            list($size_unit, $range_orig) = explode('=', $_SERVER['HTTP_RANGE'], 2);
-            if ($size_unit == 'bytes') {
-                list($range, $extra_ranges) = explode(',', $range_orig, 2);
-            } else {
-                $range = '';
+            $range = $_SERVER['HTTP_RANGE'];
+            if (preg_match('/bytes=(\d+)-(\d*)?/', $range, $matches)) {
+                $start = (int)$matches[1];
+                if (isset($matches[2]) && $matches[2] !== '') {
+                    $end = (int)$matches[2];
+                }
             }
+            
+            header('HTTP/1.1 206 Partial Content');
+            header("Content-Range: bytes $start-$end/$size");
+            $new_length = ($end - $start) + 1;
         } else {
-            $range = '';
+            $new_length = $size;
         }
 
-        list($start, $end) = explode('-', $range, 2);
-        $start = (int)$start;
-        $end = ($end === '') ? $size - 1 : (int)$end;
-        
-        $new_length = $end - $start + 1;
-        
-        header('HTTP/1.1 206 Partial Content');
         header("Content-Type: video/mp4");
         header("Content-Length: $new_length");
-        header("Content-Range: bytes $start-$end/$size");
         header("Accept-Ranges: bytes");
+        header("Cache-Control: public, max-age=3600");
         
         $fp = fopen($file, 'rb');
         fseek($fp, $start);
-        $buffer = 1024 * 64; // 64KB chunks
-        while(!feof($fp) && ($pos = ftell($fp)) <= $end) {
-            if ($pos + $buffer > $end) {
-                $buffer = $end - $pos + 1;
+        
+        $chunk_size = 1024 * 64; // 64KB
+        while (!feof($fp) && ($pos = ftell($fp)) <= $end) {
+            if ($pos + $chunk_size > $end) {
+                $chunk_size = $end - $pos + 1;
             }
-            set_time_limit(0);
-            echo fread($fp, $buffer);
+            echo fread($fp, $chunk_size);
+            ob_flush();
             flush();
         }
         fclose($fp);
