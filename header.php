@@ -36,52 +36,43 @@ require_once 'functions.php';
         }
 
         .btn-apply-style {
-            --primary-blue: #009edb;
-            --dark-blue: #003366;
-            --light-blue: #e6f4fa;
-            --white: #ffffff;
-            --text-gray: #4a4a4a;
-            --deep-navy: #0a1128;
-            --btn-yellow: #FFD700;
-            --wp--preset--color--black: #000000;
-            --wp--preset--color--white: #ffffff;
-            --wp--preset--spacing--40: 1rem;
-            --wp--preset--spacing--50: 1.5rem;
-            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
-            --e-global-color-a2bd39d: #332370;
-            --e-global-color-0ca85f4: #F1D302;
-            --direction-multiplier: 1;
-            --affwp-card-padding: 1.5rem;
-            --container-border-radius: 20px;
-            --flip-bg: #1a1a1a;
-            --flip-text: #ffffff;
-            --flip-label: #FFD700;
-            --flip-border: rgba(255,255,255,0.1);
-            font-size: 1rem;
-            font-weight: 400;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: white;
-            text-align: center;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border-radius: 8px;
+            padding: 12px 24px;
             width: 100%;
-            background: var(--dark-blue);
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            background: linear-gradient(270deg, #F1D302, #000000, #F1D302, #000000);
+            background-size: 400% 400%;
+            color: #ffffff;
             border: none;
+            font-weight: 500;
+            text-transform: uppercase;
             cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 19px;
+            text-align: center;
+            line-height: 1.5;
+            transition-duration: 0s;
+            animation: combinedAnim 5s linear infinite;
+            margin-top: 30px;
+            font-family: 'Inter', sans-serif;
         }
 
-        .btn-apply-style:hover {
-            background: var(--primary-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--wp--preset--shadow--natural);
+        @keyframes combinedAnim {
+            0% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.0) scaleY(1.0);
+            }
+            50% { 
+                background-position: 100% 50%; 
+                transform: scaleX(1.03705) scaleY(1.03705);
+            }
+            100% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.0) scaleY(1.0);
+            }
         }
 
         * {
