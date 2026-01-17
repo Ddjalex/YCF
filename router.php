@@ -19,32 +19,28 @@ if (file_exists($file) && !is_dir($file)) {
                     $end = (int)$matches[2];
                 }
             }
-            
             header('HTTP/1.1 206 Partial Content');
             header("Content-Range: bytes $start-$end/$size");
-            $new_length = ($end - $start) + 1;
-        } else {
-            $new_length = $size;
         }
 
+        $length = $end - $start + 1;
         header("Content-Type: video/mp4");
+        header("Content-Length: $length");
         header("Accept-Ranges: bytes");
-        header("Content-Length: $new_length");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        header("Expires: 0");
+        header("Cache-Control: public, max-age=86400");
         
         $fp = fopen($file, 'rb');
         fseek($fp, $start);
         
-        $chunk_size = 1024 * 64; // 64KB
         while (!feof($fp) && ($pos = ftell($fp)) <= $end) {
-            if ($pos + $chunk_size > $end) {
-                $chunk_size = $end - $pos + 1;
+            $buffer = 1024 * 512; // 512KB buffer
+            if ($pos + $buffer > $end) {
+                $buffer = $end - $pos + 1;
             }
-            echo fread($fp, $chunk_size);
-            ob_flush();
+            set_time_limit(60);
+            echo fread($fp, $buffer);
             flush();
+            if (connection_aborted()) break;
         }
         fclose($fp);
         exit;
@@ -71,7 +67,6 @@ if (strpos($uri, '/admin/') === 0) {
         require_once $admin_file;
         exit;
     }
-    // Check if it's a .php file without extension in URL
     if (file_exists($admin_file . '.php')) {
         require_once $admin_file . '.php';
         exit;
