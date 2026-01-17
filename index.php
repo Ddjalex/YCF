@@ -506,7 +506,7 @@ if (isset($_GET['page'])) {
     <div style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); display: grid; gap: 20px; max-width: 900px; margin: 0 auto 40px;">
         <!-- Forum Admission Detail -->
         <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$799.99</span>$499.00</div>
+            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$799.99</span>$599.00</div>
             <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Forum Admission Category</h3>
             <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 15px;">
                 <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
@@ -527,12 +527,12 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <a href="apply?package=forum_admission" style="display: block; width: 100%; padding: 12px; background: linear-gradient(to bottom, #FFD700, #b8860b); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 900; margin-top: 15px; text-transform: uppercase;">Register NOW!</a>
+            <a href="apply?package=forum_admission" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
         </div>
 
         <!-- Self Funded Detail -->
         <div style="background: #2D236E; border-radius: 16px; padding: 30px 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$999.99</span>$799.0</div>
+            <div style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;"><span style="text-decoration: line-through; font-size: 1.2rem; opacity: 0.6; margin-right: 10px;">$999.99</span>$699.00</div>
             <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Self-Funded Category</h3>
             <div style="border-top: 1px dashed rgba(255, 255, 255, 0.3); padding-top: 15px;">
                 <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; text-align: center; color: rgba(255, 255, 255, 0.7);">What's Included</h4>
@@ -554,7 +554,7 @@ if (isset($_GET['page'])) {
                     </ul>
                 </div>
             </div>
-            <a href="apply?package=self_funded" style="display: block; width: 100%; padding: 12px; background: linear-gradient(to bottom, #FFD700, #b8860b); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 900; margin-top: 15px; text-transform: uppercase;">Register NOW!</a>
+            <a href="apply?package=self_funded" style="display: block; width: 100%; padding: 18px 0; background: linear-gradient(to right, #000 0%, #a67c00 50%, #cca300 100%); color: #fff; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 15px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">APPLY NOW!</a>
         </div>
     </div>
 

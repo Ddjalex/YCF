@@ -23,16 +23,16 @@ $package_names = [
 $package_prices = [
     'fully_funded' => 31.99,
     'partially_funded' => 31.99,
-    'forum_admission' => 499.00,
-    'self_funded' => 799.00,
+    'forum_admission' => 597.00,
+    'self_funded' => 697.00,
     'funded' => 31.99
 ];
 
 $service_charges = [
     'fully_funded' => 3.00,
     'partially_funded' => 3.00,
-    'forum_admission' => 120.00,
-    'self_funded' => 0.00,
+    'forum_admission' => 2.00,
+    'self_funded' => 2.00,
     'funded' => 3.00
 ];
 
