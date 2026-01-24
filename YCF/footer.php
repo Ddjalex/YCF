@@ -3,7 +3,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
             <!-- Column 1: Brand -->
             <div style="text-align: center; sm-text-align: left;">
-                <img src="attached_assets/logo.png" style="height: 50px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <img src="attached_assets/modern_crypto_forum_logo_design_1769237133981.png" style="height: 50px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
                 <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 1.5rem; font-weight: 300;">
                     Bridging Ideas Shaping Futures. The premier platform for youth innovation in the digital economy.
                 </p>
@@ -40,6 +40,19 @@
             Copyright © 2026 Youth Crypto Forum Germany
         </div>
     </footer>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69746a046d15d9197bca215c/1jfnbs8ku';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
     <script>
         const targetDate = new Date("<?php echo get_target_date(); ?>").getTime();
         const updateCountdown = setInterval(() => {
