@@ -2,26 +2,7 @@
 // functions.php - Global utility functions
 
 function get_db_connection() {
-    // Try MySQL first (cPanel credentials)
-    $host = '127.0.0.1';
-    $port = '3306';
-    $user = 'goforuku_germany';
-    $pass = 'a1e2y3t4h5';
-    $dbname = 'goforuku_germany';
-
-    try {
-        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
-        $pdo = new PDO($dsn, $user, $pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
-        return $pdo;
-    } catch (PDOException $e) {
-        error_log("MySQL Connection failed: " . $e->getMessage());
-    }
-
-    // Try PostgreSQL second
+    // Try PostgreSQL first (Native Replit DB)
     $database_url = getenv('DATABASE_URL');
     if ($database_url) {
         try {
@@ -76,6 +57,25 @@ function get_db_connection() {
         } catch (PDOException $e) {
             error_log("PostgreSQL Connection failed: " . $e->getMessage());
         }
+    }
+
+    // Try MySQL second (cPanel credentials)
+    $host = '127.0.0.1';
+    $port = '3306';
+    $user = 'goforuku_germany';
+    $pass = 'a1e2y3t4h5';
+    $dbname = 'goforuku_germany';
+
+    try {
+        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+        $pdo = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+        return $pdo;
+    } catch (PDOException $e) {
+        error_log("MySQL Connection failed: " . $e->getMessage());
     }
     
     // SQLite Fallback - Use ONE shared absolute path
