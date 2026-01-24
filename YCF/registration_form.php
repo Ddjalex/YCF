@@ -366,7 +366,7 @@ function render_registration_form($package_id, $package_name, $price) {
         formData.append('package_name', '<?php echo $package_name; ?>');
         formData.append('amount', '<?php echo $price + 3.00; ?>');
 
-        fetch('YCF/process_registration.php', {
+        fetch('process_registration.php', {
             method: 'POST',
             body: formData
         })
