@@ -6,15 +6,13 @@ function get_db_connection() {
     if ($pdo !== null) return $pdo;
 
     // try use provided credentials
+    $host = 'localhost';
     $user = 'goforuku_germany';
     $pass = 'a1e2y3t4h5';
     $dbname = 'goforuku_germany';
 
-    // Log connection attempt
-    error_log("Attempting to connect to database: $dbname at localhost");
-
     try {
-        $dsn = "mysql:host=localhost;dbname=$dbname;charset=utf8mb4";
+        $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
         $pdo = new PDO($dsn, $user, $pass, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -23,7 +21,7 @@ function get_db_connection() {
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
 
-        // Create registrations table if not exists
+        // Create registrations table if not exists with correct column names matching process_registration.php
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
             package_id VARCHAR(255),
@@ -48,6 +46,7 @@ function get_db_connection() {
             txid VARCHAR(255),
             payment_screenshot TEXT,
             amount DECIMAL(10,2),
+            source VARCHAR(255),
             status VARCHAR(50) DEFAULT 'pending',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )");
@@ -92,7 +91,7 @@ function save_registration($data) {
         'email', 'gender', 'dob', 'phone', 'profession', 'residence', 
         'departure', 'visa', 'referral', 'journey', 'impact', 
         'profile_photo', 'passport_photo', 'payment_method', 'txid', 
-        'payment_screenshot', 'amount'
+        'payment_screenshot', 'amount', 'source'
     ];
     
     $insert_data = [];
