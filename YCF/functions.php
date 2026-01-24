@@ -16,8 +16,7 @@ function get_db_connection() {
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
                 $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
                 
-                // CRITICAL: Ensure table is created with MySQL-compatible types where possible
-                // though pgsql handles 'TEXT' well.
+                // PostgreSQL standard schema
                 $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
                     id SERIAL PRIMARY KEY,
                     package_id TEXT,
@@ -48,11 +47,11 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
-                // Add columns if missing
-                $columns_to_add = ['organization', 'source', 'phone'];
-                foreach ($columns_to_add as $column) {
+                // Safe migration for existing tables
+                $columns = ['organization', 'source', 'phone'];
+                foreach ($columns as $col) {
                     try {
-                        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $column TEXT");
+                        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT");
                     } catch (PDOException $e) {}
                 }
                 
@@ -68,7 +67,7 @@ function get_db_connection() {
         }
     }
     
-    // Fallback to SQLite
+    // SQLite Fallback
     try {
         $pdo = new PDO("sqlite:database.sqlite");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -84,6 +83,7 @@ function get_db_connection() {
             dob TEXT,
             phone TEXT,
             profession TEXT,
+            organization TEXT,
             residence TEXT,
             departure TEXT,
             visa TEXT,
@@ -101,10 +101,12 @@ function get_db_connection() {
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
         
-        try {
-            $pdo->exec("ALTER TABLE registrations ADD COLUMN source TEXT");
-        } catch (PDOException $e) {
-            // Already exists or other error
+        // SQLite column check
+        $columns = ['organization', 'source', 'phone'];
+        foreach ($columns as $col) {
+            try {
+                $pdo->exec("ALTER TABLE registrations ADD COLUMN $col TEXT");
+            } catch (PDOException $e) {}
         }
         
         return $pdo;
