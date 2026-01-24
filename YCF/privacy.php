@@ -5,10 +5,10 @@ include 'header.php';
 
 <section style="padding: 120px 10% 80px; background: #fff;">
     <div style="max-width: 1000px; margin: 0 auto;">
-        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">Privacy Policy for Youth Crypto Forum</h1>
+        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">Privacy Policy for CGDL</h1>
         
         <div style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 3rem;">
-            <p>The Youth Crypto Forum (YCF), organized by the Center for Global Dialogue and Leadership (hereinafter referred to as “CGDL,” “we,” “our,” or “us”), values your privacy and is committed to safeguarding your personal information. This privacy policy outlines how we collect, use, and protect the data you provide when visiting our website, subscribing to our mailing list, registering for events, or engaging with our programs and services.</p>
+            <p>The Center for Global Dialogue and Leadership (hereinafter referred to as “CGDL,” “we,” “our,” or “us”) values your privacy and is committed to safeguarding your personal information. This privacy policy outlines how we collect, use, and protect the data you provide when visiting our website (www.thecgdl.org), subscribing to our mailing list, registering for events, or engaging with our programs and services.</p>
         </div>
 
         <h2 class="montserrat" style="color: var(--dark-blue); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">Automatically-Collected Data</h2>

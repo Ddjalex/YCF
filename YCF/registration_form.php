@@ -237,7 +237,7 @@ function render_registration_form($package_id, $package_name, $price) {
                                 </div>
                                 <div style="text-align: left;">
                                     <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;">Transaction ID (TXID) <span style="color: red;">*</span></label>
-                                    <input type="text" name="txid" placeholder="Enter TXID" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                                    <input type="text" name="txid" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                                     
                                     <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;">Upload Payment Screenshot <span style="color: red;">*</span></label>
                                     <input type="file" name="payment_screenshot" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
@@ -261,7 +261,7 @@ function render_registration_form($package_id, $package_name, $price) {
 
                 <div style="display: flex; gap: 10px;">
                     <button type="button" onclick="nextStep(2)" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; flex: 1;">Complete Registration</button>
+                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Complete Registration</button>
                 </div>
             </div>
         </form>
@@ -269,30 +269,21 @@ function render_registration_form($package_id, $package_name, $price) {
 
     <script>
     function toggleCryptoDetails(show) {
-        const details = document.getElementById('crypto-details');
-        if (details) details.style.display = show ? 'block' : 'none';
-        
-        // Toggle required attributes for crypto fields
-        const txidInput = document.querySelector('input[name="txid"]');
-        const screenshotInput = document.querySelector('input[name="payment_screenshot"]');
-        if (txidInput) txidInput.required = show;
-        if (screenshotInput) screenshotInput.required = show;
+        document.getElementById('crypto-details').style.display = show ? 'block' : 'none';
     }
 
     function nextStep(step) {
-        let fromStep = 1;
-        if (document.getElementById('step-2').style.display !== 'none') fromStep = 2;
-        if (document.getElementById('step-3').style.display !== 'none') fromStep = 3;
-
-        const container = document.getElementById('step-' + fromStep);
+        const currentStep = step === 2 ? 1 : 2;
+        const container = document.getElementById('step-' + currentStep);
         const inputs = container.querySelectorAll('[required]');
         let isValid = true;
         
+        // Reset error states
         document.getElementById('error-banner').style.display = 'none';
         container.querySelectorAll('.error-msg').forEach(el => el.remove());
         container.querySelectorAll('input, select, textarea').forEach(el => el.style.borderColor = '#ddd');
 
-        if (step > fromStep) {
+        if (step > currentStep) {
             inputs.forEach(input => {
                 if (!input.value.trim() || (input.type === 'radio' && !container.querySelector(`input[name="${input.name}"]:checked`))) {
                     isValid = false;
@@ -325,12 +316,12 @@ function render_registration_form($package_id, $package_name, $price) {
         document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
         document.getElementById('step-' + step).style.display = 'block';
         
+        // Update Progress Bar
         const progress = (step / 3) * 100;
-        const progressBar = document.getElementById('progress-bar');
-        const stepLabel = document.getElementById('step-label');
-        if (progressBar) progressBar.style.width = progress + '%';
-        if (stepLabel) stepLabel.innerText = 'Step ' + step + ' of 3';
+        document.getElementById('progress-bar').style.width = progress + '%';
+        document.getElementById('step-label').innerText = 'Step ' + step + ' of 3';
         
+        // Scroll to top of form
         document.getElementById('registration-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -340,7 +331,7 @@ function render_registration_form($package_id, $package_name, $price) {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerText;
-        submitBtn.innerHTML = '<span class="spinner" style="display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-radius:50%; border-top-color:#fff; animation:spin 1s linear infinite; margin-right:8px; vertical-align:middle;"></span>Submitting...';
+        submitBtn.innerText = 'Submitting...';
         submitBtn.disabled = true;
 
         const formData = new FormData(this);
@@ -350,16 +341,9 @@ function render_registration_form($package_id, $package_name, $price) {
 
         fetch('process_registration.php', {
             method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
+            body: formData
         })
         .then(response => {
-            if (response.redirected) {
-                window.location.href = response.url;
-                return;
-            }
             if (!response.ok) {
                 return response.text().then(text => {
                     throw new Error(text || 'Network response was not ok');
@@ -368,11 +352,8 @@ function render_registration_form($package_id, $package_name, $price) {
             return response.json();
         })
         .then(data => {
-            if (!data) return;
             if (data.success) {
-                showModal('SUCCESS!', 'Registration submitted successfully. Thank you!', 'CONTINUE', () => {
-                    window.location.href = 'index.php';
-                });
+                window.location.href = 'index.php?success=1';
             } else {
                 alert('Error: ' + data.message);
                 submitBtn.innerText = originalBtnText;
@@ -381,18 +362,8 @@ function render_registration_form($package_id, $package_name, $price) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('A system error occurred. Please try again or contact support.');
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-        });
-    });
-    </script>
-    <style>
-    @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
-<?php
-}
-?>
+            // If the error message is "Invalid request method", it's likely a sync issue
+            if (error.message && error.message.includes('Invalid request method')) {
                 alert('Sync Error: The registration form was out of sync. Please refresh the page and try again.');
             } else {
                 alert('An unexpected error occurred. Please try again.');
@@ -400,6 +371,43 @@ function render_registration_form($package_id, $package_name, $price) {
             submitBtn.innerText = originalBtnText;
             submitBtn.disabled = false;
         });
+    });        formData.append('package_id', '<?php echo $package_id; ?>');
+        formData.append('package_name', '<?php echo $package_name; ?>');
+        formData.append('amount', '<?php echo $price + 3.00; ?>');
+        formData.append('action', 'save_registration');
+
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Processing...';
+
+        fetch('process_registration.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Complete Registration';
+            if (data.success) {
+                // Successfully saved to DB, now redirect to a thank you page or show success in UI
+                window.location.href = 'thank-you'; 
+            } else {
+                document.getElementById('error-banner').style.display = 'flex';
+                document.getElementById('error-banner').querySelector('span:last-child').innerText = 'There was an error saving your registration: ' + data.message;
+                document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        })
+        .catch(error => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Complete Registration';
+            // Even if fetch fails, if it was a network error but registration might have gone through
+            // Or just show error banner
+            document.getElementById('error-banner').style.display = 'flex';
+            document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Connection error. Please try again.';
+            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            console.error('Error:', error);
+        });
     });
     </script>
-<?php } ?>
+    <?php
+}

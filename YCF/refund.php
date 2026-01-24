@@ -5,10 +5,10 @@ include 'header.php';
 
 <section style="padding: 120px 10% 80px; background: #fff;">
     <div style="max-width: 1000px; margin: 0 auto;">
-        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">Youth Crypto Forum Refund Policy</h1>
+        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">CGDL Refund Policy</h1>
         
         <div style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 3rem;">
-            <p>At Youth Crypto Forum (YCF), we are committed to providing an exceptional experience for our participants. We also recognize that circumstances may arise where participants seek clarification about refunds. This document outlines the terms and conditions regarding refunds for registrations made through our platform.</p>
+            <p>At CGDL, we are committed to providing an exceptional experience for our participants at our events. We also recognize that circumstances may arise where participants seek clarification about refunds. This document outlines the terms and conditions regarding refunds for registrations made through our platform.</p>
         </div>
 
         <h2 class="montserrat" style="color: var(--dark-blue); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">General Policy</h2>

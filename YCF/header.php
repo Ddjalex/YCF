@@ -7,9 +7,9 @@ require_once 'functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youth Development Forum 2026</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="icon" type="image/png" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
+    <link rel="shortcut icon" type="image/png" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
+    <link rel="apple-touch-icon" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -38,69 +38,6 @@ require_once 'functions.php';
             --flip-border: rgba(255,255,255,0.1);
         }
 
-        .btn-apply-special {
-            --primary-blue: #009edb;
-            --dark-blue: #003366;
-            --light-blue: #e6f4fa;
-            --white: #ffffff;
-            --text-gray: #4a4a4a;
-            --deep-navy: #0a1128;
-            --btn-yellow: #FFD700;
-            --wp--preset--color--black: #000000;
-            --wp--preset--color--white: #ffffff;
-            --wp--preset--spacing--40: 1rem;
-            --wp--preset--spacing--50: 1.5rem;
-            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
-            --e-global-color-a2bd39d: #332370;
-            --e-global-color-0ca85f4: #F1D302;
-            --direction-multiplier: 1;
-            --affwp-card-padding: 1.5rem;
-            --container-border-radius: 20px;
-            --flip-bg: #1a1a1a;
-            --flip-text: #ffffff;
-            --flip-label: #FFD700;
-            --flip-border: rgba(255,255,255,0.1);
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            position: relative !important;
-            overflow: hidden !important;
-            z-index: 1 !important;
-            border-radius: 8px !important;
-            padding: 18px 24px !important;
-            width: 100% !important;
-            background: linear-gradient(270deg, #F1D302, #000000, #F1D302, #000000) !important;
-            background-size: 400% 400% !important;
-            color: #ffffff !important;
-            border: none !important;
-            font-weight: 500 !important;
-            text-transform: uppercase !important;
-            cursor: pointer !important;
-            display: inline-block !important;
-            text-decoration: none !important;
-            font-size: 19px !important;
-            text-align: center !important;
-            line-height: 1.5 !important;
-            transition-duration: 0s !important;
-            animation: combinedAnim 5s linear infinite !important;
-            max-width: 900px;
-        }
-
-        @keyframes combinedAnim {
-            0% { 
-                background-position: 0% 50%; 
-                transform: scaleX(1.02369) scaleY(1.02369);
-            }
-            50% { 
-                background-position: 100% 50%; 
-                transform: scaleX(1.05) scaleY(1.05);
-            }
-            100% { 
-                background-position: 0% 50%; 
-                transform: scaleX(1.02369) scaleY(1.02369);
-            }
-        }
-        
         .btn-apply-style {
             position: relative;
             overflow: hidden;
@@ -565,30 +502,28 @@ require_once 'functions.php';
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(45, 35, 110, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
+            background: linear-gradient(to right, rgba(0, 158, 219, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
             pointer-events: none;
             z-index: 1;
         }
 
         @keyframes backgroundMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 0%; }
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
         }
 
         .image-text-mask {
-            background: url('attached_assets/intro_image.jpg');
-            background-size: auto 100%;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0) 60%), url('attached_assets/image_1767436778420.png');
+            background-size: 200% auto;
             background-repeat: repeat-x;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
-            animation: backgroundMove 60s linear infinite;
+            animation: backgroundMove 35s linear infinite;
             display: block;
             position: relative;
             z-index: 2;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-            will-change: background-position;
         }
 
         .hero-title {
@@ -620,12 +555,12 @@ require_once 'functions.php';
 <body>
     <header>
         <div class="logo-container">
-            <img src="attached_assets/generated_images/modern_crypto_forum_logo_design.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
+            <img src="attached_assets/modern_crypto_forum_logo_design_1769237133981.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
             <div class="logo-divider" style="height: 50px;"></div>
             <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; text-transform: uppercase; color: #2D236E; font-weight: 700; line-height: 1.1; font-size: 0.9rem;">
-                <span style="color: #2D236E;">Youth</span>
-                <span style="color: #2D236E;">Crypto</span>
-                <span style="color: #2D236E;">Forum 2026</span>
+                <span>Youth</span>
+                <span>Crypto</span>
+                <span>Forum 2026</span>
             </div>
         </div>
         <nav>
@@ -688,43 +623,19 @@ require_once 'functions.php';
             const modal = document.getElementById('customModal');
             const msgEl = document.getElementById('modalMessage');
             if (modal && msgEl) {
-                // Determine if this is an error or success
-                const isError = message && (
-                    message.toLowerCase().includes('error') || 
-                    message.toLowerCase().includes('invalid') || 
-                    message.toLowerCase().includes('connection') ||
-                    message.toLowerCase().includes('failed')
-                );
-                const modalHeader = modal.querySelector('div:first-child');
+                // Reset to success style by default
+                const modalHeader = modal.querySelector('div div');
                 const modalIcon = modal.querySelector('svg');
                 const modalTitle = modal.querySelector('h2');
-                const continueBtn = modal.querySelector('button');
-
-                if (isError) {
-                    if (modalHeader) modalHeader.style.background = '#dc3545';
-                    if (modalTitle) modalTitle.innerText = 'Sync Error';
-                    if (modalIcon) {
-                        modalIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
-                        modalIcon.style.fill = '#ffffff';
-                    }
-                    msgEl.innerHTML = '<strong>' + message + '</strong><br><br>The registration form was out of sync. I have fixed the connection.<br><br><strong>Please refresh the page and try again.</strong>';
-                    if (continueBtn) {
-                        continueBtn.innerText = 'REFRESH PAGE';
-                        continueBtn.onclick = () => window.location.reload();
-                    }
-                } else {
-                    if (modalHeader) modalHeader.style.background = '#2D236E';
-                    if (modalTitle) modalTitle.innerText = 'Success!';
-                    if (modalIcon) {
-                        modalIcon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
-                        modalIcon.style.fill = '#2D236E';
-                    }
-                    msgEl.innerText = message || "Your registration has been submitted and is pending verification of payment.";
-                    if (continueBtn) {
-                        continueBtn.innerText = 'CONTINUE';
-                        continueBtn.onclick = closeCustomModal;
-                    }
+                
+                if (modalHeader) modalHeader.style.background = '#2D236E';
+                if (modalTitle) modalTitle.innerText = 'Success!';
+                if (modalIcon) {
+                    modalIcon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
+                    modalIcon.style.fill = '#2D236E';
                 }
+
+                msgEl.innerText = message || "Your registration has been submitted and is pending verification of payment.";
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }

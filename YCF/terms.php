@@ -5,10 +5,10 @@ include 'header.php';
 
 <section style="padding: 120px 10% 80px; background: #fff;">
     <div style="max-width: 1000px; margin: 0 auto;">
-        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">Youth Crypto Forum Terms and Conditions</h1>
+        <h1 class="montserrat" style="font-size: 3rem; color: var(--dark-blue); margin-bottom: 2rem; border-bottom: 4px solid var(--primary-blue); padding-bottom: 1rem; display: inline-block;">CGDL Terms and Conditions</h1>
         
         <div style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 3rem;">
-            <p>The Youth Crypto Forum (YCF), organized by the Center for Global Dialogue and Leadership (hereinafter referred to as “CGDL,” “we,” “our,” or “us”), is committed to safeguarding the personal information of our visitors, applicants, and partners. This document outlines how we collect, use, protect, and disclose information when you visit our website or participate in YCF programs.</p>
+            <p>The Center for Global Dialogue and Leadership (hereinafter referred to as “CGDL,” “we,” “our,” or “us”) is committed to safeguarding the personal information of our visitors, applicants, and partners. This document outlines how we collect, use, protect, and disclose information when you visit our website (www.thecgdl.org) or participate in CGDL programs.</p>
         </div>
 
         <h2 class="montserrat" style="color: var(--dark-blue); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">Information Collection & Use</h2>
