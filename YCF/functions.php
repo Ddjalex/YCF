@@ -120,12 +120,40 @@ function save_registration($data) {
     $pdo = get_db_connection();
     if (!$pdo) return false;
     
+    // Check if table has all columns in $data
     $fields = array_keys($data);
+    
+    // Explicitly add 'organization' if it's missing (PostgreSQL)
+    try {
+        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS organization TEXT");
+    } catch (PDOException $e) {}
+
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
-    $stmt = $pdo->prepare($sql);
-    return $stmt->execute($data);
+    try {
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute($data);
+    } catch (PDOException $e) {
+        error_log("PDO Error in save_registration: " . $e->getMessage());
+        
+        // If it's a column mismatch, try to fix and retry once
+        if (strpos($e->getMessage(), 'column') !== false) {
+             // Basic attempt to identify and add missing column
+             preg_match('/column "(.*?)"/', $e->getMessage(), $matches);
+             if (isset($matches[1])) {
+                 $col = $matches[1];
+                 try {
+                     $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT");
+                     $stmt = $pdo->prepare($sql);
+                     return $stmt->execute($data);
+                 } catch (PDOException $e2) {
+                     error_log("Retry failed: " . $e2->getMessage());
+                 }
+             }
+        }
+        return false;
+    }
 }
 
 function get_all_registrations() {
