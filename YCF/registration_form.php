@@ -328,8 +328,45 @@ function render_registration_form($package_id, $package_name, $price) {
     document.getElementById('multi-step-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Prepare form data for saving
+        const submitBtn = this.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'PROCESSING...';
+            submitBtn.style.opacity = '0.7';
+        }
+
         const formData = new FormData(this);
+        formData.append('package_id', '<?php echo $package_id; ?>');
+        formData.append('package_name', '<?php echo $package_name; ?>');
+        formData.append('amount', '<?php echo $price; ?>');
+
+        fetch('YCF/process_registration.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showCustomModal('Success! Your registration has been received and is pending verification of payment. Our team will review your submission shortly.');
+            } else {
+                showCustomModal('Error: ' + (data.message || 'There was a problem saving your registration. Please try again.'));
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'COMPLETE REGISTRATION';
+                    submitBtn.style.opacity = '1';
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showCustomModal('Network Error: Please check your connection and try again.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'COMPLETE REGISTRATION';
+                submitBtn.style.opacity = '1';
+            }
+        });
+    });
         formData.append('package_id', '<?php echo $package_id; ?>');
         formData.append('package_name', '<?php echo $package_name; ?>');
         formData.append('amount', '<?php echo $price + 3.00; ?>');
