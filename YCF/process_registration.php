@@ -17,45 +17,51 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET
 
 // Log input data for debugging
 error_log("REQUEST METHOD: " . $_SERVER['REQUEST_METHOD']);
-error_log("POST data: " . json_encode($_POST));
-error_log("FILES data: " . json_encode($_FILES));
-error_log("RAW input: " . file_get_contents('php://input'));
+error_log("POST count: " . count($_POST));
+error_log("FILES count: " . count($_FILES));
+error_log("CONTENT TYPE: " . ($_SERVER['CONTENT_TYPE'] ?? 'N/A'));
 
 $data_source = array_merge($_GET, $_POST);
 
-// Check for JSON payload
-$raw_input = file_get_contents('php://input');
-if (!empty($raw_input)) {
-    $json_data = json_decode($raw_input, true);
-    if ($json_data) {
-        $data_source = array_merge($data_source, $json_data);
-    }
-}
-
-// Special case: if POST is empty but it's a multipart request, PHP might be having issues parsing it
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST) && empty($_FILES) && isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'multipart/form-data') !== false) {
-    error_log("WARNING: POST is empty but Content-Type is multipart/form-data. This could indicate a PHP configuration limit (upload_max_filesize or post_max_size).");
-    
-    // Attempt manual parsing if PHP failed to populate $_POST
+// CRITICAL: If POST is empty but it's a POST request, PHP is likely failing to parse multipart
+// due to server limits or configuration. Try to grab data from json_backup field manually.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST)) {
     $raw_input = file_get_contents('php://input');
     if (!empty($raw_input)) {
-        // Handle json_backup if present
+        error_log("Attempting manual extraction from raw input (length: " . strlen($raw_input) . ")");
+        
+        // Look for our specific json_backup field in the multipart body
         if (preg_match('/name="json_backup"[\r\n]+[\r\n]+(.*?)\r\n--/s', $raw_input, $backup_match)) {
             $backup = json_decode(trim($backup_match[1]), true);
             if ($backup) {
+                error_log("Successfully extracted backup data: " . json_encode($backup));
                 $data_source = array_merge($data_source, $backup);
             }
         }
         
-        // General manual extraction for string fields
-        preg_match_all('/name="([^"]+)"[\r\n]+[\r\n]+(.*?)\r\n/s', $raw_input, $matches);
-        if (!empty($matches[1])) {
-            foreach ($matches[1] as $i => $name) {
-                if (!isset($data_source[$name]) || $data_source[$name] === '') {
-                    $data_source[$name] = trim($matches[2][$i]);
+        // If still no data, try general extraction for any string fields
+        if (empty($data_source['email'])) {
+            preg_match_all('/name="([^"]+)"[\r\n]+[\r\n]+(.*?)\r\n/s', $raw_input, $matches);
+            if (!empty($matches[1])) {
+                foreach ($matches[1] as $i => $name) {
+                    if ($name !== 'json_backup') {
+                        // Clean up multipart data (remove headers if accidentally caught)
+                        $val = trim($matches[2][$i]);
+                        if (strpos($val, "Content-Type") === false) {
+                            $data_source[$name] = $val;
+                        }
+                    }
                 }
             }
         }
+    }
+}
+
+// Fallback: Check if we have essential data, if not, try to parse ANY strings
+if (empty($data_source['email']) && !empty($raw_input)) {
+    preg_match_all('/"email":"([^"]+)"/', $raw_input, $email_match);
+    if (!empty($email_match[1][0])) {
+         $data_source['email'] = $email_match[1][0];
     }
 }
 

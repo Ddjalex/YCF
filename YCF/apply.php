@@ -513,6 +513,12 @@ function handleFinalSubmit() {
         return;
     }
 
+    // Explicitly reconstruct FormData to ensure it's not a reference issue
+    const finalFormData = new FormData();
+    for (var pair of formData.entries()) {
+        finalFormData.append(pair[0], pair[1]);
+    }
+
     // Also send a JSON backup in a separate field if it's not a file
     const backupData = {};
     for (var pair of formData.entries()) {
@@ -520,9 +526,20 @@ function handleFinalSubmit() {
             backupData[pair[0]] = pair[1];
         }
     }
-    formData.append('json_backup', JSON.stringify(backupData));
+    const jsonBackup = JSON.stringify(backupData);
+    finalFormData.append('json_backup', jsonBackup);
+    
+    console.log('Sending backup data:', jsonBackup);
 
-    fetch(targetUrl, fetchOptions)
+    fetch(targetUrl, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: finalFormData,
+        redirect: 'follow',
+        cache: 'no-cache'
+    })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
