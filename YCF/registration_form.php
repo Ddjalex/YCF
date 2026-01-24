@@ -345,8 +345,40 @@ function render_registration_form($package_id, $package_name, $price) {
         if (!submitBtn) return;
         
         const originalBtnText = submitBtn.innerText;
-        submitBtn.innerText = 'Processing...';
+        submitBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
         submitBtn.disabled = true;
+
+        // Add spinner style if not exists
+        if (!document.getElementById('spinner-style')) {
+            const style = document.createElement('style');
+            style.id = 'spinner-style';
+            style.innerHTML = `
+                .loading-spinner {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid rgba(255,255,255,0.3);
+                    border-radius: 50%;
+                    border-top-color: #fff;
+                    animation: spin 1s ease-in-out infinite;
+                    margin-right: 8px;
+                    vertical-align: middle;
+                }
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+                .success-popup {
+                    position: fixed;
+                    top: 0; left: 0; width: 100%; height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: flex; align-items: center; justify-content: center;
+                    z-index: 10000;
+                    animation: fadeIn 0.3s ease;
+                }
+                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            `;
+            document.head.appendChild(style);
+        }
 
         const formData = new FormData(this);
         formData.append('package_id', '<?php echo $package_id; ?>');
@@ -363,7 +395,7 @@ function render_registration_form($package_id, $package_name, $price) {
         })
         .then(data => {
             if (data.success) {
-                window.location.href = 'index.php?success=1';
+                showSuccessPopup();
             } else {
                 throw new Error(data.message || 'Registration failed');
             }
@@ -392,7 +424,7 @@ function render_registration_form($package_id, $package_name, $price) {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.success) window.location.href = 'index.php?success=1';
+                    if (data.success) showSuccessPopup();
                     else alert(data.message || 'Registration failed. Please try again.');
                 })
                 .catch(err => {
@@ -405,6 +437,22 @@ function render_registration_form($package_id, $package_name, $price) {
             }
         });
     });
+
+    function showSuccessPopup() {
+        const popup = document.createElement('div');
+        popup.className = 'success-popup';
+        popup.innerHTML = `
+            <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%;">
+                <div style="width: 80px; height: 80px; background: #4BB543; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px;">
+                    ✓
+                </div>
+                <h2 style="margin-bottom: 10px; color: #333;">SUCCESS!</h2>
+                <p style="color: #666; margin-bottom: 30px;">Registration submitted. Thank you!</p>
+                <button onclick="window.location.href='index.php'" style="background: #2D236E; color: white; border: none; padding: 12px 40px; border-radius: 6px; font-weight: 700; cursor: pointer; text-transform: uppercase; width: 100%;">Continue</button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+    }
     </script>
     <?php
 }
