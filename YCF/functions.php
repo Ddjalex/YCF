@@ -61,7 +61,10 @@ function get_db_connection() {
     
     // SQLite Fallback - Use ONE shared absolute path
     try {
-        $db_path = __DIR__ . '/database.sqlite';
+        $db_path = $_SERVER['DOCUMENT_ROOT'] . '/database.sqlite';
+        if (!file_exists($db_path)) {
+            $db_path = __DIR__ . '/../database.sqlite';
+        }
         $pdo = new PDO("sqlite:" . $db_path);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
