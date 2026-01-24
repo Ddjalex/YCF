@@ -339,7 +339,7 @@ function render_registration_form($package_id, $package_name, $price) {
         submitBtn.disabled = true;
         submitBtn.innerText = 'Processing...';
 
-        fetch('process_registration.php', {
+        fetch('YCF/process_registration.php', {
             method: 'POST',
             body: formData
         })
@@ -348,8 +348,13 @@ function render_registration_form($package_id, $package_name, $price) {
             submitBtn.disabled = false;
             submitBtn.innerText = 'Complete Registration';
             if (data.success) {
-                // Successfully saved to DB, now redirect to a thank you page or show success in UI
-                window.location.href = 'thank-you'; 
+                // Successfully saved to DB, show custom success message
+                if (typeof showCustomModal === 'function') {
+                    showCustomModal("Your payment has been successfully received! Your registration for Youth Crypto Forum 2026 is now complete. Please wait for the final approval from the Go Forum Admin. You will receive a confirmation email shortly.");
+                } else {
+                    alert("Your payment has been successfully received! Your registration for Youth Crypto Forum 2026 is now complete. Please wait for the final approval from the Go Forum Admin. You will receive a confirmation email shortly.");
+                    window.location.href = 'thank-you';
+                }
             } else {
                 document.getElementById('error-banner').style.display = 'flex';
                 document.getElementById('error-banner').querySelector('span:last-child').innerText = 'There was an error saving your registration: ' + data.message;
