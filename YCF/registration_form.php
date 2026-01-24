@@ -261,7 +261,7 @@ function render_registration_form($package_id, $package_name, $price) {
 
                 <div style="display: flex; gap: 10px;">
                     <button type="button" onclick="nextStep(2)" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; flex: 1;">Submit</button>
+                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; flex: 1;">Complete Registration</button>
                 </div>
             </div>
         </form>
@@ -337,29 +337,11 @@ function render_registration_form($package_id, $package_name, $price) {
     document.getElementById('multi-step-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Final validation for Step 3
-        const container = document.getElementById('step-3');
-        const inputs = container.querySelectorAll('[required]');
-        let isValid = true;
-        
-        inputs.forEach(input => {
-            if (!input.value.trim() || (input.type === 'radio' && !container.querySelector(`input[name="${input.name}"]:checked`))) {
-                isValid = false;
-                input.style.borderColor = '#fc8181';
-            }
-        });
-
-        if (!isValid) {
-            document.getElementById('error-banner').style.display = 'flex';
-            return;
-        }
-
+        // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'PROCESSING...';
-            submitBtn.style.opacity = '0.7';
-        }
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = 'Submitting...';
+        submitBtn.disabled = true;
 
         const formData = new FormData(this);
         formData.append('package_id', '<?php echo $package_id; ?>');
@@ -371,41 +353,31 @@ function render_registration_form($package_id, $package_name, $price) {
             body: formData
         })
         .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text || 'Network response was not ok');
+                });
+            }
             return response.json();
         })
         .then(data => {
             if (data.success) {
-                if (typeof showCustomModal === 'function') {
-                    showCustomModal('Success! Your registration has been received and is pending verification of payment. Our team will review your submission shortly.');
-                } else {
-                    alert('Registration successful!');
-                }
+                window.location.href = 'index.php?success=1';
             } else {
-                if (typeof showCustomModal === 'function') {
-                    showCustomModal('Error: ' + (data.message || 'There was a problem saving your registration.'));
-                } else {
-                    alert('Error: ' + data.message);
-                }
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = 'SUBMIT';
-                    submitBtn.style.opacity = '1';
-                }
+                alert('Error: ' + data.message);
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            if (typeof showCustomModal === 'function') {
-                showCustomModal('Network Error: Please check your connection and try again.');
+            if (error.message && error.message.includes('Invalid request method')) {
+                alert('Sync Error: The registration form was out of sync. Please refresh the page and try again.');
             } else {
-                alert('Network error occurred.');
+                alert('An unexpected error occurred. Please try again.');
             }
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'SUBMIT';
-                submitBtn.style.opacity = '1';
-            }
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
         });
     });
     </script>
