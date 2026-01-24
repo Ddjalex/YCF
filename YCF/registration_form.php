@@ -232,9 +232,21 @@ function render_registration_form($package_id, $package_name, $price) {
                         <div id="crypto-details" style="display: none; padding-top: 20px; text-align: center;">
                             <div style="background: white; border: 1px solid #F1D302; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
                                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" style="width: 150px; margin-bottom: 15px; border: 1px solid #eee; padding: 5px; border-radius: 8px;">
-                                <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-bottom: 15px; border: 1px dashed #ccc;">
-                                    1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+                                <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-bottom: 15px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: space-between; max-width: 100%; overflow: hidden;">
+                                    <span id="btc-address" style="overflow-wrap: anywhere;">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
+                                    <button type="button" onclick="copyAddress()" style="background: #2D236E; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-left: 10px; white-space: nowrap; font-weight: 700;">Copy</button>
                                 </div>
+                                <script>
+                                function copyAddress() {
+                                    const address = document.getElementById('btc-address').innerText;
+                                    navigator.clipboard.writeText(address).then(() => {
+                                        const btn = event.target;
+                                        const originalText = btn.innerText;
+                                        btn.innerText = 'Copied!';
+                                        setTimeout(() => btn.innerText = originalText, 2000);
+                                    });
+                                }
+                                </script>
                                 <div style="text-align: left;">
                                     <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;">Transaction ID (TXID) <span style="color: red;">*</span></label>
                                     <input type="text" name="txid" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
