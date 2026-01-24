@@ -1,6 +1,36 @@
 <?php
 // Custom router for PHP development server
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Normalize URI: remove leading slash for file system checks
+$path = ltrim($uri, '/');
+
+// Check if we are in the admin subdirectory or root
+$is_admin_path = (strpos($uri, '/admin/') === 0 || $uri === '/admin');
+
+if ($is_admin_path) {
+    // Determine the relative path within YCF/admin/
+    $sub_path = preg_replace('/^\/admin\/?/', '', $uri);
+    
+    // Default to index.php for /admin or /admin/
+    if ($sub_path === '') {
+        $sub_path = 'index.php';
+    }
+    
+    $file_in_admin = __DIR__ . '/admin/' . $sub_path;
+    
+    if (file_exists($file_in_admin) && !is_dir($file_in_admin)) {
+        require_once $file_in_admin;
+        exit;
+    }
+    
+    if (file_exists($file_in_admin . '.php')) {
+        require_once $file_in_admin . '.php';
+        exit;
+    }
+}
+
+// Fallback to original YCF files
 $file = __DIR__ . $uri;
 
 if (file_exists($file) && !is_dir($file)) {
@@ -54,23 +84,9 @@ if ($uri === '/') {
     exit;
 }
 
-$path = ltrim($uri, '/');
 if (file_exists($path . '.php')) {
     include $path . '.php';
     exit;
-}
-
-// Support for subdirectories like admin/
-if (strpos($uri, '/admin/') === 0) {
-    $admin_file = __DIR__ . $uri;
-    if (file_exists($admin_file) && !is_dir($admin_file)) {
-        require_once $admin_file;
-        exit;
-    }
-    if (file_exists($admin_file . '.php')) {
-        require_once $admin_file . '.php';
-        exit;
-    }
 }
 
 return false;
