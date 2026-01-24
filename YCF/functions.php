@@ -75,7 +75,7 @@ function get_db_connection() {
 function save_registration($data) {
     $pdo = get_db_connection();
     if (!$pdo) {
-        error_log("Database connection failed in save_registration");
+        error_log("CRITICAL ERROR: Database connection failed in save_registration for email: " . ($data['email'] ?? 'unknown'));
         return false;
     }
     
@@ -93,22 +93,26 @@ function save_registration($data) {
         $insert_data[$field] = $data[$field] ?? null;
     }
     
+    // Double check essential fields
+    if (empty($insert_data['first_name'])) {
+        error_log("CRITICAL ERROR: Registration attempt with EMPTY first_name. Full data: " . json_encode($data));
+    }
+    
     $fields = array_keys($insert_data);
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
     try {
         $stmt = $pdo->prepare($sql);
-        error_log("DEBUG: Final data being inserted: " . json_encode($insert_data));
         $result = $stmt->execute($insert_data);
         if (!$result) {
-            error_log("SQL Execution Failed: " . implode(" ", $stmt->errorInfo()));
+            error_log("SQL Execution Failed for " . ($insert_data['email'] ?? 'unknown') . ": " . implode(" ", $stmt->errorInfo()));
         } else {
             error_log("Registration saved successfully for " . $insert_data['email']);
         }
         return $result;
     } catch (PDOException $e) {
-        error_log("Insert PDOException: " . $e->getMessage());
+        error_log("Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
         return false;
     } catch (Exception $e) {
         error_log("Insert General Exception: " . $e->getMessage());
