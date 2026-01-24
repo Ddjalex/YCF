@@ -41,12 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $date = $_POST['target_date'] ?? '';
             $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", \"value\") VALUES ('countdown_date', ?) 
                                   ON CONFLICT(\"key\") DO UPDATE SET \"value\" = excluded.\"value\"");
-            $stmt->execute([$date]);
+            if ($stmt->execute([$date])) {
+                $_SESSION['success_msg'] = "Countdown date synchronized successfully!";
+                header('Location: dashboard.php');
+                exit;
+            }
         } elseif ($action === 'update_crypto') {
             $addr = $_POST['btc_address'] ?? '';
             $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", \"value\") VALUES ('btc_address', ?) 
                                   ON CONFLICT(\"key\") DO UPDATE SET \"value\" = excluded.\"value\"");
-            $stmt->execute([$addr]);
+            if ($stmt->execute([$addr])) {
+                $_SESSION['success_msg'] = "Crypto settings updated successfully!";
+                header('Location: dashboard.php');
+                exit;
+            }
         }
     }
 }
