@@ -1,0 +1,50 @@
+Stack trace:
+#0 {main}
+  thrown in /home/goforuku/public_html/index.php on line 7
+[24-Jan-2026 09:41:44 UTC] Invalid request method access: GET from 196.191.61.117
+[24-Jan-2026 09:44:18 UTC] Invalid request method access: GET from 196.191.61.117
+[24-Jan-2026 09:46:13 UTC] Invalid request method access: GET from 196.191.61.117
+[24-Jan-2026 09:49:04 UTC] Insert PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'source' in 'INSERT INTO'
+[24-Jan-2026 09:49:04 UTC] Registration Save Failed for:  - Error: ["42S22",1054,"Unknown column 'source' in 'INSERT INTO'"]
+[24-Jan-2026 09:58:48 UTC] Registration saved successfully for 
+[24-Jan-2026 10:04:58 UTC] POST data: []
+[24-Jan-2026 10:04:58 UTC] FILES data: []
+[24-Jan-2026 10:04:58 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:04:58 UTC] With Data: {"package_id":"","package_name":"","first_name":"","last_name":"","nationality":"","email":"","gender":"","dob":"","phone":"","profession":"","residence":"","departure":"","visa":"","referral":"","journey":"","impact":"","profile_photo":null,"passport_photo":null,"payment_method":"","txid":"","payment_screenshot":null,"amount":0,"source":""}
+[24-Jan-2026 10:04:58 UTC] Registration saved successfully for 
+[24-Jan-2026 10:10:39 UTC] POST data: []
+[24-Jan-2026 10:10:39 UTC] FILES data: []
+[24-Jan-2026 10:10:39 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:10:39 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":null,"journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":0,"source":null}
+[24-Jan-2026 10:10:39 UTC] Registration saved successfully for 
+[24-Jan-2026 10:17:48 UTC] POST data: []
+[24-Jan-2026 10:17:48 UTC] FILES data: []
+[24-Jan-2026 10:17:48 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:17:48 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":"","journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":"0","source":null}
+[24-Jan-2026 10:17:48 UTC] Registration saved successfully for 
+[24-Jan-2026 10:24:22 UTC] POST data: []
+[24-Jan-2026 10:24:22 UTC] FILES data: []
+[24-Jan-2026 10:24:22 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:24:22 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":"","journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":"0","source":null}
+[24-Jan-2026 10:24:22 UTC] Registration saved successfully for 
+[24-Jan-2026 10:24:32 UTC] POST data: []
+[24-Jan-2026 10:24:32 UTC] FILES data: []
+[24-Jan-2026 10:24:32 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:24:32 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":"","journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":"0","source":null}
+[24-Jan-2026 10:24:32 UTC] Registration saved successfully for 
+[24-Jan-2026 10:31:04 UTC] REQUEST METHOD: GET
+[24-Jan-2026 10:31:04 UTC] POST count: 0
+[24-Jan-2026 10:31:04 UTC] FILES count: 0
+[24-Jan-2026 10:31:04 UTC] CONTENT TYPE: N/A
+[24-Jan-2026 10:31:04 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:31:04 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":"","journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":"0","source":null}
+[24-Jan-2026 10:31:04 UTC] Registration saved successfully for 
+[24-Jan-2026 10:31:11 UTC] REQUEST METHOD: GET
+[24-Jan-2026 10:31:11 UTC] POST count: 0
+[24-Jan-2026 10:31:11 UTC] FILES count: 0
+[24-Jan-2026 10:31:11 UTC] CONTENT TYPE: N/A
+[24-Jan-2026 10:31:11 UTC] Attempting SQL: INSERT INTO registrations (package_id, package_name, first_name, last_name, nationality, email, gender, dob, phone, profession, residence, departure, visa, referral, journey, impact, profile_photo, passport_photo, payment_method, txid, payment_screenshot, amount, source) VALUES (:package_id, :package_name, :first_name, :last_name, :nationality, :email, :gender, :dob, :phone, :profession, :residence, :departure, :visa, :referral, :journey, :impact, :profile_photo, :passport_photo, :payment_method, :txid, :payment_screenshot, :amount, :source)
+[24-Jan-2026 10:31:11 UTC] With Data: {"package_id":null,"package_name":null,"first_name":null,"last_name":null,"nationality":null,"email":null,"gender":null,"dob":null,"phone":null,"profession":null,"residence":null,"departure":null,"visa":null,"referral":"","journey":null,"impact":null,"profile_photo":null,"passport_photo":null,"payment_method":null,"txid":null,"payment_screenshot":null,"amount":"0","source":null}
+[24-Jan-2026 10:31:11 UTC] Registration saved successfully for 
+[24-Jan-2026 11:16:21 UTC] Invalid request method access: GET from 196.191.61.117
+[24-Jan-2026 11:20:08 UTC] Invalid request method access: GET from 196.191.61.117
