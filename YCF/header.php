@@ -514,13 +514,13 @@ require_once 'functions.php';
 
         .image-text-mask {
             background: linear-gradient(to right, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.1) 60%), url('attached_assets/intro_image.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-size: 200% auto;
+            background-repeat: repeat-x;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
+            animation: backgroundMove 40s linear infinite;
             display: block;
             position: relative;
             z-index: 2;
