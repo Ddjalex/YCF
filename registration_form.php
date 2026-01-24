@@ -328,9 +328,50 @@ function render_registration_form($package_id, $package_name, $price) {
     document.getElementById('multi-step-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Prepare form data for saving
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = 'Submitting...';
+        submitBtn.disabled = true;
+
         const formData = new FormData(this);
         formData.append('package_id', '<?php echo $package_id; ?>');
+        formData.append('package_name', '<?php echo $package_name; ?>');
+        formData.append('amount', '<?php echo $price + 3.00; ?>');
+
+        fetch('process_registration.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text || 'Network response was not ok');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'index.php?success=1';
+            } else {
+                alert('Error: ' + data.message);
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // If the error message is "Invalid request method", it's likely a sync issue
+            if (error.message && error.message.includes('Invalid request method')) {
+                alert('Sync Error: The registration form was out of sync. Please refresh the page and try again.');
+            } else {
+                alert('An unexpected error occurred. Please try again.');
+            }
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });        formData.append('package_id', '<?php echo $package_id; ?>');
         formData.append('package_name', '<?php echo $package_name; ?>');
         formData.append('amount', '<?php echo $price + 3.00; ?>');
         formData.append('action', 'save_registration');
