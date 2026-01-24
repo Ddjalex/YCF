@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } elseif ($action === 'update_countdown') {
             $date = $_POST['target_date'] ?? '';
+            // Ensure we use backticks for MySQL keys
             $stmt = $pdo->prepare("INSERT INTO admin_settings (`key`, `value`) VALUES ('countdown_date', ?) 
                                   ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)");
             if ($stmt->execute([$date])) {

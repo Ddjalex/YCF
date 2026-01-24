@@ -141,10 +141,18 @@ function save_registration($data) {
     $pdo = get_db_connection();
     if (!$pdo) return false;
     
+    // Explicitly check for MySQL connection type to handle potential differences
+    $is_mysql = (strpos($pdo->getAttribute(PDO::ATTR_DRIVER_NAME), 'mysql') !== false);
+    
     $fields = array_keys($data);
+    // Wrap field names in backticks for MySQL or double quotes for others to avoid reserved keyword issues
+    $wrapped_fields = array_map(function($f) use ($is_mysql) { 
+        return $is_mysql ? "`$f`" : "\"$f\""; 
+    }, $fields);
+    
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
-    $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    $sql = "INSERT INTO registrations (" . implode(', ', $wrapped_fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
     try {
         $stmt = $pdo->prepare($sql);
         return $stmt->execute($data);

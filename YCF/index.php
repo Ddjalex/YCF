@@ -212,7 +212,8 @@ if (isset($_GET['page'])) {
 
     <script>
         (function() {
-            const target = new Date("2026-06-15T09:00:00").getTime();
+            const targetDateStr = "<?php echo get_target_date(); ?>";
+            const target = new Date(targetDateStr).getTime();
             
             function updateCard(id, newVal) {
                 const card = document.getElementById(id);
