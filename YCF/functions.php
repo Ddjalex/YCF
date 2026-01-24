@@ -149,6 +149,9 @@ function save_registration($data) {
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    error_log("Attempting SQL: " . $sql);
+    error_log("With Data: " . json_encode($insert_data));
+    
     try {
         $stmt = $pdo->prepare($sql);
         $result = $stmt->execute($insert_data);

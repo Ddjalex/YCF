@@ -6,11 +6,20 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET') {
     $method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
     error_log("Invalid request method access: " . $method . " from " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+    
+    // Log the actual headers to see if something is stripping the method
+    $headers = getallheaders();
+    error_log("Request Headers: " . json_encode($headers));
+
     echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $method]);
     exit;
 }
 
-$data_source = ($_SERVER['REQUEST_METHOD'] === 'POST') ? $_POST : $_GET;
+// Log input data for debugging
+error_log("POST data: " . json_encode($_POST));
+error_log("FILES data: " . json_encode($_FILES));
+
+$data_source = array_merge($_GET, $_POST);
 
 
 $upload_dir = 'uploads/';

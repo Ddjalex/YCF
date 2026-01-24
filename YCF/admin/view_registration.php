@@ -115,28 +115,36 @@ if (!$reg) {
                 </div>
                 <div class="field">
                     <span class="label">Date of Birth</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['dob']); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['dob'] ?? ''); ?></div>
                 </div>
                 <div class="field">
                     <span class="label">Phone</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['phone']); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['phone'] ?? ''); ?></div>
                 </div>
                 <div class="field">
                     <span class="label">Profession</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['profession']); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['profession'] ?? ''); ?></div>
                 </div>
                 <div class="field">
                     <span class="label">Residence</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['residence']); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['residence'] ?? ''); ?></div>
                 </div>
                 <div class="field">
                     <span class="label">Visa Required</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['visa']); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['visa'] ?? ''); ?></div>
+                </div>
+                <div class="field">
+                    <span class="label">Source / Referral</span>
+                    <div class="value"><?php echo htmlspecialchars(($reg['source'] ?? '') . ' / ' . ($reg['referral'] ?? '')); ?></div>
                 </div>
                 
                 <div class="field full-width">
                     <span class="label">Personal Journey</span>
-                    <div class="value" style="white-space: pre-wrap; line-height: 1.6;"><?php echo htmlspecialchars($reg['journey']); ?></div>
+                    <div class="value" style="white-space: pre-wrap; line-height: 1.6;"><?php echo htmlspecialchars($reg['journey'] ?? ''); ?></div>
+                </div>
+                <div class="field full-width">
+                    <span class="label">Impact</span>
+                    <div class="value" style="white-space: pre-wrap; line-height: 1.6;"><?php echo htmlspecialchars($reg['impact'] ?? ''); ?></div>
                 </div>
                 
                 <div class="field">
