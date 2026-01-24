@@ -4,7 +4,7 @@ require_once 'functions.php';
 header('Content-Type: application/json');
 
 // Stop accidental GET requests from creating NULL records
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && empty($_SERVER['HTTP_X_REQUESTED_WITH'])) {
     header("Location: index.php");
     exit;
 }
@@ -139,4 +139,7 @@ if (!$success) {
     error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
 }
 
+// Ensure clean output for JSON response
+ob_clean();
 echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);
+exit;

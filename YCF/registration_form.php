@@ -340,7 +340,7 @@ function render_registration_form($package_id, $package_name, $price) {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerText;
-        submitBtn.innerText = 'Submitting...';
+        submitBtn.innerHTML = '<span class="spinner" style="display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-radius:50%; border-top-color:#fff; animation:spin 1s linear infinite; margin-right:8px; vertical-align:middle;"></span>Submitting...';
         submitBtn.disabled = true;
 
         const formData = new FormData(this);
@@ -350,9 +350,16 @@ function render_registration_form($package_id, $package_name, $price) {
 
         fetch('process_registration.php', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
         })
         .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+                return;
+            }
             if (!response.ok) {
                 return response.text().then(text => {
                     throw new Error(text || 'Network response was not ok');
@@ -361,8 +368,11 @@ function render_registration_form($package_id, $package_name, $price) {
             return response.json();
         })
         .then(data => {
+            if (!data) return;
             if (data.success) {
-                window.location.href = 'index.php?success=1';
+                showModal('SUCCESS!', 'Registration submitted successfully. Thank you!', 'CONTINUE', () => {
+                    window.location.href = 'index.php';
+                });
             } else {
                 alert('Error: ' + data.message);
                 submitBtn.innerText = originalBtnText;
@@ -371,7 +381,18 @@ function render_registration_form($package_id, $package_name, $price) {
         })
         .catch(error => {
             console.error('Error:', error);
-            if (error.message && error.message.includes('Invalid request method')) {
+            alert('A system error occurred. Please try again or contact support.');
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+    </script>
+    <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+<?php
+}
+?>
                 alert('Sync Error: The registration form was out of sync. Please refresh the page and try again.');
             } else {
                 alert('An unexpected error occurred. Please try again.');
