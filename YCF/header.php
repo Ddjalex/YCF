@@ -7,9 +7,9 @@ require_once 'functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youth Development Forum 2026</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" href="attached_assets/generated_images/modern_crypto_forum_logo_design.png
+    <link rel="shortcut icon" type="image/png" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
+    <link rel="apple-touch-icon" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -508,33 +508,33 @@ require_once 'functions.php';
         }
 
         @keyframes backgroundMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
         }
 
         .image-text-mask {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.1) 60%), url('attached_assets/intro_image.jpg');
-            background-size: 200% auto;
+            background: url('attached_assets/intro_image.jpg');
+            background-size: auto 100%;
             background-repeat: repeat-x;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
-            animation: backgroundMove 40s linear infinite;
+            animation: backgroundMove 60s linear infinite;
             display: block;
             position: relative;
             z-index: 2;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            will-change: background-position;
         }
 
         .hero-title {
-            font-size: clamp(3.5rem, 12vw, 10rem);
+            font-size: clamp(4rem, 15vw, 12rem);
             font-weight: 900;
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: 0.85;
             margin: 0;
-            letter-spacing: -0.03em;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            letter-spacing: -0.02em;
         }
 
         .hero-subtitle {
