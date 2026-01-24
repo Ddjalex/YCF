@@ -4,7 +4,7 @@ require_once 'functions.php';
 
 // Fetch dynamic data
 $news = get_latest_news();
-$hero_video_url = get_hero_video();
+$hero_video = get_hero_video();
 ?>
 <section class="hero-container" style="padding: clamp(60px, 10vh, 120px) 20px 40px; text-align: center;">
     <h1 class="hero-title image-text-mask" style="font-size: clamp(2.5rem, 8vw, 6rem); font-family: Montserrat, sans-serif; font-weight: 900; line-height: 1.1;">Youth Crypto Forum 2026</h1>
@@ -13,7 +13,7 @@ $hero_video_url = get_hero_video();
     
     <div class="video-container" style="width: 100%; max-width: 900px; aspect-ratio: 16/9; height: auto; border-radius: clamp(10px, 3vw, 40px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); background: #000; margin: 0 auto 30px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
-        $display_video = $hero_video_url;
+        $display_video = $hero_video;
         // Logic to ensure the video source is correctly formatted for the browser
         if (strpos($display_video, 'http') !== 0 && strpos($display_video, 'attached_assets') !== 0) {
             // Ensure local paths like 'uploads/file.mp4' are correctly resolved for Replit

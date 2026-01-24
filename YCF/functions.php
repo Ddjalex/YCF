@@ -92,6 +92,16 @@ function get_db_connection() {
         
         $pdo->exec($table_sql);
 
+        // Ensure missing columns are added if table existed
+        try {
+            $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS source VARCHAR(255)");
+        } catch (PDOException $e) {
+            // MySQL doesn't support ADD COLUMN IF NOT EXISTS in all versions, try traditional way
+            try {
+                $pdo->exec("ALTER TABLE registrations ADD source VARCHAR(255)");
+            } catch (PDOException $ex) {}
+        }
+
         // Create admin_settings table if not exists
         $settings_sql = getenv('DATABASE_URL') ?
             "CREATE TABLE IF NOT EXISTS admin_settings (
