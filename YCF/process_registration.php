@@ -4,8 +4,23 @@ require_once 'functions.php';
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    error_log("Invalid request method access: " . $_SERVER['REQUEST_METHOD'] . " from " . $_SERVER['REMOTE_ADDR']);
-    echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $_SERVER['REQUEST_METHOD']]);
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
+    error_log("Invalid request method access: " . $method . " from " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+    
+    // Check if it's a redirection issue or browser behavior
+    if ($method === 'GET' && !empty($_GET)) {
+        error_log("GET request detected with data: " . json_encode($_GET));
+    }
+
+    echo json_encode([
+        'success' => false, 
+        'message' => 'Invalid request method: ' . $method,
+        'debug' => [
+            'method' => $method,
+            'uri' => $_SERVER['REQUEST_URI'] ?? '',
+            'proto' => $_SERVER['SERVER_PROTOCOL'] ?? ''
+        ]
+    ]);
     exit;
 }
 

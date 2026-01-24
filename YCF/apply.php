@@ -480,14 +480,21 @@ function handleFinalSubmit() {
 
     const targetUrl = './process_registration.php';
     console.log('Submitting form to ' + targetUrl + ' via POST');
-    fetch(targetUrl, {
+    
+    // Explicitly check method before fetch
+    const fetchOptions = {
         method: 'POST',
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
-            'Cache-Control': 'no-cache'
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
         },
         body: formData
-    })
+    };
+    
+    console.log('Fetch options:', { method: fetchOptions.method, url: targetUrl });
+
+    fetch(targetUrl, fetchOptions)
     .then(response => response.json())
     .then(data => {
         if (data.success) {
