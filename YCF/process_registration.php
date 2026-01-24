@@ -3,15 +3,23 @@ require_once 'functions.php';
 
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $raw_input = file_get_contents('php://input');
-    $json_input = json_decode($raw_input, true);
-    if (!$json_input) {
-        error_log("Invalid request method access: " . $_SERVER['REQUEST_METHOD'] . " from " . $_SERVER['REMOTE_ADDR']);
-        echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $_SERVER['REQUEST_METHOD']]);
+    if (!empty($raw_input)) {
+        $json_input = json_decode($raw_input, true);
+        if ($json_input) {
+            $_POST = array_merge($_POST, $json_input);
+        }
+    }
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // If it's a GET request but contains registration data, it's likely a sync issue
+    if (isset($_GET['first_name']) || isset($_GET['email'])) {
+        $_POST = $_GET;
+    } else {
+        error_log("Invalid request method access: GET from " . $_SERVER['REMOTE_ADDR']);
+        echo json_encode(['success' => false, 'message' => 'Invalid request method: GET']);
         exit;
     }
-    $_POST = $json_input;
 }
 
 $upload_dir = 'uploads/';
