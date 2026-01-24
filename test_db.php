@@ -1,5 +1,5 @@
 <?php
-require_once 'YCF/functions.php';
+require_once 'functions.php';
 
 echo "Database Test\n";
 $pdo = get_db_connection();

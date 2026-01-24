@@ -1,5 +1,5 @@
 <?php
-require_once 'YCF/functions.php';
+require_once 'functions.php';
 
 header('Content-Type: application/json');
 
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$upload_dir = 'YCF/uploads/';
+$upload_dir = 'uploads/';
 if (!file_exists($upload_dir)) {
     mkdir($upload_dir, 0777, true);
 }
@@ -55,7 +55,9 @@ $data = [
 $success = save_registration($data);
 
 if (!$success) {
-    error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown'));
+    $pdo = get_db_connection();
+    $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
+    error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
 }
 
 echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);
