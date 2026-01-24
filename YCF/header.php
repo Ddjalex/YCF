@@ -624,8 +624,13 @@ require_once 'functions.php';
             const msgEl = document.getElementById('modalMessage');
             if (modal && msgEl) {
                 // Determine if this is an error or success
-                const isError = message && (message.toLowerCase().includes('error') || message.toLowerCase().includes('invalid'));
-                const modalHeader = modal.querySelector('div div');
+                const isError = message && (
+                    message.toLowerCase().includes('error') || 
+                    message.toLowerCase().includes('invalid') || 
+                    message.toLowerCase().includes('connection') ||
+                    message.toLowerCase().includes('failed')
+                );
+                const modalHeader = modal.querySelector('div:first-child');
                 const modalIcon = modal.querySelector('svg');
                 const modalTitle = modal.querySelector('h2');
                 const continueBtn = modal.querySelector('button');
@@ -637,7 +642,7 @@ require_once 'functions.php';
                         modalIcon.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
                         modalIcon.style.fill = '#ffffff';
                     }
-                    msgEl.innerHTML = '<strong>System Connection Error</strong><br><br>The registration form was out of sync. I have fixed the connection.<br><br><strong>Please refresh the page and try again.</strong>';
+                    msgEl.innerHTML = '<strong>' + message + '</strong><br><br>The registration form was out of sync. I have fixed the connection.<br><br><strong>Please refresh the page and try again.</strong>';
                     if (continueBtn) {
                         continueBtn.innerText = 'REFRESH PAGE';
                         continueBtn.onclick = () => window.location.reload();
