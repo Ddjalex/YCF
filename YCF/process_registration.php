@@ -55,7 +55,9 @@ $data = [
 $success = save_registration($data);
 
 if (!$success) {
-    error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown'));
+    $pdo = get_db_connection();
+    $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
+    error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
 }
 
 echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);
