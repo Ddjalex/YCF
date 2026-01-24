@@ -271,9 +271,9 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
                     <?php else: ?>
                         <?php foreach (array_slice($registrations, 0, 10) as $reg): ?>
                         <tr>
-                            <td><?php echo date('M d', strtotime($reg['created_at'])); ?></td>
-                            <td><?php echo htmlspecialchars($reg['first_name'] . ' ' . $reg['last_name']); ?></td>
-                            <td><?php echo htmlspecialchars($reg['package_name']); ?></td>
+                            <td><?php echo isset($reg['created_at']) ? date('M d', strtotime($reg['created_at'])) : 'N/A'; ?></td>
+                            <td><?php echo htmlspecialchars(($reg['first_name'] ?? '') . ' ' . ($reg['last_name'] ?? '')); ?></td>
+                            <td><?php echo htmlspecialchars($reg['package_name'] ?? 'N/A'); ?></td>
                             <td><a href="view_registration.php?id=<?php echo $reg['id']; ?>" style="color: var(--primary); text-decoration: none; font-weight: 700;">View Details</a></td>
                         </tr>
                         <?php endforeach; ?>

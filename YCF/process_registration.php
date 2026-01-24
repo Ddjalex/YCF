@@ -18,10 +18,10 @@ function handle_upload($file_key) {
     if (!isset($_FILES[$file_key]) || $_FILES[$file_key]['error'] !== UPLOAD_ERR_OK) {
         return null;
     }
-    $filename = time() . '_' . basename($_FILES[$file_key]['name']);
+    $filename = time() . '_' . preg_replace("/[^a-zA-Z0-9.]/", "_", basename($_FILES[$file_key]['name']));
     $target = $upload_dir . $filename;
     if (move_uploaded_file($_FILES[$file_key]['tmp_name'], $target)) {
-        return $target;
+        return 'uploads/' . $filename;
     }
     return null;
 }

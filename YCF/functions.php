@@ -22,9 +22,7 @@ function get_db_connection() {
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
 
-        error_log("Successfully connected to cPanel MySQL");
-
-        // One-time table check/creation
+        // Create registrations table if not exists
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
             package_id VARCHAR(255),
@@ -53,6 +51,14 @@ function get_db_connection() {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )");
 
+        // Create admin_settings table if not exists
+        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+            `key` VARCHAR(255) PRIMARY KEY,
+            `value` TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )");
+
+        error_log("Successfully connected to MySQL and verified tables");
         return $pdo;
     } catch (PDOException $e) {
         error_log("cPanel MySQL Connection Failed: " . $e->getMessage());
