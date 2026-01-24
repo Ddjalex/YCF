@@ -478,6 +478,7 @@ function handleFinalSubmit() {
     formData.append('package_name', '<?php echo $current_package_name; ?>');
     formData.append('amount', '<?php echo $total_amount; ?>');
 
+    console.log('Submitting form to process_registration.php via POST');
     fetch('process_registration.php', {
         method: 'POST',
         headers: {

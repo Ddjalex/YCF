@@ -4,7 +4,8 @@ require_once 'functions.php';
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    error_log("Invalid request method access: " . $_SERVER['REQUEST_METHOD'] . " from " . $_SERVER['REMOTE_ADDR']);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $_SERVER['REQUEST_METHOD']]);
     exit;
 }
 
