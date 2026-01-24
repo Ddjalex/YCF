@@ -1,6 +1,57 @@
 <?php
 // functions.php - Global utility functions
 
+/**
+ * Ensures a function exists with a default implementation to prevent fatal errors
+ */
+if (!function_exists('get_latest_news')) {
+    function get_latest_news($limit = 3) {
+        $pdo = get_db_connection();
+        if ($pdo) {
+            try {
+                $stmt = $pdo->prepare("SELECT * FROM news ORDER BY date DESC LIMIT ?");
+                $stmt->execute([$limit]);
+                return $stmt->fetchAll();
+            } catch (Exception $e) {
+                error_log("Error fetching news: " . $e->getMessage());
+            }
+        }
+        return [
+            [
+                'id' => 1,
+                'title' => 'Crypto Innovation Berlin',
+                'category' => 'Technology',
+                'date' => 'May 10, 2026',
+                'summary' => 'Join us in Berlin to explore the latest trends in cryptocurrency and decentralized finance.',
+                'image' => 'attached_assets/intro_image.jpg'
+            ]
+        ];
+    }
+}
+
+if (!function_exists('get_hero_video')) {
+    function get_hero_video() {
+        return 'attached_assets/1768638860_yoth.mp4';
+    }
+}
+
+if (!function_exists('get_target_date')) {
+    function get_target_date() {
+        $pdo = get_db_connection();
+        if ($pdo) {
+            try {
+                $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'target_date'");
+                $stmt->execute();
+                $result = $stmt->fetch();
+                if ($result) return $result['value'];
+            } catch (Exception $e) {
+                error_log("Error fetching target date: " . $e->getMessage());
+            }
+        }
+        return "2026-05-07T09:00:00";
+    }
+}
+
 function get_db_connection() {
     // Priority: MySQL (cPanel) -> PostgreSQL (Replit) -> SQLite
     $host = '127.0.0.1'; 
@@ -15,11 +66,14 @@ function get_db_connection() {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_TIMEOUT => 5,
+            PDO::ATTR_TIMEOUT => 2, // Short timeout for faster failover
         ]);
         return $pdo;
     } catch (PDOException $e) {
-        error_log("MySQL Connection failed: " . $e->getMessage());
+        // Only log error in development or if it's a persistent issue
+        if (strpos($_SERVER['HTTP_HOST'] ?? '', 'localhost') !== false || strpos($_SERVER['HTTP_HOST'] ?? '', 'replit') !== false) {
+            error_log("MySQL Connection failed: " . $e->getMessage());
+        }
     }
 
     // Try PostgreSQL second (Native Replit DB)

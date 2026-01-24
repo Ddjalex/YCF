@@ -5,15 +5,11 @@ require_once 'functions.php';
 // Fetch dynamic data
 $news = get_latest_news();
 $hero_video = get_hero_video();
-
-if (isset($_GET['page'])) {
-    // Handle pages if needed
-} else {
 ?>
 <section class="hero-container" style="padding: clamp(60px, 10vh, 120px) 20px 40px; text-align: center;">
-    <h1 class="hero-title image-text-mask" style="font-size: clamp(2.5rem, 8vw, 6rem); font-family: Montserrat, sans-serif; font-weight: 900; line-height: 1.1;">Youth Development Forum 2026</h1>
+    <h1 class="hero-title image-text-mask" style="font-size: clamp(2.5rem, 8vw, 6rem); font-family: Montserrat, sans-serif; font-weight: 900; line-height: 1.1;">Youth Crypto Forum 2026</h1>
     <h2 class="hero-subtitle image-text-mask" style="font-size: clamp(1.5rem, 5vw, 4rem); font-family: Montserrat, sans-serif; font-weight: 800;">Berlin, Germany</h2>
-    <p class="hero-description" style="margin: 30px auto; max-width: 800px; color: var(--text-gray); font-size: clamp(1rem, 2vw, 1.2rem);">The Youth Development Forum 2026 is a global gathering of emerging leaders, young professionals, students, and change-makers from more than 150 countries, taking place in Berlin, Germany, from 7–10 May 2026. Organized by the Center for Global Dialogue & Leadership (CGDL), this four-day international conference is designed to uplift the next generation of youth advocates, innovators, policymakers, and peacebuilders.</p>
+    <p class="hero-description" style="margin: 30px auto; max-width: 800px; color: var(--text-gray); font-size: clamp(1rem, 2vw, 1.2rem);">The Youth Crypto Forum 2026 is a global gathering of emerging leaders, young professionals, students, and change-makers from more than 150 countries, taking place in Berlin, Germany, from 7–10 May 2026. Organized by the Center for Global Dialogue & Leadership (CGDL), this four-day international conference is designed to uplift the next generation of youth advocates, innovators, policymakers, and peacebuilders.</p>
     
     <div class="video-container" style="width: 100%; max-width: 900px; aspect-ratio: 16/9; height: auto; border-radius: clamp(10px, 3vw, 40px); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); background: #000; margin: 0 auto 30px; position: relative; border: 1px solid rgba(255,255,255,0.1);">
         <?php 
@@ -212,8 +208,11 @@ if (isset($_GET['page'])) {
 
     <script>
         (function() {
+            // Force dynamic date injection from PHP
             const targetDateStr = "<?php echo get_target_date(); ?>";
             const target = new Date(targetDateStr).getTime();
+            
+            console.log("Countdown sync target:", targetDateStr);
             
             function updateCard(id, newVal) {
                 const card = document.getElementById(id);
@@ -360,13 +359,13 @@ if (isset($_GET['page'])) {
         }
     </style>
 
-    <!-- Youth Development Forum Intro Section -->
+    <!-- Youth Crypto Forum Intro Section -->
     <section style="padding: 80px 20px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
             <div style="flex: 1; min-width: 300px;">
                 <h2 class="montserrat" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #2D236E; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase;">
                     YOUTH<br>
-                    DEVELOPMENT<br>
+                    CRYPTO<br>
                     FORUM 2026
                 </h2>
                 <p style="font-size: 1.1rem; line-height: 1.6; color: #333; margin-bottom: 20px;">
@@ -377,16 +376,35 @@ if (isset($_GET['page'])) {
                 </p>
             </div>
             <div style="flex: 1; min-width: 300px;">
-                <img src="attached_assets/download_(6)_1768647425333.jpg" alt="Germany is Hosting Youth Development Forum" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <img src="attached_assets/intro_image.jpg" alt="Germany is Hosting Youth Development Forum" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
 
-    <!-- Aligned with Europe’s Youth Vision Section -->
-    <section style="padding: 40px 15px; background: #fff; color: #000; text-align: center;">
+    <section style="padding: 60px 20px; background: #fff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="background: url('attached_assets/intro_image.jpg') center/cover no-repeat; border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                <div style="background: rgba(45, 35, 110, 0.85); padding: 60px 40px; color: white; text-align: center;">
+                    <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; color: white !important;">SCHOLARSHIP CATEGORIES</h2>
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 700; opacity: 0.9; color: white !important;">(Competitive Selection)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; background: #f9f9fb;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="background: url('attached_assets/intro_image.jpg') center/cover no-repeat; border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                <div style="background: rgba(45, 35, 110, 0.85); padding: 60px 40px; color: white; text-align: center;">
+                    <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; color: white !important;">GUARANTEED CATEGORIES</h2>
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 700; opacity: 0.9; color: white !important;">(Confirmed Seats)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
         <div style="border: 1px solid #eee; border-radius: 20px; padding: 30px 15px; max-width: 1100px; margin: 0 auto; background: #fff;">
             <h2 class="montserrat" style="font-size: clamp(1.2rem, 6vw, 2.5rem); font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; color: #2D236E; line-height: 1.1; font-family: Montserrat, sans-serif; word-wrap: break-word;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
-            <p style="font-size: 0.95rem; color: #333; max-width: 800px; margin: 0 auto 2rem; font-weight: 400; font-family: Inter, sans-serif;">The Youth Development Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
+            <p style="font-size: 0.95rem; color: #333; max-width: 800px; margin: 0 auto 2rem; font-weight: 400; font-family: Inter, sans-serif;">The Youth Crypto Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
             
             <div class="vision-cards-container" style="display: flex; flex-direction: column; gap: 1.2rem; max-width: 1000px; margin: 0 auto;">
                 <div style="background: #2D236E; border-radius: 12px; padding: 2.5rem 1.5rem; border-bottom: 8px solid #FFD700; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 200px; box-shadow: 0 8px 25px rgba(45, 35, 110, 0.1);">
@@ -427,28 +445,67 @@ if (isset($_GET['page'])) {
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <?php foreach($news as $item): ?>
                 <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
                     <div style="width: 100%; height: 200px; overflow: hidden;">
-                        <img src="<?php echo htmlspecialchars($item['image']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="attached_assets/intro_image.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                            <span style="color: #00aeef;"><?php echo htmlspecialchars($item['category']); ?></span>
-                            <span style="color: #999;"><?php echo htmlspecialchars($item['date']); ?></span>
+                            <span style="color: #00aeef;">Technology</span>
+                            <span style="color: #999;">May 10, 2026</span>
                         </div>
                         <h3 class="montserrat" style="font-size: 1.25rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: #000;">
-                            <?php echo htmlspecialchars($item['title']); ?>
+                            Crypto Innovation Berlin
                         </h3>
                         <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
-                            <?php echo htmlspecialchars($item['summary']); ?>
+                            Join us in Berlin to explore the latest trends in cryptocurrency and decentralized finance.
                         </p>
-                        <a href="news_detail?id=<?php echo $item['id']; ?>" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
+                        <a href="news" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
                             Read Full Story <span style="font-size: 1.1rem;">+</span>
                         </a>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
+                    <div style="width: 100%; height: 200px; overflow: hidden;">
+                        <img src="attached_assets/stock_images/cryptocurrency_news__026f8245.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                            <span style="color: #00aeef;">Blockchain</span>
+                            <span style="color: #999;">May 15, 2026</span>
+                        </div>
+                        <h3 class="montserrat" style="font-size: 1.25rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: #000;">
+                            Future of Web3
+                        </h3>
+                        <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                            Exploring how decentralized technologies are shaping the future of the internet.
+                        </p>
+                        <a href="news" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
+                            Read Full Story <span style="font-size: 1.1rem;">+</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
+                    <div style="width: 100%; height: 200px; overflow: hidden;">
+                        <img src="attached_assets/stock_images/cryptocurrency_news__061645ef.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                            <span style="color: #00aeef;">Conference</span>
+                            <span style="color: #999;">May 20, 2026</span>
+                        </div>
+                        <h3 class="montserrat" style="font-size: 1.25rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: #000;">
+                            Digital Economy
+                        </h3>
+                        <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                            Key speakers announced for the global digital economy summit in Berlin.
+                        </p>
+                        <a href="news" style="margin-top: auto; color: #000; font-weight: 800; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 8px;">
+                            Read Full Story <span style="font-size: 1.1rem;">+</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -671,7 +728,7 @@ if (isset($_GET['page'])) {
         </div>
     </section>
 
+    <!-- Youth Crypto Forum Intro Section -->
 <?php
-}
 include 'footer.php';
 ?>
