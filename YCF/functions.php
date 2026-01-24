@@ -61,9 +61,21 @@ function get_db_connection() {
     
     // SQLite Fallback - Use ONE shared absolute path
     try {
-        $db_path = __DIR__ . '/../database.sqlite';
+        $db_path = __DIR__ . '/database.sqlite';
+        if (!file_exists($db_path)) {
+            $db_path = __DIR__ . '/../database.sqlite';
+        }
         $pdo = new PDO("sqlite:" . $db_path);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        // Ensure directory is writable
+        $db_dir = dirname($db_path);
+        if (!is_writable($db_dir)) {
+            @chmod($db_dir, 0777);
+        }
+        if (file_exists($db_path) && !is_writable($db_path)) {
+            @chmod($db_path, 0666);
+        }
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             package_id TEXT,
