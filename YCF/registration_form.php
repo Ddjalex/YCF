@@ -346,6 +346,13 @@ function render_registration_form($package_id, $package_name, $price) {
                 e.preventDefault();
                 
                 const formData = new FormData(this);
+                // Ensure text fields are explicitly added if not captured
+                this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select, textarea, input[type="radio"]:checked').forEach(input => {
+                    if (input.name && !formData.has(input.name)) {
+                        formData.append(input.name, input.value);
+                    }
+                });
+                
                 formData.append('package_id', '<?php echo $package_id; ?>');
                 formData.append('package_name', '<?php echo $package_name; ?>');
                 formData.append('amount', '<?php echo $price; ?>');

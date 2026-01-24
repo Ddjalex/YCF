@@ -280,12 +280,20 @@ $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7Div
                     <?php if (empty($registrations)): ?>
                     <tr><td colspan="4" style="text-align: center; color: #999;">No registrations found.</td></tr>
                     <?php else: ?>
-                        <?php foreach (array_slice($registrations, 0, 10) as $reg): ?>
+                        <?php foreach (array_slice($registrations, 0, 20) as $reg): ?>
                         <tr>
-                            <td><?php echo isset($reg['created_at']) ? date('M d', strtotime($reg['created_at'])) : 'N/A'; ?></td>
+                            <td><?php echo isset($reg['created_at']) ? date('M d, H:i', strtotime($reg['created_at'])) : 'N/A'; ?></td>
                             <td><?php echo htmlspecialchars(($reg['first_name'] ?? '') . ' ' . ($reg['last_name'] ?? '')); ?></td>
-                            <td><?php echo htmlspecialchars($reg['package_name'] ?? 'N/A'); ?></td>
-                            <td><a href="view_registration.php?id=<?php echo $reg['id']; ?>" style="color: var(--primary); text-decoration: none; font-weight: 700;">View Details</a></td>
+                            <td>
+                                <div style="font-size: 0.85rem; font-weight: 600;"><?php echo htmlspecialchars($reg['package_name'] ?? 'N/A'); ?></div>
+                                <div style="font-size: 0.75rem; color: #888;"><?php echo htmlspecialchars($reg['email'] ?? ''); ?></div>
+                            </td>
+                            <td>
+                                <span class="status-badge status-<?php echo strtolower($reg['status'] ?? 'pending'); ?>">
+                                    <?php echo htmlspecialchars($reg['status'] ?? 'Pending'); ?>
+                                </span>
+                            </td>
+                            <td><a href="view_registration.php?id=<?php echo $reg['id']; ?>" style="color: var(--primary); text-decoration: none; font-weight: 700;">Review & Approve</a></td>
                         </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

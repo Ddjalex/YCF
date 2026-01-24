@@ -55,7 +55,7 @@ $data = [
     'departure' => $_POST['departure'] ?? '',
     'visa' => $_POST['visa'] ?? '',
     'referral' => $_POST['referral'] ?? '',
-    'source' => $_POST['source'] ?? '',
+    'source' => $_POST['source'] ?? ($_POST['referral'] ?? ''),
     'journey' => $_POST['journey'] ?? '',
     'impact' => $_POST['impact'] ?? '',
     'profile_photo' => handle_upload('profile_photo'),
@@ -63,7 +63,8 @@ $data = [
     'payment_method' => $_POST['payment_method'] ?? '',
     'txid' => $_POST['txid'] ?? '',
     'payment_screenshot' => handle_upload('payment_screenshot'),
-    'amount' => floatval($_POST['amount'] ?? 0)
+    'amount' => floatval($_POST['amount'] ?? 0),
+    'status' => 'pending'
 ];
 
 // Clean up: remove source from referral if referral is set
@@ -71,9 +72,8 @@ if (!empty($data['referral']) && empty($data['source'])) {
     $data['source'] = $data['referral'];
 }
 
-// Debug log to verify what is being saved
-// error_log("Attempting SQL: INSERT INTO registrations (" . implode(', ', array_keys($data)) . ") VALUES (...)");
-// error_log("With Data: " . json_encode($data));
+// Log data before saving to debug missing fields
+error_log("Saving registration data: " . json_encode($data));
 
 $success = save_registration($data);
 

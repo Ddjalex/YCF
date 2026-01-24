@@ -126,8 +126,16 @@ if (!$reg) {
                     <div class="value"><?php echo htmlspecialchars($reg['profession'] ?? ''); ?></div>
                 </div>
                 <div class="field">
+                    <span class="label">Organization</span>
+                    <div class="value"><?php echo htmlspecialchars($reg['organization'] ?? 'N/A'); ?></div>
+                </div>
+                <div class="field">
+                    <span class="label">Departure City</span>
+                    <div class="value"><?php echo htmlspecialchars($reg['departure'] ?? 'N/A'); ?></div>
+                </div>
+                <div class="field">
                     <span class="label">Residence</span>
-                    <div class="value"><?php echo htmlspecialchars($reg['residence'] ?? ''); ?></div>
+                    <div class="value"><?php echo htmlspecialchars($reg['residence'] ?? 'N/A'); ?></div>
                 </div>
                 <div class="field">
                     <span class="label">Visa Required</span>
