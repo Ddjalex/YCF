@@ -276,15 +276,47 @@ function render_registration_form($package_id, $package_name, $price) {
                     <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Complete Registration</button>
                 </div>
             </div>
-        </form>
-    </div>
+            // Handle form submission
+            document.getElementById('multi-step-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                formData.append('package_id', '<?php echo $package_id; ?>');
+                formData.append('package_name', '<?php echo $package_name; ?>');
+                formData.append('amount', '<?php echo $price; ?>');
 
-    <script>
-    function toggleCryptoDetails(show) {
-        document.getElementById('crypto-details').style.display = show ? 'block' : 'none';
-    }
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Processing...';
 
-    function nextStep(step) {
+                fetch('process_registration.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirect to success page or show success message
+                        window.location.href = 'index.php?registration=success';
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                        document.getElementById('error-banner').style.display = 'flex';
+                        document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Database error: ' + (data.message || 'Could not save registration.');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                    console.error('Error:', error);
+                    document.getElementById('error-banner').style.display = 'flex';
+                    document.getElementById('error-banner').querySelector('span:last-child').innerText = 'An unexpected error occurred. Please try again.';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
         const currentStep = step === 2 ? 1 : 2;
         const container = document.getElementById('step-' + currentStep);
         const inputs = container.querySelectorAll('[required]');
