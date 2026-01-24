@@ -38,6 +38,69 @@ require_once 'functions.php';
             --flip-border: rgba(255,255,255,0.1);
         }
 
+        .btn-apply-special {
+            --primary-blue: #009edb;
+            --dark-blue: #003366;
+            --light-blue: #e6f4fa;
+            --white: #ffffff;
+            --text-gray: #4a4a4a;
+            --deep-navy: #0a1128;
+            --btn-yellow: #FFD700;
+            --wp--preset--color--black: #000000;
+            --wp--preset--color--white: #ffffff;
+            --wp--preset--spacing--40: 1rem;
+            --wp--preset--spacing--50: 1.5rem;
+            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --e-global-color-a2bd39d: #332370;
+            --e-global-color-0ca85f4: #F1D302;
+            --direction-multiplier: 1;
+            --affwp-card-padding: 1.5rem;
+            --container-border-radius: 20px;
+            --flip-bg: #1a1a1a;
+            --flip-text: #ffffff;
+            --flip-label: #FFD700;
+            --flip-border: rgba(255,255,255,0.1);
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            position: relative !important;
+            overflow: hidden !important;
+            z-index: 1 !important;
+            border-radius: 8px !important;
+            padding: 18px 24px !important;
+            width: 100% !important;
+            background: linear-gradient(270deg, #F1D302, #000000, #F1D302, #000000) !important;
+            background-size: 400% 400% !important;
+            color: #ffffff !important;
+            border: none !important;
+            font-weight: 500 !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            display: inline-block !important;
+            text-decoration: none !important;
+            font-size: 19px !important;
+            text-align: center !important;
+            line-height: 1.5 !important;
+            transition-duration: 0s !important;
+            animation: combinedAnim 5s linear infinite !important;
+            max-width: 900px;
+        }
+
+        @keyframes combinedAnim {
+            0% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.02369) scaleY(1.02369);
+            }
+            50% { 
+                background-position: 100% 50%; 
+                transform: scaleX(1.05) scaleY(1.05);
+            }
+            100% { 
+                background-position: 0% 50%; 
+                transform: scaleX(1.02369) scaleY(1.02369);
+            }
+        }
+        
         .btn-apply-style {
             position: relative;
             overflow: hidden;
