@@ -16,7 +16,7 @@ function get_db_connection() {
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
                 $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
                 
-                // PostgreSQL standard schema
+                // Ensure table is created
                 $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
                     id SERIAL PRIMARY KEY,
                     package_id TEXT,
@@ -47,9 +47,9 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
-                // Safe migration for existing tables
-                $columns = ['organization', 'source', 'phone'];
-                foreach ($columns as $col) {
+                // Add columns if missing (safe migration)
+                $cols = ['organization', 'source', 'phone'];
+                foreach ($cols as $col) {
                     try {
                         $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT");
                     } catch (PDOException $e) {}
@@ -101,12 +101,9 @@ function get_db_connection() {
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
         
-        // SQLite column check
-        $columns = ['organization', 'source', 'phone'];
-        foreach ($columns as $col) {
-            try {
-                $pdo->exec("ALTER TABLE registrations ADD COLUMN $col TEXT");
-            } catch (PDOException $e) {}
+        $cols = ['organization', 'source', 'phone'];
+        foreach ($cols as $col) {
+            try { $pdo->exec("ALTER TABLE registrations ADD COLUMN $col TEXT"); } catch (PDOException $e) {}
         }
         
         return $pdo;

@@ -54,7 +54,7 @@ $data = [
     'residence' => $_POST['residence'] ?? '',
     'departure' => $_POST['departure'] ?? '',
     'visa' => $_POST['visa'] ?? '',
-    'referral' => $_POST['source'] ?? $_POST['referral'] ?? '',
+    'referral' => $_POST['referral'] ?? '',
     'source' => $_POST['source'] ?? '',
     'journey' => $_POST['journey'] ?? '',
     'impact' => $_POST['impact'] ?? '',
@@ -65,6 +65,11 @@ $data = [
     'payment_screenshot' => handle_upload('payment_screenshot'),
     'amount' => floatval($_POST['amount'] ?? 0)
 ];
+
+// Clean up: remove source from referral if referral is set
+if (!empty($data['referral']) && empty($data['source'])) {
+    $data['source'] = $data['referral'];
+}
 
 // Debug log to verify what is being saved
 error_log("Attempting SQL: INSERT INTO registrations (" . implode(', ', array_keys($data)) . ") VALUES (...)");
