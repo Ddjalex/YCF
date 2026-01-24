@@ -513,26 +513,28 @@ require_once 'functions.php';
         }
 
         .image-text-mask {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0) 60%), url('attached_assets/intro_image.jpg');
-            background-size: 200% auto;
-            background-repeat: repeat-x;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.1) 60%), url('attached_assets/intro_image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
-            animation: backgroundMove 35s linear infinite;
             display: block;
             position: relative;
             z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .hero-title {
-            font-size: clamp(4rem, 15vw, 12rem);
+            font-size: clamp(3.5rem, 12vw, 10rem);
             font-weight: 900;
             text-transform: uppercase;
-            line-height: 0.85;
+            line-height: 0.9;
             margin: 0;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
         }
 
         .hero-subtitle {
