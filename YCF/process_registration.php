@@ -39,6 +39,7 @@ function handle_upload($file_key) {
     return null;
 }
 
+// Collect fields
 $data = [
     'package_id' => $_POST['package_id'] ?? '',
     'package_name' => $_POST['package_name'] ?? '',
@@ -58,11 +59,11 @@ $data = [
     'source' => $_POST['source'] ?? ($_POST['referral'] ?? ''),
     'journey' => $_POST['journey'] ?? '',
     'impact' => $_POST['impact'] ?? '',
-    'profile_photo' => handle_upload('profile_photo'),
-    'passport_photo' => handle_upload('passport_photo'),
+    'profile_photo' => handle_upload('profile_photo') ?? handle_upload('reg_profile_photo'),
+    'passport_photo' => handle_upload('passport_photo') ?? handle_upload('reg_passport_photo'),
     'payment_method' => $_POST['payment_method'] ?? '',
-    'txid' => $_POST['txid'] ?? '',
-    'payment_screenshot' => handle_upload('payment_screenshot'),
+    'txid' => $_POST['txid'] ?? $_POST['transaction_id'] ?? '',
+    'payment_screenshot' => handle_upload('payment_screenshot') ?? handle_upload('crypto_screenshot'),
     'amount' => floatval($_POST['amount'] ?? 0),
     'status' => 'pending'
 ];
@@ -73,6 +74,11 @@ if (!empty($data['referral']) && empty($data['source'])) {
 }
 
 // Log data before saving to debug missing fields
+$raw_post = $_POST;
+// Filter out binary data for logging
+if (isset($raw_post['profile_photo'])) $raw_post['profile_photo'] = '[binary]';
+if (isset($raw_post['passport_photo'])) $raw_post['passport_photo'] = '[binary]';
+error_log("Raw POST data: " . json_encode($raw_post));
 error_log("Saving registration data: " . json_encode($data));
 
 $success = save_registration($data);
