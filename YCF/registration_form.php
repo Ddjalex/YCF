@@ -276,48 +276,16 @@ function render_registration_form($package_id, $package_name, $price) {
                     <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Complete Registration</button>
                 </div>
             </div>
-            // Handle form submission
-            document.getElementById('multi-step-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(this);
-                formData.append('package_id', '<?php echo $package_id; ?>');
-                formData.append('package_name', '<?php echo $package_name; ?>');
-                formData.append('amount', '<?php echo $price; ?>');
+        </form>
+    </div>
 
-                // Show loading state
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerText;
-                submitBtn.disabled = true;
-                submitBtn.innerText = 'Processing...';
+    <script>
+    function toggleCryptoDetails(show) {
+        document.getElementById('crypto-details').style.display = show ? 'block' : 'none';
+    }
 
-                fetch('process_registration.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Redirect to success page or show success message
-                        window.location.href = 'index.php?registration=success';
-                    } else {
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = originalBtnText;
-                        document.getElementById('error-banner').style.display = 'flex';
-                        document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Database error: ' + (data.message || 'Could not save registration.');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                })
-                .catch(error => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
-                    console.error('Error:', error);
-                    document.getElementById('error-banner').style.display = 'flex';
-                    document.getElementById('error-banner').querySelector('span:last-child').innerText = 'An unexpected error occurred. Please try again.';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-        const currentStep = step === 2 ? 1 : 2;
+    function nextStep(step) {
+        const currentStep = step === 2 ? 1 : (step === 3 ? 2 : 1);
         const container = document.getElementById('step-' + currentStep);
         const inputs = container.querySelectorAll('[required]');
         let isValid = true;
@@ -353,138 +321,68 @@ function render_registration_form($package_id, $package_name, $price) {
 
         if (!isValid) {
             document.getElementById('error-banner').style.display = 'flex';
-            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: document.getElementById('registration-form-container').offsetTop - 100, behavior: 'smooth' });
             return;
         }
 
-        document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
+        // Hide all steps
+        document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+        // Show target step
         document.getElementById('step-' + step).style.display = 'block';
         
-        // Update Progress Bar
+        // Update progress bar
         const progress = (step / 3) * 100;
         document.getElementById('progress-bar').style.width = progress + '%';
         document.getElementById('step-label').innerText = 'Step ' + step + ' of 3';
         
-        // Scroll to top of form
-        document.getElementById('registration-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.scrollTo({ top: document.getElementById('registration-form-container').offsetTop - 100, behavior: 'smooth' });
     }
 
-    document.getElementById('multi-step-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        const submitBtn = this.querySelector('button[type="submit"]');
-        if (!submitBtn) return;
-        
-        const originalBtnText = submitBtn.innerText;
-        submitBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
-        submitBtn.disabled = true;
-
-        // Add spinner style if not exists
-        if (!document.getElementById('spinner-style')) {
-            const style = document.createElement('style');
-            style.id = 'spinner-style';
-            style.innerHTML = `
-                .loading-spinner {
-                    display: inline-block;
-                    width: 16px;
-                    height: 16px;
-                    border: 2px solid rgba(255,255,255,0.3);
-                    border-radius: 50%;
-                    border-top-color: #fff;
-                    animation: spin 1s ease-in-out infinite;
-                    margin-right: 8px;
-                    vertical-align: middle;
-                }
-                @keyframes spin {
-                    to { transform: rotate(360deg); }
-                }
-                .success-popup {
-                    position: fixed;
-                    top: 0; left: 0; width: 100%; height: 100%;
-                    background: rgba(0,0,0,0.8);
-                    display: flex; align-items: center; justify-content: center;
-                    z-index: 10000;
-                    animation: fadeIn 0.3s ease;
-                }
-                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-            `;
-            document.head.appendChild(style);
-        }
-
-        const formData = new FormData(this);
-        formData.append('package_id', '<?php echo $package_id; ?>');
-        formData.append('package_name', '<?php echo $package_name; ?>');
-        formData.append('amount', '<?php echo $price + 3.00; ?>');
-
-        fetch('process_registration.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) throw new Error('Server returned ' + response.status);
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                showSuccessPopup();
-            } else {
-                throw new Error(data.message || 'Registration failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-            
-            // Sync issue recovery
-            if (error.message && (error.message.includes('Invalid request method') || error.message.includes('Server returned 302') || error.message.includes('JSON') || error.message.includes('Network response'))) {
-                const retryData = {};
-                formData.forEach((value, key) => { 
-                    if (typeof value === 'string') retryData[key] = value; 
-                });
+    // Handle form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('multi-step-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Add essential fields for retry
-                retryData['package_id'] = '<?php echo $package_id; ?>';
-                retryData['package_name'] = '<?php echo $package_name; ?>';
-                retryData['amount'] = '<?php echo $price + 3.00; ?>';
+                const formData = new FormData(this);
+                formData.append('package_id', '<?php echo $package_id; ?>');
+                formData.append('package_name', '<?php echo $package_name; ?>');
+                formData.append('amount', '<?php echo $price; ?>');
+
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Processing...';
 
                 fetch('process_registration.php', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(retryData)
+                    body: formData
                 })
-                .then(res => res.json())
+                .then(response => response.json())
                 .then(data => {
-                    if (data.success) showSuccessPopup();
-                    else alert(data.message || 'Registration failed. Please try again.');
+                    if (data.success) {
+                        window.location.href = 'index.php?registration=success';
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                        document.getElementById('error-banner').style.display = 'flex';
+                        document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Database error: ' + (data.message || 'Could not save registration.');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 })
-                .catch(err => {
-                    // Final fallback using direct navigation
-                    const queryParams = new URLSearchParams(retryData).toString();
-                    window.location.href = 'process_registration.php?' + queryParams;
+                .catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                    console.error('Error:', error);
+                    document.getElementById('error-banner').style.display = 'flex';
+                    document.getElementById('error-banner').querySelector('span:last-child').innerText = 'An unexpected error occurred. Please try again.';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
-            } else {
-                alert(error.message || 'An error occurred. Please try again.');
-            }
-        });
+            });
+        }
     });
-
-    function showSuccessPopup() {
-        const popup = document.createElement('div');
-        popup.className = 'success-popup';
-        popup.innerHTML = `
-            <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%;">
-                <div style="width: 80px; height: 80px; background: #4BB543; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px;">
-                    ✓
-                </div>
-                <h2 style="margin-bottom: 10px; color: #333;">SUCCESS!</h2>
-                <p style="color: #666; margin-bottom: 30px;">Registration submitted. Thank you!</p>
-                <button onclick="window.location.href='index.php'" style="background: #2D236E; color: white; border: none; padding: 12px 40px; border-radius: 6px; font-weight: 700; cursor: pointer; text-transform: uppercase; width: 100%;">Continue</button>
-            </div>
-        `;
-        document.body.appendChild(popup);
-    }
     </script>
     <?php
 }
