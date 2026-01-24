@@ -269,12 +269,18 @@ function render_registration_form($package_id, $package_name, $price) {
 
     <script>
     function toggleCryptoDetails(show) {
-        document.getElementById('crypto-details').style.display = show ? 'block' : 'none';
+        const details = document.getElementById('crypto-details');
+        if (details) details.style.display = show ? 'block' : 'none';
     }
 
     function nextStep(step) {
-        const currentStep = step === 2 ? 1 : 2;
-        const container = document.getElementById('step-' + currentStep);
+        const currentStep = step === 2 ? (document.getElementById('step-1').style.display !== 'none' ? 1 : 3) : (step === 1 ? 2 : 2);
+        // Correct step logic for the simplified flow
+        let fromStep = 1;
+        if (document.getElementById('step-2').style.display !== 'none') fromStep = 2;
+        if (document.getElementById('step-3').style.display !== 'none') fromStep = 3;
+
+        const container = document.getElementById('step-' + fromStep);
         const inputs = container.querySelectorAll('[required]');
         let isValid = true;
         
@@ -283,7 +289,7 @@ function render_registration_form($package_id, $package_name, $price) {
         container.querySelectorAll('.error-msg').forEach(el => el.remove());
         container.querySelectorAll('input, select, textarea').forEach(el => el.style.borderColor = '#ddd');
 
-        if (step > currentStep) {
+        if (step > fromStep) {
             inputs.forEach(input => {
                 if (!input.value.trim() || (input.type === 'radio' && !container.querySelector(`input[name="${input.name}"]:checked`))) {
                     isValid = false;
@@ -318,8 +324,10 @@ function render_registration_form($package_id, $package_name, $price) {
         
         // Update Progress Bar
         const progress = (step / 3) * 100;
-        document.getElementById('progress-bar').style.width = progress + '%';
-        document.getElementById('step-label').innerText = 'Step ' + step + ' of 3';
+        const progressBar = document.getElementById('progress-bar');
+        const stepLabel = document.getElementById('step-label');
+        if (progressBar) progressBar.style.width = progress + '%';
+        if (stepLabel) stepLabel.innerText = 'Step ' + step + ' of 3';
         
         // Scroll to top of form
         document.getElementById('registration-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -338,18 +346,29 @@ function render_registration_form($package_id, $package_name, $price) {
         const formData = new FormData(this);
         formData.append('package_id', '<?php echo $package_id; ?>');
         formData.append('package_name', '<?php echo $package_name; ?>');
-        formData.append('amount', '<?php echo $price; ?>');
+        formData.append('amount', '<?php echo $price + 3.00; ?>');
 
         fetch('YCF/process_registration.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
-                showCustomModal('Success! Your registration has been received and is pending verification of payment. Our team will review your submission shortly.');
+                if (typeof showCustomModal === 'function') {
+                    showCustomModal('Success! Your registration has been received and is pending verification of payment. Our team will review your submission shortly.');
+                } else {
+                    alert('Registration successful!');
+                }
             } else {
-                showCustomModal('Error: ' + (data.message || 'There was a problem saving your registration. Please try again.'));
+                if (typeof showCustomModal === 'function') {
+                    showCustomModal('Error: ' + (data.message || 'There was a problem saving your registration.'));
+                } else {
+                    alert('Error: ' + data.message);
+                }
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerText = 'COMPLETE REGISTRATION';
@@ -359,7 +378,11 @@ function render_registration_form($package_id, $package_name, $price) {
         })
         .catch(error => {
             console.error('Error:', error);
-            showCustomModal('Network Error: Please check your connection and try again.');
+            if (typeof showCustomModal === 'function') {
+                showCustomModal('Network Error: Please check your connection and try again.');
+            } else {
+                alert('Network error occurred.');
+            }
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'COMPLETE REGISTRATION';
@@ -367,48 +390,5 @@ function render_registration_form($package_id, $package_name, $price) {
             }
         });
     });
-        formData.append('package_id', '<?php echo $package_id; ?>');
-        formData.append('package_name', '<?php echo $package_name; ?>');
-        formData.append('amount', '<?php echo $price + 3.00; ?>');
-        formData.append('action', 'save_registration');
-
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Processing...';
-
-        fetch('YCF/process_registration.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'Complete Registration';
-            if (data.success) {
-                // Successfully saved to DB, show custom success message
-                if (typeof showCustomModal === 'function') {
-                    showCustomModal("Your payment has been successfully received! Your registration for Youth Crypto Forum 2026 is now complete. Please wait for the final approval from the Go Forum Admin. You will receive a confirmation email shortly.");
-                } else {
-                    alert("Your payment has been successfully received! Your registration for Youth Crypto Forum 2026 is now complete. Please wait for the final approval from the Go Forum Admin. You will receive a confirmation email shortly.");
-                    window.location.href = 'thank-you';
-                }
-            } else {
-                document.getElementById('error-banner').style.display = 'flex';
-                document.getElementById('error-banner').querySelector('span:last-child').innerText = 'There was an error saving your registration: ' + data.message;
-                document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        })
-        .catch(error => {
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'Complete Registration';
-            // Even if fetch fails, if it was a network error but registration might have gone through
-            // Or just show error banner
-            document.getElementById('error-banner').style.display = 'flex';
-            document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Connection error. Please try again.';
-            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            console.error('Error:', error);
-        });
-    });
     </script>
-    <?php
-}
+<?php } ?>
