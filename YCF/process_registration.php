@@ -4,8 +4,14 @@ require_once 'functions.php';
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
-    exit;
+    $raw_input = file_get_contents('php://input');
+    $json_input = json_decode($raw_input, true);
+    if (!$json_input) {
+        error_log("Invalid request method access: " . $_SERVER['REQUEST_METHOD'] . " from " . $_SERVER['REMOTE_ADDR']);
+        echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $_SERVER['REQUEST_METHOD']]);
+        exit;
+    }
+    $_POST = $json_input;
 }
 
 $upload_dir = 'uploads/';
