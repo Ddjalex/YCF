@@ -16,7 +16,7 @@ function get_db_connection() {
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
                 $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
                 
-                // Ensure table is created
+                // PostgreSQL standard schema
                 $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
                     id SERIAL PRIMARY KEY,
                     package_id TEXT,
@@ -47,12 +47,10 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
-                // Add columns if missing (safe migration)
-                $cols = ['organization', 'source', 'phone'];
+                // Force sync for all possible columns
+                $cols = ['organization', 'source', 'phone', 'referral', 'package_id', 'package_name'];
                 foreach ($cols as $col) {
-                    try {
-                        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT");
-                    } catch (PDOException $e) {}
+                    try { $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT"); } catch (PDOException $e) {}
                 }
                 
                 $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
@@ -101,7 +99,7 @@ function get_db_connection() {
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
         
-        $cols = ['organization', 'source', 'phone'];
+        $cols = ['organization', 'source', 'phone', 'referral', 'package_id', 'package_name'];
         foreach ($cols as $col) {
             try { $pdo->exec("ALTER TABLE registrations ADD COLUMN $col TEXT"); } catch (PDOException $e) {}
         }
