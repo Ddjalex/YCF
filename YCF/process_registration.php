@@ -18,14 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET
 // Log input data for debugging
 error_log("POST data: " . json_encode($_POST));
 error_log("FILES data: " . json_encode($_FILES));
+error_log("RAW input: " . file_get_contents('php://input'));
 
 $data_source = array_merge($_GET, $_POST);
 
-// Fix: Extract data from source if it was sent as a JSON string in a field (sometimes happens with certain fetch configs)
-if (isset($data_source['formData']) && is_string($data_source['formData'])) {
-    $decoded = json_decode($data_source['formData'], true);
-    if ($decoded) {
-        $data_source = array_merge($data_source, $decoded);
+// Check for JSON payload
+$raw_input = file_get_contents('php://input');
+if (!empty($raw_input)) {
+    $json_data = json_decode($raw_input, true);
+    if ($json_data) {
+        $data_source = array_merge($data_source, $json_data);
     }
 }
 

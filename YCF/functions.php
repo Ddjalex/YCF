@@ -141,13 +141,21 @@ function save_registration($data) {
     ];
     
     $insert_data = [];
+    $has_data = false;
     foreach ($allowed_fields as $field) {
         // Explicitly map 'referral' from 'source' if missing, but keep both
-        if ($field === 'referral' && !isset($data['referral']) && isset($data['source'])) {
+        if ($field === 'referral' && (!isset($data['referral']) || $data['referral'] === '') && isset($data['source'])) {
             $insert_data[$field] = $data['source'];
         } else {
-            $insert_data[$field] = isset($data[$field]) && $data[$field] !== '' ? $data[$field] : null;
+            $val = isset($data[$field]) ? trim($data[$field]) : null;
+            if ($val !== '' && $val !== null) $has_data = true;
+            $insert_data[$field] = ($val === '') ? null : $val;
         }
+    }
+
+    if (!$has_data) {
+        error_log("CRITICAL ERROR: Attempted to save empty registration data!");
+        return false;
     }
     
     $fields = array_keys($insert_data);

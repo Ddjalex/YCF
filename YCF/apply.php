@@ -489,12 +489,20 @@ function handleFinalSubmit() {
             'X-Requested-With': 'XMLHttpRequest'
         },
         body: formData,
-        redirect: 'follow'
+        redirect: 'follow',
+        cache: 'no-cache'
     };
     
     console.log('Form data being sent:');
     for (var pair of formData.entries()) {
         console.log(pair[0] + ': ' + (pair[1] instanceof File ? pair[1].name : pair[1]));
+    }
+
+    // Double check that formData actually has content
+    if ([...formData.entries()].length === 0) {
+        console.error('CRITICAL: FormData is empty before fetch!');
+        showCustomModal('Error: Form data is empty. Please refresh and try again.');
+        return;
     }
 
     fetch(targetUrl, fetchOptions)
