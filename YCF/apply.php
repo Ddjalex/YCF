@@ -480,6 +480,9 @@ function handleFinalSubmit() {
 
     fetch('process_registration.php', {
         method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        },
         body: formData
     })
     .then(response => response.json())
