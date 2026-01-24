@@ -261,7 +261,7 @@ function render_registration_form($package_id, $package_name, $price) {
 
                 <div style="display: flex; gap: 10px;">
                     <button type="button" onclick="nextStep(2)" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Complete Registration</button>
+                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Submit</button>
                 </div>
             </div>
         </form>
@@ -274,8 +274,6 @@ function render_registration_form($package_id, $package_name, $price) {
     }
 
     function nextStep(step) {
-        const currentStep = step === 2 ? (document.getElementById('step-1').style.display !== 'none' ? 1 : 3) : (step === 1 ? 2 : 2);
-        // Correct step logic for the simplified flow
         let fromStep = 1;
         if (document.getElementById('step-2').style.display !== 'none') fromStep = 2;
         if (document.getElementById('step-3').style.display !== 'none') fromStep = 3;
@@ -284,7 +282,6 @@ function render_registration_form($package_id, $package_name, $price) {
         const inputs = container.querySelectorAll('[required]');
         let isValid = true;
         
-        // Reset error states
         document.getElementById('error-banner').style.display = 'none';
         container.querySelectorAll('.error-msg').forEach(el => el.remove());
         container.querySelectorAll('input, select, textarea').forEach(el => el.style.borderColor = '#ddd');
@@ -322,14 +319,12 @@ function render_registration_form($package_id, $package_name, $price) {
         document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
         document.getElementById('step-' + step).style.display = 'block';
         
-        // Update Progress Bar
         const progress = (step / 3) * 100;
         const progressBar = document.getElementById('progress-bar');
         const stepLabel = document.getElementById('step-label');
         if (progressBar) progressBar.style.width = progress + '%';
         if (stepLabel) stepLabel.innerText = 'Step ' + step + ' of 3';
         
-        // Scroll to top of form
         document.getElementById('registration-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -371,7 +366,7 @@ function render_registration_form($package_id, $package_name, $price) {
                 }
                 if (submitBtn) {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'COMPLETE REGISTRATION';
+                    submitBtn.innerText = 'SUBMIT';
                     submitBtn.style.opacity = '1';
                 }
             }
@@ -385,7 +380,7 @@ function render_registration_form($package_id, $package_name, $price) {
             }
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.innerText = 'COMPLETE REGISTRATION';
+                submitBtn.innerText = 'SUBMIT';
                 submitBtn.style.opacity = '1';
             }
         });
