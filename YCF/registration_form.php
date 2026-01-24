@@ -237,10 +237,10 @@ function render_registration_form($package_id, $package_name, $price) {
                                 </div>
                                 <div style="text-align: left;">
                                     <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;">Transaction ID (TXID) <span style="color: red;">*</span></label>
-                                    <input type="text" name="txid" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                                    <input type="text" name="txid" placeholder="Enter TXID" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;" required>
                                     
                                     <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;">Upload Payment Screenshot <span style="color: red;">*</span></label>
-                                    <input type="file" name="payment_screenshot" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                                    <input type="file" name="payment_screenshot" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;" required>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +261,7 @@ function render_registration_form($package_id, $package_name, $price) {
 
                 <div style="display: flex; gap: 10px;">
                     <button type="button" onclick="nextStep(2)" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase;">Submit</button>
+                    <button type="submit" class="btn-custom-animate" style="background: #2D236E; color: white; padding: 12px 40px; border-radius: 6px; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; width: auto; flex: 1;">Submit</button>
                 </div>
             </div>
         </form>
