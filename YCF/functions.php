@@ -5,75 +5,111 @@ function get_db_connection() {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
 
-    // try use provided credentials
-    $host = 'localhost';
-    $user = 'goforuku_germany';
-    $pass = 'a1e2y3t4h5';
-    $dbname = 'goforuku_germany';
+    // Use environment variables for database credentials
+    $host = getenv('PGHOST') ?: 'localhost';
+    $user = getenv('PGUSER') ?: 'goforuku_germany';
+    $pass = getenv('PGPASSWORD') ?: 'a1e2y3t4h5';
+    $dbname = getenv('PGDATABASE') ?: 'goforuku_germany';
+    $port = getenv('PGPORT') ?: '5432';
 
     try {
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
-        $pdo = new PDO($dsn, $user, $pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_PERSISTENT => true,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
-        ]);
+        if (getenv('DATABASE_URL')) {
+            $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+            $pdo = new PDO($dsn, $user, $pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+        } else {
+            $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+            $pdo = new PDO($dsn, $user, $pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_PERSISTENT => true,
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+            ]);
+        }
 
-        // Create registrations table if not exists with correct column names matching process_registration.php
-        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            package_id VARCHAR(255),
-            package_name VARCHAR(255),
-            first_name VARCHAR(255),
-            last_name VARCHAR(255),
-            nationality VARCHAR(255),
-            email VARCHAR(255),
-            gender VARCHAR(255),
-            dob VARCHAR(255),
-            phone VARCHAR(255),
-            profession VARCHAR(255),
-            residence VARCHAR(255),
-            departure VARCHAR(255),
-            visa VARCHAR(255),
-            referral TEXT,
-            journey TEXT,
-            impact TEXT,
-            profile_photo TEXT,
-            passport_photo TEXT,
-            payment_method VARCHAR(255),
-            txid VARCHAR(255),
-            payment_screenshot TEXT,
-            amount DECIMAL(10,2),
-            source VARCHAR(255),
-            status VARCHAR(50) DEFAULT 'pending',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )");
+        // Create registrations table if not exists
+        $table_sql = getenv('DATABASE_URL') ? 
+            "CREATE TABLE IF NOT EXISTS registrations (
+                id SERIAL PRIMARY KEY,
+                package_id VARCHAR(255),
+                package_name VARCHAR(255),
+                first_name VARCHAR(255),
+                last_name VARCHAR(255),
+                nationality VARCHAR(255),
+                email VARCHAR(255),
+                gender VARCHAR(255),
+                dob VARCHAR(255),
+                phone VARCHAR(255),
+                profession VARCHAR(255),
+                residence VARCHAR(255),
+                departure VARCHAR(255),
+                visa VARCHAR(255),
+                referral TEXT,
+                journey TEXT,
+                impact TEXT,
+                profile_photo TEXT,
+                passport_photo TEXT,
+                payment_method VARCHAR(255),
+                txid VARCHAR(255),
+                payment_screenshot TEXT,
+                amount DECIMAL(10,2),
+                source VARCHAR(255),
+                status VARCHAR(50) DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )" :
+            "CREATE TABLE IF NOT EXISTS registrations (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                package_id VARCHAR(255),
+                package_name VARCHAR(255),
+                first_name VARCHAR(255),
+                last_name VARCHAR(255),
+                nationality VARCHAR(255),
+                email VARCHAR(255),
+                gender VARCHAR(255),
+                dob VARCHAR(255),
+                phone VARCHAR(255),
+                profession VARCHAR(255),
+                residence VARCHAR(255),
+                departure VARCHAR(255),
+                visa VARCHAR(255),
+                referral TEXT,
+                journey TEXT,
+                impact TEXT,
+                profile_photo TEXT,
+                passport_photo TEXT,
+                payment_method VARCHAR(255),
+                txid VARCHAR(255),
+                payment_screenshot TEXT,
+                amount DECIMAL(10,2),
+                source VARCHAR(255),
+                status VARCHAR(50) DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )";
+        
+        $pdo->exec($table_sql);
 
         // Create admin_settings table if not exists
-        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
-            `key` VARCHAR(255) PRIMARY KEY,
-            `value` TEXT,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )");
+        $settings_sql = getenv('DATABASE_URL') ?
+            "CREATE TABLE IF NOT EXISTS admin_settings (
+                key VARCHAR(255) PRIMARY KEY,
+                value TEXT,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )" :
+            "CREATE TABLE IF NOT EXISTS admin_settings (
+                `key` VARCHAR(255) PRIMARY KEY,
+                `value` TEXT,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+            
+        $pdo->exec($settings_sql);
 
-        error_log("Successfully connected to MySQL and verified tables");
         return $pdo;
     } catch (PDOException $e) {
-        error_log("cPanel MySQL Connection Failed: " . $e->getMessage());
-        // Fallback to Replit environment if cPanel connection fails
-        $database_url = getenv('DATABASE_URL');
-        if ($database_url) {
-            try {
-                $dbopts = parse_url($database_url);
-                if ($dbopts) {
-                    $dsn = "pgsql:host=" . $dbopts['host'] . ";port=" . ($dbopts['port'] ?? 5432) . ";dbname=" . ltrim($dbopts['path'], '/');
-                    $pdo = new PDO($dsn, $dbopts['user'], $dbopts['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-                    return $pdo;
-                }
-            } catch (PDOException $ex) {}
-        }
+        error_log("Database Connection Failed: " . $e->getMessage());
         return null;
     }
 }
