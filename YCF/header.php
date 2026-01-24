@@ -7,9 +7,9 @@ require_once 'functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youth Development Forum 2026</title>
-    <link rel="icon" type="image/png" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
-    <link rel="shortcut icon" type="image/png" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
-    <link rel="apple-touch-icon" href="attached_assets/modern_crypto_forum_logo_design_1769237133981.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -555,7 +555,7 @@ require_once 'functions.php';
 <body>
     <header>
         <div class="logo-container">
-            <img src="attached_assets/modern_crypto_forum_logo_design_1769237133981.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
+            <img src="attached_assets/generated_images/modern_crypto_forum_logo_design.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important; visibility: visible !important; opacity: 1 !important; max-width: none;">
             <div class="logo-divider" style="height: 50px;"></div>
             <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; text-transform: uppercase; color: #2D236E; font-weight: 700; line-height: 1.1; font-size: 0.9rem;">
                 <span style="color: #2D236E;">Youth</span>
