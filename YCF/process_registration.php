@@ -16,9 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_GET['first_name']) || isset($_GET['email'])) {
         $_POST = array_merge($_POST, $_GET);
     } else {
-        error_log("Invalid request method access: GET from " . $_SERVER['REMOTE_ADDR']);
-        echo json_encode(['success' => false, 'message' => 'Invalid request method: GET']);
-        exit;
+        // Log but allow for potential fallback processing
+        error_log("General GET access to process_registration.php from " . $_SERVER['REMOTE_ADDR']);
     }
 }
 

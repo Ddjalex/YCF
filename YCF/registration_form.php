@@ -362,12 +362,17 @@ function render_registration_form($package_id, $package_name, $price) {
             submitBtn.disabled = false;
             
             // Sync issue recovery
-            if (error.message && (error.message.includes('Invalid request method') || error.message.includes('Server returned 302') || error.message.includes('JSON'))) {
+            if (error.message && (error.message.includes('Invalid request method') || error.message.includes('Server returned 302') || error.message.includes('JSON') || error.message.includes('Network response'))) {
                 const retryData = {};
                 formData.forEach((value, key) => { 
                     if (typeof value === 'string') retryData[key] = value; 
                 });
                 
+                // Add essential fields for retry
+                retryData['package_id'] = '<?php echo $package_id; ?>';
+                retryData['package_name'] = '<?php echo $package_name; ?>';
+                retryData['amount'] = '<?php echo $price + 3.00; ?>';
+
                 fetch('process_registration.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -379,7 +384,7 @@ function render_registration_form($package_id, $package_name, $price) {
                     else alert(data.message || 'Registration failed. Please try again.');
                 })
                 .catch(err => {
-                    // Final fallback
+                    // Final fallback using direct navigation
                     const queryParams = new URLSearchParams(retryData).toString();
                     window.location.href = 'process_registration.php?' + queryParams;
                 });
