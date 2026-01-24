@@ -43,8 +43,8 @@ function handle_upload($file_key) {
 $data = [
     'package_id' => $_POST['package_id'] ?? '',
     'package_name' => $_POST['package_name'] ?? '',
-    'first_name' => $_POST['first_name'] ?? '',
-    'last_name' => $_POST['last_name'] ?? '',
+    'first_name' => $_POST['first_name'] ?? $_POST['first_name'] ?? '',
+    'last_name' => $_POST['last_name'] ?? $_POST['last_name'] ?? '',
     'nationality' => $_POST['nationality'] ?? '',
     'email' => $_POST['email'] ?? '',
     'gender' => $_POST['gender'] ?? '',
@@ -67,6 +67,18 @@ $data = [
     'amount' => floatval($_POST['amount'] ?? 0),
     'status' => 'pending'
 ];
+
+// Check if we have essential data
+if (empty($data['first_name']) && isset($_POST['json_backup'])) {
+    $backup = json_decode($_POST['json_backup'], true);
+    if ($backup) {
+        foreach ($data as $key => $val) {
+            if (empty($val) && isset($backup[$key])) {
+                $data[$key] = $backup[$key];
+            }
+        }
+    }
+}
 
 // Clean up: remove source from referral if referral is set
 if (!empty($data['referral']) && empty($data['source'])) {

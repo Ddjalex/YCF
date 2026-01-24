@@ -82,8 +82,8 @@ function save_registration($data) {
     // Filter data to match table columns
     $allowed_fields = [
         'package_id', 'package_name', 'first_name', 'last_name', 'nationality', 
-        'email', 'gender', 'dob', 'phone', 'profession', 'residence', 
-        'departure', 'visa', 'referral', 'journey', 'impact', 
+        'email', 'gender', 'dob', 'phone', 'profession', 'organization', 'residence', 
+        'departure', 'visa', 'referral', 'source', 'journey', 'impact', 
         'profile_photo', 'passport_photo', 'payment_method', 'txid', 
         'payment_screenshot', 'amount'
     ];
