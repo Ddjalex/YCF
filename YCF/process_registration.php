@@ -50,6 +50,7 @@ $data = [
     'dob' => $_POST['dob'] ?? '',
     'phone' => $_POST['phone'] ?? '',
     'profession' => $_POST['profession'] ?? '',
+    'organization' => $_POST['organization'] ?? '',
     'residence' => $_POST['residence'] ?? '',
     'departure' => $_POST['departure'] ?? '',
     'visa' => $_POST['visa'] ?? '',

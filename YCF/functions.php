@@ -30,6 +30,7 @@ function get_db_connection() {
                     dob TEXT,
                     phone TEXT,
                     profession TEXT,
+                    organization TEXT,
                     residence TEXT,
                     departure TEXT,
                     visa TEXT,
@@ -47,11 +48,12 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
-                // Add column if missing (PostgreSQL syntax)
-                try {
-                    $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS source TEXT");
-                } catch (PDOException $e) {
-                    // Column likely exists
+                // Add columns if missing
+                $columns_to_add = ['organization', 'source', 'phone'];
+                foreach ($columns_to_add as $column) {
+                    try {
+                        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $column TEXT");
+                    } catch (PDOException $e) {}
                 }
                 
                 $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
