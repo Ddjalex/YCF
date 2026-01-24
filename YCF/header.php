@@ -499,7 +499,7 @@ require_once 'functions.php';
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0, 158, 219, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
+            background: linear-gradient(to right, rgba(45, 35, 110, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
             pointer-events: none;
             z-index: 1;
         }
@@ -510,7 +510,7 @@ require_once 'functions.php';
         }
 
         .image-text-mask {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0) 60%), url('attached_assets/image_1767436778420.png');
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0) 60%), url('attached_assets/intro_image.jpg');
             background-size: 200% auto;
             background-repeat: repeat-x;
             -webkit-background-clip: text;
@@ -555,9 +555,9 @@ require_once 'functions.php';
             <img src="attached_assets/logo.png" alt="YCF Logo" class="logo-main-img" style="height: 60px; width: auto; display: block !important;">
             <div class="logo-divider" style="height: 50px;"></div>
             <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; text-transform: uppercase; color: #2D236E; font-weight: 700; line-height: 1.1; font-size: 0.9rem;">
-                <span>Youth</span>
-                <span>Crypto</span>
-                <span>Forum 2026</span>
+                <span style="color: #2D236E;">Youth</span>
+                <span style="color: #2D236E;">Crypto</span>
+                <span style="color: #2D236E;">Forum 2026</span>
             </div>
         </div>
         <nav>

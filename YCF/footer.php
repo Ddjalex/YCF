@@ -3,7 +3,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
             <!-- Column 1: Brand -->
             <div style="text-align: center; sm-text-align: left;">
-                <img src="/attached_assets/logo/Gemini_Generated_Image_ol8lm2ol8lm2ol8l-removebg-preview.png" style="height: 50px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <img src="attached_assets/logo.png" style="height: 50px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
                 <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 1.5rem; font-weight: 300;">
                     Bridging Ideas Shaping Futures. The premier platform for youth innovation in the digital economy.
                 </p>

@@ -462,11 +462,17 @@ function handleFinalSubmit() {
         }
     });
 
-    formData.append('payment_method', document.querySelector('input[name="payment_method"]:checked').value);
-    formData.append('txid', document.getElementById('transaction_id').value);
-    
-    const paymentScreenshot = document.getElementById('crypto_screenshot').files[0];
-    if (paymentScreenshot) formData.append('payment_screenshot', paymentScreenshot);
+    const paymentMethodChecked = document.querySelector('input[name="payment_method"]:checked');
+    if (paymentMethodChecked) {
+        formData.append('payment_method', paymentMethodChecked.value);
+        
+        if (paymentMethodChecked.value === 'crypto') {
+            const txidInput = document.getElementById('transaction_id');
+            const screenshotInput = document.getElementById('crypto_screenshot');
+            if (txidInput) formData.append('txid', txidInput.value);
+            if (screenshotInput && screenshotInput.files[0]) formData.append('payment_screenshot', screenshotInput.files[0]);
+        }
+    }
     
     formData.append('package_id', '<?php echo $package; ?>');
     formData.append('package_name', '<?php echo $current_package_name; ?>');

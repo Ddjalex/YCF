@@ -385,8 +385,27 @@ if (isset($_GET['page'])) {
         </div>
     </section>
 
-    <!-- Aligned with Europe’s Youth Vision Section -->
-    <section style="padding: 40px 15px; background: #fff; color: #000; text-align: center;">
+    <section style="padding: 60px 20px; background: #fff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="background: url('attached_assets/intro_image.jpg') center/cover no-repeat; border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                <div style="background: rgba(45, 35, 110, 0.85); padding: 60px 40px; color: white; text-align: center;">
+                    <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; color: white !important;">SCHOLARSHIP CATEGORIES</h2>
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 700; opacity: 0.9; color: white !important;">(Competitive Selection)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; background: #f9f9fb;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="background: url('attached_assets/intro_image.jpg') center/cover no-repeat; border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                <div style="background: rgba(45, 35, 110, 0.85); padding: 60px 40px; color: white; text-align: center;">
+                    <h2 class="montserrat" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; color: white !important;">GUARANTEED CATEGORIES</h2>
+                    <h3 class="montserrat" style="font-size: 1.5rem; font-weight: 700; opacity: 0.9; color: white !important;">(Confirmed Seats)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
         <div style="border: 1px solid #eee; border-radius: 20px; padding: 30px 15px; max-width: 1100px; margin: 0 auto; background: #fff;">
             <h2 class="montserrat" style="font-size: clamp(1.2rem, 6vw, 2.5rem); font-weight: 900; margin-bottom: 0.8rem; text-transform: uppercase; color: #2D236E; line-height: 1.1; font-family: Montserrat, sans-serif; word-wrap: break-word;">Aligned with Europe’s Youth Vision &<br>Global Priorities</h2>
             <p style="font-size: 0.95rem; color: #333; max-width: 800px; margin: 0 auto 2rem; font-weight: 400; font-family: Inter, sans-serif;">The Youth Crypto Forum 2026 is shaped around the core objectives of leading European and international youth frameworks, including:</p>
@@ -432,7 +451,7 @@ if (isset($_GET['page'])) {
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <div class="news-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
                     <div style="width: 100%; height: 200px; overflow: hidden;">
-                        <img src="attached_assets/stock_images/cryptocurrency_news__5e78e522.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="attached_assets/intro_image.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
