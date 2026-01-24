@@ -483,6 +483,14 @@ function handleFinalSubmit() {
     
     // Explicitly set the request to be multipart/form-data by not setting Content-Type header
     // Fetch will automatically set it with the correct boundary
+    // Added specific check for file sizes
+    for (var pair of formData.entries()) {
+        if (pair[1] instanceof File && pair[1].size > 10 * 1024 * 1024) { // 10MB limit
+            showCustomModal('Error: File ' + pair[0] + ' is too large (max 10MB).');
+            return;
+        }
+    }
+
     const fetchOptions = {
         method: 'POST',
         headers: {
@@ -495,7 +503,7 @@ function handleFinalSubmit() {
     
     console.log('Form data being sent:');
     for (var pair of formData.entries()) {
-        console.log(pair[0] + ': ' + (pair[1] instanceof File ? pair[1].name : pair[1]));
+        console.log(pair[0] + ': ' + (pair[1] instanceof File ? pair[1].name + ' (' + pair[1].size + ' bytes)' : pair[1]));
     }
 
     // Double check that formData actually has content
@@ -504,6 +512,15 @@ function handleFinalSubmit() {
         showCustomModal('Error: Form data is empty. Please refresh and try again.');
         return;
     }
+
+    // Also send a JSON backup in a separate field if it's not a file
+    const backupData = {};
+    for (var pair of formData.entries()) {
+        if (!(pair[1] instanceof File)) {
+            backupData[pair[0]] = pair[1];
+        }
+    }
+    formData.append('json_backup', JSON.stringify(backupData));
 
     fetch(targetUrl, fetchOptions)
     .then(response => response.json())

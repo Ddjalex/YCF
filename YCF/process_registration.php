@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET
 }
 
 // Log input data for debugging
+error_log("REQUEST METHOD: " . $_SERVER['REQUEST_METHOD']);
 error_log("POST data: " . json_encode($_POST));
 error_log("FILES data: " . json_encode($_FILES));
 error_log("RAW input: " . file_get_contents('php://input'));
@@ -28,6 +29,33 @@ if (!empty($raw_input)) {
     $json_data = json_decode($raw_input, true);
     if ($json_data) {
         $data_source = array_merge($data_source, $json_data);
+    }
+}
+
+// Special case: if POST is empty but it's a multipart request, PHP might be having issues parsing it
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST) && empty($_FILES) && isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'multipart/form-data') !== false) {
+    error_log("WARNING: POST is empty but Content-Type is multipart/form-data. This could indicate a PHP configuration limit (upload_max_filesize or post_max_size).");
+    
+    // Attempt manual parsing if PHP failed to populate $_POST
+    $raw_input = file_get_contents('php://input');
+    if (!empty($raw_input)) {
+        // Handle json_backup if present
+        if (preg_match('/name="json_backup"[\r\n]+[\r\n]+(.*?)\r\n--/s', $raw_input, $backup_match)) {
+            $backup = json_decode(trim($backup_match[1]), true);
+            if ($backup) {
+                $data_source = array_merge($data_source, $backup);
+            }
+        }
+        
+        // General manual extraction for string fields
+        preg_match_all('/name="([^"]+)"[\r\n]+[\r\n]+(.*?)\r\n/s', $raw_input, $matches);
+        if (!empty($matches[1])) {
+            foreach ($matches[1] as $i => $name) {
+                if (!isset($data_source[$name]) || $data_source[$name] === '') {
+                    $data_source[$name] = trim($matches[2][$i]);
+                }
+            }
+        }
     }
 }
 
