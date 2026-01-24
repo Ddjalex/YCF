@@ -1,0 +1,25 @@
+[21-Jan-2026 06:27:16 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PRIMARY KEY, value TEXT)' at line 1 in /home/goforuku/public_html/admin/dashboard.php:15
+Stack trace:
+#0 /home/goforuku/public_html/admin/dashboard.php(15): PDO->exec()
+#1 {main}
+  thrown in /home/goforuku/public_html/admin/dashboard.php on line 15
+[21-Jan-2026 06:27:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PRIMARY KEY, value TEXT)' at line 1 in /home/goforuku/public_html/admin/dashboard.php:15
+Stack trace:
+#0 /home/goforuku/public_html/admin/dashboard.php(15): PDO->exec()
+#1 {main}
+  thrown in /home/goforuku/public_html/admin/dashboard.php on line 15
+[21-Jan-2026 06:28:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PRIMARY KEY, value TEXT)' at line 1 in /home/goforuku/public_html/admin/dashboard.php:15
+Stack trace:
+#0 /home/goforuku/public_html/admin/dashboard.php(15): PDO->exec()
+#1 {main}
+  thrown in /home/goforuku/public_html/admin/dashboard.php on line 15
+[21-Jan-2026 06:30:23 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PRIMARY KEY, value TEXT)' at line 1 in /home/goforuku/public_html/admin/dashboard.php:15
+Stack trace:
+#0 /home/goforuku/public_html/admin/dashboard.php(15): PDO->exec()
+#1 {main}
+  thrown in /home/goforuku/public_html/admin/dashboard.php on line 15
+[21-Jan-2026 06:42:32 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PRIMARY KEY, value TEXT)' at line 1 in /home/goforuku/public_html/admin/dashboard.php:15
+Stack trace:
+#0 /home/goforuku/public_html/admin/dashboard.php(15): PDO->exec()
+#1 {main}
+  thrown in /home/goforuku/public_html/admin/dashboard.php on line 15
