@@ -47,12 +47,6 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
-                // Force sync for all possible columns
-                $cols = ['organization', 'source', 'phone', 'referral', 'package_id', 'package_name'];
-                foreach ($cols as $col) {
-                    try { $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT"); } catch (PDOException $e) {}
-                }
-                
                 $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
                     key TEXT PRIMARY KEY,
                     value TEXT
@@ -65,9 +59,10 @@ function get_db_connection() {
         }
     }
     
-    // SQLite Fallback
+    // SQLite Fallback - Use ONE shared absolute path
     try {
-        $pdo = new PDO("sqlite:database.sqlite");
+        $db_path = __DIR__ . '/database.sqlite';
+        $pdo = new PDO("sqlite:" . $db_path);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -98,11 +93,11 @@ function get_db_connection() {
             status TEXT DEFAULT 'pending',
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
-        
-        $cols = ['organization', 'source', 'phone', 'referral', 'package_id', 'package_name'];
-        foreach ($cols as $col) {
-            try { $pdo->exec("ALTER TABLE registrations ADD COLUMN $col TEXT"); } catch (PDOException $e) {}
-        }
+
+        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+            key TEXT PRIMARY KEY,
+            value TEXT
+        )");
         
         return $pdo;
     } catch (PDOException $e) {
@@ -115,14 +110,7 @@ function save_registration($data) {
     $pdo = get_db_connection();
     if (!$pdo) return false;
     
-    // Check if table has all columns in $data
     $fields = array_keys($data);
-    
-    // Explicitly add 'organization' if it's missing (PostgreSQL)
-    try {
-        $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS organization TEXT");
-    } catch (PDOException $e) {}
-
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
@@ -131,22 +119,6 @@ function save_registration($data) {
         return $stmt->execute($data);
     } catch (PDOException $e) {
         error_log("PDO Error in save_registration: " . $e->getMessage());
-        
-        // If it's a column mismatch, try to fix and retry once
-        if (strpos($e->getMessage(), 'column') !== false) {
-             // Basic attempt to identify and add missing column
-             preg_match('/column "(.*?)"/', $e->getMessage(), $matches);
-             if (isset($matches[1])) {
-                 $col = $matches[1];
-                 try {
-                     $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS $col TEXT");
-                     $stmt = $pdo->prepare($sql);
-                     return $stmt->execute($data);
-                 } catch (PDOException $e2) {
-                     error_log("Retry failed: " . $e2->getMessage());
-                 }
-             }
-        }
         return false;
     }
 }
@@ -176,7 +148,8 @@ function get_hotels($search = null) {
     if ($pdo) {
         try {
             if ($search) {
-                $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name ILIKE ? OR location ILIKE ? OR description ILIKE ? ORDER BY stars DESC, name ASC");
+                // Use LIKE for SQLite/Postgres compatibility (ILIKE is Postgres only)
+                $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name LIKE ? OR location LIKE ? OR description LIKE ? ORDER BY stars DESC, name ASC");
                 $stmt->execute(['%' . $search . '%', '%' . $search . '%', '%' . $search . '%']);
             } else {
                 $stmt = $pdo->query("SELECT * FROM hotels ORDER BY stars DESC, name ASC");
@@ -219,7 +192,6 @@ function get_hero_video() {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($result && !empty($result['value'])) {
                 $val = $result['value'];
-                // Clean up any double slashes and ensure local paths don't start with / for logic consistency
                 if (strpos($val, '//') === 0) $val = ltrim($val, '/');
                 return $val;
             }
@@ -227,7 +199,6 @@ function get_hero_video() {
         }
     }
     
-    // Default fallback - Using a reliable external video
     return 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-4451-large.mp4';
 }
 
@@ -283,24 +254,21 @@ function get_weather_data() {
 
     $current = $data['current_weather'];
     
-    // Map weather codes to emojis
     $code_map = [
-        0 => '☀️', // Clear sky
-        1 => '🌤️', 2 => '🌤️', 3 => '☁️', // Mainly clear, partly cloudy, and overcast
-        45 => '🌫️', 48 => '🌫️', // Fog
-        51 => '🌦️', 53 => '🌦️', 55 => '🌦️', // Drizzle
-        61 => '🌧️', 63 => '🌧️', 65 => '🌧️', // Rain
-        71 => '❄️', 73 => '❄️', 75 => '❄️', // Snow fall
-        77 => '❄️', // Snow grains
-        80 => '🌦️', 81 => '🌦️', 82 => '🌦️', // Rain showers
-        85 => '❄️', 86 => '❄️', // Snow showers
-        95 => '⛈️', 96 => '⛈️', 99 => '⛈️', // Thunderstorm
+        0 => '☀️', 1 => '🌤️', 2 => '🌤️', 3 => '☁️',
+        45 => '🌫️', 48 => '🌫️', 
+        51 => '🌦️', 53 => '🌦️', 55 => '🌦️',
+        61 => '🌧️', 63 => '🌧️', 65 => '🌧️',
+        71 => '❄️', 73 => '❄️', 75 => '❄️',
+        77 => '❄️',
+        80 => '🌦️', 81 => '🌦️', 82 => '🌦️',
+        85 => '❄️', 86 => '❄️',
+        95 => '⛈️', 96 => '⛈️', 99 => '⛈️',
     ];
 
     $weathercode = isset($current['weathercode']) ? $current['weathercode'] : 0;
     $icon = $code_map[$weathercode] ?? '☀️';
     
-    // Format forecast for next few hours
     $forecast = [];
     if (isset($data['hourly']['time'])) {
         $now_idx = 0;
@@ -349,12 +317,12 @@ function get_search_results($search) {
 
     try {
         // Search Hotels
-        $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name ILIKE ? OR location ILIKE ? OR description ILIKE ? ORDER BY stars DESC");
+        $stmt = $pdo->prepare("SELECT * FROM hotels WHERE name LIKE ? OR location LIKE ? OR description LIKE ? ORDER BY stars DESC");
         $stmt->execute([$term, $term, $term]);
         $results['hotels'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Search Videos
-        $stmt = $pdo->prepare("SELECT * FROM videos WHERE title ILIKE ? ORDER BY id DESC");
+        $stmt = $pdo->prepare("SELECT * FROM videos WHERE title LIKE ? ORDER BY id DESC");
         $stmt->execute([$term]);
         $results['videos'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -382,7 +350,7 @@ function get_latest_news() {
                 'id' => 1,
                 'title' => 'Youth Crypto Forum 2026: The Future of Digital Economy in Berlin',
                 'summary' => 'Join thousands of young innovators in Berlin to discuss blockchain and the global economy.',
-                'content' => 'The Youth Crypto Forum 2026 is set to be the landmark event of the year for digital finance in Europe. Hosted in the heart of Berlin, this forum will bring together top minds from the blockchain industry, regulatory bodies, and young tech enthusiasts. Attendees can expect deep dives into DeFi, the future of NFTs, and how CBDCs are reshaping the European monetary landscape.',
+                'content' => 'The Youth Crypto Forum 2026 is set to be the landmark event of the year for digital finance in Europe...',
                 'date' => 'January 10, 2026',
                 'category' => 'Press Release',
                 'image' => 'attached_assets/stock_images/cryptocurrency_block_a66cf05b.jpg'
@@ -391,7 +359,7 @@ function get_latest_news() {
                 'id' => 2,
                 'title' => 'Berlin to Host Major Blockchain Summit at Brandenburg Gate',
                 'summary' => 'Germany\'s capital preparing for the largest youth-focused crypto event in Europe.',
-                'content' => 'Preparation is in full swing at the historic Brandenburg Gate for the upcoming Blockchain Summit. This iconic location will serve as the backdrop for thousands of participants. The summit will focus on sustainable blockchain solutions and the role of youth in democratic technological governance. Key speakers include leading researchers from the Max Planck Institute and tech pioneers from Berlin\'s Silicon Allee.',
+                'content' => 'Preparation is in full swing at the historic Brandenburg Gate...',
                 'date' => 'January 05, 2026',
                 'category' => 'Update',
                 'image' => 'attached_assets/stock_images/cryptocurrency_block_a86cab3a.jpg'
@@ -400,7 +368,7 @@ function get_latest_news() {
                 'id' => 3,
                 'title' => 'Registration for Early Bird Tickets Now Open for Forum 2026',
                 'summary' => 'Secure your spot at the Youth Crypto Forum with special early bird pricing available now.',
-                'content' => 'Don\'t miss out on the most anticipated youth crypto event in Europe! Early bird registration is officially open. These tickets offer full access to all keynote sessions, workshops, and networking events at a significant discount. Early bird registrants will also receive exclusive access to the pre-forum mixer and a digital delegate bag filled with resources and partner perks.',
+                'content' => 'Don\'t miss out on the most anticipated youth crypto event in Europe!',
                 'date' => 'January 02, 2026',
                 'category' => 'Announcement',
                 'image' => 'attached_assets/stock_images/cryptocurrency_block_d84d2c76.jpg'
@@ -432,7 +400,6 @@ function get_admin_setting($key, $default = '') {
         }
     }
     
-    // Default fallback values
     $defaults = [
         'btc_address' => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
     ];
