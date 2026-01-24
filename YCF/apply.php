@@ -481,20 +481,21 @@ function handleFinalSubmit() {
     const targetUrl = './process_registration.php';
     console.log('Submitting form to ' + targetUrl);
     
-    // Fallback strategy: if POST fails or is redirected, try sending as query params if possible
-    // but for now, we'll stick to a more robust fetch configuration
+    // Explicitly set the request to be multipart/form-data by not setting Content-Type header
+    // Fetch will automatically set it with the correct boundary
     const fetchOptions = {
         method: 'POST',
         headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
+            'X-Requested-With': 'XMLHttpRequest'
         },
         body: formData,
         redirect: 'follow'
     };
     
-    console.log('Fetch options:', { method: fetchOptions.method, url: targetUrl });
+    console.log('Form data being sent:');
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + (pair[1] instanceof File ? pair[1].name : pair[1]));
+    }
 
     fetch(targetUrl, fetchOptions)
     .then(response => response.json())

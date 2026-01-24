@@ -142,7 +142,12 @@ function save_registration($data) {
     
     $insert_data = [];
     foreach ($allowed_fields as $field) {
-        $insert_data[$field] = $data[$field] ?? null;
+        // Explicitly map 'referral' from 'source' if missing, but keep both
+        if ($field === 'referral' && !isset($data['referral']) && isset($data['source'])) {
+            $insert_data[$field] = $data['source'];
+        } else {
+            $insert_data[$field] = isset($data[$field]) && $data[$field] !== '' ? $data[$field] : null;
+        }
     }
     
     $fields = array_keys($insert_data);

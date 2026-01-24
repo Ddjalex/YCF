@@ -21,6 +21,14 @@ error_log("FILES data: " . json_encode($_FILES));
 
 $data_source = array_merge($_GET, $_POST);
 
+// Fix: Extract data from source if it was sent as a JSON string in a field (sometimes happens with certain fetch configs)
+if (isset($data_source['formData']) && is_string($data_source['formData'])) {
+    $decoded = json_decode($data_source['formData'], true);
+    if ($decoded) {
+        $data_source = array_merge($data_source, $decoded);
+    }
+}
+
 
 $upload_dir = 'uploads/';
 if (!file_exists($upload_dir)) {
