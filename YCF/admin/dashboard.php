@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     header('Location: login.php');
     exit;
 }
-require_once '../functions.php';
+require_once dirname(__DIR__) . '/functions.php';
 
 // Handle form submissions for settings
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -2,8 +2,8 @@
 // functions.php - Global utility functions
 
 function get_db_connection() {
-    // ONLY MySQL (cPanel credentials) - As strictly requested
-    $host = '127.0.0.1';
+    // Priority: MySQL (cPanel) -> PostgreSQL (Replit) -> SQLite
+    $host = '127.0.0.1'; 
     $port = '3306';
     $user = 'goforuku_germany';
     $pass = 'a1e2y3t4h5';
@@ -15,11 +15,115 @@ function get_db_connection() {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_TIMEOUT => 5,
         ]);
         return $pdo;
     } catch (PDOException $e) {
-        error_log("CRITICAL: MySQL Connection failed: " . $e->getMessage());
-        // Return null instead of falling back to ensure ONLY MySQL is used
+        error_log("MySQL Connection failed: " . $e->getMessage());
+    }
+
+    // Try PostgreSQL second (Native Replit DB)
+    $database_url = getenv('DATABASE_URL');
+    if ($database_url) {
+        try {
+            $dbopts = parse_url($database_url);
+            if ($dbopts) {
+                $host = $dbopts['host'];
+                $port = $dbopts['port'] ?? 5432;
+                $user = $dbopts['user'];
+                $pass = $dbopts['pass'];
+                $dbname = ltrim($dbopts['path'], '/');
+                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+                $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+                
+                // Initialize PostgreSQL tables if they don't exist
+                $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+                    id SERIAL PRIMARY KEY,
+                    package_id TEXT,
+                    package_name TEXT,
+                    first_name TEXT,
+                    last_name TEXT,
+                    nationality TEXT,
+                    email TEXT,
+                    gender TEXT,
+                    dob TEXT,
+                    phone TEXT,
+                    profession TEXT,
+                    organization TEXT,
+                    residence TEXT,
+                    departure TEXT,
+                    visa TEXT,
+                    referral TEXT,
+                    source TEXT,
+                    journey TEXT,
+                    impact TEXT,
+                    profile_photo TEXT,
+                    passport_photo TEXT,
+                    payment_method TEXT,
+                    txid TEXT,
+                    payment_screenshot TEXT,
+                    amount REAL,
+                    status TEXT DEFAULT 'pending',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )");
+                
+                $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                )");
+                
+                return $pdo;
+            }
+        } catch (PDOException $e) {
+            error_log("PostgreSQL Connection failed: " . $e->getMessage());
+        }
+    }
+
+    // SQLite Fallback - Ensure it always works as a last resort
+    try {
+        $db_path = __DIR__ . '/database.sqlite';
+        $pdo = new PDO("sqlite:" . $db_path);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        // Initialize SQLite tables if they don't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            package_id TEXT,
+            package_name TEXT,
+            first_name TEXT,
+            last_name TEXT,
+            nationality TEXT,
+            email TEXT,
+            gender TEXT,
+            dob TEXT,
+            phone TEXT,
+            profession TEXT,
+            organization TEXT,
+            residence TEXT,
+            departure TEXT,
+            visa TEXT,
+            referral TEXT,
+            source TEXT,
+            journey TEXT,
+            impact TEXT,
+            profile_photo TEXT,
+            passport_photo TEXT,
+            payment_method TEXT,
+            txid TEXT,
+            payment_screenshot TEXT,
+            amount REAL,
+            status TEXT DEFAULT 'pending',
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )");
+
+        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+            key TEXT PRIMARY KEY,
+            value TEXT
+        )");
+        
+        return $pdo;
+    } catch (PDOException $e) {
+        error_log("SQLite Fallback failed: " . $e->getMessage());
         return null;
     }
 }
