@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
-            $stmt = $pdo->prepare("INSERT INTO admin_settings (`key`, `value`) VALUES ('hero_video', ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)");
+            $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", \"value\") VALUES ('hero_video', ?) 
+                                  ON CONFLICT(\"key\") DO UPDATE SET \"value\" = excluded.\"value\"");
             if ($stmt->execute([$video_url])) {
                 $_SESSION['success_msg'] = $success_msg;
                 header('Location: dashboard.php');
@@ -38,11 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } elseif ($action === 'update_countdown') {
             $date = $_POST['target_date'] ?? '';
-            $stmt = $pdo->prepare("INSERT INTO admin_settings (`key`, `value`) VALUES ('countdown_date', ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)");
+            $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", \"value\") VALUES ('countdown_date', ?) 
+                                  ON CONFLICT(\"key\") DO UPDATE SET \"value\" = excluded.\"value\"");
             $stmt->execute([$date]);
         } elseif ($action === 'update_crypto') {
             $addr = $_POST['btc_address'] ?? '';
-            $stmt = $pdo->prepare("INSERT INTO admin_settings (`key`, `value`) VALUES ('btc_address', ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)");
+            $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", \"value\") VALUES ('btc_address', ?) 
+                                  ON CONFLICT(\"key\") DO UPDATE SET \"value\" = excluded.\"value\"");
             $stmt->execute([$addr]);
         }
     }
