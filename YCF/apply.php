@@ -478,11 +478,13 @@ function handleFinalSubmit() {
     formData.append('package_name', '<?php echo $current_package_name; ?>');
     formData.append('amount', '<?php echo $total_amount; ?>');
 
-    console.log('Submitting form to process_registration.php via POST');
-    fetch('process_registration.php', {
+    const targetUrl = './process_registration.php';
+    console.log('Submitting form to ' + targetUrl + ' via POST');
+    fetch(targetUrl, {
         method: 'POST',
         headers: {
-            'X-Requested-With': 'XMLHttpRequest'
+            'X-Requested-With': 'XMLHttpRequest',
+            'Cache-Control': 'no-cache'
         },
         body: formData
     })
