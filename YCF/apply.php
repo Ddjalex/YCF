@@ -479,9 +479,10 @@ function handleFinalSubmit() {
     formData.append('amount', '<?php echo $total_amount; ?>');
 
     const targetUrl = './process_registration.php';
-    console.log('Submitting form to ' + targetUrl + ' via POST');
+    console.log('Submitting form to ' + targetUrl);
     
-    // Explicitly check method before fetch
+    // Fallback strategy: if POST fails or is redirected, try sending as query params if possible
+    // but for now, we'll stick to a more robust fetch configuration
     const fetchOptions = {
         method: 'POST',
         headers: {
@@ -489,7 +490,8 @@ function handleFinalSubmit() {
             'Cache-Control': 'no-cache',
             'Pragma': 'no-cache'
         },
-        body: formData
+        body: formData,
+        redirect: 'follow'
     };
     
     console.log('Fetch options:', { method: fetchOptions.method, url: targetUrl });

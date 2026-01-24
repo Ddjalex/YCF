@@ -3,26 +3,15 @@ require_once 'functions.php';
 
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET') {
     $method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
     error_log("Invalid request method access: " . $method . " from " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
-    
-    // Check if it's a redirection issue or browser behavior
-    if ($method === 'GET' && !empty($_GET)) {
-        error_log("GET request detected with data: " . json_encode($_GET));
-    }
-
-    echo json_encode([
-        'success' => false, 
-        'message' => 'Invalid request method: ' . $method,
-        'debug' => [
-            'method' => $method,
-            'uri' => $_SERVER['REQUEST_URI'] ?? '',
-            'proto' => $_SERVER['SERVER_PROTOCOL'] ?? ''
-        ]
-    ]);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method: ' . $method]);
     exit;
 }
+
+$data_source = ($_SERVER['REQUEST_METHOD'] === 'POST') ? $_POST : $_GET;
+
 
 $upload_dir = 'uploads/';
 if (!file_exists($upload_dir)) {
@@ -43,29 +32,29 @@ function handle_upload($file_key) {
 }
 
 $data = [
-    'package_id' => $_POST['package_id'] ?? '',
-    'package_name' => $_POST['package_name'] ?? '',
-    'first_name' => $_POST['first_name'] ?? '',
-    'last_name' => $_POST['last_name'] ?? '',
-    'nationality' => $_POST['nationality'] ?? '',
-    'email' => $_POST['email'] ?? '',
-    'gender' => $_POST['gender'] ?? '',
-    'dob' => $_POST['dob'] ?? '',
-    'phone' => $_POST['phone'] ?? '',
-    'profession' => $_POST['profession'] ?? '',
-    'residence' => $_POST['residence'] ?? '',
-    'departure' => $_POST['departure'] ?? '',
-    'visa' => $_POST['visa'] ?? '',
-    'referral' => $_POST['source'] ?? $_POST['referral'] ?? '',
-    'source' => $_POST['source'] ?? '',
-    'journey' => $_POST['journey'] ?? '',
-    'impact' => $_POST['impact'] ?? '',
+    'package_id' => $data_source['package_id'] ?? '',
+    'package_name' => $data_source['package_name'] ?? '',
+    'first_name' => $data_source['first_name'] ?? '',
+    'last_name' => $data_source['last_name'] ?? '',
+    'nationality' => $data_source['nationality'] ?? '',
+    'email' => $data_source['email'] ?? '',
+    'gender' => $data_source['gender'] ?? '',
+    'dob' => $data_source['dob'] ?? '',
+    'phone' => $data_source['phone'] ?? '',
+    'profession' => $data_source['profession'] ?? '',
+    'residence' => $data_source['residence'] ?? '',
+    'departure' => $data_source['departure'] ?? '',
+    'visa' => $data_source['visa'] ?? '',
+    'referral' => $data_source['source'] ?? $data_source['referral'] ?? '',
+    'source' => $data_source['source'] ?? '',
+    'journey' => $data_source['journey'] ?? '',
+    'impact' => $data_source['impact'] ?? '',
     'profile_photo' => handle_upload('profile_photo'),
     'passport_photo' => handle_upload('passport_photo'),
-    'payment_method' => $_POST['payment_method'] ?? '',
-    'txid' => $_POST['txid'] ?? '',
+    'payment_method' => $data_source['payment_method'] ?? '',
+    'txid' => $data_source['txid'] ?? '',
     'payment_screenshot' => handle_upload('payment_screenshot'),
-    'amount' => floatval($_POST['amount'] ?? 0)
+    'amount' => floatval($data_source['amount'] ?? 0)
 ];
 
 $success = save_registration($data);
