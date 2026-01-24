@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // If it's a GET request but contains registration data, it's likely a sync issue
     if (isset($_GET['first_name']) || isset($_GET['email'])) {
-        $_POST = $_GET;
+        $_POST = array_merge($_POST, $_GET);
     } else {
         error_log("Invalid request method access: GET from " . $_SERVER['REMOTE_ADDR']);
         echo json_encode(['success' => false, 'message' => 'Invalid request method: GET']);

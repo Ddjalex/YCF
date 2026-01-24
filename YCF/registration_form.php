@@ -330,8 +330,10 @@ function render_registration_form($package_id, $package_name, $price) {
         
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+        
         const originalBtnText = submitBtn.innerText;
-        submitBtn.innerText = 'Submitting...';
+        submitBtn.innerText = 'Processing...';
         submitBtn.disabled = true;
 
         const formData = new FormData(this);
@@ -344,68 +346,46 @@ function render_registration_form($package_id, $package_name, $price) {
             body: formData
         })
         .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => {
-                    throw new Error(text || 'Network response was not ok');
-                });
-            }
+            if (!response.ok) throw new Error('Server returned ' + response.status);
             return response.json();
         })
         .then(data => {
             if (data.success) {
                 window.location.href = 'index.php?success=1';
             } else {
-                alert('Error: ' + data.message);
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
+                throw new Error(data.message || 'Registration failed');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            // If the error message is "Invalid request method", it's likely a sync issue
-            if (error.message && error.message.includes('Invalid request method')) {
-                alert('Sync Error: The registration form was out of sync. Please refresh the page and try again.');
-            } else {
-                alert('An unexpected error occurred. Please try again.');
-            }
             submitBtn.innerText = originalBtnText;
             submitBtn.disabled = false;
-        });
-    });        formData.append('package_id', '<?php echo $package_id; ?>');
-        formData.append('package_name', '<?php echo $package_name; ?>');
-        formData.append('amount', '<?php echo $price + 3.00; ?>');
-        formData.append('action', 'save_registration');
-
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Processing...';
-
-        fetch('process_registration.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'Complete Registration';
-            if (data.success) {
-                // Successfully saved to DB, now redirect to a thank you page or show success in UI
-                window.location.href = 'thank-you'; 
+            
+            // Sync issue recovery
+            if (error.message && (error.message.includes('Invalid request method') || error.message.includes('Server returned 302') || error.message.includes('JSON'))) {
+                const retryData = {};
+                formData.forEach((value, key) => { 
+                    if (typeof value === 'string') retryData[key] = value; 
+                });
+                
+                fetch('process_registration.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(retryData)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) window.location.href = 'index.php?success=1';
+                    else alert(data.message || 'Registration failed. Please try again.');
+                })
+                .catch(err => {
+                    // Final fallback
+                    const queryParams = new URLSearchParams(retryData).toString();
+                    window.location.href = 'process_registration.php?' + queryParams;
+                });
             } else {
-                document.getElementById('error-banner').style.display = 'flex';
-                document.getElementById('error-banner').querySelector('span:last-child').innerText = 'There was an error saving your registration: ' + data.message;
-                document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                alert(error.message || 'An error occurred. Please try again.');
             }
-        })
-        .catch(error => {
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'Complete Registration';
-            // Even if fetch fails, if it was a network error but registration might have gone through
-            // Or just show error banner
-            document.getElementById('error-banner').style.display = 'flex';
-            document.getElementById('error-banner').querySelector('span:last-child').innerText = 'Connection error. Please try again.';
-            document.getElementById('error-banner').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            console.error('Error:', error);
         });
     });
     </script>
