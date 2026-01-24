@@ -66,12 +66,18 @@ $data = [
     'amount' => floatval($_POST['amount'] ?? 0)
 ];
 
+// Debug log to verify what is being saved
+error_log("Attempting SQL: INSERT INTO registrations (" . implode(', ', array_keys($data)) . ") VALUES (...)");
+error_log("With Data: " . json_encode($data));
+
 $success = save_registration($data);
 
 if (!$success) {
     $pdo = get_db_connection();
     $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
     error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
+} else {
+    error_log("Registration saved successfully for " . ($data['email'] ?? 'unknown'));
 }
 
 echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);

@@ -16,7 +16,8 @@ function get_db_connection() {
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
                 $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
                 
-                // Initialize tables if they don't exist
+                // CRITICAL: Ensure table is created with MySQL-compatible types where possible
+                // though pgsql handles 'TEXT' well.
                 $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
                     id SERIAL PRIMARY KEY,
                     package_id TEXT,
@@ -46,6 +47,13 @@ function get_db_connection() {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )");
                 
+                // Add column if missing (PostgreSQL syntax)
+                try {
+                    $pdo->exec("ALTER TABLE registrations ADD COLUMN IF NOT EXISTS source TEXT");
+                } catch (PDOException $e) {
+                    // Column likely exists
+                }
+                
                 $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
                     key TEXT PRIMARY KEY,
                     value TEXT
@@ -58,11 +66,10 @@ function get_db_connection() {
         }
     }
     
-    // Fallback to SQLite if PostgreSQL fails or isn't configured
+    // Fallback to SQLite
     try {
         $pdo = new PDO("sqlite:database.sqlite");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Initialize tables if they don't exist
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             package_id TEXT,
@@ -91,6 +98,13 @@ function get_db_connection() {
             status TEXT DEFAULT 'pending',
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
+        
+        try {
+            $pdo->exec("ALTER TABLE registrations ADD COLUMN source TEXT");
+        } catch (PDOException $e) {
+            // Already exists or other error
+        }
+        
         return $pdo;
     } catch (PDOException $e) {
         error_log("SQLite Connection failed: " . $e->getMessage());
