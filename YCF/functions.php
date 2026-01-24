@@ -99,6 +99,7 @@ function save_registration($data) {
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
     try {
         $stmt = $pdo->prepare($sql);
+        error_log("DEBUG: Final data being inserted: " . json_encode($insert_data));
         $result = $stmt->execute($insert_data);
         if (!$result) {
             error_log("SQL Execution Failed: " . implode(" ", $stmt->errorInfo()));

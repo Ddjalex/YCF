@@ -68,6 +68,10 @@ $data = [
     'status' => 'pending'
 ];
 
+// CRITICAL DEBUG: Log exactly what we received from POST
+error_log("DEBUG: Full _POST contents: " . json_encode($_POST));
+error_log("DEBUG: Full _FILES contents: " . json_encode($_FILES));
+
 // Check if we have essential data
 if (empty($data['first_name']) && isset($_POST['json_backup'])) {
     $backup = json_decode($_POST['json_backup'], true);
