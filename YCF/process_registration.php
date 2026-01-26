@@ -104,7 +104,7 @@ if (!$success) {
     $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
     error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
 } else {
-    send_admin_registration_notification($data);
+    error_log("Registration saved successfully for " . ($data['email'] ?? 'unknown'));
 }
 
 echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);

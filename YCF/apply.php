@@ -132,22 +132,22 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">First Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" id="reg_first_name" placeholder="First" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_first_name" name="first_name" placeholder="First" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
                         <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Last Name <span style="color: red;">(Required)</span></label>
-                        <input type="text" id="reg_last_name" placeholder="Last" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                        <input type="text" id="reg_last_name" name="last_name" placeholder="Last" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     </div>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Nationality <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_nationality" placeholder="e.g USA, UK, UAE" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_nationality" name="nationality" placeholder="e.g USA, UK, UAE" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Email <span style="color: red;">(Required)</span></label>
-                    <input type="email" id="reg_email" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="email" id="reg_email" name="email" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start;">
@@ -170,7 +170,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
             <div class="form-step-container">
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Gender <span style="color: red;">(Required)</span></label>
-                    <select id="reg_gender" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select id="reg_gender" name="gender" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -181,33 +181,38 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Date of Birth <span style="color: red;">(Required)</span></label>
-                    <input type="date" id="reg_dob" required style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="date" id="reg_dob" name="dob" required style="width: 100%; max-width: 300px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Phone No (with Country Code) <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_phone" required placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_phone" name="phone" required placeholder="+1234567890" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                     <small style="color: #888; display: block; margin-top: 5px;">Please input a valid international phone number</small>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Profession <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_profession" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_profession" name="profession" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Organization / University</label>
+                    <input type="text" id="reg_organization" name="organization" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Country of Residence <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_residence" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_residence" name="residence" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Departure City <span style="color: red;">(Required)</span></label>
-                    <input type="text" id="reg_departure" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="text" id="reg_departure" name="departure" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Do you require a visa to travel to Germany? <span style="color: red;">(Required)</span></label>
-                    <select id="reg_visa" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <select id="reg_visa" name="visa" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                         <option value="">Select Option</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -237,17 +242,22 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Tell us about your journey so far. <span style="color: red;">(Required)</span></label>
-                    <textarea id="reg_journey" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
+                    <textarea id="reg_journey" name="journey" required style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 120px;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">How do you create impact?</label>
+                    <textarea id="reg_impact" name="impact" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb; min-height: 100px;"></textarea>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Profile Photo <span style="color: red;">(Required)</span></label>
-                    <input type="file" id="reg_profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="file" id="reg_profile_photo" name="profile_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="margin-bottom: 40px;">
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #444;">Upload Your Passport Photo <span style="color: red;">(Required)</span></label>
-                    <input type="file" id="reg_passport_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
+                    <input type="file" id="reg_passport_photo" name="passport_photo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; background: #f9f9fb;">
                 </div>
 
                 <div style="display: flex; justify-content: flex-start; gap: 20px;">
@@ -443,25 +453,29 @@ function handleFinalSubmit() {
     }
     
     const formData = new FormData();
-    // Collecting data from all steps
-    const step1Inputs = document.querySelectorAll('#step1 input');
-    const step2Inputs = document.querySelectorAll('#step2 input, #step2 select, #step2 textarea');
-    const step3Inputs = document.querySelectorAll('#step3 input');
-
-    step1Inputs.forEach(input => {
-        if (input.id) formData.append(input.id.replace('reg_', ''), input.value);
-    });
     
-    step2Inputs.forEach(input => {
+    // Collect all form fields using name attributes
+    const allInputs = document.querySelectorAll('#step1 input[name], #step2 input[name], #step2 select[name], #step2 textarea[name], #step3 input[name]');
+    
+    allInputs.forEach(input => {
         if (input.type === 'radio') {
-            if (input.checked) formData.append(input.name, input.value);
+            if (input.checked) {
+                formData.append(input.name, input.value);
+            }
         } else if (input.type === 'file') {
-            if (input.files[0]) formData.append(input.id.replace('reg_', ''), input.files[0]);
-        } else if (input.id) {
-            formData.append(input.id.replace('reg_', ''), input.value);
+            if (input.files && input.files[0]) {
+                formData.append(input.name, input.files[0]);
+            }
+        } else if (input.type === 'checkbox') {
+            if (input.checked) {
+                formData.append(input.name, input.value);
+            }
+        } else {
+            formData.append(input.name, input.value);
         }
     });
-
+    
+    // Handle payment method and crypto details
     const paymentMethodChecked = document.querySelector('input[name="payment_method"]:checked');
     if (paymentMethodChecked) {
         formData.append('payment_method', paymentMethodChecked.value);
@@ -469,7 +483,7 @@ function handleFinalSubmit() {
         if (paymentMethodChecked.value === 'crypto') {
             const txidInput = document.getElementById('transaction_id');
             const screenshotInput = document.getElementById('crypto_screenshot');
-            if (txidInput) formData.append('txid', txidInput.value);
+            if (txidInput && txidInput.value) formData.append('txid', txidInput.value);
             if (screenshotInput && screenshotInput.files[0]) formData.append('payment_screenshot', screenshotInput.files[0]);
         }
     }
