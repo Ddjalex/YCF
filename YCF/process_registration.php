@@ -105,6 +105,9 @@ $raw_post = $_POST;
 // Filter out binary data for logging
 if (isset($raw_post['profile_photo'])) $raw_post['profile_photo'] = '[binary]';
 if (isset($raw_post['passport_photo'])) $raw_post['passport_photo'] = '[binary]';
+if (isset($raw_post['crypto_screenshot'])) $raw_post['crypto_screenshot'] = '[binary]';
+if (isset($raw_post['payment_screenshot'])) $raw_post['payment_screenshot'] = '[binary]';
+
 error_log("Raw POST data: " . json_encode($raw_post));
 error_log("Saving registration data: " . json_encode($data));
 
