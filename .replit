@@ -40,3 +40,11 @@ outputType = "webview"
 task = "shell.exec"
 args = "php -d upload_max_filesize=128M -d post_max_size=128M -d memory_limit=512M -S 0.0.0.0:5000 YCF/router.php"
 waitForPort = 5000
+
+[userenv]
+
+[userenv.shared]
+MYSQL_HOST = "localhost"
+MYSQL_USER = "goforuku_germany"
+MYSQL_DATABASE = "goforuku_germany"
+MYSQL_PASSWORD = "a1e2y3t4h5"

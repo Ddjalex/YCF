@@ -163,7 +163,9 @@ function save_registration($data) {
     $fields = array_keys($insert_data);
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
-    $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    // MySQL uses backticks, PostgreSQL doesn't need them but we should be careful with reserved words
+    $mysql_sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    $pg_sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
     
     $mysql_success = false;
     $pg_success = false;
@@ -171,7 +173,7 @@ function save_registration($data) {
     // Save to external MySQL database (cPanel) - PRIMARY
     if ($mysql_pdo) {
         try {
-            $stmt = $mysql_pdo->prepare($sql);
+            $stmt = $mysql_pdo->prepare($mysql_sql);
             $mysql_success = $stmt->execute($insert_data);
             if ($mysql_success) {
                 error_log("Registration saved to MySQL (cPanel) successfully for " . $insert_data['email']);
@@ -188,7 +190,7 @@ function save_registration($data) {
     // Also save to local PostgreSQL as backup
     if ($pg_pdo) {
         try {
-            $stmt = $pg_pdo->prepare($sql);
+            $stmt = $pg_pdo->prepare($pg_sql);
             $pg_success = $stmt->execute($insert_data);
             if ($pg_success) {
                 error_log("Registration also saved to PostgreSQL backup for " . $insert_data['email']);
