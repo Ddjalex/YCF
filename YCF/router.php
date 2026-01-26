@@ -13,9 +13,12 @@ if ($is_admin_path) {
     $sub_path = preg_replace('/^\/admin\/?/', '', $uri);
     
     // Default to index.php for /admin or /admin/
-    if ($sub_path === '') {
+    if ($sub_path === '' || $sub_path === '/') {
         $sub_path = 'index.php';
     }
+    
+    // Remove trailing slash if present for file check
+    $sub_path = rtrim($sub_path, '/');
     
     $file_in_admin = __DIR__ . '/admin/' . $sub_path;
     

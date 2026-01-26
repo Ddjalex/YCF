@@ -13,7 +13,7 @@ function get_mysql_connection() {
 
     try {
         // Use 127.0.0.1 for local connections to avoid Unix socket issues in Replit
-        $dsn = "mysql:host=127.0.0.1;dbname=$database;charset=utf8mb4";
+        $dsn = "mysql:host=localhost;dbname=$database;charset=utf8mb4";
         $mysql_pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -23,8 +23,21 @@ function get_mysql_connection() {
         error_log("MySQL connection established successfully to $database");
         return $mysql_pdo;
     } catch (PDOException $e) {
-        error_log("MySQL Connection Failed for $host: " . $e->getMessage());
-        return null;
+        // Fallback to 127.0.0.1 if socket fails
+        try {
+            $dsn = "mysql:host=127.0.0.1;dbname=$database;charset=utf8mb4";
+            $mysql_pdo = new PDO($dsn, $user, $password, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+            ]);
+            error_log("MySQL connection established via 127.0.0.1 successfully to $database");
+            return $mysql_pdo;
+        } catch (PDOException $e2) {
+            error_log("MySQL Connection Failed for $host: " . $e->getMessage());
+            return null;
+        }
     }
 }
 
