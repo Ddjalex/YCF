@@ -5,14 +5,13 @@ function get_db_connection() {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
 
-    $dsn = getenv('DATABASE_URL');
-    if (!$dsn) {
+    $db_url = getenv('DATABASE_URL');
+    if (!$db_url) {
         error_log("DATABASE_URL environment variable is not set.");
         return null;
     }
 
-    // Parse DATABASE_URL for PostgreSQL connection
-    $dbopts = parse_url(getenv('DATABASE_URL'));
+    $dbopts = parse_url($db_url);
     if (!$dbopts) {
         error_log("Failed to parse DATABASE_URL.");
         return null;
@@ -27,11 +26,10 @@ function get_db_connection() {
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
         
-        // Ensure standard quoting for identifiers in PostgreSQL
         $pdo->exec("SET standard_conforming_strings = on");
         $pdo->exec("SET client_encoding = 'UTF8'");
 
-        // Create tables if they don't exist (PostgreSQL syntax)
+        // Create tables if they don't exist
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id SERIAL PRIMARY KEY,
             package_id VARCHAR(255),
@@ -84,7 +82,7 @@ function get_db_connection() {
             value TEXT
         )");
 
-        // Initialize default settings if they don't exist
+        // Initialize default settings
         $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('countdown_date', 'June 15, 2026 09:00:00') ON CONFLICT (\"key\") DO NOTHING");
         $stmt->execute();
         $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa') ON CONFLICT (\"key\") DO NOTHING");
@@ -92,7 +90,7 @@ function get_db_connection() {
 
         return $pdo;
     } catch (PDOException $e) {
-        error_log("MySQL Connection Failed: " . $e->getMessage());
+        error_log("PostgreSQL Connection Failed: " . $e->getMessage());
         return null;
     }
 }
