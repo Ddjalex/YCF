@@ -383,7 +383,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
 
                 <div style="display: flex; justify-content: flex-start; gap: 20px; margin-top: 40px;">
                     <button type="button" onclick="nextStep(2)" style="width: 200px; padding: 15px; background: #2D236E; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase;">Previous</button>
-                    <button type="button" onclick="handleFinalSubmit()" class="btn-apply-special">SUBMIT</button>
+                    <button type="button" onclick="handleFinalSubmit()" class="btn-apply-special" style="margin-top: 0;">SUBMIT</button>
                 </div>
             </div>
         </div>
@@ -394,7 +394,9 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
 
 <script>
 function nextStep(step) {
-    const currentStepNum = parseInt(document.querySelector('#step1:not([style*="display: none"]), #step2:not([style*="display: none"]), #step3:not([style*="display: none"])')?.id?.replace('step', '') || '1');
+    let currentStepNum = 1;
+    if (document.getElementById('step2').style.display !== 'none') currentStepNum = 2;
+    if (document.getElementById('step3').style.display !== 'none') currentStepNum = 3;
     
     if (step > currentStepNum) {
         let isValid = true;
@@ -418,13 +420,14 @@ function nextStep(step) {
             if (!isFieldValid) {
                 isValid = false;
                 input.style.borderColor = 'red';
+                console.log('Invalid field:', input.name || input.id);
             } else {
                 input.style.borderColor = '#ddd';
             }
         });
         
         if (!isValid) {
-            document.getElementById('form-error-banner').style.display = 'block';
+            document.getElementById('form-error-banner').style.display = 'flex';
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
@@ -434,8 +437,12 @@ function nextStep(step) {
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'none';
-    document.getElementById('step' + step).style.display = 'block';
-    window.scrollTo({ top: document.querySelector('.hero-container').offsetHeight, behavior: 'smooth' });
+    
+    const targetStep = document.getElementById('step' + step);
+    if (targetStep) {
+        targetStep.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 function toggleCryptoDetails(show) {
