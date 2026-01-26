@@ -516,7 +516,7 @@ function handleFinalSubmit() {
     finalFormData.append('json_backup', JSON.stringify(backupData));
 
     // Use relative path to avoid protocol/host mismatch issues in Replit proxy
-    const targetUrl = 'process_registration.php';
+    const targetUrl = 'process_registration.php?t=' + Date.now();
     console.log('Submitting form to ' + targetUrl);
     
     const fetchOptions = {
@@ -527,7 +527,7 @@ function handleFinalSubmit() {
         body: finalFormData,
         // Ensure no cache and no unexpected redirects
         cache: 'no-cache',
-        redirect: 'follow'
+        redirect: 'manual'
     };
     
     console.log('Sending final registration request via POST...');

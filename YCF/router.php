@@ -34,7 +34,8 @@ if ($is_admin_path) {
 $file = __DIR__ . $uri;
 
 // CRITICAL: Ensure process_registration.php is always accessible via POST
-if ($uri === '/process_registration.php') {
+// Force it to load the file regardless of what the server thinks the method is
+if (strpos($uri, '/process_registration.php') !== false) {
     include __DIR__ . '/process_registration.php';
     exit;
 }
