@@ -21,8 +21,6 @@ function get_db_connection() {
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
 
-        error_log("Successfully connected to MySQL database");
-
         // Create tables if they don't exist
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
