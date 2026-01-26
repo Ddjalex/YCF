@@ -44,13 +44,17 @@ function get_db_connection() {
         return null;
     }
 
-    $dbopts = parse_url($db_url);
-    if (!$dbopts) {
-        error_log("Failed to parse DATABASE_URL.");
-        return null;
+    // Handle different formats of DATABASE_URL
+    if (strpos($db_url, 'postgres://') === 0 || strpos($db_url, 'postgresql://') === 0) {
+        $dbopts = parse_url($db_url);
+        if (!$dbopts) {
+            error_log("Failed to parse DATABASE_URL.");
+            return null;
+        }
+        $dsn = "pgsql:host=" . $dbopts["host"] . ";port=" . ($dbopts["port"] ?? 5432) . ";dbname=" . ltrim($dbopts["path"], '/') . ";user=" . $dbopts["user"] . ";password=" . $dbopts["pass"];
+    } else {
+        $dsn = $db_url;
     }
-    
-    $dsn = "pgsql:host=" . $dbopts["host"] . ";port=" . ($dbopts["port"] ?? 5432) . ";dbname=" . ltrim($dbopts["path"], '/') . ";user=" . $dbopts["user"] . ";password=" . $dbopts["pass"];
 
     try {
         $pdo = new PDO($dsn, null, null, [
@@ -111,14 +115,14 @@ function get_db_connection() {
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
             id SERIAL PRIMARY KEY,
-            \"key\" VARCHAR(255) UNIQUE,
+            key VARCHAR(255) UNIQUE,
             value TEXT
         )");
 
         // Initialize default settings
-        $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('countdown_date', 'June 15, 2026 09:00:00') ON CONFLICT (\"key\") DO NOTHING");
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('countdown_date', 'June 15, 2026 09:00:00') ON CONFLICT (key) DO NOTHING");
         $stmt->execute();
-        $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa') ON CONFLICT (\"key\") DO NOTHING");
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa') ON CONFLICT (key) DO NOTHING");
         $stmt->execute();
 
         return $pdo;
@@ -237,7 +241,7 @@ function get_target_date() {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = 'countdown_date'");
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
             $stmt->execute();
             $result = $stmt->fetch();
             if ($result) return $result['value'];
@@ -251,7 +255,7 @@ function get_hero_video() {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = 'hero_video'");
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'hero_video'");
             $stmt->execute();
             $result = $stmt->fetch();
             if ($result && !empty($result['value'])) {
@@ -411,7 +415,7 @@ function get_admin_setting($key, $default = '') {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = ?");
+            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = ?");
             $stmt->execute([$key]);
             $result = $stmt->fetch();
             if ($result) return $result['value'];
