@@ -45,25 +45,26 @@ function handle_upload($file_key) {
     return null;
 }
 
+// Collect fields
 $data = [
     'package_id' => $_POST['package_id'] ?? '',
     'package_name' => $_POST['package_name'] ?? '',
-    'first_name' => $_POST['first_name'] ?? '',
-    'last_name' => $_POST['last_name'] ?? '',
-    'nationality' => $_POST['nationality'] ?? '',
-    'email' => $_POST['email'] ?? '',
-    'gender' => $_POST['gender'] ?? '',
-    'dob' => $_POST['dob'] ?? '',
-    'phone' => $_POST['phone'] ?? '',
-    'profession' => $_POST['profession'] ?? '',
-    'organization' => $_POST['organization'] ?? '',
-    'residence' => $_POST['residence'] ?? '',
-    'departure' => $_POST['departure'] ?? '',
-    'visa' => $_POST['visa'] ?? '',
+    'first_name' => $_POST['first_name'] ?? $_POST['reg_first_name'] ?? '',
+    'last_name' => $_POST['last_name'] ?? $_POST['reg_last_name'] ?? '',
+    'nationality' => $_POST['nationality'] ?? $_POST['reg_nationality'] ?? '',
+    'email' => $_POST['email'] ?? $_POST['reg_email'] ?? '',
+    'gender' => $_POST['gender'] ?? $_POST['reg_gender'] ?? '',
+    'dob' => $_POST['dob'] ?? $_POST['reg_dob'] ?? '',
+    'phone' => $_POST['phone'] ?? $_POST['reg_phone'] ?? '',
+    'profession' => $_POST['profession'] ?? $_POST['reg_profession'] ?? '',
+    'organization' => $_POST['organization'] ?? $_POST['reg_organization'] ?? '',
+    'residence' => $_POST['residence'] ?? $_POST['reg_residence'] ?? '',
+    'departure' => $_POST['departure'] ?? $_POST['reg_departure'] ?? '',
+    'visa' => $_POST['visa'] ?? $_POST['reg_visa'] ?? '',
     'referral' => $_POST['referral'] ?? '',
     'source' => $_POST['source'] ?? '',
-    'journey' => $_POST['journey'] ?? '',
-    'impact' => $_POST['impact'] ?? '',
+    'journey' => $_POST['journey'] ?? $_POST['reg_journey'] ?? '',
+    'impact' => $_POST['impact'] ?? $_POST['reg_impact'] ?? '',
     'profile_photo' => handle_upload('profile_photo') ?? handle_upload('reg_profile_photo'),
     'passport_photo' => handle_upload('passport_photo') ?? handle_upload('reg_passport_photo'),
     'payment_method' => $_POST['payment_method'] ?? '',
@@ -72,6 +73,23 @@ $data = [
     'amount' => floatval($_POST['amount'] ?? 0),
     'status' => 'pending'
 ];
+
+// Check if we have essential data via json_backup
+if (empty($data['first_name']) && isset($_POST['json_backup'])) {
+    $backup = json_decode($_POST['json_backup'], true);
+    if ($backup) {
+        foreach ($data as $key => $val) {
+            if (empty($val) && isset($backup[$key])) {
+                $data[$key] = $backup[$key];
+            }
+        }
+        // Also check prefixed versions in backup
+        if (empty($data['first_name']) && isset($backup['reg_first_name'])) $data['first_name'] = $backup['reg_first_name'];
+        if (empty($data['email']) && isset($backup['reg_email'])) $data['email'] = $backup['reg_email'];
+        
+        error_log("DEBUG: Recovered data from json_backup: " . json_encode($data));
+    }
+}
 
 // CRITICAL VALIDATION: Ensure at least first_name and email are present
 if (empty($data['first_name']) || empty($data['email'])) {

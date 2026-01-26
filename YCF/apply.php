@@ -458,22 +458,24 @@ function handleFinalSubmit() {
     const allInputs = document.querySelectorAll('#step1 input, #step2 input, #step2 select, #step2 textarea, #step3 input');
     
     allInputs.forEach(input => {
-        if (!input.name) return;
+        const name = input.name || input.getAttribute('name');
+        if (!name) return;
         
+        let value = input.value;
         if (input.type === 'radio') {
             if (input.checked) {
-                formData.append(input.name, input.value);
+                formData.append(name, value);
             }
         } else if (input.type === 'file') {
             if (input.files && input.files[0]) {
-                formData.append(input.name, input.files[0]);
+                formData.append(name, input.files[0]);
             }
         } else if (input.type === 'checkbox') {
             if (input.checked) {
-                formData.append(input.name, input.value);
+                formData.append(name, value);
             }
         } else {
-            formData.append(input.name, input.value);
+            formData.append(name, value);
         }
     });
     
@@ -527,6 +529,25 @@ function handleFinalSubmit() {
         submitBtn.style.opacity = '0.7';
         submitBtn.style.cursor = 'not-allowed';
     }
+
+    // Explicitly reconstruct FormData to ensure it's not a reference issue
+    const finalFormData = new FormData();
+    for (var pair of formData.entries()) {
+        finalFormData.append(pair[0], pair[1]);
+        console.log('Appending to finalFormData:', pair[0], pair[1] instanceof File ? pair[1].name : pair[1]);
+    }
+
+    // Also send a JSON backup in a separate field if it's not a file
+    const backupData = {};
+    for (var pair of formData.entries()) {
+        if (!(pair[1] instanceof File)) {
+            backupData[pair[0]] = pair[1];
+        }
+    }
+    const jsonBackup = JSON.stringify(backupData);
+    finalFormData.append('json_backup', jsonBackup);
+    
+    console.log('Final FormData entries count:', [...finalFormData.entries()].length);
 
     const fetchOptions = {
         method: 'POST',
