@@ -20,12 +20,12 @@ $is_admin_path = (strpos($uri, '/admin/') === 0 || $uri === '/admin');
         // Remove trailing slash if present for file check
         $sub_path = rtrim($sub_path, '/');
         
-        // Handle dashboard specifically
-        if ($sub_path === 'dashboard') {
-            $sub_path = 'dashboard.php';
+        // Handle dashboard specifically - ensure it maps to dashboard.php
+        if ($sub_path === 'dashboard' || $sub_path === 'dashboard.php') {
+            $file_in_admin = __DIR__ . '/admin/dashboard.php';
+        } else {
+            $file_in_admin = __DIR__ . '/admin/' . $sub_path;
         }
-        
-        $file_in_admin = __DIR__ . '/admin/' . $sub_path;
         
         if (file_exists($file_in_admin) && !is_dir($file_in_admin)) {
             require_once $file_in_admin;
