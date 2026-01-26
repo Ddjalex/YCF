@@ -5,25 +5,22 @@ function get_db_connection() {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
 
-    // cPanel MySQL database credentials
-    $host = '127.0.0.1';
-    $port = '3306';
-    $user = 'goforuku_germany';
-    $pass = 'a1e2y3t4h5';
-    $dbname = 'goforuku_germany';
+    $dsn = getenv('DATABASE_URL');
+    if (!$dsn) {
+        error_log("DATABASE_URL environment variable is not set.");
+        return null;
+    }
 
     try {
-        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
-        $pdo = new PDO($dsn, $user, $pass, [
+        $pdo = new PDO($dsn, null, null, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
 
-        // Create tables if they don't exist
+        // Create tables if they don't exist (PostgreSQL syntax)
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             package_id VARCHAR(255),
             package_name VARCHAR(255),
             first_name VARCHAR(255),
@@ -53,7 +50,7 @@ function get_db_connection() {
         )");
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS hotels (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             name VARCHAR(255),
             location VARCHAR(255),
             description TEXT,
@@ -62,16 +59,16 @@ function get_db_connection() {
         )");
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS videos (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             title VARCHAR(255),
             video_url TEXT,
             thumbnail_url TEXT
         )");
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            `key` VARCHAR(255) UNIQUE,
-            `value` TEXT
+            id SERIAL PRIMARY KEY,
+            key VARCHAR(255) UNIQUE,
+            value TEXT
         )");
 
         return $pdo;
