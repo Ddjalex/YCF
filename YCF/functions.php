@@ -343,3 +343,122 @@ function get_admin_setting($key, $default = '') {
     $defaults = ['btc_address' => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'];
     return $defaults[$key] ?? $default;
 }
+
+function send_admin_registration_notification($data) {
+    $admin_email = get_admin_setting('admin_email', 'admin@youthcryptoforum.com');
+    
+    $site_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . ($_SERVER['HTTP_HOST'] ?? 'localhost');
+    
+    $full_name = trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? ''));
+    
+    $subject = "New Registration: " . $full_name . " - Youth Crypto Forum 2026";
+    
+    $message = "
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: #2D236E; color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }
+            .content { background: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+            .section { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #FFD700; }
+            .section-title { font-weight: bold; color: #2D236E; margin-bottom: 10px; font-size: 16px; }
+            .field { margin: 8px 0; }
+            .field-label { font-weight: bold; color: #666; display: inline-block; width: 150px; }
+            .field-value { color: #333; }
+            .photo-section { text-align: center; margin: 15px 0; }
+            .photo-section img { max-width: 200px; max-height: 200px; border: 2px solid #ddd; border-radius: 8px; margin: 5px; }
+            .footer { background: #2D236E; color: white; padding: 15px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h2>New Registration Received</h2>
+                <p>Youth Crypto Forum 2026 - Berlin, Germany</p>
+            </div>
+            <div class='content'>
+                <div class='section'>
+                    <div class='section-title'>Step 1: Personal Information</div>
+                    <div class='field'><span class='field-label'>Full Name:</span> <span class='field-value'>" . htmlspecialchars($full_name) . "</span></div>
+                    <div class='field'><span class='field-label'>Email:</span> <span class='field-value'>" . htmlspecialchars($data['email'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Phone:</span> <span class='field-value'>" . htmlspecialchars($data['phone'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Gender:</span> <span class='field-value'>" . htmlspecialchars($data['gender'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Date of Birth:</span> <span class='field-value'>" . htmlspecialchars($data['dob'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Nationality:</span> <span class='field-value'>" . htmlspecialchars($data['nationality'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Profession:</span> <span class='field-value'>" . htmlspecialchars($data['profession'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Organization:</span> <span class='field-value'>" . htmlspecialchars($data['organization'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Residence:</span> <span class='field-value'>" . htmlspecialchars($data['residence'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Departure City:</span> <span class='field-value'>" . htmlspecialchars($data['departure'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Visa Required:</span> <span class='field-value'>" . htmlspecialchars($data['visa'] ?? 'N/A') . "</span></div>
+                </div>
+                
+                <div class='section'>
+                    <div class='section-title'>Step 2: Application Details</div>
+                    <div class='field'><span class='field-label'>Package:</span> <span class='field-value'>" . htmlspecialchars($data['package_name'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Source/Referral:</span> <span class='field-value'>" . htmlspecialchars($data['source'] ?? $data['referral'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Personal Journey:</span></div>
+                    <div style='background: #fff; padding: 10px; border-radius: 5px; margin-top: 5px;'>" . nl2br(htmlspecialchars($data['journey'] ?? 'N/A')) . "</div>
+                    <div class='field' style='margin-top: 15px;'><span class='field-label'>Expected Impact:</span></div>
+                    <div style='background: #fff; padding: 10px; border-radius: 5px; margin-top: 5px;'>" . nl2br(htmlspecialchars($data['impact'] ?? 'N/A')) . "</div>
+                </div>
+                
+                <div class='section'>
+                    <div class='section-title'>Step 3: Payment Information</div>
+                    <div class='field'><span class='field-label'>Amount:</span> <span class='field-value'>$" . number_format(floatval($data['amount'] ?? 0), 2) . "</span></div>
+                    <div class='field'><span class='field-label'>Payment Method:</span> <span class='field-value'>" . htmlspecialchars($data['payment_method'] ?? 'N/A') . "</span></div>
+                    <div class='field'><span class='field-label'>Transaction ID:</span> <span class='field-value'>" . htmlspecialchars($data['txid'] ?? 'N/A') . "</span></div>
+                </div>
+                
+                <div class='section'>
+                    <div class='section-title'>Uploaded Documents</div>
+                    <div class='photo-section'>";
+    
+    if (!empty($data['profile_photo'])) {
+        $profile_url = $site_url . '/' . $data['profile_photo'];
+        $message .= "<div><strong>Profile Photo:</strong><br><img src='" . $profile_url . "' alt='Profile Photo'></div>";
+    } else {
+        $message .= "<div><strong>Profile Photo:</strong> Not uploaded</div>";
+    }
+    
+    if (!empty($data['passport_photo'])) {
+        $passport_url = $site_url . '/' . $data['passport_photo'];
+        $message .= "<div style='margin-top: 10px;'><strong>Passport Photo:</strong><br><img src='" . $passport_url . "' alt='Passport Photo'></div>";
+    } else {
+        $message .= "<div style='margin-top: 10px;'><strong>Passport Photo:</strong> Not uploaded</div>";
+    }
+    
+    if (!empty($data['payment_screenshot'])) {
+        $payment_url = $site_url . '/' . $data['payment_screenshot'];
+        $message .= "<div style='margin-top: 10px;'><strong>Payment Screenshot:</strong><br><img src='" . $payment_url . "' alt='Payment Screenshot'></div>";
+    } else {
+        $message .= "<div style='margin-top: 10px;'><strong>Payment Screenshot:</strong> Not uploaded</div>";
+    }
+    
+    $message .= "
+                    </div>
+                </div>
+            </div>
+            <div class='footer'>
+                <p>This is an automated notification from Youth Crypto Forum 2026</p>
+                <p>Please review this registration in the admin dashboard</p>
+            </div>
+        </div>
+    </body>
+    </html>";
+    
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: Youth Crypto Forum <noreply@youthcryptoforum.com>\r\n";
+    $headers .= "Reply-To: " . ($data['email'] ?? 'noreply@youthcryptoforum.com') . "\r\n";
+    
+    $mail_sent = @mail($admin_email, $subject, $message, $headers);
+    
+    if ($mail_sent) {
+        error_log("Admin notification email sent successfully for registration: " . ($data['email'] ?? 'unknown'));
+    } else {
+        error_log("Failed to send admin notification email for registration: " . ($data['email'] ?? 'unknown'));
+    }
+    
+    return $mail_sent;
+}
