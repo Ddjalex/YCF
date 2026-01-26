@@ -11,16 +11,12 @@ function get_mysql_connection() {
     $password = $_ENV['MYSQL_PASSWORD'] ?? getenv('MYSQL_PASSWORD');
 
     if (!$host || !$database || !$user || !$password) {
-        error_log("MySQL credentials not fully configured. Missing: " . 
-            (!$host ? "MYSQL_HOST " : "") . 
-            (!$database ? "MYSQL_DATABASE " : "") . 
-            (!$user ? "MYSQL_USER " : "") . 
-            (!$password ? "MYSQL_PASSWORD" : ""));
+        error_log("MySQL credentials not fully configured.");
         return null;
     }
 
     try {
-        // If host is localhost, use 127.0.0.1 to force TCP instead of socket
+        // Use 127.0.0.1 for local connections to avoid Unix socket issues in Replit
         $connect_host = ($host === 'localhost') ? '127.0.0.1' : $host;
         $dsn = "mysql:host=$connect_host;dbname=$database;charset=utf8mb4";
         $mysql_pdo = new PDO($dsn, $user, $password, [
