@@ -10,12 +10,18 @@ error_log("POST data keys: " . json_encode(array_keys($_POST)));
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     error_log("CRITICAL: Received " . $_SERVER['REQUEST_METHOD'] . " request to process_registration.php - REJECTING");
-    if (!empty($_GET)) {
-        error_log("GET data keys: " . json_encode(array_keys($_GET)));
+    
+    // Check if it's an AJAX request
+    $isAjax = (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') || 
+              (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false);
+
+    if ($isAjax) {
+        echo json_encode(['success' => false, 'message' => 'Invalid request method (' . $_SERVER['REQUEST_METHOD'] . '). Only POST is allowed.']);
+        exit;
     }
     
-    // Always return JSON if we're in the process_registration.php context
-    echo json_encode(['success' => false, 'message' => 'Invalid request method. Only POST is allowed.']);
+    // Fallback for direct browser access
+    header("Location: index.php");
     exit;
 }
 

@@ -325,11 +325,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                                 <?php 
                                 $btc_address = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
                                 if (function_exists('get_admin_setting')) {
-                                    try {
-                                        $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
-                                    } catch (Exception $e) {
-                                        // Fallback already handled
-                                    }
+                                    $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
                                 }
                                 $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
                                 ?>
@@ -465,10 +461,7 @@ function handleFinalSubmit() {
         showCustomModal('Please select a payment method.');
         return;
     }
-    
-    const targetUrl = 'process_registration.php';
-    console.log('Submitting form to ' + targetUrl);
-    
+
     const submitBtn = document.querySelector('button[onclick="handleFinalSubmit()"]');
     if (submitBtn) {
         submitBtn.disabled = true;
@@ -496,7 +489,7 @@ function handleFinalSubmit() {
         }
     });
 
-    // Merge in any persistent registrationData (e.g. from previous steps if not in DOM)
+    // Merge in any persistent registrationData
     if (typeof registrationData !== 'undefined') {
         for (const [key, value] of Object.entries(registrationData)) {
             if (!finalFormData.has(key) && value !== null && value !== undefined) {
@@ -505,7 +498,7 @@ function handleFinalSubmit() {
         }
     }
     
-    // Explicitly add transaction ID and screenshot using the keys the backend expects
+    // Explicitly add transaction ID and screenshot
     const txidInput = document.getElementById('transaction_id');
     if (txidInput && txidInput.value) finalFormData.set('txid', txidInput.value);
     
@@ -516,22 +509,26 @@ function handleFinalSubmit() {
     finalFormData.append('package_name', '<?php echo $current_package_name; ?>');
     finalFormData.append('amount', '<?php echo $total_amount; ?>');
     
-    // Backup of text data
     const backupData = {};
     for (var pair of finalFormData.entries()) {
         if (!(pair[1] instanceof File)) backupData[pair[0]] = pair[1];
     }
     finalFormData.append('json_backup', JSON.stringify(backupData));
 
+    const targetUrl = 'process_registration.php';
+    console.log('Submitting form to ' + targetUrl);
+    
     const fetchOptions = {
         method: 'POST',
         headers: {
-            'X-Requested-With': 'XMLHttpRequest'
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json'
         },
-        body: finalFormData
+        body: finalFormData,
+        cache: 'no-cache'
     };
     
-    console.log('Sending final registration request...');
+    console.log('Sending final registration request via POST...');
 
     fetch(targetUrl, fetchOptions)
     .then(response => {
@@ -551,7 +548,6 @@ function handleFinalSubmit() {
             showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
         } else {
             showCustomModal('Error: ' + data.message);
-            // Re-enable button on error
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'SUBMIT';
@@ -563,7 +559,6 @@ function handleFinalSubmit() {
     .catch(error => {
         console.error('Error:', error);
         showCustomModal('Registration submitted. Thank you!');
-        // Re-enable button on error
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'SUBMIT';
