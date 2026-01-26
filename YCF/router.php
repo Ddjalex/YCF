@@ -33,6 +33,12 @@ if ($is_admin_path) {
 // Fallback to original YCF files
 $file = __DIR__ . $uri;
 
+// CRITICAL: Ensure process_registration.php is always accessible via POST
+if ($uri === '/process_registration.php') {
+    include __DIR__ . '/process_registration.php';
+    exit;
+}
+
 if (file_exists($file) && !is_dir($file)) {
     $ext = pathinfo($file, PATHINFO_EXTENSION);
     
