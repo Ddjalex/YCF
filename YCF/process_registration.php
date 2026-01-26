@@ -3,26 +3,18 @@ require_once 'functions.php';
 
 header('Content-Type: application/json');
 
-// Log the request method and content type for debugging
+// Debug: Log request details
 error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
 error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
+error_log("POST data keys: " . json_encode(array_keys($_POST)));
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // FormData (multipart/form-data) automatically populates $_POST
-    // Only try JSON parsing if $_POST is empty (pure JSON request)
-    if (empty($_POST)) {
-        $raw_input = file_get_contents('php://input');
-        if (!empty($raw_input)) {
-            $json_input = json_decode($raw_input, true);
-            if ($json_input) {
-                $_POST = $json_input;
-                error_log("Parsed JSON input: " . json_encode($json_input));
-            }
-        }
-    }
-} else {
-    // REJECT NON-POST REQUESTS
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     error_log("CRITICAL: Received " . $_SERVER['REQUEST_METHOD'] . " request to process_registration.php - REJECTING");
+    if (!empty($_GET)) {
+        error_log("GET data keys: " . json_encode(array_keys($_GET)));
+    }
+    
+    // Always return JSON if we're in the process_registration.php context
     echo json_encode(['success' => false, 'message' => 'Invalid request method. Only POST is allowed.']);
     exit;
 }

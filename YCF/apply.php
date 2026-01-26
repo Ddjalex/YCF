@@ -323,7 +323,14 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                         <div id="crypto_details" style="display: none; padding: 20px; background: #fff; border: 1px solid #FFD700; border-radius: 8px; margin: 10px;">
                             <div style="text-align: center; margin-bottom: 20px;">
                                 <?php 
-                                $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'); 
+                                $btc_address = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+                                if (function_exists('get_admin_setting')) {
+                                    try {
+                                        $btc_address = get_admin_setting('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa');
+                                    } catch (Exception $e) {
+                                        // Fallback already handled
+                                    }
+                                }
                                 $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
                                 ?>
                                 <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 8px; margin-bottom: 10px;">
@@ -496,32 +503,9 @@ function handleFinalSubmit() {
     formData.append('package_name', '<?php echo $current_package_name; ?>');
     formData.append('amount', '<?php echo $total_amount; ?>');
 
-    const targetUrl = './process_registration.php';
+    const targetUrl = 'process_registration.php';
     console.log('Submitting form to ' + targetUrl);
     
-    // DEBUG: Validate that all required fields have names and values
-    let missingFields = [];
-    allInputs.forEach(input => {
-        if (!input.name && input.required) {
-            console.error('CRITICAL: Required field has no name attribute:', input);
-            missingFields.push(input.id || 'unknown');
-        }
-    });
-    if (missingFields.length > 0) {
-        showCustomModal('Development Error: Fields missing name attributes: ' + missingFields.join(', '));
-        return;
-    }
-
-    // Explicitly set the request to be multipart/form-data by not setting Content-Type header
-    // Fetch will automatically set it with the correct boundary
-    // Added specific check for file sizes
-    for (var pair of formData.entries()) {
-        if (pair[1] instanceof File && pair[1].size > 10 * 1024 * 1024) { // 10MB limit
-            showCustomModal('Error: File ' + pair[0] + ' is too large (max 10MB).');
-            return;
-        }
-    }
-
     const submitBtn = document.querySelector('button[onclick="handleFinalSubmit()"]');
     if (submitBtn) {
         submitBtn.disabled = true;
@@ -530,33 +514,56 @@ function handleFinalSubmit() {
         submitBtn.style.cursor = 'not-allowed';
     }
 
-    // Explicitly reconstruct FormData to ensure it's not a reference issue
     const finalFormData = new FormData();
-    for (var pair of formData.entries()) {
-        finalFormData.append(pair[0], pair[1]);
-        console.log('Appending to finalFormData:', pair[0], pair[1] instanceof File ? pair[1].name : pair[1]);
-    }
+    
+    // Step 1 & 2 & 3 data from DOM
+    const allInputs = document.querySelectorAll('#step1 input, #step2 input, #step2 select, #step2 textarea, #step3 input');
+    allInputs.forEach(input => {
+        const name = input.name || input.getAttribute('name');
+        if (!name) return;
+        
+        if (input.type === 'radio') {
+            if (input.checked) finalFormData.append(name, input.value);
+        } else if (input.type === 'file') {
+            if (input.files && input.files[0]) finalFormData.append(name, input.files[0]);
+        } else if (input.type === 'checkbox') {
+            if (input.checked) finalFormData.append(name, input.value);
+        } else {
+            finalFormData.append(name, input.value);
+        }
+    });
 
-    // Also send a JSON backup in a separate field if it's not a file
-    const backupData = {};
-    for (var pair of formData.entries()) {
-        if (!(pair[1] instanceof File)) {
-            backupData[pair[0]] = pair[1];
+    // Merge in any persistent registrationData (e.g. from previous steps if not in DOM)
+    for (const [key, value] of Object.entries(registrationData)) {
+        if (!finalFormData.has(key) && value !== null && value !== undefined) {
+            finalFormData.append(key, value);
         }
     }
-    const jsonBackup = JSON.stringify(backupData);
-    finalFormData.append('json_backup', jsonBackup);
     
-    console.log('Final FormData entries count:', [...finalFormData.entries()].length);
+    // Explicitly add transaction ID and screenshot using the keys the backend expects
+    const txidInput = document.getElementById('transaction_id');
+    if (txidInput && txidInput.value) finalFormData.set('txid', txidInput.value);
+    
+    const screenshotInput = document.getElementById('crypto_screenshot');
+    if (screenshotInput && screenshotInput.files[0]) finalFormData.set('payment_screenshot', screenshotInput.files[0]);
+    
+    finalFormData.append('package_id', '<?php echo $package; ?>');
+    finalFormData.append('package_name', '<?php echo $current_package_name; ?>');
+    finalFormData.append('amount', '<?php echo $total_amount; ?>');
+    
+    // Backup of text data
+    const backupData = {};
+    for (var pair of finalFormData.entries()) {
+        if (!(pair[1] instanceof File)) backupData[pair[0]] = pair[1];
+    }
+    finalFormData.append('json_backup', JSON.stringify(backupData));
 
     const fetchOptions = {
         method: 'POST',
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         },
-        body: finalFormData,
-        redirect: 'follow',
-        cache: 'no-cache'
+        body: finalFormData
     };
     
     console.log('Sending final registration request...');
