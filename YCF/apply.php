@@ -520,6 +520,14 @@ function handleFinalSubmit() {
         }
     }
 
+    const submitBtn = document.querySelector('button[onclick="handleFinalSubmit()"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span> SUBMITTING...';
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+    }
+
     const fetchOptions = {
         method: 'POST',
         headers: {
@@ -544,11 +552,25 @@ function handleFinalSubmit() {
             showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
         } else {
             showCustomModal('Error: ' + data.message);
+            // Re-enable button on error
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'SUBMIT';
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            }
         }
     })
     .catch(error => {
         console.error('Error:', error);
         showCustomModal('Registration submitted. Thank you!');
+        // Re-enable button on error
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'SUBMIT';
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor = 'pointer';
+        }
     });
 }
 </script>
