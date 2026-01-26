@@ -497,6 +497,19 @@ function handleFinalSubmit() {
     const targetUrl = './process_registration.php';
     console.log('Submitting form to ' + targetUrl);
     
+    // DEBUG: Validate that all required fields have names and values
+    let missingFields = [];
+    allInputs.forEach(input => {
+        if (!input.name && input.required) {
+            console.error('CRITICAL: Required field has no name attribute:', input);
+            missingFields.push(input.id || 'unknown');
+        }
+    });
+    if (missingFields.length > 0) {
+        showCustomModal('Development Error: Fields missing name attributes: ' + missingFields.join(', '));
+        return;
+    }
+
     // Explicitly set the request to be multipart/form-data by not setting Content-Type header
     // Fetch will automatically set it with the correct boundary
     // Added specific check for file sizes

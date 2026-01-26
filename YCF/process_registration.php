@@ -20,12 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['first_name']) || isset($_GET['email'])) {
-        $_POST = array_merge($_POST, $_GET);
-    } else {
-        error_log("General GET access to process_registration.php from " . $_SERVER['REMOTE_ADDR']);
-    }
+} else {
+    // REJECT NON-POST REQUESTS
+    error_log("CRITICAL: Received " . $_SERVER['REQUEST_METHOD'] . " request to process_registration.php - REJECTING");
+    echo json_encode(['success' => false, 'message' => 'Invalid request method. Only POST is allowed.']);
+    exit;
 }
 
 $upload_dir = 'uploads/';
