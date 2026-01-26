@@ -3,20 +3,27 @@ require_once 'functions.php';
 
 header('Content-Type: application/json');
 
+// Log the request method and content type for debugging
+error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
+error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $raw_input = file_get_contents('php://input');
-    if (!empty($raw_input)) {
-        $json_input = json_decode($raw_input, true);
-        if ($json_input) {
-            $_POST = array_merge($_POST, $json_input);
+    // FormData (multipart/form-data) automatically populates $_POST
+    // Only try JSON parsing if $_POST is empty (pure JSON request)
+    if (empty($_POST)) {
+        $raw_input = file_get_contents('php://input');
+        if (!empty($raw_input)) {
+            $json_input = json_decode($raw_input, true);
+            if ($json_input) {
+                $_POST = $json_input;
+                error_log("Parsed JSON input: " . json_encode($json_input));
+            }
         }
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // If it's a GET request but contains registration data, it's likely a sync issue
     if (isset($_GET['first_name']) || isset($_GET['email'])) {
         $_POST = array_merge($_POST, $_GET);
     } else {
-        // Log but allow for potential fallback processing
         error_log("General GET access to process_registration.php from " . $_SERVER['REMOTE_ADDR']);
     }
 }

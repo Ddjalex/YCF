@@ -346,10 +346,16 @@ function render_registration_form($package_id, $package_name, $price) {
                 e.preventDefault();
                 
                 const formData = new FormData(this);
-                // Ensure text fields are explicitly added if not captured
-                this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select, textarea, input[type="radio"]:checked').forEach(input => {
-                    if (input.name && !formData.has(input.name)) {
-                        formData.append(input.name, input.value);
+                // Ensure ALL text fields are explicitly added (including date inputs)
+                this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea').forEach(input => {
+                    if (input.name && input.value) {
+                        formData.set(input.name, input.value);
+                    }
+                });
+                // Handle radio buttons separately
+                this.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                    if (input.name && input.value) {
+                        formData.set(input.name, input.value);
                     }
                 });
                 

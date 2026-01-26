@@ -34,8 +34,15 @@ if ($is_admin_path) {
 $file = __DIR__ . $uri;
 
 if (file_exists($file) && !is_dir($file)) {
-    // Manually handle video mime types for the dev server
     $ext = pathinfo($file, PATHINFO_EXTENSION);
+    
+    // Handle PHP files explicitly
+    if ($ext === 'php') {
+        include $file;
+        exit;
+    }
+    
+    // Manually handle video mime types for the dev server
     if ($ext === 'mp4') {
         $size = filesize($file);
         $start = 0;
@@ -78,14 +85,16 @@ if (file_exists($file) && !is_dir($file)) {
     return false;
 }
 
-// Support for pretty URLs
+// Support for pretty URLs (without .php extension)
 if ($uri === '/') {
-    include 'index.php';
+    include __DIR__ . '/index.php';
     exit;
 }
 
-if (file_exists($path . '.php')) {
-    include $path . '.php';
+// Check for .php extension version
+$php_file = __DIR__ . '/' . $path . '.php';
+if (file_exists($php_file)) {
+    include $php_file;
     exit;
 }
 
