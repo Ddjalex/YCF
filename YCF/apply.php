@@ -563,12 +563,18 @@ function handleFinalSubmit() {
 
     fetch(targetUrl, fetchOptions)
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-        }
-        return response.json();
+        console.log('Response received:', response.status, response.statusText);
+        return response.text().then(text => {
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.error('Server returned non-JSON response:', text);
+                throw new Error('Server error: ' + text.substring(0, 100));
+            }
+        });
     })
     .then(data => {
+        console.log('Server data received:', data);
         if (data.success) {
             showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
         } else {

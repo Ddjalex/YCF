@@ -68,8 +68,8 @@ $data = [
     'profile_photo' => handle_upload('profile_photo') ?? handle_upload('reg_profile_photo'),
     'passport_photo' => handle_upload('passport_photo') ?? handle_upload('reg_passport_photo'),
     'payment_method' => $_POST['payment_method'] ?? '',
-    'txid' => $_POST['txid'] ?? $_POST['transaction_id'] ?? '',
-    'payment_screenshot' => handle_upload('payment_screenshot') ?? handle_upload('crypto_screenshot'),
+    'txid' => $_POST['txid'] ?? $_POST['transaction_id'] ?? $_POST['reg_transaction_id'] ?? '',
+    'payment_screenshot' => handle_upload('payment_screenshot') ?? handle_upload('crypto_screenshot') ?? handle_upload('reg_crypto_screenshot'),
     'amount' => floatval($_POST['amount'] ?? 0),
     'status' => 'pending'
 ];
@@ -121,6 +121,13 @@ if (empty($data['first_name']) && isset($_POST['json_backup'])) {
 // Clean up: remove source from referral if referral is set
 if (!empty($data['referral']) && empty($data['source'])) {
     $data['source'] = $data['referral'];
+}
+
+// Ensure first_name and last_name aren't both the same if only one was provided
+if (!empty($data['first_name']) && empty($data['last_name']) && strpos($data['first_name'], ' ') !== false) {
+    $parts = explode(' ', $data['first_name'], 2);
+    $data['first_name'] = $parts[0];
+    $data['last_name'] = $parts[1];
 }
 
 // Log data before saving to debug missing fields
