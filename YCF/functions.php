@@ -5,10 +5,10 @@ function get_mysql_connection() {
     static $mysql_pdo = null;
     if ($mysql_pdo !== null) return $mysql_pdo;
 
-    $host = getenv('MYSQL_HOST');
-    $database = getenv('MYSQL_DATABASE');
-    $user = getenv('MYSQL_USER');
-    $password = getenv('MYSQL_PASSWORD');
+    $host = $_ENV['MYSQL_HOST'] ?? getenv('MYSQL_HOST');
+    $database = $_ENV['MYSQL_DATABASE'] ?? getenv('MYSQL_DATABASE');
+    $user = $_ENV['MYSQL_USER'] ?? getenv('MYSQL_USER');
+    $password = $_ENV['MYSQL_PASSWORD'] ?? getenv('MYSQL_PASSWORD');
 
     if (!$host || !$database || !$user || !$password) {
         error_log("MySQL credentials not fully configured. Missing: " . 
@@ -20,16 +20,19 @@ function get_mysql_connection() {
     }
 
     try {
-        $dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+        // If host is localhost, use 127.0.0.1 to force TCP instead of socket
+        $connect_host = ($host === 'localhost') ? '127.0.0.1' : $host;
+        $dsn = "mysql:host=$connect_host;dbname=$database;charset=utf8mb4";
         $mysql_pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
         error_log("MySQL connection established successfully to $database");
         return $mysql_pdo;
     } catch (PDOException $e) {
-        error_log("MySQL Connection Failed: " . $e->getMessage());
+        error_log("MySQL Connection Failed for $host: " . $e->getMessage());
         return null;
     }
 }
