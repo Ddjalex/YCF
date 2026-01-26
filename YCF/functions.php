@@ -5,80 +5,82 @@ function get_db_connection() {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
 
-    // Use Replit PostgreSQL database
-    $database_url = getenv('DATABASE_URL');
-    if ($database_url) {
-        try {
-            $dbopts = parse_url($database_url);
-            if ($dbopts) {
-                $dsn = "pgsql:host=" . $dbopts['host'] . ";port=" . ($dbopts['port'] ?? 5432) . ";dbname=" . ltrim($dbopts['path'], '/');
-                $pdo = new PDO($dsn, $dbopts['user'], $dbopts['pass'], [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                ]);
+    // cPanel MySQL database credentials
+    $host = '127.0.0.1';
+    $port = '3306';
+    $user = 'goforuku_germany';
+    $pass = 'a1e2y3t4h5';
+    $dbname = 'goforuku_germany';
 
-                error_log("Successfully connected to PostgreSQL database");
+    try {
+        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+        $pdo = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+        ]);
 
-                // Create tables if they don't exist
-                $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-                    id SERIAL PRIMARY KEY,
-                    package_id VARCHAR(255),
-                    package_name VARCHAR(255),
-                    first_name VARCHAR(255),
-                    last_name VARCHAR(255),
-                    nationality VARCHAR(255),
-                    email VARCHAR(255),
-                    gender VARCHAR(255),
-                    dob VARCHAR(255),
-                    phone VARCHAR(255),
-                    profession VARCHAR(255),
-                    organization VARCHAR(255),
-                    residence VARCHAR(255),
-                    departure VARCHAR(255),
-                    visa VARCHAR(255),
-                    referral TEXT,
-                    source TEXT,
-                    journey TEXT,
-                    impact TEXT,
-                    profile_photo TEXT,
-                    passport_photo TEXT,
-                    payment_method VARCHAR(255),
-                    txid VARCHAR(255),
-                    payment_screenshot TEXT,
-                    amount DECIMAL(10,2),
-                    status VARCHAR(50) DEFAULT 'pending',
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )");
+        error_log("Successfully connected to MySQL database");
 
-                $pdo->exec("CREATE TABLE IF NOT EXISTS hotels (
-                    id SERIAL PRIMARY KEY,
-                    name VARCHAR(255),
-                    location VARCHAR(255),
-                    description TEXT,
-                    stars INTEGER DEFAULT 3,
-                    image_url TEXT
-                )");
+        // Create tables if they don't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            package_id VARCHAR(255),
+            package_name VARCHAR(255),
+            first_name VARCHAR(255),
+            last_name VARCHAR(255),
+            nationality VARCHAR(255),
+            email VARCHAR(255),
+            gender VARCHAR(255),
+            dob VARCHAR(255),
+            phone VARCHAR(255),
+            profession VARCHAR(255),
+            organization VARCHAR(255),
+            residence VARCHAR(255),
+            departure VARCHAR(255),
+            visa VARCHAR(255),
+            referral TEXT,
+            source TEXT,
+            journey TEXT,
+            impact TEXT,
+            profile_photo TEXT,
+            passport_photo TEXT,
+            payment_method VARCHAR(255),
+            txid VARCHAR(255),
+            payment_screenshot TEXT,
+            amount DECIMAL(10,2),
+            status VARCHAR(50) DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )");
 
-                $pdo->exec("CREATE TABLE IF NOT EXISTS videos (
-                    id SERIAL PRIMARY KEY,
-                    title VARCHAR(255),
-                    video_url TEXT,
-                    thumbnail_url TEXT
-                )");
+        $pdo->exec("CREATE TABLE IF NOT EXISTS hotels (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255),
+            location VARCHAR(255),
+            description TEXT,
+            stars INT DEFAULT 3,
+            image_url TEXT
+        )");
 
-                $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
-                    id SERIAL PRIMARY KEY,
-                    key VARCHAR(255) UNIQUE,
-                    value TEXT
-                )");
+        $pdo->exec("CREATE TABLE IF NOT EXISTS videos (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(255),
+            video_url TEXT,
+            thumbnail_url TEXT
+        )");
 
-                return $pdo;
-            }
-        } catch (PDOException $ex) {
-            error_log("PostgreSQL Connection Failed: " . $ex->getMessage());
-        }
+        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            `key` VARCHAR(255) UNIQUE,
+            `value` TEXT
+        )");
+
+        return $pdo;
+    } catch (PDOException $e) {
+        error_log("MySQL Connection Failed: " . $e->getMessage());
+        return null;
     }
-    return null;
 }
 
 function save_registration($data) {
