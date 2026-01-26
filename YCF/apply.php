@@ -466,50 +466,6 @@ function handleFinalSubmit() {
         return;
     }
     
-    const formData = new FormData();
-    
-    // Collect all form fields using name attributes
-    const allInputs = document.querySelectorAll('#step1 input, #step2 input, #step2 select, #step2 textarea, #step3 input');
-    
-    allInputs.forEach(input => {
-        const name = input.name || input.getAttribute('name');
-        if (!name) return;
-        
-        let value = input.value;
-        if (input.type === 'radio') {
-            if (input.checked) {
-                formData.append(name, value);
-            }
-        } else if (input.type === 'file') {
-            if (input.files && input.files[0]) {
-                formData.append(name, input.files[0]);
-            }
-        } else if (input.type === 'checkbox') {
-            if (input.checked) {
-                formData.append(name, value);
-            }
-        } else {
-            formData.append(name, value);
-        }
-    });
-    
-    // Handle payment method and crypto details
-    const paymentMethodChecked = document.querySelector('input[name="payment_method"]:checked');
-    if (paymentMethodChecked) {
-        formData.append('payment_method', paymentMethodChecked.value);
-        
-        if (paymentMethodChecked.value === 'crypto') {
-            const txidInput = document.getElementById('transaction_id');
-            const screenshotInput = document.getElementById('crypto_screenshot');
-            if (txidInput && txidInput.value) formData.append('txid', txidInput.value);
-            if (screenshotInput && screenshotInput.files[0]) formData.append('payment_screenshot', screenshotInput.files[0]);
-        }
-    }
-    
-    formData.append('package_id', '<?php echo $package; ?>');
-    formData.append('package_name', '<?php echo $current_package_name; ?>');
-    formData.append('amount', '<?php echo $total_amount; ?>');
-
     const targetUrl = 'process_registration.php';
     console.log('Submitting form to ' + targetUrl);
     
@@ -541,9 +497,11 @@ function handleFinalSubmit() {
     });
 
     // Merge in any persistent registrationData (e.g. from previous steps if not in DOM)
-    for (const [key, value] of Object.entries(registrationData)) {
-        if (!finalFormData.has(key) && value !== null && value !== undefined) {
-            finalFormData.append(key, value);
+    if (typeof registrationData !== 'undefined') {
+        for (const [key, value] of Object.entries(registrationData)) {
+            if (!finalFormData.has(key) && value !== null && value !== undefined) {
+                finalFormData.append(key, value);
+            }
         }
     }
     
