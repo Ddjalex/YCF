@@ -1,6 +1,39 @@
 <?php
 // functions.php - Global utility functions
 
+function get_mysql_connection() {
+    static $mysql_pdo = null;
+    if ($mysql_pdo !== null) return $mysql_pdo;
+
+    $host = getenv('MYSQL_HOST');
+    $database = getenv('MYSQL_DATABASE');
+    $user = getenv('MYSQL_USER');
+    $password = getenv('MYSQL_PASSWORD');
+
+    if (!$host || !$database || !$user || !$password) {
+        error_log("MySQL credentials not fully configured. Missing: " . 
+            (!$host ? "MYSQL_HOST " : "") . 
+            (!$database ? "MYSQL_DATABASE " : "") . 
+            (!$user ? "MYSQL_USER " : "") . 
+            (!$password ? "MYSQL_PASSWORD" : ""));
+        return null;
+    }
+
+    try {
+        $dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+        $mysql_pdo = new PDO($dsn, $user, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+        error_log("MySQL connection established successfully to $database");
+        return $mysql_pdo;
+    } catch (PDOException $e) {
+        error_log("MySQL Connection Failed: " . $e->getMessage());
+        return null;
+    }
+}
+
 function get_db_connection() {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
@@ -96,9 +129,11 @@ function get_db_connection() {
 }
 
 function save_registration($data) {
-    $pdo = get_db_connection();
-    if (!$pdo) {
-        error_log("CRITICAL ERROR: Database connection failed in save_registration for email: " . ($data['email'] ?? 'unknown'));
+    $mysql_pdo = get_mysql_connection();
+    $pg_pdo = get_db_connection();
+    
+    if (!$mysql_pdo && !$pg_pdo) {
+        error_log("CRITICAL ERROR: No database connection available in save_registration for email: " . ($data['email'] ?? 'unknown'));
         return false;
     }
     
@@ -125,22 +160,42 @@ function save_registration($data) {
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
     $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
-    try {
-        $stmt = $pdo->prepare($sql);
-        $result = $stmt->execute($insert_data);
-        if (!$result) {
-            error_log("SQL Execution Failed for " . ($insert_data['email'] ?? 'unknown') . ": " . implode(" ", $stmt->errorInfo()));
-        } else {
-            error_log("Registration saved successfully for " . $insert_data['email']);
+    
+    $mysql_success = false;
+    $pg_success = false;
+    
+    // Save to external MySQL database (cPanel) - PRIMARY
+    if ($mysql_pdo) {
+        try {
+            $stmt = $mysql_pdo->prepare($sql);
+            $mysql_success = $stmt->execute($insert_data);
+            if ($mysql_success) {
+                error_log("Registration saved to MySQL (cPanel) successfully for " . $insert_data['email']);
+            } else {
+                error_log("MySQL insert failed for " . ($insert_data['email'] ?? 'unknown') . ": " . implode(" ", $stmt->errorInfo()));
+            }
+        } catch (PDOException $e) {
+            error_log("MySQL Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
         }
-        return $result;
-    } catch (PDOException $e) {
-        error_log("Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
-        return false;
-    } catch (Exception $e) {
-        error_log("Insert General Exception: " . $e->getMessage());
-        return false;
+    } else {
+        error_log("MySQL connection not available - skipping external database save");
     }
+    
+    // Also save to local PostgreSQL as backup
+    if ($pg_pdo) {
+        try {
+            $stmt = $pg_pdo->prepare($sql);
+            $pg_success = $stmt->execute($insert_data);
+            if ($pg_success) {
+                error_log("Registration also saved to PostgreSQL backup for " . $insert_data['email']);
+            }
+        } catch (PDOException $e) {
+            error_log("PostgreSQL Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
+        }
+    }
+    
+    // Return true if at least one database save succeeded
+    return $mysql_success || $pg_success;
 }
 
 function get_all_registrations() {
