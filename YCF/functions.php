@@ -35,108 +35,14 @@ function get_mysql_connection() {
 }
 
 function get_db_connection() {
-    static $pdo = null;
-    if ($pdo !== null) return $pdo;
-
-    $db_url = getenv('DATABASE_URL');
-    if (!$db_url) {
-        error_log("DATABASE_URL environment variable is not set.");
-        return null;
-    }
-
-    // Handle different formats of DATABASE_URL
-    if (strpos($db_url, 'postgres://') === 0 || strpos($db_url, 'postgresql://') === 0) {
-        $dbopts = parse_url($db_url);
-        if (!$dbopts) {
-            error_log("Failed to parse DATABASE_URL.");
-            return null;
-        }
-        $dsn = "pgsql:host=" . $dbopts["host"] . ";port=" . ($dbopts["port"] ?? 5432) . ";dbname=" . ltrim($dbopts["path"], '/') . ";user=" . $dbopts["user"] . ";password=" . $dbopts["pass"];
-    } else {
-        $dsn = $db_url;
-    }
-
-    try {
-        $pdo = new PDO($dsn, null, null, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
-        
-        $pdo->exec("SET standard_conforming_strings = on");
-        $pdo->exec("SET client_encoding = 'UTF8'");
-
-        // Create tables if they don't exist
-        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id SERIAL PRIMARY KEY,
-            package_id VARCHAR(255),
-            package_name VARCHAR(255),
-            first_name VARCHAR(255),
-            last_name VARCHAR(255),
-            nationality VARCHAR(255),
-            email VARCHAR(255),
-            gender VARCHAR(255),
-            dob VARCHAR(255),
-            phone VARCHAR(255),
-            profession VARCHAR(255),
-            organization VARCHAR(255),
-            residence VARCHAR(255),
-            departure VARCHAR(255),
-            visa VARCHAR(255),
-            referral TEXT,
-            source TEXT,
-            journey TEXT,
-            impact TEXT,
-            profile_photo TEXT,
-            passport_photo TEXT,
-            payment_method VARCHAR(255),
-            txid VARCHAR(255),
-            payment_screenshot TEXT,
-            amount DECIMAL(10,2),
-            status VARCHAR(50) DEFAULT 'pending',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )");
-
-        $pdo->exec("CREATE TABLE IF NOT EXISTS hotels (
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(255),
-            location VARCHAR(255),
-            description TEXT,
-            stars INT DEFAULT 3,
-            image_url TEXT
-        )");
-
-        $pdo->exec("CREATE TABLE IF NOT EXISTS videos (
-            id SERIAL PRIMARY KEY,
-            title VARCHAR(255),
-            video_url TEXT,
-            thumbnail_url TEXT
-        )");
-
-        $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
-            id SERIAL PRIMARY KEY,
-            key VARCHAR(255) UNIQUE,
-            value TEXT
-        )");
-
-        // Initialize default settings
-        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('countdown_date', 'June 15, 2026 09:00:00') ON CONFLICT (key) DO NOTHING");
-        $stmt->execute();
-        $stmt = $pdo->prepare("INSERT INTO admin_settings (key, value) VALUES ('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa') ON CONFLICT (key) DO NOTHING");
-        $stmt->execute();
-
-        return $pdo;
-    } catch (PDOException $e) {
-        error_log("PostgreSQL Connection Failed: " . $e->getMessage());
-        return null;
-    }
+    // Only use MySQL connection for the main application
+    return get_mysql_connection();
 }
 
 function save_registration($data) {
     $mysql_pdo = get_mysql_connection();
-    $pg_pdo = get_db_connection();
     
-    if (!$mysql_pdo && !$pg_pdo) {
+    if (!$mysql_pdo) {
         error_log("CRITICAL ERROR: No database connection available in save_registration for email: " . ($data['email'] ?? 'unknown'));
         return false;
     }
@@ -163,45 +69,22 @@ function save_registration($data) {
     $fields = array_keys($insert_data);
     $placeholders = array_map(function($f) { return ":$f"; }, $fields);
     
-    // MySQL uses backticks, PostgreSQL doesn't need them but we should be careful with reserved words
-    $mysql_sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
-    $pg_sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
+    $sql = "INSERT INTO registrations (" . implode(', ', $fields) . ") VALUES (" . implode(', ', $placeholders) . ")";
     
-    $mysql_success = false;
-    $pg_success = false;
-    
-    // Save to external MySQL database (cPanel) - PRIMARY
-    if ($mysql_pdo) {
-        try {
-            $stmt = $mysql_pdo->prepare($mysql_sql);
-            $mysql_success = $stmt->execute($insert_data);
-            if ($mysql_success) {
-                error_log("Registration saved to MySQL (cPanel) successfully for " . $insert_data['email']);
-            } else {
-                error_log("MySQL insert failed for " . ($insert_data['email'] ?? 'unknown') . ": " . implode(" ", $stmt->errorInfo()));
-            }
-        } catch (PDOException $e) {
-            error_log("MySQL Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
+    try {
+        $stmt = $mysql_pdo->prepare($sql);
+        $success = $stmt->execute($insert_data);
+        if ($success) {
+            error_log("Registration saved to MySQL successfully for " . $insert_data['email']);
+            return true;
+        } else {
+            error_log("MySQL insert failed for " . ($insert_data['email'] ?? 'unknown') . ": " . implode(" ", $stmt->errorInfo()));
+            return false;
         }
-    } else {
-        error_log("MySQL connection not available - skipping external database save");
+    } catch (PDOException $e) {
+        error_log("MySQL Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
+        return false;
     }
-    
-    // Also save to local PostgreSQL as backup
-    if ($pg_pdo) {
-        try {
-            $stmt = $pg_pdo->prepare($pg_sql);
-            $pg_success = $stmt->execute($insert_data);
-            if ($pg_success) {
-                error_log("Registration also saved to PostgreSQL backup for " . $insert_data['email']);
-            }
-        } catch (PDOException $e) {
-            error_log("PostgreSQL Insert PDOException for " . ($insert_data['email'] ?? 'unknown') . ": " . $e->getMessage());
-        }
-    }
-    
-    // Return true if at least one database save succeeded
-    return $mysql_success || $pg_success;
 }
 
 function get_all_registrations() {
@@ -243,7 +126,7 @@ function get_target_date() {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'countdown_date'");
+            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = 'countdown_date'");
             $stmt->execute();
             $result = $stmt->fetch();
             if ($result) return $result['value'];
@@ -257,7 +140,7 @@ function get_hero_video() {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = 'hero_video'");
+            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = 'hero_video'");
             $stmt->execute();
             $result = $stmt->fetch();
             if ($result && !empty($result['value'])) {
@@ -417,7 +300,7 @@ function get_admin_setting($key, $default = '') {
     $pdo = get_db_connection();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT value FROM admin_settings WHERE key = ?");
+            $stmt = $pdo->prepare("SELECT `value` FROM admin_settings WHERE `key` = ?");
             $stmt->execute([$key]);
             $result = $stmt->fetch();
             if ($result) return $result['value'];
