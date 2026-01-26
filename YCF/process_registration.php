@@ -45,7 +45,6 @@ function handle_upload($file_key) {
     return null;
 }
 
-// Collect fields
 $data = [
     'package_id' => $_POST['package_id'] ?? '',
     'package_name' => $_POST['package_name'] ?? '',
@@ -73,6 +72,13 @@ $data = [
     'amount' => floatval($_POST['amount'] ?? 0),
     'status' => 'pending'
 ];
+
+// CRITICAL VALIDATION: Ensure at least first_name and email are present
+if (empty($data['first_name']) || empty($data['email'])) {
+    error_log("REJECTING EMPTY DATA: " . json_encode($data));
+    echo json_encode(['success' => false, 'message' => 'Required fields (First Name, Email) are missing. Please ensure your browser supports FormData.']);
+    exit;
+}
 
 // Map possible alternate names
 if (empty($data['txid']) && isset($_POST['transaction_id'])) $data['txid'] = $_POST['transaction_id'];

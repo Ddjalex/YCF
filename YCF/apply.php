@@ -525,51 +525,20 @@ function handleFinalSubmit() {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         },
-        body: formData,
+        body: finalFormData,
         redirect: 'follow',
         cache: 'no-cache'
     };
     
-    console.log('Form data being sent:');
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ': ' + (pair[1] instanceof File ? pair[1].name + ' (' + pair[1].size + ' bytes)' : pair[1]));
-    }
+    console.log('Sending final registration request...');
 
-    // Double check that formData actually has content
-    if ([...formData.entries()].length === 0) {
-        console.error('CRITICAL: FormData is empty before fetch!');
-        showCustomModal('Error: Form data is empty. Please refresh and try again.');
-        return;
-    }
-
-    // Explicitly reconstruct FormData to ensure it's not a reference issue
-    const finalFormData = new FormData();
-    for (var pair of formData.entries()) {
-        finalFormData.append(pair[0], pair[1]);
-    }
-
-    // Also send a JSON backup in a separate field if it's not a file
-    const backupData = {};
-    for (var pair of formData.entries()) {
-        if (!(pair[1] instanceof File)) {
-            backupData[pair[0]] = pair[1];
+    fetch(targetUrl, fetchOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
         }
-    }
-    const jsonBackup = JSON.stringify(backupData);
-    finalFormData.append('json_backup', jsonBackup);
-    
-    console.log('Sending backup data:', jsonBackup);
-
-    fetch(targetUrl, {
-        method: 'POST',
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: finalFormData,
-        redirect: 'follow',
-        cache: 'no-cache'
+        return response.json();
     })
-    .then(response => response.json())
     .then(data => {
         if (data.success) {
             showCustomModal('Thank you! Your registration for ' + '<?php echo str_replace("'", "\\'", $current_package_name); ?>' + ' has been submitted and is pending verification of payment.');
