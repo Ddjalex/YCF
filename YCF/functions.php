@@ -5,20 +5,15 @@ function get_mysql_connection() {
     static $mysql_pdo = null;
     if ($mysql_pdo !== null) return $mysql_pdo;
 
-    $host = $_ENV['MYSQL_HOST'] ?? getenv('MYSQL_HOST');
-    $database = $_ENV['MYSQL_DATABASE'] ?? getenv('MYSQL_DATABASE');
-    $user = $_ENV['MYSQL_USER'] ?? getenv('MYSQL_USER');
-    $password = $_ENV['MYSQL_PASSWORD'] ?? getenv('MYSQL_PASSWORD');
-
-    if (!$host || !$database || !$user || !$password) {
-        error_log("MySQL credentials not fully configured.");
-        return null;
-    }
+    // Use values directly as requested
+    $host = 'localhost';
+    $database = 'goforuku_germany';
+    $user = 'goforuku_germany';
+    $password = 'a1e2y3t4h5';
 
     try {
         // Use 127.0.0.1 for local connections to avoid Unix socket issues in Replit
-        $connect_host = ($host === 'localhost') ? '127.0.0.1' : $host;
-        $dsn = "mysql:host=$connect_host;dbname=$database;charset=utf8mb4";
+        $dsn = "mysql:host=127.0.0.1;dbname=$database;charset=utf8mb4";
         $mysql_pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
