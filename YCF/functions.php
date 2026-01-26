@@ -5,37 +5,38 @@ function get_mysql_connection() {
     static $mysql_pdo = null;
     if ($mysql_pdo !== null) return $mysql_pdo;
 
-    // Use values directly as requested
-    $host = 'localhost';
+    // Direct values for external server - Priority 1
+    $host = '91.204.209.29'; 
     $database = 'goforuku_germany';
     $user = 'goforuku_germany';
     $password = 'a1e2y3t4h5';
 
     try {
-        // Use 127.0.0.1 for local connections to avoid Unix socket issues in Replit
-        $dsn = "mysql:host=localhost;dbname=$database;charset=utf8mb4";
+        // IMPORTANT: The server 91.204.209.29 is a remote MySQL server.
+        // If 'Access denied' error persists, please ensure that the IP 34.170.35.98 
+        // (which is the outbound IP of this environment) is whitelisted in your cPanel 'Remote MySQL' settings.
+        $dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4;port=3306";
         $mysql_pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ]);
-        error_log("MySQL connection established successfully to $database");
+        error_log("MySQL connection established successfully to $database on $host");
         return $mysql_pdo;
     } catch (PDOException $e) {
-        // Fallback to 127.0.0.1 if socket fails
+        error_log("MySQL Remote Connection Failed: " . $e->getMessage());
+        
+        // Fallback to local if remote fails
         try {
             $dsn = "mysql:host=127.0.0.1;dbname=$database;charset=utf8mb4";
             $mysql_pdo = new PDO($dsn, $user, $password, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
             ]);
-            error_log("MySQL connection established via 127.0.0.1 successfully to $database");
             return $mysql_pdo;
         } catch (PDOException $e2) {
-            error_log("MySQL Connection Failed for $host: " . $e->getMessage());
             return null;
         }
     }
