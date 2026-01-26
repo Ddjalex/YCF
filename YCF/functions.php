@@ -11,12 +11,25 @@ function get_db_connection() {
         return null;
     }
 
+    // Parse DATABASE_URL for PostgreSQL connection
+    $dbopts = parse_url(getenv('DATABASE_URL'));
+    if (!$dbopts) {
+        error_log("Failed to parse DATABASE_URL.");
+        return null;
+    }
+    
+    $dsn = "pgsql:host=" . $dbopts["host"] . ";port=" . ($dbopts["port"] ?? 5432) . ";dbname=" . ltrim($dbopts["path"], '/') . ";user=" . $dbopts["user"] . ";password=" . $dbopts["pass"];
+
     try {
         $pdo = new PDO($dsn, null, null, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
+        
+        // Ensure standard quoting for identifiers in PostgreSQL
+        $pdo->exec("SET standard_conforming_strings = on");
+        $pdo->exec("SET client_encoding = 'UTF8'");
 
         // Create tables if they don't exist (PostgreSQL syntax)
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
@@ -67,9 +80,15 @@ function get_db_connection() {
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS admin_settings (
             id SERIAL PRIMARY KEY,
-            key VARCHAR(255) UNIQUE,
+            \"key\" VARCHAR(255) UNIQUE,
             value TEXT
         )");
+
+        // Initialize default settings if they don't exist
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('countdown_date', 'June 15, 2026 09:00:00') ON CONFLICT (\"key\") DO NOTHING");
+        $stmt->execute();
+        $stmt = $pdo->prepare("INSERT INTO admin_settings (\"key\", value) VALUES ('btc_address', '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa') ON CONFLICT (\"key\") DO NOTHING");
+        $stmt->execute();
 
         return $pdo;
     } catch (PDOException $e) {
