@@ -455,9 +455,11 @@ function handleFinalSubmit() {
     const formData = new FormData();
     
     // Collect all form fields using name attributes
-    const allInputs = document.querySelectorAll('#step1 input[name], #step2 input[name], #step2 select[name], #step2 textarea[name], #step3 input[name]');
+    const allInputs = document.querySelectorAll('#step1 input, #step2 input, #step2 select, #step2 textarea, #step3 input');
     
     allInputs.forEach(input => {
+        if (!input.name) return;
+        
         if (input.type === 'radio') {
             if (input.checked) {
                 formData.append(input.name, input.value);

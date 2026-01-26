@@ -75,6 +75,10 @@ $data = [
     'status' => 'pending'
 ];
 
+// Map possible alternate names
+if (empty($data['txid']) && isset($_POST['transaction_id'])) $data['txid'] = $_POST['transaction_id'];
+if (empty($data['source']) && isset($_POST['referral'])) $data['source'] = $_POST['referral'];
+
 // CRITICAL DEBUG: Log exactly what we received from POST
 error_log("DEBUG: Full _POST contents: " . json_encode($_POST));
 error_log("DEBUG: Full _FILES contents: " . json_encode($_FILES));
