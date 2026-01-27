@@ -131,12 +131,14 @@ try {
     $success = save_registration($data);
 
     if ($success) {
+        error_log("DEBUG: Registration save function returned TRUE");
         // Send admin notification
         send_admin_registration_notification($data);
         
         // Return success response
         echo json_encode(['success' => true, 'message' => 'Registration successful!']);
     } else {
+        error_log("DEBUG: Registration save function returned FALSE");
         // Log the failure details
         $pdo = get_db_connection();
         $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
@@ -146,6 +148,6 @@ try {
         echo json_encode(['success' => true, 'message' => 'Registration received and being processed.']);
     }
 } catch (Exception $e) {
-    error_log("Registration error: " . $e->getMessage());
+    error_log("CRITICAL EXCEPTION in process_registration: " . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'An error occurred during registration. Please try again.']);
 }
