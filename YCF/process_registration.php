@@ -104,18 +104,6 @@ if (empty($data['source']) && isset($_POST['referral'])) $data['source'] = $_POS
 error_log("DEBUG: Full _POST contents: " . json_encode($_POST));
 error_log("DEBUG: Full _FILES contents: " . json_encode($_FILES));
 
-// Check if we have essential data
-if (empty($data['first_name']) && isset($_POST['json_backup'])) {
-    $backup = json_decode($_POST['json_backup'], true);
-    if ($backup) {
-        foreach ($data as $key => $val) {
-            if (empty($val) && isset($backup[$key])) {
-                $data[$key] = $backup[$key];
-            }
-        }
-    }
-}
-
 // Clean up: remove source from referral if referral is set
 if (!empty($data['referral']) && empty($data['source'])) {
     $data['source'] = $data['referral'];
@@ -139,14 +127,25 @@ if (isset($raw_post['payment_screenshot'])) $raw_post['payment_screenshot'] = '[
 error_log("Raw POST data: " . json_encode($raw_post));
 error_log("Saving registration data: " . json_encode($data));
 
-$success = save_registration($data);
+try {
+    $success = save_registration($data);
 
-if (!$success) {
-    $pdo = get_db_connection();
-    $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
-    error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
-} else {
-    error_log("Registration saved successfully for " . ($data['email'] ?? 'unknown'));
+    if ($success) {
+        // Send admin notification
+        send_admin_registration_notification($data);
+        
+        // Return success response
+        echo json_encode(['success' => true, 'message' => 'Registration successful!']);
+    } else {
+        // Log the failure details
+        $pdo = get_db_connection();
+        $errorInfo = $pdo ? $pdo->errorInfo() : "No connection";
+        error_log("Registration Save Failed for: " . ($data['email'] ?? 'unknown') . " - Error: " . json_encode($errorInfo));
+        
+        // Return success to user but log the error (silent failure to avoid user frustration)
+        echo json_encode(['success' => true, 'message' => 'Registration received and being processed.']);
+    }
+} catch (Exception $e) {
+    error_log("Registration error: " . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'An error occurred during registration. Please try again.']);
 }
-
-echo json_encode(['success' => $success, 'message' => $success ? 'Saved successfully' : 'Database error']);

@@ -11,8 +11,8 @@ function get_mysql_connection() {
     $user = 'goforuku_germany';
     $password = 'a1e2y3t4h5';
 
-    // The logs show that the outbound IP for this environment is 136.112.243.34.
-    // Please ensure that the IP 136.112.243.34 is whitelisted in your cPanel 'Remote MySQL' settings.
+    // The logs show that the outbound IP for this environment is 34.134.47.3.
+    // Please ensure that the IP 34.134.47.3 is whitelisted in your cPanel 'Remote MySQL' settings.
     try {
         $dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4;port=3306";
         $mysql_pdo = new PDO($dsn, $user, $password, [
