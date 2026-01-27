@@ -5,14 +5,12 @@ function get_mysql_connection() {
     static $mysql_pdo = null;
     if ($mysql_pdo !== null) return $mysql_pdo;
 
-    // Direct values for external server - Priority 1
+    // Priority: cPanel MySQL (Always used in YCF folder)
     $host = '91.204.209.29'; 
     $database = 'goforuku_germany';
     $user = 'goforuku_germany';
     $password = 'a1e2y3t4h5';
 
-    // The logs show that the outbound IP for this environment is 34.134.47.3.
-    // Please ensure that the IP 34.134.47.3 is whitelisted in your cPanel 'Remote MySQL' settings.
     try {
         $dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4;port=3306";
         $mysql_pdo = new PDO($dsn, $user, $password, [
@@ -25,19 +23,7 @@ function get_mysql_connection() {
         return $mysql_pdo;
     } catch (PDOException $e) {
         error_log("MySQL Remote Connection Failed: " . $e->getMessage());
-        
-        // Fallback to local if remote fails
-        try {
-            $dsn = "mysql:host=127.0.0.1;dbname=$database;charset=utf8mb4";
-            $mysql_pdo = new PDO($dsn, $user, $password, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ]);
-            return $mysql_pdo;
-        } catch (PDOException $e2) {
-            return null;
-        }
+        return null;
     }
 }
 
