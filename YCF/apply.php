@@ -310,7 +310,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                 <h4 class="montserrat" style="font-size: 1.2rem; color: #2D236E; margin-bottom: 20px;">Payment Method</h4>
                 <div style="display: flex; flex-direction: column; gap: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 20px; background: #f9f9fb;">
                     <div style="border-bottom: 1px solid #eee;">
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                        <label class="payment-method-row" style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
                             <input type="radio" name="payment_method" value="crypto" onchange="toggleCryptoDetails(this.checked)" required>
                             <div style="display: flex; flex-direction: column;">
                                 <span style="font-weight: 600; color: #2D236E;">Cryptocurrency </span>
@@ -330,9 +330,9 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                                 $qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($btc_address);
                                 ?>
                                 <img src="<?php echo $qr_url; ?>" alt="BTC QR Code" style="width: 150px; height: 150px; border: 1px solid #eee; padding: 5px; border-radius: 8px; margin-bottom: 10px;">
-                                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px dashed #ccc;">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px dashed #ccc; flex-wrap: wrap;">
                                     <span id="btc_address_text" style="word-break: break-all; font-family: monospace; font-weight: 600; color: #2D236E;"><?php echo $btc_address; ?></span>
-                                    <button type="button" onclick="copyAddress()" style="background: #2D236E; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 5px;">
+                                    <button type="button" onclick="copyAddress()" class="copy-btn-mobile" style="background: #2D236E; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; font-weight: 700;">
                                         <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: white;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
                                         Copy
                                     </button>
@@ -350,7 +350,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                     </div>
 
                     <div style="border-bottom: 1px solid #eee;">
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                        <label class="payment-method-row" style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
                             <input type="radio" name="payment_method" value="card" disabled>
                             <div style="display: flex; flex-direction: column;">
                                 <span style="font-weight: 600; color: #2D236E;">Mastercard / Visa</span>
@@ -364,7 +364,7 @@ $is_guaranteed = ($package === 'forum_admission' || $package === 'self_funded');
                     </div>
 
                     <div>
-                        <label style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
+                        <label class="payment-method-row" style="display: flex; align-items: center; gap: 15px; cursor: pointer; padding: 10px;">
                             <input type="radio" name="payment_method" value="paypal" disabled>
                             <div style="display: flex; flex-direction: column;">
                                 <span style="font-weight: 600; color: #2D236E;">PayPal</span>

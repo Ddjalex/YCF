@@ -14,6 +14,32 @@ require_once 'functions.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* Security Fix: Ensure all images and media load via HTTPS */
+        img, video, iframe { max-width: 100%; height: auto; }
+        
+        /* Mobile View Fix for Step 3 Payment Section */
+        @media (max-width: 768px) {
+            .payment-method-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .payment-method-row img {
+                margin-left: 0 !important;
+                margin-top: 10px;
+            }
+            #crypto_details {
+                margin: 10px 0 !important;
+                padding: 15px !important;
+            }
+            #btc_address_text {
+                font-size: 0.75rem !important;
+            }
+            .copy-btn-mobile {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+        
         .loading-spinner {
             display: inline-block;
             width: 18px;
